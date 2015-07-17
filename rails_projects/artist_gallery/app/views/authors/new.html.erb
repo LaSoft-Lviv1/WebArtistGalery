@@ -1,0 +1,13 @@
+<%= form_for @author do |f| %>
+
+    <p> <%= f.text_field :first_name %></p>
+    <p><%= f.text_field :second_name %></p>
+    <p><%= f.text_area :info_about, :size => '80x10' %></p>
+    <p><%= f.phone_field :phone_number %></p>
+    <p><%= f.email_field :email_address %></p>
+
+
+    <p><%= collection_select(:author, :city_id, City.all, :id, :name) %></p>
+    <p><%= f.file_field :photo %></p>
+    <p><%= f.submit %></p>
+<% end %>
