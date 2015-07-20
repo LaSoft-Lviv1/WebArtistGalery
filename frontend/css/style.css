@@ -171,3 +171,53 @@ margin-bottom: 0;
 	background-repeat: no-repeat;
 	background-position: 0 50%;
 }
+.acc-type-body {
+  position: relative;
+}
+.select-one {
+  display: block;
+  font-family: "Crimson Text",serif;
+  font-style: italic;
+  font-weight: normal;
+  line-height: 0.7;
+  padding: 100px 0px 0px;
+  position: absolute;
+/*  float: left;
+*/  font-size: 3em;
+  left: 292px;
+  text-align: center;
+  width: 120px
+}
+
+@media only screen and (min-width: 768px) {
+    a.collector-account {
+      background: transparent url("../img/account-type.jpg") no-repeat scroll 0px 0px;
+      width: 349px;
+      text-indent: -9999px;
+      height: 320px;
+      display: block;
+      outline: 0px none;
+    }
+    a.artist-account {
+      background: transparent url("../img/account-type.jpg") no-repeat scroll -380px 0px;
+      width: 349px;
+      text-indent: -9999px;
+      height: 320px;
+      display: block;
+      outline: 0px none;
+    }
+    a.collector-account:hover{
+      background-position: 0px -347px;
+    }
+
+    a.artist-account:hover {
+      background-position: -380px -347px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px){
+  #modal2 .modal-dialog {
+  width: auto;
+} 
+}
+
