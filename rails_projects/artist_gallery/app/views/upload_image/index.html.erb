@@ -1,0 +1,36 @@
+<%= render :partial => 'menu' %>
+<h1>Uploading new painting</h1>
+<table>
+  <tr>
+    <td width="20%">
+  <div>
+  <p>Choose style</p>
+  <select required name="style">
+    <% @styles.each do |style| %>
+    <option value=<%= style.name %>><%= style.name %></option>
+    <% end %>
+  </select>
+  </div>
+    </td>
+    <td width="20%">
+      <div>
+        <p>Choose subject</p>
+        <select required name="subject">
+          <% @subjects.each do |subjects| %>
+              <option value=<%= subjects.name %>><%= subjects.name %></option>
+          <% end %>
+        </select>
+      </div>
+    </td>
+    <td width="20%">
+      <div>
+        <p>Choose medium</p>
+        <select required name="medium">
+          <% @mediums.each do |medium| %>
+              <option value=<%= medium.name %>><%= medium.name %></option>
+          <% end %>
+        </select>
+      </div>
+    </td>
+  </tr>
+</table>
