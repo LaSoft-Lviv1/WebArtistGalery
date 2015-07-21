@@ -1,6 +1,6 @@
 class ArtistGallery.Routers.AuthorsRouter extends Backbone.Router
   routes:
-    ''         : "index"
+    ''    : "index"
     ':id'      : "show"
     #".*"       : "index"
 #  "new"      : "newAuthor"
@@ -10,16 +10,21 @@ class ArtistGallery.Routers.AuthorsRouter extends Backbone.Router
 
 
   initialize: (options) ->
-    alert 'kk'
+    #alert 'kk'
     @authors = new ArtistGallery.Collections.AuthorsCollection()
-    @authors.reset options.authors
+    @authors.fetch({ reset: true })
+    alert "after initialize"
+    #@authors.reset options.authors
 
   show: (id) ->
-    #alert 'in show'
+    alert 'in show'
     alert "artist #{id}"
 
   index: ->
-    @view = new ArtistGalery.Views.Authors.IndexView(collection: @authors)
+    @view = new ArtistGallery.Views.Authors.IndexView(collection: @authors)
+    #@view = new ArtistGallery.Views.Authors.IndexView()
+    #$("#authors").html('<h1>hello from authors</h1>')
+    alert JSON.stringify(@authors)
     $("#authors").html(@view.render().el)
 
 

@@ -5,15 +5,17 @@ window.ArtistGallery =
   Views: {}
   initialize: ->
     #alert 'before router ctor'
+    #new ArtistGallery.Routers.HomePageRouter()
     new ArtistGallery.Routers.AuthorsRouter()
     #alert 'after router ctor'
     Backbone.history.start()
+
     #alert 'after history start'
 
 
 
 $(document).ready ->
-  alert 'before ready'
+  #alert 'before ready'
   ArtistGallery.initialize()
-  alert 'after ready'
+  #alert 'after ready'
 

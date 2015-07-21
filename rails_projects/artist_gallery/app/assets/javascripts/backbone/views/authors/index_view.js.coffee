@@ -4,7 +4,7 @@ class ArtistGallery.Views.Authors.IndexView extends Backbone.View
   template: JST["backbone/templates/authors/index"]
 
   initialize: () ->
-    @collection.bind('reset', @addAll)
+    #@collection.bind('reset', @addAll)
 
   addAll: () =>
     @collection.each(@addOne)
@@ -13,9 +13,10 @@ class ArtistGallery.Views.Authors.IndexView extends Backbone.View
     view = new ArtistGallery.Views.Authors.AuthorView({model : author})
     @$("tbody").append(view.render().el)
 
-  render: =>
-    @$el.html(@template(authors: @collection.toJSON() ))
-    @addAll()
+  render: ->
+    #@$el.html(@template(authors: @collection.toJSON() ))
+    @$el.html(@template())
+    #@addAll()
 
     return this
 
