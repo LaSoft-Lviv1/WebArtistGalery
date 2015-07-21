@@ -217,7 +217,19 @@ margin-bottom: 0;
 
 @media (min-width: 768px) and (max-width: 991px){
   #modal2 .modal-dialog {
-  width: auto;
-} 
+    width: auto;
+  } 
 }
 
+.modal-body{
+    height: 250px;
+    overflow-y: auto;
+}
+
+@media (min-height: 500px) {
+    .modal-body { height: 400px; }
+}
+
+@media (min-height: 800px) {
+    .modal-body { height: 600px; }
+}
