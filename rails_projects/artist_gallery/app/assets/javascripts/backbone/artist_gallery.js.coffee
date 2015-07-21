@@ -6,7 +6,7 @@ window.ArtistGallery =
   initialize: ->
     #alert 'before router ctor'
     #new ArtistGallery.Routers.HomePageRouter()
-    new ArtistGallery.Routers.AuthorsRouter()
+    new ArtistGallery.Routers.AuthorsRouter(ArtistGallery.Collections)
     #alert 'after router ctor'
     Backbone.history.start()
 

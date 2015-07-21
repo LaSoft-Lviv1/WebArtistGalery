@@ -4,5 +4,7 @@ class ArtistGallery.Views.Authors.ShowView extends Backbone.View
   template: JST["backbone/templates/authors/show"]
 
   render: ->
-    @$el.html(@template(@model.toJSON() ))
+    console.log @model.toJSON()
+    @$el.html(@template(@model.toJSON()))
+    console.log 'after show view'
     return this

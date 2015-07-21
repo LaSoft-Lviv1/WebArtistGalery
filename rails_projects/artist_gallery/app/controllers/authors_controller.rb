@@ -1,16 +1,14 @@
 
 class AuthorsController < ApplicationController
 
+  #respond_to :json
+
   def index
     @authors = Author.all
-    # respond_to do |format|
-    #   format.html # index.html.erb
-    #   format.json { render :json => @authors}
-    # end
-
     render json: @authors
-    #render text: "in controller"
-    #render html: index
+
+    #respond_with(@authors)
+
   end
 
 
