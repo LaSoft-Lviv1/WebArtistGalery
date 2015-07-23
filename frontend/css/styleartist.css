@@ -56,7 +56,7 @@ footer p {
 	color: #5E5E5E;
 }
 
-/* Sasko-styles */
+/* Sashko-styles */
 div.container.header_ {
   width: 100%;
   margin-right: 20px;
@@ -89,6 +89,120 @@ div.container.header_ {
 padding: 3.5px 15px;
 }
 
+.content .description {
+  padding-top: 140px;
+  position: relative;
+  width: 75%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.avatar_outer {
+  float: left;
+  margin-right: 30px;
+  margin-bottom: 0px;
+  position: relative;
+}
+
+.avatar_inner {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 10px 10px 10px 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.08);
+  border: 1px solid #EBEBEB;
+  width: 242px;
+  height: 336px;
+}
+
+.artist_avatar {
+  float: left;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
+.variable-width {
+  padding: 10px 10px 10px 10px;
+  border: 1px solid #000;
+  white-space: nowrap;
+  background: #333;
+}
+
+.slick-slider {
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 20px;
+}
+
+.paintslide {
+  background: green;
+}
+
+.paint_outer {
+  float: left;
+  position: relative;
+}
+
+.paint_inner {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 10px 10px 10px 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.08);
+  border: 1px solid #222;
+  background: #555
+}
+
+.img-responsive {
+  height: 170px;
+}
+
+h1 {
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.artist_main {
+  font-family: "Open Sans", Calibri, Tahoma, Arial, sans-serif;
+  font-size: 18px;
+  color: #333333;
+  text-align: left;
+  padding-top: 10px;
+}
+
+.artist_resume {
+  font-family: "Open Sans", Calibri, Tahoma, Arial, sans-serif;
+  font-size: 18px;
+  color: #333333;
+  text-align: justify;
+  padding-top: 100px;
+}
+
+.complete{
+    display:none;
+}
+
+.more{
+    background:lightgrey;
+    color:navy;
+    font-size:11px;
+    padding:3px;
+    cursor:pointer;
+}
+
+p {
+  font-family: "Open Sans", Calibri, Tahoma, Arial, sans-serif;
+  font-size: 13px;
+  color: #333333;
+  text-align: justify;
+}
+
+.container.paintslide {
+  margin-bottom: 30px;
+  margin-top: 20px;
+  padding-bottom: 10px;
+}
+
 .navbar-toggle {
   float: left;
   margin-left: 10px;
@@ -109,31 +223,6 @@ padding: 3.5px 15px;
 .mybutton {
   float: right !important;
 }
-
-.content > .container-fluid {
-	padding-top: 140px;
-  position: relative;
-  width: 85%;
-}
-
-
-/* обгортка для картини */
-.work_outer {
-  margin-bottom: 24px;
-  float: right;
-  position: relative;
-}
-
-.work_inner {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  padding: 10px 10px 10px 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.08);
-  border: 1px solid #EBEBEB;
-  width: 270px;
-}
-/* кінець обгортки для картини */
 
 .footer{
 	background-color: #eee;
@@ -242,4 +331,3 @@ margin-bottom: 0;
 	background-repeat: no-repeat;
 	background-position: 0 50%;
 }
-
