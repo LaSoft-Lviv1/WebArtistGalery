@@ -1,10 +1,34 @@
-<h1>New author</h1>
 
-<form id="new-author" name="author">
-  <div class="actions">
-    <input type="submit" value="Create Author" />
-  </div>
+  <form id="new_author" action="authors" method="post" name="author">
+    <fieldset class="actions">
+      <legend>New author</legend>
+      <label for="first_name">First name</label>
+      <br />
+      <input type="text" name="author[first_name]" id="first_name" placeholder="Author first name" value="Ivan"/>
+      <br />
+      <label for="second_name">First name</label>
+      <br />
+      <input type="text" name="author[second_name]" id="second_name" placeholder="Author second name" value="Ivanov"/>
+      <br />
+      <label for="info_about">Info about</label>
+      <br />
+      <textarea name="author[info_about]" id="info_about" rows="5" cols="30">about me</textarea>
+      <br />
+      <label for="email_address">Email address</label>
+      <br />
+      <input type="text" name="author[email_address]" id="email_address" value="email@com.ua" />
+      <br />
+      <label for="phone_number">Phone number</label>
+      <br />
+      <input type="text" name="author[phone_number]" id="phone_number" value="333-22-33" />
+      <br />
+      <label for="text_city_id">City id</label>
+      <br />
+      <input type="text" name="author[city_id]" id="text_city_id" />
+      <br />
+      <select id="city_name"></select>
+      <button type="submit" class="btn">Submit</button>
+    </fieldset>
+  </form>
 
-</form>
-
-<a href="#/index">Back</a>
+  <a href="#/index">Back</a>

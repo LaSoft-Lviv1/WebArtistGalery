@@ -6,7 +6,7 @@ json.array! @authors do |author|
   json.phone_number author.phone_number
   json.photo author.photo.url
   json.email_address author.email_address
-  json.city author.city
+  json.city_name author.city.name
   json.created_at author.created_at
   json.updated_at author.updated_at
 end

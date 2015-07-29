@@ -1,0 +1,32 @@
+<%= form_for @art_item, :html => {multipart: true} do |f| %>
+
+    <legend>New painting</legend>
+    <h4> Name of painting
+    <span></span><%= f.text_field :name %></span></h4>
+    <h4>Description</h4>
+    <p><%= f.text_area :description, :size => '80x10' %></p>
+    <h4>Price
+    <span><%= f.text_field :price %></span></h4>
+    <h4>Keywords
+    <span><%= f.date_field :keywords %></span></h4>
+    <h4>Categories
+      <span><%= collection_select(:art_items, :category_id, Category.all, :id, :name) %></span>
+    </h4>
+    <h4>Media
+      <span><%= collection_select(:art_items, :media_id, Medium.all, :id, :name) %></span>
+    </h4>
+    <h4>Orientation
+      <span><%= collection_select(:art_items, :orientation_id, Orientation.all, :id, :name) %></span>
+    </h4>
+    <h4>Style
+      <span><%= collection_select(:art_items, :style_id, Style.all, :id, :name) %></span>
+    </h4>
+    <h4>Subject
+      <span><%= collection_select(:art_items, :subject_id, Subject.all, :id, :name) %></span>
+    </h4>
+    <h4>Author
+      <span><%= collection_select(:art_items, :author_id, Author.all, :id, :second_name) %></span>
+    </h4>
+    <h4>Choose file: <span><%= f.file_field :source_file %></span></h4>
+    <p><%= f.submit %></p>
+<% end %>

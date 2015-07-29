@@ -50,9 +50,9 @@ class ArtistGallery.Views.Authors.IndexView extends Backbone.View
 
 
 
-  newProject: (e) ->
-    e.preventDefault()
-    App.Vent.trigger "project:new"
+#  newProject: (e) ->
+#    e.preventDefault()
+#    App.Vent.trigger "project:new"
 
 
 
