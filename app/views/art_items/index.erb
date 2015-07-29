@@ -1,0 +1,5 @@
+<p>Amount of paintings <%= @art_items.count %></p>
+<% @art_items.each do |art_item| %>
+  <img src="<%= art_item.source_file.url %>" alt="some_image" />
+<% end %>
+<p><a href="art_items/new">create new item</a></p>

@@ -7,6 +7,4 @@ class ArtistGallery.Collections.AuthorsCollection extends Backbone.Collection
   model: ArtistGallery.Models.Author
   url: 'authors'
 
-  #initialize: -> alert this.url
-
   

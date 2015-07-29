@@ -20,8 +20,8 @@ class AuthorsController < ApplicationController
 
   def create
     a = Author.create(author_params)
-    redirect_to :authors
-    #redirect_to :author
+    #render json: a
+    redirect_to :author
 
   end
 
