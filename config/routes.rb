@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  root to: "application#index"
+root to: "application#index-test"
+  # root to: "application#index"
   # resources :posts
   # resources :upload_image
   #
