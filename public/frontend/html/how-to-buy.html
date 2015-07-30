@@ -7,10 +7,18 @@
 	<title>How to Buy</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="../css/style.css">
-	<!--[if lt IE 9]>
+	<link rel="stylesheet" href="../css/jquery-ui/jquery-ui.min.css">
+	<link rel="stylesheet" href="../css/jquery-ui/jquery-ui.theme.min.css">
+<!-- 	<link rel="stylesheet" href="../css/jquery-ui/jquery-ui.structure.min.css">
+ -->	<!--[if lt IE 9]>
 	      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
 	      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 	    <![endif]-->
+
+	<style>
+		.ui-menu { width: 100%; }
+		.menu { margin-top: 20px; }
+	</style>
 </head>
 <body>
 
@@ -108,10 +116,62 @@
 		<div class="content">
 			<div class="container">
 				<div class="row">
-					<p>some text and <a href="#">links</a></p>
-				</div>
-			</div>
-		</div>
+					<div class="col-xs-12 col-sm-4">
+						<div class="menu" data-spy="affix" data-offset-top="10" data-offset-bottom="200">
+							<ul id="menu">
+								<li><a href="#FAQ">Frequently Asked Questions</a></li>
+								<li><a href="#payment-details">Payment and delivery details</a></li>
+								<li><a href="#warrant">Warrant</a></li>
+								<li><a href="#about-us">About us</a></li>
+								<li>Cooperation with us
+									<ul>
+										<li><a href="#coop-artist">As an Artist</a></li>
+										<li><a href="#coop-collector">As a Collector</a></li>
+									</ul>
+								</li>
+								<li><a href="#conditions">Conditions</a></li>
+							</ul><!-- /#menu -->
+						</div> <!-- /.menu -->
+					</div> <!-- /.col -->
+					<div class="col-xs-12 col-sm-8">
+						<h3 id="FAQ">Frequently Asked Question</h3>
+							<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem, ipsum, odio? Asperiores ut unde, hic, nobis repellat blanditiis veritatis saepe dicta, amet, earum dolor vel fugit aliquam dolorum enim. Incidunt!</div>
+							<div>Cum nostrum, voluptate pariatur accusamus, asperiores molestias harum repudiandae facere aperiam, quisquam reiciendis quibusdam nemo eos libero optio aliquam aspernatur inventore, est incidunt ab quaerat? Corporis unde, debitis architecto possimus.</div>
+							<div>Blanditiis eius accusantium itaque dolor. Maiores alias vitae nemo quos reprehenderit velit, laboriosam molestias fugiat natus, nostrum nobis accusamus ut omnis non voluptates praesentium perferendis provident doloremque ipsum. Quaerat, magni.</div>
+							<div>Atque eius, dolores quas quo commodi, fugit officia ea laudantium expedita cumque necessitatibus voluptatum consequatur eveniet magni reprehenderit aliquam! Architecto neque cupiditate distinctio, maxime dolore. Quae qui, eaque dignissimos. Nulla!</div>
+							<div>Aliquid obcaecati eaque, voluptas. Voluptatibus ipsum recusandae, ab laboriosam porro! Doloremque atque ad consectetur, accusantium impedit provident? Dolorem ab aliquid distinctio aperiam fugit ad molestias sint, accusamus iure, officiis labore.</div>
+						<h3 id="payment-details">Payment and delivery details</h3>
+							<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Hic vel maiores voluptatem nihil, perferendis! Error modi similique doloribus temporibus, laudantium natus sit tenetur molestias, aut sunt quisquam, id. Reiciendis, cum.</div>
+							<div>Nam, voluptatum nobis nulla harum laudantium autem, nemo vel. Est inventore quo, cum delectus reprehenderit dolores iste soluta minus fugit ipsam quis, consequatur provident praesentium cumque? Natus, tenetur tempora eos.</div>
+							<div>Repudiandae corrupti, voluptas beatae delectus quam, quo optio, hic recusandae cumque fugiat adipisci eaque. Facilis nulla, laboriosam voluptates, adipisci expedita molestias est accusamus vel veritatis suscipit similique, tenetur at velit.</div>
+							<div>Odio, laboriosam iste provident a ea dicta cum nisi quos unde qui quasi eveniet, dolorum nobis cupiditate sint aspernatur deserunt nihil neque non. Neque aspernatur tempora iusto, perspiciatis repudiandae est?</div>
+							<div>In fugit incidunt fuga sunt nam nemo sequi quaerat alias, quae eum quisquam molestiae architecto beatae animi id deserunt quia veniam itaque nihil quis, nobis totam. Eligendi perferendis saepe ipsa.</div>
+						<h3 id="warrant">Warrant</h3>
+							<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corrupti repudiandae dolores maiores, ipsa explicabo magni facilis, placeat soluta nesciunt, eaque perspiciatis nulla, est voluptates. Voluptates, deleniti, in? Qui, culpa, maxime!</div>
+							<div>Nemo fuga iusto distinctio, minus ipsum numquam minima? Sit quo pariatur quas neque sunt. Saepe reiciendis, odit iure deserunt veritatis tenetur consectetur cupiditate, molestiae fuga delectus eos, sed voluptatibus quasi.</div>
+							<div>Eos ab harum, illum eius nam fugit consequuntur nemo in natus recusandae laboriosam totam illo amet ex quo? Dolores sunt atque ut ex, itaque consequatur molestiae doloremque, tenetur dolore officia.</div>
+						<h3 id="about-us">About us</h3>
+							<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit magni, illum quo voluptatum veniam maiores inventore velit temporibus. Cupiditate repellat iusto rerum, asperiores excepturi repudiandae culpa mollitia. Adipisci, ipsa! At.</div>
+							<div>Vel, perspiciatis nobis omnis, voluptatum quis id, tenetur eligendi expedita modi possimus explicabo! Quos culpa repellat assumenda iure officia quae suscipit quibusdam. Quo veniam aperiam perspiciatis ad, quaerat perferendis iure.</div>
+							<div>Eos consequatur quia, tempora magni ea dignissimos. Facere dolor minima eos accusantium numquam perferendis labore, iusto esse eaque itaque cumque ea perspiciatis in exercitationem, consequuntur, dolorem cupiditate minus aspernatur qui?</div>
+						<h3 id="coop-artist">Cooperation with us</h3>
+						<h4>As an Artist</h4>
+							<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iusto doloremque consequuntur vero eveniet quaerat, fuga pariatur laudantium, nulla molestiae molestias voluptatibus vitae repellat excepturi totam unde veritatis quis commodi cum!</div>
+							<div>Sequi cumque voluptates a beatae tenetur animi, in sed vero at non architecto molestiae, possimus illo ullam. Nulla voluptatem molestiae, debitis facere. Nisi in dolor, debitis eum dolorem eveniet commodi!</div>
+							<div>Doloremque at nisi tenetur. Unde quisquam facere accusantium dolores sit. Fugiat consequatur nihil tenetur similique, suscipit, est assumenda, exercitationem ut, placeat molestiae ea iusto harum. Quod, atque rem sit veritatis!</div>
+						<h4 id="coop-collector">As a Collector</h4>
+							<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil consequuntur aut fuga esse voluptatum eligendi saepe ea fugit deleniti odit, quis perspiciatis, nobis cupiditate odio. Dolores veniam saepe perferendis unde.</div>
+							<div>Cumque quos, expedita odit eos praesentium, ipsam nihil eveniet sed, voluptas commodi velit. Sunt in, earum sequi! Ducimus eum, atque harum fuga cupiditate beatae odio! Nam recusandae, reiciendis quae earum.</div>
+							<div>Dolores itaque ea ipsa tempore magni laborum quibusdam cum eum esse hic corporis, consequuntur ut quia sint porro harum suscipit reiciendis nam voluptatem dignissimos odio possimus, ullam id explicabo obcaecati!</div>
+						<h3 id="conditions">Conditions</h3>
+							<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum harum totam a voluptas modi ratione, possimus ad accusamus ea. Aut expedita molestias maiores numquam quia similique, quis, incidunt delectus rerum!</div>
+							<div>Provident magni delectus vero similique possimus, quo iusto doloremque inventore neque totam aspernatur ducimus, laboriosam quasi, eaque. Dolore voluptatum est libero. Dolores nulla perspiciatis quos atque neque aut reprehenderit. Eum.</div>
+							<div>Alias necessitatibus animi aperiam assumenda? Blanditiis maiores, eos, veniam possimus molestias ad, perspiciatis sint accusantium laudantium, temporibus praesentium harum repellendus a enim soluta. A omnis excepturi, incidunt consectetur tempora doloribus.</div>
+						<a href="#FAQ" class="btn btn-succes pull-right">Back to the top</a>
+					</div> <!-- /.col -->
+				</div> <!-- /.row -->
+			</div> <!-- /.container -->
+		</div> <!-- /.content -->
 
 										<!-- BODY END -->
 
@@ -162,8 +222,13 @@
 	</footer>
 
 										<!-- FOOTER END -->
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script src="../js/jquery-ui/jquery-ui.min.js"></script>
+	<script>
+		$(function(){
+			$('#menu').menu();
+		});
+	</script>
 </body>
 </html>
