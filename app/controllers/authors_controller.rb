@@ -6,12 +6,15 @@ class AuthorsController < ApplicationController
   def index
     @authors = Author.all
     #render json: @authors
+
     #respond_with(@authors)
+
   end
 
 
   def new
     @author = Author.new
+
   end
 
 
