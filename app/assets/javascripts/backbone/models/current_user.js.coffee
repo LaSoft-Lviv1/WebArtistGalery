@@ -4,8 +4,8 @@ class ArtistGallery.Models.CurrentUser extends Backbone.Model
     @listenTo ArtistGallery.Vent, "user:logged_in", @login
     @listenTo ArtistGallery.Vent, "user:logged_out", @logout
 
-  login: (id, username) ->
-    @set id: id, username: username, loggedIn: true
+  login: (id, email) ->
+    @set id: id, email: username, loggedIn: true
 
   logout: ->
     m = new ArtistGallery.Models.Login({ id: @id })
@@ -13,6 +13,6 @@ class ArtistGallery.Models.CurrentUser extends Backbone.Model
       success: (model, data) =>
         @set loggedIn: false
         delete @id
-        delete @attributes.username
+        delete @attributes.email
         delete @attributes.id
         window.csrf(data.csrf)

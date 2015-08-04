@@ -21,7 +21,7 @@ class ArtistGallery.Views.Login extends Backbone.View
 
   login: (e) ->
     e.preventDefault()
-    @model.set username: @$('#email').val()
+    @model.set email: @$('#email').val()
     @model.set password: @$('#password').val()
     @model.save()
 
