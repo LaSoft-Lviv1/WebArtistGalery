@@ -1,2 +1,16 @@
 <div id="header"></div>
 <div id="authors">from index.html.erb</div>
+
+<%= javascript_tag do %>
+
+    <% if current_user %>
+        var current_user = {
+        id: <%= current_user.id %>,
+        loggedIn: true,
+        username: "<%= current_user.email %>"
+        };
+    <% else %>
+        var current_user = { loggedIn: false };
+    <% end %>
+    ArtistGallery.initialize({ current_user: current_user });
+<% end %>
