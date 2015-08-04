@@ -4,12 +4,15 @@ class ArtistGallery.Routers.AuthorsRouter extends Backbone.Router
     'authors'      : "showAuthors"
     'authors/new'  : "newAuthor"
     'authors/:id'  : "show"
-
-    #".*"       : "index"
+    'login'        : "login"
+#".*"       : "index"
 
 #  "index"    : "index"
 #  ":id/edit" : "edit"
 
+  login: ->
+    @view = new ArtistGallery.Views.Login({ model: new ArtistGallery.Models.Login() })
+    $("#authors").html(@view.render().el)
 
   initialize: ->
     @authors = new ArtistGallery.Collections.AuthorsCollection()
