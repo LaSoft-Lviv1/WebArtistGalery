@@ -1,6 +1,15 @@
 Rails.application.routes.draw do
 
-  devise_for :users, controllers: { sessions: "users/sessions" }
+  devise_scope :user do
+    get '/users/sessions' => 'users/sessions'
+    # post '/users/sessions' => 'users/sessions'
+  end
+
+  devise_scope :user do
+    # get '/users/sessions' => 'users/sessions'
+    post '/users/sessions' => 'users/sessions#create'
+  end
+  devise_for :users #, controllers: { sessions: "users/sessions" }
 
   root to: "application#index"
   # resources :posts
@@ -13,6 +22,8 @@ Rails.application.routes.draw do
   resources :art_items
 
   resources :categories
+
+  # resources :users/sessions, only: [ :create, :destroy ]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
