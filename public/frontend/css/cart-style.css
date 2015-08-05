@@ -110,6 +110,10 @@ aside.perks.vertical .perks-list li + li {
     margin-top: 1em;
 }
 
+.logos-list {
+    padding-top: 20px;
+}
+
 .logos-list li {
     vertical-align: middle;
     margin-right: 0.65em;
@@ -119,7 +123,15 @@ aside.perks.vertical .perks-list li + li {
     display: inline-block;
 }
 
-.payment-amex, .payment-info.uses-payment-amex::before, .logo-dhl, .payment-discover, .payment-info.uses-payment-discover::before, .logo-fedex, .secure-guarantee, .payment-mastercard, .payment-info.uses-payment-mastercard::before, .payment-paypal, .payment-info.uses-payment-paypal::before, .logo-ups, .payment-visa, .payment-info.uses-payment-visa::before {
+.ir {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: 0px none;
+    overflow: hidden;
+}
+
+.logo-dhl, .logo-fedex, .secure-guarantee, .payment-mastercard, .payment-paypal, .logo-ups, .payment-visa {
+    color: transparent;
     background-image: url("../img/sprites/logos.png");
     display: inline-block;
     vertical-align: middle;
@@ -131,9 +143,57 @@ aside.perks.vertical .perks-list li + li {
     height: 30px;
 }
 
-.ir {
-    background-color: transparent;
-    background-repeat: no-repeat;
-    border: 0px none;
-    overflow: hidden;
+.payment-mastercard {
+    background-position: -50px 0px;
+    width: 50px;
+    height: 36px;
+}
+
+.payment-paypal {
+    background-position: 0px -80px;
+    width: 113px;
+    height: 40px;
+}
+
+.logo-dhl {
+    background-position: 0px -229px;
+    width: 130px;
+    height: 47px;
+}
+
+.logo-fedex {
+    background-position: 0px -120px;
+    width: 101px;
+    height: 41px;
+}
+
+.logo-ups {
+    background-position: -50px -36px;
+    width: 38px;
+    height: 44px;
+}
+
+aside.perks.vertical ul:last-child {
+    margin-bottom: 0px;
+}
+
+.logos-list .perk-with-label {
+    vertical-align: baseline;
+}
+.logos-list li i.secure-ssl {
+    margin-bottom: 13px;
+}
+.logos-list i {
+    display: block;
+    margin: 0px auto 0.35em;
+}
+.secure-ssl {
+    width: 90px;
+    height: 50px;
+    background: transparent url("../img/rapid-ssl.gif") repeat scroll 0% 0%;
+}
+.secure-guarantee {
+    background-position: -47px -161px;
+    width: 66px;
+    height: 68px;
 }
