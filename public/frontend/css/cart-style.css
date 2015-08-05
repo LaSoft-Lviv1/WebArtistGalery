@@ -1,1 +1,139 @@
+.cart-container {
+	padding-top: 2em;
+}
 
+.cart-links-bar {
+	margin: 2em 0;
+}
+
+
+.messages {
+    margin-top: 0px;
+    margin-bottom: 2em;
+    overflow: hidden;
+}
+.messages:empty {
+    display: none;
+}
+
+.cart-table.table>thead>tr>th {
+	padding: 8px 0px;
+	color: #888894;
+	font-weight: bold;
+}
+
+.cart-item .item-description>dl>dt>a {
+	color: #000;
+	font-weight: bold;
+	font-size: 1.5em;
+}
+
+td.item-delivery-info {
+	font-size: 0.7em;
+}
+
+.item-delivery-info mark {
+	color: #66A64D;
+}
+
+.cart-table.table>tfoot>.cart-total-container {
+	background: #DDD none repeat scroll 0% 0%;
+}
+
+.cart-table.table>tfoot>.cart-total-container>td,
+.cart-table.table>tfoot>.cart-total-container>th {
+	border-top: none;
+}
+
+.cart-table.table .cart-total {
+	font-weight: bold;
+}
+
+.review-disclaimer{
+	color: #909090;
+}
+
+.unstyled {
+	margin: 0px;
+	padding: 0px;
+	list-style: outside none none;	
+}
+
+.vertical {
+	padding: 1.5em;
+}
+
+aside.perks {
+	background: #FAFAFA none repeat scroll 0% 0%;
+	color: #888;
+	position: relative;
+	margin-top: 3em;
+}
+
+aside.perks .heading {
+	color: #4AC;
+	font-size: 1em;
+	border-bottom: 2px solid #FFF;
+	margin: 0;
+	padding-bottom: 2px;
+}
+aside.perks.vertical ul {
+    padding: 0px;
+    margin: 1.5em 0px;
+    font-size: 0.8em;
+}
+aside.perks .perk {
+    position: relative;
+    padding-left: 26px;
+}
+
+aside.perks .perk::before {
+    content: "";
+    position: absolute;
+    left: 0px;
+    background-image: url("../img/sprites/icons.png");
+    background-position: 0px -28px;
+    width: 16px;
+    height: 15px;
+}
+*::before {
+    box-sizing: border-box;
+}
+
+.horizontal-list {
+	margin: 0px;
+	padding: 0px;
+	list-style: outside none none;
+}
+
+aside.perks.vertical .perks-list li + li {
+    margin-top: 1em;
+}
+
+.logos-list li {
+    vertical-align: middle;
+    margin-right: 0.65em;
+    margin-bottom: 0.325em;
+}
+.horizontal-list > li {
+    display: inline-block;
+}
+
+.payment-amex, .payment-info.uses-payment-amex::before, .logo-dhl, .payment-discover, .payment-info.uses-payment-discover::before, .logo-fedex, .secure-guarantee, .payment-mastercard, .payment-info.uses-payment-mastercard::before, .payment-paypal, .payment-info.uses-payment-paypal::before, .logo-ups, .payment-visa, .payment-info.uses-payment-visa::before {
+    background-image: url("../img/sprites/logos.png");
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.payment-visa {
+    background-position: 0px -161px;
+    width: 47px;
+    height: 30px;
+}
+
+.ir {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: 0px none;
+    overflow: hidden;
+}
