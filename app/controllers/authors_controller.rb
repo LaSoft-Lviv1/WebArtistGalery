@@ -5,7 +5,9 @@ class AuthorsController < ApplicationController
 
   def index
     @authors = Author.all
+    #binding.pry
     #render json: @authors
+    #binding.pry
 
     #respond_with(@authors)
 
@@ -19,9 +21,11 @@ class AuthorsController < ApplicationController
 
 
   def create
-    a = Author.create(author_params)
-    #render json: a
-    redirect_to :author
+    #binding.pry
+    @a = Author.create(author_params)
+    #render json: @a
+    redirect_to '#/authors'
+    #redirect_to :author
 
   end
 
@@ -37,7 +41,8 @@ class AuthorsController < ApplicationController
 
 
   def destroy
-
+    @author.destroy
+    redirect_to '#/authors'
   end
 
 

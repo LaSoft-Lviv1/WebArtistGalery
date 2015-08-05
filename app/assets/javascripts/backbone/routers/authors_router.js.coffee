@@ -4,47 +4,64 @@ class ArtistGallery.Routers.AuthorsRouter extends Backbone.Router
     'authors'      : "showAuthors"
     'authors/new'  : "newAuthor"
     'authors/:id'  : "show"
+
     #".*"       : "index"
 
 #  "index"    : "index"
 #  ":id/edit" : "edit"
 
 
-  initialize: (options) ->
+  initialize: ->
     @authors = new ArtistGallery.Collections.AuthorsCollection()
+    @variable = 5
     console.log 'in router initialize'
+    console.log @variable
+    @authors.fetch({ reset: true })
+    #@listenTo @authors, "reset", @index
 
-    @authors.reset options.authors
+    #@authors.reset options.authors
 
-  index: ->
+  index1: ->
     console.log 'in index second'
     @indexView = new ArtistGallery.Views.HomePage.IndexView()
     console.log 'after indexView'
     $("#authors").html(@indexView.render().el)
 
 
-  index1: ->
-    @authors.fetch({ reset: true })
+  index: ->
+    console.log @variable
+    @variable = 7
+    console.log @variable
     console.log 'in index'
     #alert "in index"
     @view = new ArtistGallery.Views.Authors.IndexView(collection: @authors)
     $("#authors").html(@view.render().el)
-    console.log 'after index'
-    #console.log @authors.toJSON()
+    console.log "in index authors_router"
+    console.log ( @authors.toJSON())
+
+    console.log 'after index authors_router'
+
 
   showAuthors: ->
-    @authors.fetch({ reset: true })
+
+    this.authors.fetch({ reset: true })
     console.log 'in show authors'
     #alert "in index"
     @view = new ArtistGallery.Views.Authors.IndexView(collection: @authors)
+    console.log @authors.toJSON()
+    console.log 'before rendering'
     $("#authors").html(@view.render().el)
 
 
 
-  show: (id) ->
+  show: (id) =>
+    console.log('show')
+    @variable = 10
+    console.log @authors.toJSON()
     author = @authors.get(id)
-    @view = new ArtistGallery.Views.Authors.ShowView(model: author)
-    $("#authors").html(@view.render().el)
+    @viewShow = new ArtistGallery.Views.Authors.ShowView(model: author)
+    $("#authors").html(@viewShow.render().el)
+    #$("#authors").html("<p>kkk</p>")
 
   newAuthor: ->
     console.log 'in router new author'

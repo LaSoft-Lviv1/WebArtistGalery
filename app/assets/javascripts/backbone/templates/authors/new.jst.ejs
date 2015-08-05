@@ -1,5 +1,5 @@
 
-  <form id="new_author" action="authors" method="post" name="author">
+  <form id="new_author" action="authors" method="post" name="author" enctype="multipart/form-data">
     <fieldset class="actions">
       <legend>New author</legend>
       <label for="first_name">First name</label>
@@ -27,7 +27,9 @@
       <input type="text" name="author[city_id]" id="text_city_id" />
       <br />
       <select id="city_name"></select>
-      <button type="submit" class="btn">Submit</button>
+      <input type="file" name="author[photo]" id="fileupload" multiple="multiple" />
+      <div id="image_preview"></div>
+      <button type="submit" class="btn" >Submit</button>
     </fieldset>
   </form>
 

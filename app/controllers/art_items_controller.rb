@@ -6,19 +6,23 @@ class ArtItemsController < ApplicationController
 
 
   def new
-
     @art_item = ArtItem.new
-
-
   end
 
 
   def create
-    require 'pry'
-    data = Date.current
-    #@art_item.in_date = data
-    @art_item_create = ArtItem.create(art_item_params)
-    redirect_to :art_items
+
+    @art_item = ArtItem.new(art_item_params)
+    #binding.pry
+    @art_item.save
+    #binding.pry
+
+
+    if @art_item.errors.empty?
+      redirect_to :art_items
+    else
+      render "new"
+    end
   end
 
 
@@ -44,17 +48,17 @@ class ArtItemsController < ApplicationController
 
   private
 
-  def upload
-    require.pry
-    uploaded_io = params[:art_items][:source_file]
-    #uploaded_io = params[:art_items][:preview_source_file]
-    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'w') do |file|
-      file.write(uploaded_io.read)
-    end
-  end
+  # def upload
+  #   require.pry
+  #   uploaded_io = params[:art_item][:source_file]
+  #   #uploaded_io = params[:art_items][:preview_source_file]
+  #   File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'w') do |file|
+  #     file.write(uploaded_io.read)
+  #   end
+  # end
 
   def art_item_params
-    params.require(:art_items).permit(:name,
+    params.require(:art_item).permit(:name,
                                    :description,
                                    :price,
                                    :keywords,

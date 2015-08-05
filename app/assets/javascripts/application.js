@@ -10,7 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= #require ../stylesheets/.
+
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
@@ -18,7 +18,9 @@
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
-//= require backbone/artist_gallery.js.coffee
+//= require csrf_hack
+//= require backbone/artist_gallery
+//= #require jquery_fileupload/basic
 //= require_tree ./backbone/templates
 //= require_tree ./backbone/models
 //= require_tree ./backbone/collections
