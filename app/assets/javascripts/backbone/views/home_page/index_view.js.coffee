@@ -7,12 +7,7 @@ class ArtistGallery.Views.HomePage.IndexView extends Backbone.View
     console.log 'in indexView initialize'
 #    #@collection.bind('reset', @addAll)
 #
-#  addAll: () =>
-#    @collection.each(@addOne)
-#
-#  addOne: (author) =>
-#    view = new ArtistGallery.Views.Authors.AuthorView({model : author})
-#    @$("tbody").append(view.render().el)
+
 
   render: =>
     @$el.html(@template())

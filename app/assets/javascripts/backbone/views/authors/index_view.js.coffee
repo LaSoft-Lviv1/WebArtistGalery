@@ -6,12 +6,10 @@ class ArtistGallery.Views.Authors.IndexView extends Backbone.View
   #events:
     #"click a.btn": "newProject"
 
-  initialize: () ->
-    @collection.bind('reset', @addAll)
-    console.log 'in initialize index view'
-    console.log 'in collection'
-    #console.log @collection.toJSON()
-    #@listenTo @collection, "reset", @addAll
+  initialize: () =>
+    #@collection.bind('reset', @addAll)
+
+    @listenTo @collection, "reset", @addAll
     #@listenTo App.Vent, "project:create", @addToCollection
     #@listenTo @collection, "add", @renderProject
     #@collection.fetch({ reset: true })
@@ -29,9 +27,12 @@ class ArtistGallery.Views.Authors.IndexView extends Backbone.View
 #    view = new App.Views.Project({ model: model })
 #    @$('ul').append(view.render().el)
 
+
   addAll: () =>
-    console.log 'in addAll'
+    alert 'in addAll'
+    console.log @collection.toJSON()
     @collection.each(@addOne)
+
 
   addOne: (author) =>
     console.log 'in addOne'
@@ -40,8 +41,7 @@ class ArtistGallery.Views.Authors.IndexView extends Backbone.View
     @$("tbody").append(view.render().el)
 
   render: ->
-    console.log 'in view render'
-    console.log @collection.toJSON()
+
     @$el.html(@template(authors: @collection.toJSON() ))
     #@addAll()
     @

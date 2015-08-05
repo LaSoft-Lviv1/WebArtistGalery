@@ -5,5 +5,5 @@ class Category < ActiveRecord::Base
             length: { in: 2..40, message: 'Length must be between 2 and 40' },
             uniqueness: { case_sensitive: false }
 
-  has_many :art_items, inverse_of: :category
+  has_many :art_items
 end
