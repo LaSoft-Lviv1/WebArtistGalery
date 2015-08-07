@@ -2,11 +2,20 @@ class ArtItemsController < ApplicationController
 
   def index
     @art_items = ArtItem.all
+    #binding.pry
+    respond_to do |format|
+       format.json { render json: @art_items }
+       format.html { render action: "index" }
+      end
+    #render json: @art_items
+    #render html: "art_items"
+
   end
 
 
   def new
     @art_item = ArtItem.new
+
   end
 
 

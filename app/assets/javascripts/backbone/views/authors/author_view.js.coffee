@@ -14,6 +14,9 @@ class ArtistGallery.Views.Authors.AuthorView extends Backbone.View
 
     return false
 
-  render: ->
-    @$el.html(@template(@model.toJSON() ))
+  render: =>
+    #alert 'in render addOne'
+    #@$el.html(@template(@model.toJSON() ))
+    #@$("table").html("<p>@template(@model.toJSON()</p>" )
+    @$el.html(@template(@model.toJSON()))
     return this

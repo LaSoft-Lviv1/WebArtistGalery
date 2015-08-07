@@ -13,4 +13,6 @@
  *= require bootstrap
  *= require_tree .
  *= require_self
+ *= require slick/slick
+ *= require slick/slick-theme
  */
