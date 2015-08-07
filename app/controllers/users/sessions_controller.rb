@@ -2,21 +2,23 @@ class Users::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
   respond_to :json
   # GET /resource/sign_in
-  def new
-    super
-  end
+  # def new
+  #   super
+  # end
 
   # POST /resource/sign_in
   def create
     puts 'HI!users'
-    sign_in(:user, User.find_by_email(params[:email]))
-    # super
+    puts :params.to_s
+    #sign_in(:user, User.find_by_email(params[:email]))
+    super
   end
 
   # DELETE /resource/sign_out
-  def destroy
-    super
-  end
+  # def destroy
+  #   reset_session
+  #   # super
+  # end
 
   # protected
 

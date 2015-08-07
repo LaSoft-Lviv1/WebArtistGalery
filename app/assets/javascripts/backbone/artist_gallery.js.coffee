@@ -20,4 +20,3 @@ $(document).ready ->
   #alert 'before ready'
   ArtistGallery.initialize()
   #alert 'after ready'
-

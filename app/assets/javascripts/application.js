@@ -22,6 +22,7 @@
 //= require turbolinks
 //= require underscore
 //= require backbone
+//= require backbone.sync.rails
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require csrf_hack

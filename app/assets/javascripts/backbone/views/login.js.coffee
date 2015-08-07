@@ -14,7 +14,7 @@ class ArtistGallery.Views.Login extends Backbone.View
     @listenTo @model, "sync", @triggerLoggenIn
 
   triggerLoggenIn: ->
-    App.Vent.trigger "user:logged_in", @model.get('id'), @model.get('username')
+    ArtistGallery.Vent.trigger "user:logged_in", @model.get('id'), @model.get('username')
 
   renderError: ->
     @$('.alert').html("Credentials are not valid").show()
@@ -23,6 +23,8 @@ class ArtistGallery.Views.Login extends Backbone.View
     e.preventDefault()
     @model.set email: @$('#email').val()
     @model.set password: @$('#password').val()
+    @model.set remember_me: "0" #@$('#remember_me').val()
+    console.log @model.toJSON()
     @model.save()
 
   render: =>

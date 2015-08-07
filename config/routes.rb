@@ -1,15 +1,11 @@
 Rails.application.routes.draw do
 
-  devise_scope :user do
-    get '/users/sessions' => 'users/sessions'
-    # post '/users/sessions' => 'users/sessions'
-  end
+  # devise_scope :user do
+  #   delete '/users/sessions/:id' => 'users/sessions#destroy'
+  #   post '/users/sessions' => 'users/sessions#create'
+  # end
 
-  devise_scope :user do
-    # get '/users/sessions' => 'users/sessions'
-    post '/users/sessions' => 'users/sessions#create'
-  end
-  devise_for :users #, controllers: { sessions: "users/sessions" }
+  devise_for :users, controllers: { sessions: "users/sessions" }
 
   root to: "application#index"
   # resources :posts
