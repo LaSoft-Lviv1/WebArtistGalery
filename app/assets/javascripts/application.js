@@ -11,19 +11,21 @@
 // about supported directives.
 //
 
+
 //= require jquery
 //= require jquery_ujs
+//= require lazyload
+//= require jquery.lazyload.min
 //= require turbolinks
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require csrf_hack
+//= require main
 //= require backbone/artist_gallery
 //= #require jquery_fileupload/basic
-//= require_tree ./backbone/templates
-//= require_tree ./backbone/models
-//= require_tree ./backbone/collections
-//= require_tree ./backbone/views
-//= require_tree ./backbone/routers
+//= require_tree ./backbone
 //= require_tree .
+//= require slick/slick
+

@@ -5,18 +5,13 @@ class AuthorsController < ApplicationController
 
   def index
     @authors = Author.all
-    #binding.pry
     #render json: @authors
-    #binding.pry
-
     #respond_with(@authors)
-
   end
 
 
   def new
     @author = Author.new
-
   end
 
 
@@ -41,7 +36,10 @@ class AuthorsController < ApplicationController
 
 
   def destroy
-    @author.destroy
+    #binding.pry
+    author = Author.find(params[:id])
+    #binding.pry
+    author.destroy
     redirect_to '#/authors'
   end
 
