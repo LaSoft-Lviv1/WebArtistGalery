@@ -9,7 +9,6 @@ class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     puts 'HI!users'
-    puts :params.to_s
     #sign_in(:user, User.find_by_email(params[:email]))
     super
   end

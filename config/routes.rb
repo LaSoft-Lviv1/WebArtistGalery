@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   #   post '/users/sessions' => 'users/sessions#create'
   # end
 
-  devise_for :users, controllers: { sessions: "users/sessions" }
+  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
 
   root to: "application#index"
   # resources :posts
