@@ -1,87 +1,93 @@
 .cart-container {
-	padding-top: 2em;
+    padding-top: 2em;
 }
 
 .cart-links-bar {
-	margin: 2em 0;
+    margin: 2em 0;
 }
 
+.messages:empty {
+    display: none;
+}
 
 .messages {
     margin-top: 0px;
     margin-bottom: 2em;
     overflow: hidden;
 }
+
 .messages:empty {
     display: none;
 }
 
 .cart-table.table>thead>tr>th {
-	padding: 8px 0px;
-	color: #888894;
-	font-weight: bold;
+    padding: 8px 0px;
+    color: #888894;
+    font-weight: bold;
 }
 
 .cart-item .item-description>dl>dt>a {
-	color: #000;
-	font-weight: bold;
-	font-size: 1.5em;
+    color: #000;
+    font-weight: bold;
+    font-size: 1.5em;
 }
 
 td.item-delivery-info {
-	font-size: 0.7em;
+    font-size: 0.7em;
 }
 
 .item-delivery-info mark {
-	color: #66A64D;
+    color: #66A64D;
 }
 
 .cart-table.table>tfoot>.cart-total-container {
-	background: #DDD none repeat scroll 0% 0%;
+    background: #DDD none repeat scroll 0% 0%;
 }
 
 .cart-table.table>tfoot>.cart-total-container>td,
 .cart-table.table>tfoot>.cart-total-container>th {
-	border-top: none;
+    border-top: none;
 }
 
 .cart-table.table .cart-total {
-	font-weight: bold;
+    font-weight: bold;
 }
 
-.review-disclaimer{
-	color: #909090;
+.review-disclaimer {
+    color: #909090;
 }
 
 .unstyled {
-	margin: 0px;
-	padding: 0px;
-	list-style: outside none none;	
+    margin: 0px;
+    padding: 0px;
+    list-style: outside none none;
 }
 
 .vertical {
-	padding: 1.5em;
+    padding: 1.5em;
 }
 
 aside.perks {
-	background: #FAFAFA none repeat scroll 0% 0%;
-	color: #888;
-	position: relative;
-	margin-top: 3em;
+    background: #FAFAFA none repeat scroll 0% 0%;
+    color: #888;
+    position: relative;
+    margin-top: 3em;
 }
 
 aside.perks .heading {
-	color: #4AC;
-	font-size: 1em;
-	border-bottom: 2px solid #FFF;
-	margin: 0;
-	padding-bottom: 2px;
+    color: #4AC;
+    font-size: 1em;
+    border-bottom: 2px solid #FFF;
+    margin: 0;
+    padding-bottom: 2px;
 }
+
 aside.perks.vertical ul {
     padding: 0px;
     margin: 1.5em 0px;
     font-size: 0.8em;
 }
+
 aside.perks .perk {
     position: relative;
     padding-left: 26px;
@@ -96,14 +102,15 @@ aside.perks .perk::before {
     width: 16px;
     height: 15px;
 }
+
 *::before {
     box-sizing: border-box;
 }
 
 .horizontal-list {
-	margin: 0px;
-	padding: 0px;
-	list-style: outside none none;
+    margin: 0px;
+    padding: 0px;
+    list-style: outside none none;
 }
 
 aside.perks.vertical .perks-list li + li {
@@ -119,6 +126,7 @@ aside.perks.vertical .perks-list li + li {
     margin-right: 0.65em;
     margin-bottom: 0.325em;
 }
+
 .horizontal-list > li {
     display: inline-block;
 }
@@ -130,7 +138,13 @@ aside.perks.vertical .perks-list li + li {
     overflow: hidden;
 }
 
-.logo-dhl, .logo-fedex, .secure-guarantee, .payment-mastercard, .payment-paypal, .logo-ups, .payment-visa {
+.logo-dhl,
+.logo-fedex,
+.secure-guarantee,
+.payment-mastercard,
+.payment-paypal,
+.logo-ups,
+.payment-visa {
     color: transparent;
     background-image: url("../img/sprites/logos.png");
     display: inline-block;
@@ -180,18 +194,22 @@ aside.perks.vertical ul:last-child {
 .logos-list .perk-with-label {
     vertical-align: baseline;
 }
+
 .logos-list li i.secure-ssl {
     margin-bottom: 13px;
 }
+
 .logos-list i {
     display: block;
     margin: 0px auto 0.35em;
 }
+
 .secure-ssl {
     width: 90px;
     height: 50px;
     background: transparent url("../img/rapid-ssl.gif") repeat scroll 0% 0%;
 }
+
 .secure-guarantee {
     background-position: -47px -161px;
     width: 66px;
