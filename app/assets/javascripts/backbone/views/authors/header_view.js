@@ -1,4 +1,17 @@
-ArtistGallery.Views.Authors ||= {}
+var HeaderAuthorsView = Backbone.View.extend ({
+	template: JST["backbone/templates/authors/header_authors"],
+	//template: _.template(template),
 
-class ArtistGallery.Views.Authors.HeaderView extends Backbone.View
-  template: JST["backbone/templates/authors/header"]
+
+	initialize: function () {
+	this.render();
+},
+
+	render: function () {
+	$('#header').html( this.template() );
+
+	return this;
+}
+});
+
+//var headerauthorsView = new HeaderAuthorsView();
