@@ -58,11 +58,10 @@ class ArtistGallery.Routers.ArtistGalleryRouter extends Backbone.Router
     console.log @authors.toJSON()
     console.log 'in show authors before create index view'
     @view = new ArtistGallery.Views.Authors.IndexView(collection: @authors)
-    #@viewHeader = new ArtistGallery.Views.Authors.HeaderView()
     console.log 'in show authors after create index view'
     console.log @authors.toJSON()
     console.log 'in show authors after create index view before rendering'
-    #$("#header").html(@viewHeader.render().el)
+
     $("#content").html(@view.render().el)
 
     console.log 'in show authors after create index view after rendering'

@@ -13,6 +13,7 @@
 
 
 //= require jquery
+//= require bootstrap
 //= require jquery_ujs
 //= require lazyload
 //= require jquery.lazyload.min
