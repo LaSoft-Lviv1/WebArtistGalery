@@ -13,8 +13,8 @@ class ArtistGallery.Routers.ArtistGalleryRouter extends Backbone.Router
 
 
   initialize: ->
-    @headerView = new HeaderView();
-    @footerView = new FooterView();
+    @headerView = new HeaderView()
+    @footerView = new FooterView()
     @authors = new ArtistGallery.Collections.AuthorsCollection()
     @art_items = new ArtistGallery.Collections.ArtItemsCollection()
     console.log 'in router initialize'
@@ -31,8 +31,8 @@ class ArtistGallery.Routers.ArtistGalleryRouter extends Backbone.Router
 
   index: =>
     console.log 'in index second'
-#    @headerView = new HeaderView();
-#    @footerView = new FooterView();
+    @headerView = new HeaderView()
+    @footerView = new FooterView()
 
     @homeView = new ArtistGallery.Views.HomePage.IndexView(collection: @art_items)
     console.log 'after homeView'
@@ -58,10 +58,12 @@ class ArtistGallery.Routers.ArtistGalleryRouter extends Backbone.Router
     console.log @authors.toJSON()
     console.log 'in show authors before create index view'
     @view = new ArtistGallery.Views.Authors.IndexView(collection: @authors)
+    @headerauthorsView = new HeaderAuthorsView()
+    #@viewHeader = new ArtistGallery.Views.Authors.HeaderView()
     console.log 'in show authors after create index view'
     console.log @authors.toJSON()
     console.log 'in show authors after create index view before rendering'
-
+    #$("#header").html(@viewHeader.render().el)
     $("#content").html(@view.render().el)
 
     console.log 'in show authors after create index view after rendering'

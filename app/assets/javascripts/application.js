@@ -12,7 +12,10 @@
 //
 
 
-//= require jquery
+//= require jquery-1.11.3.min
+//= require bootstrap
+//= require js_manual/more_less_text
+//= require slick/slick
 //= require jquery_ujs
 //= require lazyload
 //= require jquery.lazyload.min
@@ -22,10 +25,9 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require csrf_hack
-//= require main
 //= require backbone/artist_gallery
 //= #require jquery_fileupload/basic
 //= require_tree ./backbone
-//= require_tree .
-//= require slick/slick
+//= require_tree ./js_manual
+
 

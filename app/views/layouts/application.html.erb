@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>ArtistGallery</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -17,21 +17,5 @@
    
    <div id="footer"></div>
 
-
-   <script type="text/javascript">
-       $(".lazy").lazyload({threshold: -100, effect: "fadeIn"});
-   </script>
-   <script>
-       $(document).ready(function(){
-           $('.variable-width').slick({
-               dots: true,
-               infinite: true,
-               speed: 300,
-               slidesToShow: 1,
-               centerMode: true,
-               variableWidth: true
-           });
-       });
-   </script>
 </body>
 </html>

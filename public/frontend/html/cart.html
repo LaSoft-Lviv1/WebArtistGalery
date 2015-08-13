@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cart</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/cart-style.css">
+    <!--    <link rel="stylesheet" href="../css/jquery-ui/jquery-ui.structure.min.css">
+ -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <!-- MODALS -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-inner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    <!-- MODALS END -->
+    <div id="wrap">
+        <!-- HEADER -->
+        <header>
+            <div class="page-header">
+                <div class="container">
+                    <!-- HEADER BRAND LOGO -->
+                    <div class="row">
+                        <div class="col-lg-10 col-sm-8 col-xs-4">
+                            <span><a href="header-footer.html"><img class="image-responsive" src="../img/brand_logo_resized.png" alt="LOGO"></span><span class="hidden-xs brand-name">Project Art</span></a>
+                        </div>
+                        <!-- HEADER SEARCH AND LANGUAGE BAR -->
+                        <div class="col-lg-2 col-sm-4 col-xs-8">
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                            <div class="lang-bar">
+                                <ul class="nav navbar-nav pull-right">
+                                    <li>
+                                        <a href="#"><img src="../img/Big_Ben_in_London_24.png" alt="EN" title="English"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><img src="../img/Founders_of_Kiev_24.png" alt="UA" title="Ukrainian"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><img src="../img/Saint_Basil's_Cathedral_24.png" alt="RU" title="Russian"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /.page-header -->
+            <!-- HEADER-NAVBAR -->
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!-- /.navbar-header -->
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="header-footer.html">Home</a></li>
+                            <li><a href="#about">About Artist</a></li>
+                            <li><a href="#contact">Gallery</a></li>
+                            <li><a href="how-to-buy.html">How to buy</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="modal-signin.html" data-toggle="modal" data-target="#modal">Register | Sign in</a></li>
+                            <li><a class="active" href="cart.html">Cart <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <!-- /.container -->
+            </nav>
+        </header>
+        <!-- HEADER END -->
+        <!-- BODY -->
+        <div class="content">
+            <div class="container">
+                <div class="row">
+                    <section class="col-md-9 cart-container">
+                        <div class="cart-links-bar">
+                            <div class="row">
+                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                    <a href="#">&lt; Continue Shopping</a>
+                                </div>
+                                <div class="col-xs-8 col-sm-8 col-md-8">
+                                    <a href="#" class="btn btn-success  pull-right">Proceed to Checkout</a>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.cart-links-bar -->
+                        <div class="messages"></div>
+                        <div class="table-responsive">
+                            <table class="cart-table table">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2" class="col-xs-7">Items</th>
+                                        <th class="col-xs-2">Price</th>
+                                        <th class="col-xs-1 text-center">Qty</th>
+                                        <th class="col-xs-2 text-right">Subtotal</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="cart-item">
+                                        <td class="item-image" rowspan="2">
+                                            <img src="" alt="demo_img">
+                                        </td>
+                                        <td class="item-description">
+                                            <dl>
+                                                <dt><a href="#">item_name</a></dt>
+                                                <dd class="text-muted">by artist_name</dd>
+                                                <dd class='text-muted'>Original work</dd>
+                                            </dl>
+                                        </td>
+                                        <td class="item-price">
+                                            $1,000.00
+                                        </td>
+                                        <td class="item-quantity text-center">1</td>
+                                        <td class="item-subtotal text-right">$1,000.00</td>
+                                    </tr>
+                                    <tr class="cart-item complimentary">
+                                        <td class="item-actions"><a href="#">Remove</a></td>
+                                        <td class="item-delivery-info" colspan="3">This item usually ships within
+                                            <mark>11 - 14</mark> business days.*</td>
+                                    </tr>
+                                    <tr class="cart-item-divider">
+                                        <td colspan="5"></td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="cart-total-container">
+                                        <th colspan="2"></th>
+                                        <th>Total:</th>
+                                        <td id="cart-total-grand-total" class="cart-total text-right" colspan="2">$1,000.00</td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <!-- /.table-responsive -->
+                        <div class="cart-links-bar">
+                            <div class="row">
+                                <div class="col-xs-4 col-sm-4 col-md-4">
+                                    <a href="#">&lt; Continue Shopping</a>
+                                </div>
+                                <div class="col-xs-8 col-sm-8 col-md-8">
+                                    <a href="#" class="btn btn-success  pull-right">Proceed to Checkout</a>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                        <!-- /.cart-links-bar -->
+                        <p class="review-disclaimer">* Delivery time will vary depending on country of origin and destination.</p>
+                    </section>
+                    <!-- /.cart-container -->
+                    <aside class="perks vertical col-md-3">
+                        <h1 class="heading">Why buy on Project Art?</h1>
+                        <ul class="perks-list  unstyled">
+                            <li class="perk">Discover emerging artists from around the world </li>
+                            <li class="perk">Safe &amp; secure shopping </li>
+                            <li class="perk">Buyer protection through our Project Art Buyer Protection </li>
+                            <li class="perk">7-day money back guarantee</li>
+                        </ul>
+                        <h2 class="heading">Payment Methods</h2>
+                        <ul class="logos-list no-list horizontal-list">
+                            <li class="ir payment-visa" title="visa">Visa</li>
+                            <li class="ir payment-mastercard" title="mastercard">MasterCard</li>
+                            <li class="ir payment-paypal" title="paypal">PayPal</li>
+                        </ul>
+                        <h2 class="heading">Delivery partners</h2>
+                        <ul class="logos-list no-list horizontal-list">
+                            <li class="ir logo-dhl" title="SHIPPING_PROVIDER_DHL">SHIPPING_PROVIDER_DHL</li>
+                            <li class="ir logo-fedex" title="SHIPPING_PROVIDER_FEDEX">SHIPPING_PROVIDER_FEDEX</li>
+                            <li class="ir logo-ups" title="SHIPPING_PROVIDER_UPS">SHIPPING_PROVIDER_UPS</li>
+                        </ul>
+                        <h2 class="heading">You are protected</h2>
+                        <ul class="logos-list no-list horizontal-list">
+                            <li class="perk-with-label"><i class="ir secure-ssl" title="secure payment"></i>secure payment</li>
+                            <li class="perk-with-label"><i class="ir secure-guarantee" title="100% money back"></i>100% money back</li>
+                        </ul>
+                    </aside>
+                    <!-- /.perks -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.content -->
+        <!-- BODY END -->
+        <div id="push" style="height: 45px"></div>
+    </div>
+    <!-- /#wrap -->
+    <!-- WRAP END -->
+    <!-- FOOTER -->
+    <footer id="footer" class="footer" style="min-height: 45px; margin-top: -45px">
+        <div class="container">
+            <div class="row" style="line-height: 45px; font-size: 0.75em">
+                <div class="col-sm-7 col-md-7">
+                    <p>&copy; 2015 Project Art. DM Commerce. All rights reserved.</p>
+                </div>
+                <div class="col-sm-5 col-md-5">
+                    <div class="row">
+                        <div class="col-sm-4 text-right"><a href="#">Privacy Policy</a></div>
+                        <div class="col-sm-4 text-right"><a href="#">Copyright Policy</a></div>
+                        <div class="col-sm-4 text-right"><a href="#">Terms and Conditions</a></div>
+                    </div>
+                </div>
+            </div>
+            <!-- /main .row -->
+        </div>
+        <!-- /.container -->
+    </footer>
+    <!-- FOOTER END -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="../js/modal-solution.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,209 @@
+html,
+body {
+    height: 100%;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto;
+}
+
+#push,
+#footer {
+    min-height: 60px;
+}
+
+#footer {
+    margin-top: -60px;
+}
+
+footer p {
+    margin: 0;
+}
+
+@media (max-width: 767px) {
+    #footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.page-header {
+    margin: 0;
+    padding-top: 10px;
+    position: fixed;
+    width: 100%;
+    height: 70px;
+    z-index: 3;
+    background-color: #fff;
+}
+
+.page-header a {
+    text-decoration: none;
+}
+
+.page-header .brand-name {
+    color: #777;
+    font-size: 18px;
+    line-height: 20px;
+}
+
+.page-header .brand-name:hover {
+    color: #5E5E5E;
+}
+
+.navbar-fixed-top {
+    margin-top: 70px;
+}
+
+.page-header input.form-control {
+    border-radius: 0;
+    border: none;
+    background-color: #eee;
+}
+
+.lang-bar .navbar-nav {
+    margin: 0 -15px;
+}
+
+.lang-bar .navbar-nav > li {
+    display: inline-block;
+}
+
+.lang-bar .navbar-nav > li:last-child {
+    margin-right: 15px;
+}
+
+.lang-bar .navbar-nav > li > a {
+    padding: 3.5px 15px;
+}
+
+.content > .container {
+    padding-top: 120px;
+}
+
+.footer {
+    background-color: #eee;
+}
+
+.footer address {
+    margin-bottom: 0;
+}
+
+.footer address+button {
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    .footer nav {
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+.sign-in-header {
+    border-radius: 0px;
+    background-color: #eee;
+}
+
+.sign-in-body {
+    border-radius: 0px;
+    border-color: #fff;
+}
+
+.sign-in-body input {
+    margin-left: -15px;
+}
+
+.sign-in-header h3 {
+    display: inline;
+}
+
+.btn-facebook {
+    padding-left: 20px;
+    background-image: url("../img/Facebook_logo_16.png");
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+}
+
+.acc-type-body {
+    position: relative;
+}
+
+.select-one {
+    display: block;
+    font-family: "Crimson Text", serif;
+    font-style: italic;
+    font-weight: normal;
+    line-height: 0.7;
+    padding: 100px 0px 0px;
+    position: absolute;
+    font-size: 3em;
+    left: 292px;
+    text-align: center;
+    width: 120px
+}
+
+@media only screen and (min-width: 768px) {
+    a.collector-account {
+        background: transparent url("../img/account-type.jpg") no-repeat scroll 0px 0px;
+        width: 349px;
+        text-indent: -9999px;
+        height: 320px;
+        display: block;
+        outline: 0px none;
+    }
+    a.artist-account {
+        background: transparent url("../img/account-type.jpg") no-repeat scroll -380px 0px;
+        width: 349px;
+        text-indent: -9999px;
+        height: 320px;
+        display: block;
+        outline: 0px none;
+    }
+    a.collector-account:hover {
+        background-position: 0px -347px;
+    }
+    a.artist-account:hover {
+        background-position: -380px -347px;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+    #modal2 .modal-dialog {
+        width: auto;
+    }
+}
+
+.modal-body {
+    height: 250px;
+    overflow-y: auto;
+}
+
+@media (min-height: 500px) {
+    .modal-body {
+        height: 400px;
+    }
+}
+
+@media (min-height: 800px) {
+    .modal-body {
+        height: 600px;
+    }
+}
+
+.policies + a {
+    margin-right: 20px;
+}
+
+.policies + a:last-child {
+    margin-right: 0px;
+}

@@ -15,4 +15,5 @@
  *= require_self
  *= require slick/slick
  *= require slick/slick-theme
+ *= require style
  */
