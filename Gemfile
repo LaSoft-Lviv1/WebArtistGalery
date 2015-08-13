@@ -7,7 +7,7 @@ gem 'rails', '4.2.3'
 gem 'pg'
 
 gem 'devise'
-
+# after install coffeelint:  sudo apt-get install nodejs-legacy
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

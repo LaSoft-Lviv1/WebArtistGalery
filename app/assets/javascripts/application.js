@@ -22,8 +22,8 @@
 //= require turbolinks
 //= require underscore
 //= require backbone
-//= require backbone.sync.rails
 //= require backbone_rails_sync
+// require backbone.sync.rails
 //= require backbone_datalink
 //= require csrf_hack
 //= require backbone/artist_gallery

@@ -82,7 +82,7 @@ class ArtistGallery.Views.Authors.NewView extends Backbone.View
     #отправляем через xhr
     xhr = new XMLHttpRequest()
     xhr.onload = () ->
-     console.log("Отправка завершена")
+      console.log("Отправка завершена")
 
     xhr.open("post", "authors", true)
     xhr.send(fileForm)
@@ -105,7 +105,7 @@ class ArtistGallery.Views.Authors.NewView extends Backbone.View
     @cities.each(@addCity)
 
   addCity: (city) =>
-    #console.log city.toJSON().name
+#console.log city.toJSON().name
 
 
     city_name = city.toJSON().name

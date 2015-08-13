@@ -19,7 +19,7 @@ class AuthorsController < ApplicationController
 
 
   def create
-    #binding.pry
+    # binding.pry
     @a = Author.create(author_params)
     #render json: @a
     redirect_to '#/authors'

@@ -2,6 +2,9 @@
   <form id="new_author" action="authors" method="post" name="author" enctype="multipart/form-data">
     <fieldset class="actions">
       <legend>New author</legend>
+        <input name="authenticity_token"
+               type="hidden"
+               value="<%= $('meta[name=csrf-token]').attr('content') %>" />
       <label for="first_name">First name</label>
       <br />
       <input type="text" name="author[first_name]" id="first_name" placeholder="Author first name" value="Ivan"/>
