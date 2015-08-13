@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add art</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/add-art-item-page.css">
+    <!--    <link rel="stylesheet" href="../css/jquery-ui/jquery-ui.structure.min.css">
+ -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <!-- MODALS -->
+    <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal-inner" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content"></div>
+        </div>
+    </div>
+    <!-- MODALS END -->
+    <!-- WRAP -->
+    <div id="wrap">
+        <!-- HEADER -->
+        <header>
+            <div class="page-header">
+                <div class="container">
+                    <!-- HEADER BRAND LOGO -->
+                    <div class="row">
+                        <div class="col-lg-10 col-sm-8 col-xs-4">
+                            <span><a href="header-footer.html"><img class="image-responsive" src="../img/brand_logo_resized.png" alt="LOGO"></span><span class="hidden-xs brand-name">Project Art</span></a>
+                        </div>
+                        <!-- HEADER SEARCH AND LANGUAGE BAR -->
+                        <div class="col-lg-2 col-sm-4 col-xs-8">
+                            <div class="input-group input-group-sm">
+                                <input type="text" class="form-control" placeholder="Search">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                            <div class="lang-bar">
+                                <ul class="nav navbar-nav pull-right">
+                                    <li>
+                                        <a href="#"><img src="../img/Big_Ben_in_London_24.png" alt="EN" title="English"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><img src="../img/Founders_of_Kiev_24.png" alt="UA" title="Ukrainian"></a>
+                                    </li>
+                                    <li>
+                                        <a href="#"><img src="../img/Saint_Basil's_Cathedral_24.png" alt="RU" title="Russian"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.container -->
+            </div>
+            <!-- /.page-header -->
+            <!-- HEADER-NAVBAR -->
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <!-- /.navbar-header -->
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li><a href="header-footer.html">Home</a></li>
+                            <li><a href="#about">About Artist</a></li>
+                            <li><a href="#contact">Gallery</a></li>
+                            <li><a href="how-to-buy.html">How to buy</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="modal-signin.html" data-toggle="modal" data-target="#modal">Register | Sign in</a></li>
+                            <li><a href="cart.html">Cart <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span></a></li>
+                        </ul>
+                    </div>
+                    <!--/.nav-collapse -->
+                </div>
+                <!-- /.container -->
+            </nav>
+        </header>
+        <!-- HEADER END -->
+        <!-- BODY -->
+        <div class="content">
+            <div class="container">
+                <div class="add-art-container">
+                    <div class="row">
+                        <h2 class="text-center add-art-heading">
+                            Add your Piece of Art
+                        </h2>
+                    </div>
+                    <!-- /.row .add-art-heading -->
+                    <form id="add-art-item-form">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <input type="file" value="add photo" id="add-art-photo-btn">
+                            </div>
+                            <div class="col-sm-8 col-sm-offset-1">
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="addon-add-art-item-name"><div>Name</div></span>
+                                        <input type="text" class="form-control" placeholder="Name" aria-describedby="addon-add-art-item-name">
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="addon-add-art-item-description"><div>Description</div></span>
+                                        <input type="text" class="form-control" placeholder="Description" aria-describedby="addon-add-art-item-description">
+                                    </div>
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="addon-add-art-item-category"><div>Category</div></span>
+                                        <select name="select-category" class="form-control" placeholder="" aria-describedby="addon-add-art-item-category">
+                                            <option disabled selected>Choose one</option>
+                                            <option value="paintings">Paintings</option>
+                                            <option value="photography">Photography</option>
+                                            <option value="sculpture">Sculpture</option>
+                                            <option value="collage">Collage</option>
+                                            <option value="drawing">Drawing</option>
+                                        </select>
+                                    </div>
+                                    <!-- /.input-group -->
+                                </div>
+                                <!-- /.form-group -->
+                            </div>
+                        </div>
+                        <!-- /.row -->
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-3 text-right">
+                                    <label for="add-art-item-medium" class="hidden-xs pull-right">Medium</label>
+                                </div>
+                                <div class="col-sm-8 col-sm-offset-1">
+                                    <div class="input-group col-xs-12">
+                                        <span class="input-group-addon" id="addon-add-art-item-medium"><div>Medium</div></span>
+                                        <select name="select-medium" class="form-control" id="add-art-item-medium" placeholder="" aria-descripbedby="addon-add-art-item-medium">
+                                            <option disabled selected>Choose one</option>
+                                            <option value="oil">Oil</option>
+                                            <option value="acrilic">Acrilic</option>
+                                            <option value="pastel">Pastel</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row medium -->
+                            <div class="row">
+                                <div class="col-sm-3 text-right">
+                                    <label for="add-art-item-style" class="hidden-xs pull-right">Style</label>
+                                </div>
+                                <div class="col-sm-8 col-sm-offset-1">
+                                    <div class="input-group col-xs-12">
+                                        <span class="input-group-addon" id="addon-add-art-item-style"><div>Style</div></span>
+                                        <select name="select-style" class="form-control" id="add-art-item-style" placeholder="E.g. abstract, pop art, modern etc." aria-descripbedby="addon-add-art-item-style">
+                                            <option disabled selected>Choose one</option>
+                                            <option value="abstract">Abstract</option>
+                                            <option value="pop-art">Pop art</option>
+                                            <option value="modern">Modern</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row style -->
+                            <div class="row">
+                                <div class="col-sm-3 text-right">
+                                    <label for="add-art-item-subject" class="hidden-xs pull-right">Subject</label>
+                                </div>
+                                <div class="col-sm-8 col-sm-offset-1">
+                                    <div class="input-group col-xs-12">
+                                        <span class="input-group-addon" id="addon-add-art-item-subject"><div>Subject</div></span>
+                                        <input type="text" class="form-control" id="add-art-item-subject" placeholder="E.g. body, still life, portrait etc." aria-descripbedby="addon-add-art-item-subject">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row subject -->
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-3 text-right">
+                                    <label for="add-art-item-orientation" class="hidden-xs pull-right">Orientation</label>
+                                </div>
+                                <div class="col-sm-8 col-sm-offset-1">
+                                    <div class="input-group col-xs-12">
+                                        <span class="input-group-addon" id="addon-add-art-item-orientation"><div>Orientation</div></span>
+                                        <input type="text" class="form-control" id="add-art-item-orientation" placeholder="E.g. portrait, square, landscape etc." aria-descripbedby="addon-add-art-item-orientation">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row orientation -->
+                            <div class="row">
+                                <div class="col-sm-3 text-right">
+                                    <label for="add-art-item-vsize" class="hidden-xs pull-right">Vertical-size</label>
+                                </div>
+                                <div class="col-sm-8 col-sm-offset-1">
+                                    <div class="input-group col-xs-12">
+                                        <span class="input-group-addon" id="addon-add-art-item-vsize"><div>V-size</div></span>
+                                        <input type="text" class="form-control" id="add-art-item-vsize" placeholder="E.g. 56" aria-descripbedby="addon-add-art-item-vsize">
+                                        <span class="input-group-addon addon-select">
+                                            <select name="select-vsize" id="select-vsize">
+                                                <option value="cm">cm</option>
+                                                <option value="inch">inch</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row v-size -->
+                            <div class="row">
+                                <div class="col-sm-3 text-right">
+                                    <label for="add-art-item-hsize" class="hidden-xs pull-right">Horizontal-size</label>
+                                </div>
+                                <div class="col-sm-8 col-sm-offset-1">
+                                    <div class="input-group col-xs-12">
+                                        <span class="input-group-addon" id="addon-add-art-item-hsize"><div>H-size</div></span>
+                                        <input type="text" class="form-control" id="add-art-item-hsize" placeholder="E.g. 56" aria-descripbedby="addon-add-art-item-hsize">
+                                        <span class="input-group-addon addon-select">
+                                            <select name="select-hsize" id="select-hsize">
+                                                <option value="cm">cm</option>
+                                                <option value="inch">inch</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row h-size -->
+                        </div>
+                        <!-- /.form-group -->
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-sm-3 text-right">
+                                    <label for="add-art-item-price" class="hidden-xs pull-right">Price</label>
+                                </div>
+                                <div class="col-sm-8 col-sm-offset-1">
+                                    <div class="input-group col-xs-12">
+                                        <span class="input-group-addon" id="addon-add-art-item-price"><div>Price</div></span>
+                                        <input type="text" class="form-control" id="add-art-item-price" placeholder="E.g. 200" aria-descripbedby="addon-add-art-item-price">
+                                        <span class="input-group-addon addon-select">
+                                            <select name="select-price" id="select-price">
+                                                <option value="usd">USD</option>
+                                                <option value="euro">Euro</option>
+                                                <option value="uah">UAH</option>
+                                            </select>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row price -->
+                            <div class="row">
+                                <div class="col-sm-3 text-right">
+                                    <label for="add-art-item-keywords" class="hidden-xs pull-right">Keywords</label>
+                                </div>
+                                <div class="col-sm-8 col-sm-offset-1">
+                                    <div class="input-group col-xs-12">
+                                        <span class="input-group-addon" id="addon-add-art-item-keywords"><div>Keywords</div></span>
+                                        <input type="text" class="form-control" id="add-art-item-keywords" placeholder="E.g. portrait, lady, redhood" aria-descripbedby="addon-add-art-item-keywords">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /.row keywords -->
+                        </div>
+                        <!-- /.form-group -->
+                        <button type="submit" class="btn btn-success pull-right">Upload</button>
+                    </form>
+                    <!-- /form -->
+                </div>
+                <!-- /.add-art-container -->
+            </div>
+            <!-- /.container -->
+        </div>
+        <!-- /.content -->
+        <!-- BODY END -->
+        <div id="push"></div>
+    </div>
+    <!-- /#wrap -->
+    <!-- WRAP END -->
+    <!-- FOOTER -->
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="row">
+                <!-- FOOTER LEFT COLUMN -->
+                <div class="col-md-4 col-sm-5">
+                    <address class="text-muted"> <strong>Contacts</strong>
+                        <br>
+                        <abbr title="Phone number">P</abbr>: +380 (**) ***-**-**
+                        <br>
+                        <abbr title="E-mail">E</abbr>: <a href="mailto:example@xmpl.ua?Subject=From%20the%20webpage" target="_top">example@xmpl.ua</a>
+                    </address>
+                    <button class="btn btn-default" data-toggle="modal" href="modal-contact.html" data-target="#modal">Contact us now</button>
+                </div>
+                <!-- column 1 -->
+                <!-- FOOTER RIGHT COLUMN -->
+                <div class="col-md-8 col-sm-7">
+                    <nav class="pull-right">
+                        <ul class="nav nav-pills">
+                            <li><a href="header-footer.html">Home</a></li>
+                            <li><a href="#about">Artist</a></li>
+                            <li><a href="#contact">Gallery</a></li>
+                            <li><a href="how-to-buy.html">Info</a></li>
+                            <li><a href="cart.html">Cart</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- column 2 -->
+            </div>
+            <!-- /main .row -->
+        </div>
+        <!-- /.container -->
+    </footer>
+    <!-- FOOTER END -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="../js/modal-solution.js"></script>
+</body>
+
+</html>

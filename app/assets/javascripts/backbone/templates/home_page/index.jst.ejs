@@ -1,4 +1,17 @@
 <div class="home_carousel">
   <div class="variable-width"></div>
 </div>
-<div class="container-fluid"></div>
+<div class="container-fluid home_content"></div>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+	$('.variable-width').slick({
+		dots: true,
+		infinite: true,
+		speed: 300,
+		slidesToShow: 1,
+		centerMode: true,
+		variableWidth: true
+	});
+});
+	</script>
