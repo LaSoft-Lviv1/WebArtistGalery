@@ -4,12 +4,28 @@ class ArtistGallery.Routers.AuthorsRouter extends Backbone.Router
     'authors'      : "showAuthors"
     'authors/new'  : "newAuthor"
     'authors/:id'  : "show"
+    'login'        : "login"
+    'logout'       : "logout"
+    'signup'       : "signup"
 
-    #".*"       : "index"
+#".*"       : "index"
 
 #  "index"    : "index"
 #  ":id/edit" : "edit"
+  signup: ->
+    @view = new ArtistGallery.Views.Signup({ model: new ArtistGallery.Models.Registration() })
+    $("#authors").html(@view.render().el)
 
+  logout: ->
+#    m = new ArtistGallery.Models.Login()
+#    m.destroy()
+#    console.log 'Logout!'
+#    alert "Logout!"
+    ArtistGallery.Vent.trigger "user:logged_out"
+
+  login: ->
+    @view = new ArtistGallery.Views.Login({ model: new ArtistGallery.Models.Login() })
+    $("#authors").html(@view.render().el)
 
   initialize: ->
     @authors = new ArtistGallery.Collections.AuthorsCollection()

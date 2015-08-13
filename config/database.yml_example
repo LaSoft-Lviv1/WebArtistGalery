@@ -23,16 +23,16 @@ default: &default
 
 development:
   <<: *default
-  database: artist_galery_development
+  database: ProjectArt_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  username: artist
+  #username: ProjectArt
 
   # The password associated with the postgres role (username).
-  password: 12345
+  #password:
 
   # Connect on a TCP socket. Omitted by default since the client uses a
   # domain socket that doesn't need configuration. Windows does not have
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: artist_galery_test
+  database: ProjectArt_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: artist_galery_production
-  username: artist_gallery
-  password: <%= ENV['ARTIST_GALERY_DATABASE_PASSWORD'] %>
+  database: ProjectArt_production
+  username: ProjectArt
+  password: <%= ENV['PROJECTART_DATABASE_PASSWORD'] %>

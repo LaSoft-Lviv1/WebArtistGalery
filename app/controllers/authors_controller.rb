@@ -6,17 +6,20 @@ class AuthorsController < ApplicationController
   def index
     @authors = Author.all
     #render json: @authors
+
     #respond_with(@authors)
+
   end
 
 
   def new
     @author = Author.new
+
   end
 
 
   def create
-    #binding.pry
+    # binding.pry
     @a = Author.create(author_params)
     #render json: @a
     redirect_to '#/authors'
