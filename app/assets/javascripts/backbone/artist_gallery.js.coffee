@@ -4,11 +4,10 @@ window.ArtistGallery =
   Routers: {}
   Views: {}
   Vent: {}
-  initialize: (data) ->
+  initialize: ->
     #alert 'before router ctor'
     #new ArtistGallery.Routers.HomePageRouter()
-    new ArtistGallery.Routers.AuthorsRouter(ArtistGallery.Collections)
-    ArtistGallery.currentUser = new ArtistGallery.Models.CurrentUser(data.current_user)
+    new ArtistGallery.Routers.ArtistGalleryRouter( )
     #alert 'after router ctor'
     Backbone.history.start()
 
@@ -17,6 +16,4 @@ window.ArtistGallery =
 
 
 $(document).ready ->
-  #alert 'before ready'
   ArtistGallery.initialize()
-  #alert 'after ready'

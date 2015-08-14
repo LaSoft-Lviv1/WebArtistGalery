@@ -1,24 +1,14 @@
 ArtistGallery.Views.HomePage ||= {}
 
 class ArtistGallery.Views.HomePage.IndexView extends Backbone.View
-  #template: JST["backbone/templates/home_page/index1"]
   template: JST["backbone/templates/home_page/index"]
 
   initialize: =>
     console.log 'in home page index view initialize'
     @listenTo @collection, "reset", @addAllFromReset
-    #@collection.bind('reset', @addAllFromReset)
-#
-
 
   addToCollection: (model) ->
     @collection.add model
-
-
-#  renderAuthor: (model) ->
-#    view = new App.Views.Project({ model: model })
-#    @$('ul').append(view.render().el)
-
 
   addAllFromReset: =>
     console.log 'from reset'
@@ -28,7 +18,6 @@ class ArtistGallery.Views.HomePage.IndexView extends Backbone.View
     console.log 'in addAll start'
     console.log @collection.toJSON()
     console.log 'in addAll start'
-    #@collection.each(@addOne)
     @collection.forEach @addOneArtItemForHomePage, @
     @collection.forEach @addOneArtItemForCarousel, @
     console.log 'in addAll finish'
@@ -53,7 +42,7 @@ class ArtistGallery.Views.HomePage.IndexView extends Backbone.View
   render: =>
     console.log 'in render'
     console.log @collection.toJSON()
-    @$el.html(@template( ))
+    @$el.html(@template())
     @collection.forEach @addOneArtItemForHomePage, @
     @collection.forEach @addOneArtItemForCarousel, @
     console.log 'in render index view art_item finish'

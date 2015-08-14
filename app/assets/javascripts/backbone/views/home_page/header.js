@@ -1,7 +1,5 @@
 var HeaderView = Backbone.View.extend ({
 	template: JST["backbone/templates/home_page/header"],
-	//template: _.template(template),
-
 
 	initialize: function () {
 	this.render();
@@ -13,5 +11,3 @@ var HeaderView = Backbone.View.extend ({
 	return this;
 }
 });
-
-//var headerView = new HeaderView();
