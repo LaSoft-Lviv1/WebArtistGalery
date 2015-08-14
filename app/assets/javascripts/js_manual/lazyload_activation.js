@@ -1,1 +1,0 @@
-$(".lazy").lazyload({threshold: -100, effect: "fadeIn"});

@@ -10,25 +10,18 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-
-
 //= require jquery-1.11.3.min
-//= require bootstrap
-//= require js_manual/more_less_text
-//= require slick/slick
 //= require jquery_ujs
+//= require bootstrap
+//= require slick/slick
 //= require lazyload
 //= require jquery.lazyload.min
+//= require app
 //= require turbolinks
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync
-// require backbone.sync.rails
 //= require backbone_datalink
 //= require csrf_hack
 //= require backbone/artist_gallery
-//= #require jquery_fileupload/basic
-//= require_tree ./backbone
-//= require_tree ./js_manual
-
-
+//= require_tree .
