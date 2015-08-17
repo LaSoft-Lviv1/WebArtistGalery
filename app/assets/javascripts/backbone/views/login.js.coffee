@@ -1,11 +1,8 @@
 #ArtistGallery.Views.Login ||= {}
 
 class ArtistGallery.Views.Login extends Backbone.View
-#  template: JST["backbone/templates/auth/login1"]
-  template: JST["backbone/templates/mylogin"]
+  template: JST["backbone/templates/mylogin1"]
 
-#  initialize: () ->
-#    console.log 'in loginView initialize'
   events:
     "click button": "login"
 
@@ -28,7 +25,7 @@ class ArtistGallery.Views.Login extends Backbone.View
     @model.save()
 
   render: =>
-    alert 'before login view'
+    #alert 'before login view'
     @$el.html(@template())
     #@addAll()
     @

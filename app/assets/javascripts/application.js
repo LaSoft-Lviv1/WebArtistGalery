@@ -11,16 +11,18 @@
 // about supported directives.
 //
 //= require jquery-1.11.3.min
-//= require jquery_ujs
-//= require bootstrap
 //= require slick/slick
-//= require lazyload
-//= require jquery.lazyload.min
 //= require app
+//= require bootstrap
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync
 //= require backbone_datalink
+//= require turbolinks
 //= require csrf_hack
 //= require backbone/artist_gallery
 //= require_tree .
+//= require jquery.lazyload.min
+//= require jquery-migrate-1.2.1.min
+//= require jquery_ujs
+//= require lazyload

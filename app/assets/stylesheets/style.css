@@ -185,26 +185,30 @@ margin-bottom: 0;
     padding-right: 0;
     padding-left: 0;
   }
+}
 
-  .sign-in-header {
-    border-radius: 0px;
-    background-color: #eee;
-  }
+.sign-in-header {
+  border-radius: 0px;
+  background-color: #eee;
+}
 
-  .sign-in-body {
-    border-radius: 0px;
-    border-color: #fff;
-  }
+.sign-in-body {
+  border-radius: 0px;
+  border-color: #fff;
+}
 
-  .sign-in-body input {
-    margin-left: -15px;
-  }
+.sign-in-body input {
+  margin-left: -15px;
+/*  border-radius: 0px;
+  background-color: #eee;
+  border: none;
+*/}
 
-  .sign-in-header h3 {
-    display: inline;
-  }
+.sign-in-header h3 {  
+  display: inline;
+}
 
-  .btn-facebook {
+.btn-facebook {
   padding-left: 20px;
   background-image: url("../img/Facebook_logo_16.png");
   background-repeat: no-repeat;
@@ -320,6 +324,5 @@ margin-bottom: 0;
   margin-top: 20px;
   padding-top: 20px;
   padding-bottom: 10px;
-}
 }
 /*the end of the about artist*/
