@@ -5,7 +5,6 @@ ruby '2.2.1'
 gem 'rails', '4.2.3'
 # Use postgresql as the database for Active Record
 gem 'pg'
-
 gem 'devise'
 # after install coffeelint:  sudo apt-get install nodejs-legacy
 

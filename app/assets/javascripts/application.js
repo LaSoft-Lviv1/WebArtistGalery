@@ -17,7 +17,6 @@
 //= require lazyload
 //= require jquery.lazyload.min
 //= require app
-//= require turbolinks
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync
