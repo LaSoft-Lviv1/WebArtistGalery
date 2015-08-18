@@ -1,4 +1,4 @@
-class ArtistGallery.Routers.ArtistGalleryRouter extends Backbone.Router
+class ArtistGallery.Routers.ArtistGalleryRouter1 extends Backbone.Router
   routes:
     ''             : "index"
     'authors'      : "showAuthors"
@@ -12,7 +12,8 @@ class ArtistGallery.Routers.ArtistGalleryRouter extends Backbone.Router
     '.*'           : "index"
 
   initialize: ->
-    @scriptsView = new ScriptsView()
+    @carouselscriptView = new CarouselscriptView()
+    @morelessView = new MorelessView()
     @footerView = new FooterView
     @authors = new ArtistGallery.Collections.AuthorsCollection()
     @authors.fetch({ reset: true })
@@ -28,6 +29,8 @@ class ArtistGallery.Routers.ArtistGalleryRouter extends Backbone.Router
     @art_items.fetch({ reset: true })
     @homeView = new ArtistGallery.Views.HomePage.IndexView(collection: @art_items)
     $("#content").html(@homeView.render().el)
+    alert('123')
+    @carouselscriptView = new CarouselscriptView()
 
   signup: ->
     @view = new ArtistGallery.Views.Signup({ model: new ArtistGallery.Models.Registration() })
@@ -43,7 +46,8 @@ class ArtistGallery.Routers.ArtistGalleryRouter extends Backbone.Router
     $(".modal-content").html(@view.render().el)
     @view = new ArtistGallery.Views.Authors.IndexView(collection: @authors)
     $("#content").html(@view.render().el)
-    @scriptsView = new ScriptsView()
+    @morelessView = new MorelessView()
+    @carouselscriptView = new CarouselscriptView()
 
   show: (id) =>
     author = @authors.get(id)

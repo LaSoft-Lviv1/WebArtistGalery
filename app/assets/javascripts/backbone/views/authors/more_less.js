@@ -1,5 +1,5 @@
-var ScriptsView = Backbone.View.extend ({
-	template: JST["backbone/templates/authors/scripts"],
+var MorelessView = Backbone.View.extend ({
+	template: JST["backbone/templates/authors/more_less"],
 
 	initialize: function () {
 	this.render();
