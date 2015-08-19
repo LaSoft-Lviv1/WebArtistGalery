@@ -11,4 +11,3 @@ var CarouselscriptView = Backbone.View.extend ({
 	return this;
 }
 });
-var carouselscriptView = new CarouselscriptView();

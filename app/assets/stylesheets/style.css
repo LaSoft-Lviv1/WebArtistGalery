@@ -165,7 +165,7 @@ div.container.header {
 
 img.lazy {
   width: 250px;
-  height: 250px;
+  height: auto;
 }
 
 .footer{

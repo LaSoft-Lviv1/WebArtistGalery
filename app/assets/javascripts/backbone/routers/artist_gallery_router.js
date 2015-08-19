@@ -26,7 +26,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.initialize = function() {
-    this.carouselscriptView = new CarouselscriptView();
+    // this.carouselscriptView = new CarouselscriptView();
     this.morelessView = new MorelessView();
     this.footerView = new FooterView;
     this.authors = new ArtistGallery.Collections.AuthorsCollection();
@@ -53,8 +53,8 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
       collection: this.art_items
     });
     $("#content").html(this.homeView.render().el);
-    alert('123');
-    this.carouselscriptView = new CarouselscriptView();
+    // alert('123');
+    // this.carouselscriptView = new CarouselscriptView();
     return
   };
 
