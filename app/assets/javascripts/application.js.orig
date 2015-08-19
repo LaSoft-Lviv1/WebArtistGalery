@@ -22,7 +22,13 @@
 //= require jquery.lazyload.min
 //= require slick/slick
 //= require app
+//= require turbolinks
 //= require csrf_hack
 //= require_tree .
 //= require jquery-migrate-1.2.1.min
 //= require jquery_ujs
+<<<<<<< HEAD
+//= require lazyload
+=======
+
+>>>>>>> rewrited router from coffee to js
