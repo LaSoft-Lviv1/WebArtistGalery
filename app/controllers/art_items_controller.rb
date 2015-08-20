@@ -2,6 +2,7 @@ class ArtItemsController < ApplicationController
 
   def index
     @art_items = ArtItem.all
+    puts params[:id]
     #binding.pry
     respond_to do |format|
        format.json { render json: @art_items }
