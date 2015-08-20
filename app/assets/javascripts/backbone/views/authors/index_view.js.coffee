@@ -1,7 +1,7 @@
 ArtistGallery.Views.Authors ||= {}
 
 class ArtistGallery.Views.Authors.IndexView extends Backbone.View
-  template: JST["backbone/templates/authors/index1"]
+  template: JST["backbone/templates/authors/index"]
 
   initialize: () =>
     #@collection.bind('reset', @addAll)

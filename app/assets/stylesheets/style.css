@@ -330,28 +330,28 @@ margin-bottom: 0;
 /*how to buy*/
 
 #menu {
-    margin-top: 70px;
+    position: fixed;
 }
 
-.affix {
+/*.affix {
   width: 213px;
-}
+}*/
 
-@media (min-width: 1200px) {
+/*@media (min-width: 1200px) {
     .affix {
         width: 263px;
     }
-}
+}*/
 
 .affix-bottom {
     position: absolute;
 }
 
-@media (min-width: 1200px) {
+/*@media (min-width: 1200px) {
     .affix-bottom {
         width: 263px;
     }
-}
+}*/
 
 #menu.nav .nav {
     display: none;
@@ -388,13 +388,13 @@ margin-bottom: 0;
     border-left: 5px solid #5F5F5F;
 }
 
-.anchor:before {
+/*.anchor:before {
     content: "";
     display: block;
     height: 120px;
-    /* fixed header height*/
+     fixed header height
     margin: -120px 0 0;
-    /* negative fixed header height */
-}
+    /* negative fixed header height 
+}*/
 
 /*the end of how to buy*/
