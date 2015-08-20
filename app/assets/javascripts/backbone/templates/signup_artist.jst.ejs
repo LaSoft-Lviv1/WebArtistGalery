@@ -1,0 +1,31 @@
+<form id="sign_up" action="/users" method="post">
+    <fieldset>
+        <legend>Sign up</legend>
+
+        <div class="alert alert-error" style="display:none;"></div>
+
+        <div class="control-group">
+            <label for="name" class="control-label">E-mail</label>
+            <div class="controls">
+                <input type="text" name="email" id="email" placeholder="Email" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="description" class="control-label">Password</label>
+            <div class="controls">
+                <input type="password" name="password" id="password" placeholder="Password" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label for="description" class="control-label">Password</label>
+            <div class="controls">
+                <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Password confirmation" />
+            </div>
+        </div>
+
+        <button type="submit" class="btn">Submit</button>
+
+    </fieldset>
+</form>

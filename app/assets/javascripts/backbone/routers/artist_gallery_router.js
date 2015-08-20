@@ -19,6 +19,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     'authors/:id': "show",
     ':id/edit': "edit",
     'index': "index",
+    'howtobuy': "howToBuy",
     'login': "login",
     'logout': "logout",
     'signup': "signup",
@@ -41,6 +42,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
 
   ArtistGalleryRouter.prototype.index = function() {
     this.headerView = new HeaderView();
+    // this.signupView = new SignupView();
     this.view = new ArtistGallery.Views.Login({
       model: new ArtistGallery.Models.Login()
     });
@@ -59,11 +61,16 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.signup = function() {
-    this.view = new ArtistGallery.Views.Signup({
-      model: new ArtistGallery.Models.Registration()
-    });
-    return $("#content").html(this.view.render().el);
+    this.view = new SignupView();
+    return
   };
+
+  // ArtistGalleryRouter.prototype.signup = function() {
+  //   this.view = new ArtistGallery.Views.Signup({
+  //     model: new ArtistGallery.Models.Registration()
+  //   });
+  //   return $(".modal-content").html(this.view.render().el);
+  // };
 
   ArtistGalleryRouter.prototype.login = function() {
     this.view = new ArtistGallery.Views.Login({
@@ -79,11 +86,21 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     });
     $(".modal-content").html(this.view.render().el);
     this.view = new ArtistGallery.Views.Authors.IndexView({
-      collection: this.authors
+    art_item_collection: this.art_items
     });
     $("#content").html(this.view.render().el);
     this.morelessView = new MorelessView();
     return this.carouselscriptView = new CarouselscriptView();
+  };
+
+  ArtistGalleryRouter.prototype.howToBuy = function() {
+    this.headerHowToBuyView = new HeaderHowToBuyView();
+    this.view = new ArtistGallery.Views.Login({
+      model: new ArtistGallery.Models.Login()
+    });
+    $(".modal-content").html(this.view.render().el);
+    this.howToBuy = new HowToBuyView();
+    return
   };
 
   ArtistGalleryRouter.prototype.show = function(id) {

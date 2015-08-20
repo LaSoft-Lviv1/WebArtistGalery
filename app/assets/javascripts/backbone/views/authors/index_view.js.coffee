@@ -1,40 +1,12 @@
 ArtistGallery.Views.Authors ||= {}
 
 class ArtistGallery.Views.Authors.IndexView extends Backbone.View
-  template: JST["backbone/templates/authors/index"]
-  #tagName: "tbody"
-
-  #id: "authors"
-
-  className: 'myView'
-
-  #el: 'body'
-
-  #events:
-    #"click a.btn": "newProject"
+  template: JST["backbone/templates/authors/index1"]
 
   initialize: () =>
     #@collection.bind('reset', @addAll)
     console.log 'in initialize index view'
-    @listenTo @collection, "reset", @addAllfromReset
-    #@listenTo App.Vent, "project:create", @addToCollection
-    #@listenTo @collection, "add", @renderProject
-    #@collection.fetch({ reset: true })
-
-
-  addToCollection: (model) ->
-    @collection.add model
-
-#  render: ->
-#    @$el.html(@template())
-#    @collection.forEach @renderProject, @
-#    @
-
-
-#  renderAuthor: (model) ->
-#    view = new App.Views.Project({ model: model })
-#    @$('ul').append(view.render().el)
-
+    @listenTo @art_item_collection, "reset", @addAllfromReset
 
   addAllfromReset: () =>
     console.log 'from reset'
@@ -44,10 +16,16 @@ class ArtistGallery.Views.Authors.IndexView extends Backbone.View
     console.log 'in addAll start'
     console.log @collection.toJSON()
     console.log 'in addAll start'
-    #@collection.each(@addOne)
     @collection.forEach @addOne, @
+    @art_item_collection.forEach @addOneArtItemForArtistCarousel, @
     console.log 'in addAll finish'
 
+  addOneArtItemForArtistCarousel: (art_item) =>
+    console.log 'in addOneArtItem start'
+    console.log art_item.toJSON()
+    artItemArtistView = new ArtistGallery.Views.AboutArtist.ArtItemArtistView({model: art_item})
+    @$(".variable-width").append(artItemArtistView.render().el)
+    console.log 'in addOneArtItem finish'
 
   addOne: (author) =>
     console.log 'in addOne start'
@@ -56,49 +34,10 @@ class ArtistGallery.Views.Authors.IndexView extends Backbone.View
     @$("tbody").append(view.render().el)
     console.log 'in addOne finish'
 
-
   render: =>
     console.log 'in render index view authors start'
-    console.log @collection.toJSON()
-    console.log 'in render index view authors start'
-    #@addAll()
-    @$el.html(@template( ))
-    #@addAll
     @collection.forEach @addOne, @
+    @art_item_collection.forEach @addOneArtItemForArtistCarousel, @
+    @$el.html(@template())
     console.log 'in render index view authors finish'
     @
-
-
-
-#  render: ->
-##alert 'render issue'
-#    @$el.html(@template({ count: @collection.length }))
-#    @collection.forEach @renderIssue, @
-#    @
-#
-#  renderIssue: (model) ->
-##alert 'render concrete issue'
-##alert(JSON.stringify(model))
-#    v = new App.Views.Issue({ model: model})
-#    @childViews.push(v)
-#    #alert(JSON.stringify(v))
-#    @$('#issues_list').append(v.render().el)
-
-
-#  renderDetails: ->
-#    @$el.html(@template(@model.toJSON()))
-#    alert 'ok'
-#    alert(JSON.stringify(@model.get('issues')))
-#    v = new App.Views.Issues({ collection: @model.get('issues')})
-#    @childViews.push(v)
-#    @$('#issues').html(v.render().el)
-
-
-
-#  newProject: (e) ->
-#    e.preventDefault()
-#    App.Vent.trigger "project:new"
-
-
-
-
