@@ -4,7 +4,8 @@ class ArtistGallery.Views.Login extends Backbone.View
   template: JST["backbone/templates/mylogin1"]
 
   events:
-    "click button": "login"
+    "click button.login": "login"
+    "click button.signup": "signup"
 
   initialize: ->
     @listenTo @model, "error", @renderError
@@ -23,6 +24,11 @@ class ArtistGallery.Views.Login extends Backbone.View
     @model.set remember_me: "0" #@$('#remember_me').val()
     console.log @model.toJSON()
     @model.save()
+
+  signup: (e) ->
+    e.preventDefault()
+    signupView = new SignupView()
+    alert('123')
 
   render: =>
     #alert 'before login view'

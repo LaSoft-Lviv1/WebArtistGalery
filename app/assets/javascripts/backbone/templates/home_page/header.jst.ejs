@@ -22,14 +22,13 @@
 					<li class="active"><a href="#">Home</a></li>
 					<li><a href="#about">Paintings</a></li>
 					<li><a href="#authors">Artist</a></li>
-					<li><a href="#customer-info">How to buy</a></li>
+					<li><a href="#howtobuy">How to buy</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right" id="displaynone">
 					<% if (current_user.loggedIn) { %>
                     <li><a href="/users/sign_out" data-method="delete">Sign out</a></li>
                     <%} else {%>
-                    <li><a href="/#/login"  data-toggle="modal" data-target="#modal">Register | Sign in</a></li>
-                    <!--<li><a href="/#/login">Register | Sign in</a></li>-->
+                    <li><a href="#" data-toggle="modal" data-target="#modal">Register | Sign in</a></li>
                     <% } %>
 						<button class="btn srch" type="button" id="btnlanglogsrch">
 							<a href="#" title="Search" class="navbar-button" style="color:#FFF;"><span class="glyphicon glyphicon-search"></span></a>
