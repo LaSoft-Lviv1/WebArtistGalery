@@ -6,7 +6,7 @@ var CarouselscriptView = Backbone.View.extend ({
 },
 
 	render: function () {
-	$('#scripts').html( this.template() );
+	$('#scripts').append( this.template() );
 
 	return this;
 }

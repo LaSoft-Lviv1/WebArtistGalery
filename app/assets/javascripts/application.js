@@ -11,7 +11,7 @@
 // about supported directives.
 //
 //= require jquery-1.11.3.min
-//= require bootstrap
+//= require bootstrap/js/bootstrap
 //= require underscore
 //= require backbone
 //= require backbone_rails_sync

@@ -20,6 +20,8 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     ':id/edit': "edit",
     'index': "index",
     'howtobuy': "howToBuy",
+    'about-us': "howToBuy",
+    'FAQ': "howToBuy",
     'login': "login",
     'logout': "logout",
     'signup': "signup",
@@ -33,7 +35,6 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
         });
         $(".modal-content").html(this.view.render().el);
     });
-    this.morelessView = new MorelessView();
     this.footerView = new FooterView;
     this.authors = new ArtistGallery.Collections.AuthorsCollection();
     return this.authors.fetch({
@@ -60,8 +61,6 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
       collection: this.art_items
     });
     $("#content").html(this.homeView.render().el);
-    // alert('123');
-    // this.carouselscriptView = new CarouselscriptView();
     return
   };
 
@@ -84,32 +83,22 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     return $(".modal-content").html(this.view.render().el);
   };
 
-  // ArtistGalleryRouter.prototype.showAuthors = function() {
-  //   this.headerauthorsView = new HeaderAuthorsView();
-  //   this.view = new ArtistGallery.Views.Login({
-  //     model: new ArtistGallery.Models.Login()
-  //   });
-  //   $(".modal-content").html(this.view.render().el);
-  //   this.view = new ArtistGallery.Views.Authors.IndexView({
-  //   art_item_collection: this.art_items
-  //   });
-  //   $("#content").html(this.view.render().el);
-  //   this.morelessView = new MorelessView();
-  //   return this.carouselscriptView = new CarouselscriptView();
-  // };
 
-    ArtistGalleryRouter.prototype.showAuthors = function() {
+  ArtistGalleryRouter.prototype.showAuthors = function() {
     this.headerauthorsView = new HeaderAuthorsView();
     this.view = new ArtistGallery.Views.Login({
       model: new ArtistGallery.Models.Login()
     });
     $(".modal-content").html(this.view.render().el);
-    this.indexArtistView = new IndexArtistView({
-    art_item_collection: this.art_items
+    this.art_items = new ArtistGallery.Collections.ArtItemsCollection();
+    this.art_items.fetch({
+      reset: true
+    });
+    this.view = new ArtistGallery.Views.Authors.IndextView({
+    collection: this.art_items
     });
     $("#content").html(this.view.render().el);
-    this.morelessView = new MorelessView();
-    return this.carouselscriptView = new CarouselscriptView();
+    return
   };
 
   ArtistGalleryRouter.prototype.howToBuy = function() {
