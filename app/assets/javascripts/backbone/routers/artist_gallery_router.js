@@ -27,7 +27,12 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.initialize = function() {
-    // this.carouselscriptView = new CarouselscriptView();
+    $('#modal').on('hidden.bs.modal', function (e) {
+        this.view = new ArtistGallery.Views.Login({
+            model: new ArtistGallery.Models.Login()
+        });
+        $(".modal-content").html(this.view.render().el);
+    });
     this.morelessView = new MorelessView();
     this.footerView = new FooterView;
     this.authors = new ArtistGallery.Collections.AuthorsCollection();

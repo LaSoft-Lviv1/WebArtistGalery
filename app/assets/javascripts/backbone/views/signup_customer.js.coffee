@@ -1,6 +1,6 @@
-class ArtistGallery.Views.SignupArtist extends Backbone.View
+class ArtistGallery.Views.SignupCustomer extends Backbone.View
   #  template: JST["backbone/templates/auth/login1"]
-  template: JST["backbone/templates/signup_artist1"]
+  template: JST["backbone/templates/signup_customer"]
 
 #  initialize: () ->
 #    console.log 'in loginView initialize'
