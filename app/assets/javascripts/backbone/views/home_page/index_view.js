@@ -16,7 +16,7 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
     this.addAllFromReset = bind(this.addAllFromReset, this);
     this.initialize = bind(this.initialize, this);
     return IndexView.__super__.constructor.apply(this, arguments);
-  }
+  };
 
   IndexView.prototype.template = JST["backbone/templates/home_page/index"];
 

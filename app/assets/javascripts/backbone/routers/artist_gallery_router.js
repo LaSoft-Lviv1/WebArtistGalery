@@ -84,13 +84,27 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     return $(".modal-content").html(this.view.render().el);
   };
 
-  ArtistGalleryRouter.prototype.showAuthors = function() {
+  // ArtistGalleryRouter.prototype.showAuthors = function() {
+  //   this.headerauthorsView = new HeaderAuthorsView();
+  //   this.view = new ArtistGallery.Views.Login({
+  //     model: new ArtistGallery.Models.Login()
+  //   });
+  //   $(".modal-content").html(this.view.render().el);
+  //   this.view = new ArtistGallery.Views.Authors.IndexView({
+  //   art_item_collection: this.art_items
+  //   });
+  //   $("#content").html(this.view.render().el);
+  //   this.morelessView = new MorelessView();
+  //   return this.carouselscriptView = new CarouselscriptView();
+  // };
+
+    ArtistGalleryRouter.prototype.showAuthors = function() {
     this.headerauthorsView = new HeaderAuthorsView();
     this.view = new ArtistGallery.Views.Login({
       model: new ArtistGallery.Models.Login()
     });
     $(".modal-content").html(this.view.render().el);
-    this.view = new ArtistGallery.Views.Authors.IndexView({
+    this.indexArtistView = new IndexArtistView({
     art_item_collection: this.art_items
     });
     $("#content").html(this.view.render().el);
