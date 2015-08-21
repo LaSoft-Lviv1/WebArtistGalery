@@ -6,7 +6,7 @@ class ArtistGallery.Views.Login extends Backbone.View
   events:
     "click button.login": "login"
     "click button.signup": "signup"
-    "click button.customer": "artistSignup"
+    #"click button.customer": "artistSignup"
 
   initialize: ->
     @listenTo @model, "error", @renderError

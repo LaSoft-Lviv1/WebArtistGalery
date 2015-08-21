@@ -1,6 +1,6 @@
-ArtistGallery.Views.AboutArtist ||= {}
+ArtistGallery.Views.Authors ||= {}
 
-class ArtistGallery.Views.AboutArtist.ArtItemArtistView extends Backbone.View
+class ArtistGallery.Views.Authors.ArtItemArtistView extends Backbone.View
   template: JST["backbone/templates/authors/art_items_artist"]
 
   className: 'paint_outer'

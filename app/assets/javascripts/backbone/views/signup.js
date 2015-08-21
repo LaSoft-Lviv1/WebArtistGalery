@@ -2,8 +2,8 @@ var SignupView = Backbone.View.extend ({
 	template: JST["backbone/templates/signup"],
 
     events: {
-        'click button.artist':'artistSignup',
-        'click button#customer': 'customerSignup',
+        'click .artist': 'artistSignup',
+        'click #customer': 'customerSignup',
     },
 
 	initialize: function () {

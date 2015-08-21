@@ -16,7 +16,7 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
     this.addAllFromReset = bind(this.addAllFromReset, this);
     this.initialize = bind(this.initialize, this);
     return IndexView.__super__.constructor.apply(this, arguments);
-  }
+  };
 
   IndexView.prototype.template = JST["backbone/templates/home_page/index"];
 
@@ -70,9 +70,9 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
   IndexView.prototype.render = function() {
     console.log('in render');
     console.log(this.collection.toJSON());
-    this.$el.html(this.template());
     this.collection.forEach(this.addOneArtItemForCarousel, this);
     this.collection.forEach(this.addOneArtItemForHomePage, this);
+    this.$el.html(this.template());
     console.log('in render index view art_item finish');
     return this;
   };
