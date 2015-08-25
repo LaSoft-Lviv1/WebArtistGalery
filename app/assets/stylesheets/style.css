@@ -129,7 +129,7 @@ div.container.header {
 }
 
 @media (max-width: 560px) {
-.home_carousel_paint {
+.home_carousel {
   display: none;
 }
 }
