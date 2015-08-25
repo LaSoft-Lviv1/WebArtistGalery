@@ -1,11 +1,11 @@
-class ArtistGallery.Views.SignupArtist extends Backbone.View
+class ArtistGallery.Views.SignupCustomer extends Backbone.View
   #  template: JST["backbone/templates/auth/login1"]
-  template: JST["backbone/templates/signup_artist1"]
+  template: JST["backbone/templates/signup_customer"]
 
 #  initialize: () ->
 #    console.log 'in loginView initialize'
   events:
-    "click button": "signup"
+    "click button.reg": "signup"
 
   initialize: ->
     @listenTo @model, "error", @renderError
@@ -26,6 +26,6 @@ class ArtistGallery.Views.SignupArtist extends Backbone.View
     @model.save()
 
   render: =>
-    alert 'before signup view'
+#    alert 'before signup view'
     @$el.html(@template())
     @
