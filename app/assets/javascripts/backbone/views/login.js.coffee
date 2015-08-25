@@ -27,18 +27,10 @@ class ArtistGallery.Views.Login extends Backbone.View
 
   signup: (e) ->
     e.preventDefault()
-    alert('123')
     @signupView = new SignupView()
     $(".modal-content").html(@signupView.render().el)
-    alert('123')
 
   render: =>
-    #alert 'before login view'
     @$el.html(@template())
-    #@addAll()
     @
-#    $("#authors").html("<p>Login</p>")
-#    $("#authors").append(@template())
-#    alert 'from login view'
-    #@addAll()
 

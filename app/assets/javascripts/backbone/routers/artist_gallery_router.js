@@ -29,12 +29,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.initialize = function() {
-    $('#modal').on('hidden.bs.modal', function (e) {
-        this.view = new ArtistGallery.Views.Login({
-            model: new ArtistGallery.Models.Login()
-        });
-        $(".modal-content").html(this.view.render().el);
-    });
+    this.renderLogin();
     this.footerView = new FooterView;
     this.authors = new ArtistGallery.Collections.AuthorsCollection();
     return this.authors.fetch({
@@ -47,8 +42,8 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.index = function() {
-    this.headerView = new HeaderView();
-    // this.signupView = new SignupView();
+      this.renderLogin();
+      this.headerView = new HeaderView();
     this.view = new ArtistGallery.Views.Login({
       model: new ArtistGallery.Models.Login()
     });
@@ -61,6 +56,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
       collection: this.art_items
     });
     $("#content").html(this.homeView.render().el);
+
     return
   };
 
@@ -85,7 +81,8 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
 
 
   ArtistGalleryRouter.prototype.showAuthors = function() {
-    this.headerauthorsView = new HeaderAuthorsView();
+      this.renderLogin();
+      this.headerauthorsView = new HeaderAuthorsView();
     this.view = new ArtistGallery.Views.Login({
       model: new ArtistGallery.Models.Login()
     });
@@ -102,7 +99,8 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.howToBuy = function() {
-    this.headerHowToBuyView = new HeaderHowToBuyView();
+      this.renderLogin();
+      this.headerHowToBuyView = new HeaderHowToBuyView();
     this.view = new ArtistGallery.Views.Login({
       model: new ArtistGallery.Models.Login()
     });
@@ -135,6 +133,16 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
       model: author
     });
     return $("#content").html(this.view.render().el);
+  };
+
+  ArtistGalleryRouter.prototype.renderLogin = function() {
+      //$('#modal').on('hidden.bs.modal', function (e) {
+      //    this.view = new ArtistGallery.Views.Login({
+      //        model: new ArtistGallery.Models.Login()
+      //    });
+      //    $(".modal-content").html(this.view.render().el);
+      //});
+      //alert('from script');
   };
 
   return ArtistGalleryRouter;

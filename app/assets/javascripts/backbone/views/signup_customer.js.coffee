@@ -5,7 +5,7 @@ class ArtistGallery.Views.SignupCustomer extends Backbone.View
 #  initialize: () ->
 #    console.log 'in loginView initialize'
   events:
-    "click button": "signup"
+    "click button.reg": "signup"
 
   initialize: ->
     @listenTo @model, "error", @renderError
@@ -26,6 +26,6 @@ class ArtistGallery.Views.SignupCustomer extends Backbone.View
     @model.save()
 
   render: =>
-    alert 'before signup view'
+#    alert 'before signup view'
     @$el.html(@template())
     @

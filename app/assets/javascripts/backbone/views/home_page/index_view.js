@@ -21,6 +21,7 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
   IndexView.prototype.template = JST["backbone/templates/home_page/index"];
 
   IndexView.prototype.initialize = function() {
+    ArtistGallery.LoginHelpers.reRenderLoginView();
     console.log('in home page index view initialize');
     return this.listenTo(this.collection, "reset", this.addAllFromReset);
   };
