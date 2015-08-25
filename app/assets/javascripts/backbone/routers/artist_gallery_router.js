@@ -29,7 +29,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.initialize = function() {
-    $('#modal').on('hidden.bs.modal', function (e) {
+    $('.modal-content').on('hidden.bs.modal', function (e) {
         this.view = new ArtistGallery.Views.Login({
             model: new ArtistGallery.Models.Login()
         });
