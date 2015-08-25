@@ -3,7 +3,7 @@ var SignupView = Backbone.View.extend ({
 
     events: {
         'click .artist': 'artistSignup',
-        'click #customer': 'customerSignup',
+        'click .customer': 'customerSignup',
     },
 
 	initialize: function () {
@@ -12,20 +12,25 @@ var SignupView = Backbone.View.extend ({
 
     artistSignup: function (e) {
         e.preventDefault();
-        //$('.modal-content').html( this.template() );
+        this.view = new ArtistGallery.Views.SignupArtist();
+        $(".modal-content").html(this.view.render().el);
         alert('artist');
         return this;
     },
 
     customerSignup: function (e) {
         e.preventDefault();
+        // @view = new ArtistGallery.Views.SignupArtist()
+        this.view = new ArtistGallery.Views.SignupCustomer();
+        $(".modal-content").html(this.view.render().el);
         //$('.modal-content').html( this.template() );
         alert('customer');
         return this;
     },
 
     render: function () {
-	$('.modal-content').html( this.template() );
+	// $('.modal-content').html( this.template() );
+    this.$el.html(this.template());
 
 	return this;
     }

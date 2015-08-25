@@ -6,7 +6,6 @@ class ArtistGallery.Views.Login extends Backbone.View
   events:
     "click button.login": "login"
     "click button.signup": "signup"
-    #"click button.customer": "artistSignup"
 
   initialize: ->
     @listenTo @model, "error", @renderError
@@ -29,21 +28,9 @@ class ArtistGallery.Views.Login extends Backbone.View
   signup: (e) ->
     e.preventDefault()
     alert('123')
-#    @view = new ArtistGallery.Views.SignupArtist()
-#    @view = new ArtistGallery.Views.SignupCustomer()
-#    $(".modal-content").html(@view.render().el)
-    signupView = new SignupView()
+    @signupView = new SignupView()
+    $(".modal-content").html(@signupView.render().el)
     alert('123')
-
-  artistSignup: (e) ->
-    e.preventDefault()
-#    signupView = new SignupView()
-    alert('cust')
-
-  hidemodal: (e) ->
-    e.preventDefault()
-#    signupView = new SignupView()
-    alert('hide modal')
 
   render: =>
     #alert 'before login view'
