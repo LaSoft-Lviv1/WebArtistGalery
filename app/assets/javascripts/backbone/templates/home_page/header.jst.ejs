@@ -28,14 +28,14 @@
 					<% if (current_user.loggedIn) { %>
                     <li><a href="/users/sign_out" data-method="delete">Sign out</a></li>
                     <%} else {%>
-                    <li><a href="/#/login" data-toggle="modal" data-target="#modal">Register | Sign in</a></li>
+                    <li><a href="/#/login" title="sign in" data-toggle="modal" data-target="#modal">Register | Sign in</a></li>
                     <% } %>
-						<button class="btn srch" type="button" id="btnlanglogsrch">
-							<a href="#" title="Search" class="navbar-button" style="color:#FFF;"><span class="glyphicon glyphicon-search"></span></a>
+						<button class="btn srch" title="Search" type="button" id="btnlanglogsrch">
+							<a href="#" class="navbar-button srchbtn" style="color:#FFF;"><span class="glyphicon glyphicon-search"></span></a>
 						</button>
 					</li>
 					<li>
-						<button class="btn lang dropdown-toggle pull-right" data-toggle="dropdown" type="button" aria-expanded="false" id="btnlanglogsrch" style="color:#FFF;">EN&nbsp;&nbsp;<span class="caret"></span>
+						<button class="btn lang dropdown-toggle pull-right" data-toggle="dropdown" title="choose language" type="button" aria-expanded="false" id="btnlanglogsrch" style="color:#FFF;">EN&nbsp;&nbsp;<span class="caret"></span>
 						</button>
 							<ul class="dropdown-menu">
 								<li><a href="/">English</a></li>

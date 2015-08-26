@@ -3,6 +3,10 @@ height: 100%;
 width: 100%;
 }
 
+body {
+  background-color: #bbb;
+}
+
 #push,
 #footer {
 height: 60px;
@@ -71,6 +75,7 @@ div.container.header {
   border-color: #337ab7;
 }
 
+.srchbtn:hover,
 #btnlanglogsrch:hover {
   background-color: #444;
 }
@@ -82,7 +87,7 @@ div.container.header {
 
 /* карусель головна */
 
-.home_carousel {
+/*.home_carousel {
   margin-right: 60px;
   margin-left: 30px;
 }
@@ -93,7 +98,7 @@ div.container.header {
   border: 1px solid #000;
   white-space: nowrap;
   background: #333;
-}
+}*/
 
 .slick-slider {
   margin-left: 20px;
@@ -110,21 +115,47 @@ div.container.header {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding: 10px 10px 10px 10px;
+  padding: 2px 2px 2px 2px;
   box-shadow: 0 0 15px rgba(0,0,0,0.08);
-  border: 1px solid #222;
-  background: #555
+  /*border: 1px solid #222;*/
+}
+
+.paint_inner .home_carousel_text {
+  display:inline-block;
+  position:absolute;
+  bottom: 30px;
+  left: 70px;
+
+  /* Фон */
+  background-color:rgba(0,0,0,.4);
+  padding:10px 30px;
+}
+
+.exposition_name {
+  color: #fff;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
+
+.exposition_artist {
+  color: #fff;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: 12px;
+}
+
+.carousel_text {
+  display: inline-block;
 }
 
 @media (min-width: 768px) {
 .home_carousel_paint {
-  height: 250px;
+  height: 450px;
 }
 }
 
 @media (max-width: 767px) {
 .home_carousel_paint {
-  height: 200px;
+  height: 300px;
 }
 }
 
@@ -137,7 +168,7 @@ div.container.header {
 /* кінець каруселі головної*/
 
 .home_content {
-  margin-top: 70px;
+  margin-top: 20px;
   position: relative;
   width: 87%;
 }
@@ -154,7 +185,8 @@ div.container.header {
   white-space: nowrap;
   padding: 10px 10px 10px 10px;
   /*box-shadow: 0 0 15px rgba(0,0,0,0.08);*/
-  border: 1px solid black;
+  /*border: 1px solid black;*/
+  background-color: #eee;
   width: 270px;
 }
 /* кінець обгортки для картини */
