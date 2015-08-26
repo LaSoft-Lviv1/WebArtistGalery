@@ -21,7 +21,6 @@
 //= require lazyload
 //= require jquery.lazyload.min
 //= require slick/slick
-//= require app
 //= require csrf_hack
 //= require_tree .
 //= require jquery-migrate-1.2.1.min

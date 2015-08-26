@@ -42,8 +42,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.index = function() {
-      this.renderLogin();
-      this.headerView = new HeaderView();
+    this.headerView = new HeaderView();
     this.view = new ArtistGallery.Views.Login({
       model: new ArtistGallery.Models.Login()
     });
