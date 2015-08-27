@@ -26,7 +26,9 @@ var HeaderView = Backbone.View.extend ({
 },
 
 	render: function () {
-	$('#header').html( this.template() );
+    var user_email = ArtistGallery.LoginHelpers.getCookie('user_email');
+        console.log(user_email);
+	$('#header').html( this.template(user_email) );
 
 	return this;
 }

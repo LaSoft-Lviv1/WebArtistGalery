@@ -49,7 +49,8 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     $(".modal-content").html(this.view.render().el);
     this.art_items = new ArtistGallery.Collections.ArtItemsCollection();
     this.art_items.fetch({
-      reset: true
+        data: $.param({great: 'Hello'}),
+        reset: true,
     });
     this.homeView = new ArtistGallery.Views.HomePage.IndexView({
       collection: this.art_items

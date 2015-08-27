@@ -8,9 +8,12 @@ class Users::SessionsController < Devise::SessionsController
 
   # POST /resource/sign_in
   def create
-    puts 'HI!users'
     #sign_in(:user, User.find_by_email(params[:email]))
     super
+    puts 'HI!users'
+    session[:user] = current_user
+    cookies[:user_email] = { :value => "#{current_user.email}", :expires => Time.now + 3600}
+    cookies[:login] = { :value => "XJ12", :expires => Time.now + 3600}
   end
 
   # DELETE /resource/sign_out
