@@ -26,6 +26,7 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right" id="displaynone">
 					<% if (current_user.loggedIn) { %>
+                    <li><a href="/#authors"><%= localStorage.getItem('email') %></a></li>
                     <li><a href="/users/sign_out" data-method="delete">Sign out</a></li>
                     <%} else {%>
                     <li><a href="/#/login" title="sign in" data-toggle="modal" data-target="#modal">Register | Sign in</a></li>

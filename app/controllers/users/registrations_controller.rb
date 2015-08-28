@@ -10,8 +10,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    puts "Hello! Registration!"
     super
+    puts "Hello! Registration!"
   end
 
   # GET /resource/edit

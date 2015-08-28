@@ -5,6 +5,7 @@ window.ArtistGallery =
   Views: {}
   Vent: {}
   initialize: ->
+#    ArtistGallery.currentUser = ArtistGallery.LoginHelpers.getCookie('user_email')
     #alert 'before router ctor'
     #new ArtistGallery.Routers.HomePageRouter()
     new ArtistGallery.Routers.ArtistGalleryRouter()

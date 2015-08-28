@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
-  # devise_scope :user do
-  #   delete '/users/sessions/:id' => 'users/sessions#destroy'
-  #   post '/users/sessions' => 'users/sessions#create'
-  # end
+  devise_scope :user do
+    delete '/users/sessions/' => 'users/sessions#destroy'
+    post '/users/sessions' => 'users/sessions#create'
+  end
 
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
 

@@ -2,7 +2,14 @@ class ArtItemsController < ApplicationController
 
   def index
     @art_items = ArtItem.all
-    puts params[:id]
+    puts 'from fetch'
+    puts
+    puts
+    puts
+    puts
+    puts
+    puts
+    puts params[:great]
     #binding.pry
     respond_to do |format|
        format.json { render json: @art_items }

@@ -29,6 +29,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.initialize = function() {
+    ArtistGallery.loginmodel = new ArtistGallery.Models.Login();
     this.renderLogin();
     this.footerView = new FooterView;
     this.authors = new ArtistGallery.Collections.AuthorsCollection();
@@ -44,12 +45,13 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   ArtistGalleryRouter.prototype.index = function() {
     this.headerView = new HeaderView();
     this.view = new ArtistGallery.Views.Login({
-      model: new ArtistGallery.Models.Login()
+      model: ArtistGallery.loginmodel
     });
     $(".modal-content").html(this.view.render().el);
     this.art_items = new ArtistGallery.Collections.ArtItemsCollection();
     this.art_items.fetch({
-      reset: true
+        data: $.param({great: 'Hello'}),
+        reset: true,
     });
     this.homeView = new ArtistGallery.Views.HomePage.IndexView({
       collection: this.art_items
@@ -78,6 +80,20 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     return $(".modal-content").html(this.view.render().el);
   };
 
+  ArtistGalleryRouter.prototype.logout = function() {
+      console.log('from logout');
+      m = new ArtistGallery.Models.Login();
+      m.set({
+          id: localStorage.getItem('user_token')
+      });
+      m = new ArtistGallery.Models.Login();
+      m.set({
+          user_token: localStorage.getItem('user_token')
+      });
+      console.log(m);
+      m.destroy();
+      return
+  };
 
   ArtistGalleryRouter.prototype.showAuthors = function() {
       this.renderLogin();

@@ -1,6 +1,6 @@
 #ArtistGallery.Views.Login ||= {}
 
-class ArtistGallery.Views.Login extends Backbone.View
+class ArtistGallery.Views.Login1 extends Backbone.View
   template: JST["backbone/templates/mylogin1"]
 
   events:
@@ -12,10 +12,12 @@ class ArtistGallery.Views.Login extends Backbone.View
     @listenTo @model, "sync", @triggerLoggenIn
 
   triggerLoggenIn: ->
-    ArtistGallery.Vent.trigger "user:logged_in", @model.get('id'), @model.get('username')
+    alert('Success')
+#    ArtistGallery.Vent.trigger "user:logged_in", @model.get('id'), @model.get('username')
 
   renderError: ->
-    @$('.alert').html("Credentials are not valid").show()
+    alert('Error')
+#    @$('.alert').html("Credentials are not valid").show()
 
   login: (e) ->
     e.preventDefault()
