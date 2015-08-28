@@ -2,6 +2,7 @@
     Backbone._sync = Backbone.sync;
 
     Backbone.sync = function(method, model, options) {
+        alert(method);
         if (!options.noCSRF) {
             var beforeSend = options.beforeSend;
 

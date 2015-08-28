@@ -1,6 +1,6 @@
 #ArtistGallery.Views.Login ||= {}
 
-class ArtistGallery.Views.Login extends Backbone.View
+class ArtistGallery.Views.Login1 extends Backbone.View
   template: JST["backbone/templates/mylogin1"]
 
   events:
