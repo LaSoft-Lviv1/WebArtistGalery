@@ -29,14 +29,14 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.initialize = function() {
-    ArtistGallery.loginmodel = new ArtistGallery.Models.Login();
+    //ArtistGallery.loginmodel = new ArtistGallery.Models.Login();
       this.login_model = new ArtistGallery.Models.Login();
       ArtistGallery.LoginHelpers.reRenderLoginView(this.login_model);
     this.footerView = new FooterView;
     this.authors = new ArtistGallery.Collections.AuthorsCollection();
-    return this.authors.fetch({
-      reset: true
-    });
+    return //this.authors.fetch({
+    //  reset: true
+    //});
   };
 
   ArtistGalleryRouter.prototype.showArtItemToJSON = function() {
@@ -111,20 +111,23 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
       reset: true
     });
     this.view = new ArtistGallery.Views.Authors.IndextView({
-    collection: this.art_items
+        model: this.login_model,
+        collection: this.art_items
     });
     $("#content").html(this.view.render().el);
     return
   };
 
   ArtistGalleryRouter.prototype.howToBuy = function() {
-      this.renderLogin();
+      //this.renderLogin();
       this.headerHowToBuyView = new HeaderHowToBuyView();
     this.view = new ArtistGallery.Views.Login({
-      model: new ArtistGallery.Models.Login()
+        model: this.login_model
     });
     $(".modal-content").html(this.view.render().el);
-    this.howToBuy = new HowToBuyView();
+    this.howToBuy = new HowToBuyView({
+        model: this.login_model
+    });
     return
   };
 

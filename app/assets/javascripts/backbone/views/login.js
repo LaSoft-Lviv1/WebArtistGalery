@@ -36,17 +36,22 @@ ArtistGallery.Views.Login = (function(superClass) {
 
     Login.prototype.login = function(e) {
         e.preventDefault();
-        ArtistGallery.loginmodel.set({
-            email: this.$('#email').val()
-        });
-        ArtistGallery.loginmodel.set({
-            password: this.$('#password').val()
-        });
-        ArtistGallery.loginmodel.set({
+        this.model.set({
+            email: this.$('#email').val(),
+            password: this.$('#password').val(),
             remember_me: "0"
         });
+        //ArtistGallery.loginmodel.set({
+        //    email: this.$('#email').val()
+        //});
+        //ArtistGallery.loginmodel.set({
+        //    password: this.$('#password').val()
+        //});
+        //ArtistGallery.loginmodel.set({
+        //    remember_me: "0"
+        //});
         //console.log(this.model.toJSON());
-        ArtistGallery.loginmodel.save({}, {
+        this.model.save({}, {
             success: function (response) {
                 console.log(response.get('authentication_token'));
                 console.log(response.toJSON());
@@ -57,14 +62,14 @@ ArtistGallery.Views.Login = (function(superClass) {
                 console.log(response.toJSON());
             }
         });
-        ArtistGallery.loginmodel.set({
+        this.model.set({
             id: "1"
         });
-        this.model = ArtistGallery.loginmodel;
-        console.log(this.model);
+        //this.model = ArtistGallery.loginmodel;
+        //console.log(this.model);
         alert('login');
         $('#modal').modal('hide');
-        //window.location.href = '/#';
+        window.location.href = '/#';
         //this.model.save({
         //    success: function (response) {
         //        alert('succ');
