@@ -21,7 +21,7 @@ var base,
   IndexView.prototype.template = JST["backbone/templates/authors/index1"];
 
 	IndexView.prototype.initialize = function () {
-        ArtistGallery.LoginHelpers.reRenderLoginView();
+        ArtistGallery.LoginHelpers.reRenderLoginView(this.model);
 		this.listenTo(this.collection, "reset", this.addAllFromReset);
 	}
 

@@ -24,7 +24,7 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
     //console.log('home page init');
     //console.log(this.model);
     //console.log(this.collection);
-    //ArtistGallery.LoginHelpers.reRenderLoginView(this.model);
+    ArtistGallery.LoginHelpers.reRenderLoginView(this.model);
     //console.log('in home page index view initialize');
     return this.listenTo(this.collection, "reset", this.addAllFromReset);
   };
