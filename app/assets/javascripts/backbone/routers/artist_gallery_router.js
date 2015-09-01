@@ -30,7 +30,8 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
 
   ArtistGalleryRouter.prototype.initialize = function() {
     ArtistGallery.loginmodel = new ArtistGallery.Models.Login();
-    this.renderLogin();
+      this.login_model = new ArtistGallery.Models.Login();
+      ArtistGallery.LoginHelpers.reRenderLoginView(this.login_model);
     this.footerView = new FooterView;
     this.authors = new ArtistGallery.Collections.AuthorsCollection();
     return this.authors.fetch({
@@ -43,17 +44,19 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.index = function() {
+    this.login_model = new ArtistGallery.Models.Login();
     this.headerView = new HeaderView();
     this.view = new ArtistGallery.Views.Login({
-      model: ArtistGallery.loginmodel
+      model: this.login_model
     });
     $(".modal-content").html(this.view.render().el);
     this.art_items = new ArtistGallery.Collections.ArtItemsCollection();
     this.art_items.fetch({
         data: $.param({great: 'Hello'}),
-        reset: true,
+        reset: true
     });
     this.homeView = new ArtistGallery.Views.HomePage.IndexView({
+      model: this.login_model,
       collection: this.art_items
     });
     $("#content").html(this.homeView.render().el);
@@ -82,16 +85,17 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
 
   ArtistGalleryRouter.prototype.logout = function() {
       console.log('from logout');
-      m = new ArtistGallery.Models.Login();
-      m.set({
-          id: localStorage.getItem('user_token')
+      console.log(this.login_model);
+      this.login_model.set({
+          id: 1
       });
-      m = new ArtistGallery.Models.Login();
-      m.set({
-          user_token: localStorage.getItem('user_token')
+      console.log(this.login_model);
+      this.login_model.destroy({
+          data: $.param({user_token: localStorage.getItem('user_token')})
       });
-      console.log(m);
-      m.destroy();
+      localStorage.setItem('user_token', '');
+      localStorage.setItem('email', '');
+      window.location.href = '/#';
       return
   };
 

@@ -14,8 +14,7 @@ ArtistGallery.Views.Login = (function(superClass) {
 
     Login.prototype.events = {
         "click button.login": "login",
-        "click button.signup": "signup",
-        "click button.logout": "logout"
+        "click button.signup": "signup"
     };
 
     Login.prototype.initialize = function() {
@@ -23,13 +22,13 @@ ArtistGallery.Views.Login = (function(superClass) {
         return this.listenTo(this.model, "sync", this.triggerLoggenIn);
     };
 
-    Login.prototype.triggerLoggenIn = function(data) {
+    Login.prototype.triggerLoggenIn = function() {
         alert('SuccessOk');
         //alert(data.toJSON);
         return
     };
 
-    Login.prototype.renderError = function(data) {
+    Login.prototype.renderError = function() {
         //alert(data.toJSON);
         alert('Error');
         return
@@ -46,7 +45,7 @@ ArtistGallery.Views.Login = (function(superClass) {
         ArtistGallery.loginmodel.set({
             remember_me: "0"
         });
-        console.log(this.model.toJSON());
+        //console.log(this.model.toJSON());
         ArtistGallery.loginmodel.save({}, {
             success: function (response) {
                 console.log(response.get('authentication_token'));
@@ -61,7 +60,11 @@ ArtistGallery.Views.Login = (function(superClass) {
         ArtistGallery.loginmodel.set({
             id: "1"
         });
-
+        this.model = ArtistGallery.loginmodel;
+        console.log(this.model);
+        alert('login');
+        $('#modal').modal('hide');
+        //window.location.href = '/#';
         //this.model.save({
         //    success: function (response) {
         //        alert('succ');
