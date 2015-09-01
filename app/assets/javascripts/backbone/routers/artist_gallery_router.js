@@ -60,7 +60,6 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
       collection: this.art_items
     });
     $("#content").html(this.homeView.render().el);
-
     return
   };
 
