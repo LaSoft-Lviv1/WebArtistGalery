@@ -1,0 +1,106 @@
+.btn-wide{
+	width: 100%;
+}
+
+.col-without-padding{
+padding: 0px;
+}
+
+.details button {
+	margin: 0px;
+}
+
+.modal {
+	top: -4%; bottom: -52%;
+}
+
+.modal-body {
+	max-height:100%; height:85%;
+} 
+
+.modal.modal-wide .modal-dialog {
+    width: 100%;
+}
+
+.modal-dialog,
+.modal-content {
+    height: 80%;
+}
+
+#modal-fullsize-img {
+    padding: 0px;
+}
+
+#modal-fullsize-img .modal-body {
+    padding: 0px;
+}
+
+#modal-fullsize-img img {
+    display: block;
+    margin: 0px auto;
+}
+
+#modal-fullsize-img .modal-wide .modal-body {
+    overflow-y: auto;
+    min-height: 80%;
+}
+
+.detailed-view img {
+    width: 100%;
+}
+
+.detailed-view {
+    margin-top: 10px;
+}
+
+.details div:first-child {
+    font-weight: bold;
+}
+
+.image-container .button-bar {
+    width: 114px;
+    margin-top: -55px;
+    display: none;
+}
+
+.image-container:hover .button-bar {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btn-round {
+    border: none;
+    width: 55px;
+    height: 55px;
+    line-height: 55px;
+    margin: none;
+    background-color: #444;
+    color: #fff;
+    font-size: 2em;
+    border-radius: 50%;
+    opacity: 0.7;
+}
+
+.btn-round:hover {
+    color: #ddd;
+}
+
+.btn-round span {
+    vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+    .details div {
+        margin-left: 10px;
+    }
+    .details nav {
+        margin-top: 10px;
+        margin-bottom: 10px;
+        border: none;
+        background-color: inherit;
+    }
+    .details button {
+    	margin-left: -10px;
+    }
+}
