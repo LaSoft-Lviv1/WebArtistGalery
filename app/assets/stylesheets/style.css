@@ -224,6 +224,7 @@ div.container.header {
   /*border: 1px solid black;*/
   background-color: #eee;
   width: 270px;
+  height: 400px;
 }
 /* кінець обгортки для картини */
 
@@ -231,9 +232,11 @@ div.container.header {
   color: black;
 }
 
-img.lazy {
+.home_item {
+  margin-right: 0;
   width: 250px;
-  height: auto;
+  max-height: 350px;
+  overflow: hidden;
 }
 
 .footer{
