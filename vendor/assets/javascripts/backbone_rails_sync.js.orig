@@ -2,6 +2,10 @@
     Backbone._sync = Backbone.sync;
 
     Backbone.sync = function(method, model, options) {
+<<<<<<< HEAD
+        //alert(method);
+=======
+>>>>>>> add-art-item view added
         if (!options.noCSRF) {
             var beforeSend = options.beforeSend;
 
