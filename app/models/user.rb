@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   enum role: [:customer, :artist, :admin]
 
   has_one :author
+  has_one :customer
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,

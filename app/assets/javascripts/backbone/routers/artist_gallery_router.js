@@ -104,6 +104,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
       });
       localStorage.setItem('user_token', '');
       localStorage.setItem('email', '');
+      localStorage.setItem('role', '');
       window.location.href = '/#';
       return
   };

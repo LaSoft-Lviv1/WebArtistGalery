@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150902102752) do
+ActiveRecord::Schema.define(version: 20150902165313) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20150902102752) do
     t.string   "second_name",  null: false
     t.string   "info_about"
     t.string   "photo"
-    t.string   "phone_number", null: false
+    t.string   "phone_number"
     t.integer  "city_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
@@ -80,6 +80,15 @@ ActiveRecord::Schema.define(version: 20150902102752) do
   end
 
   add_index "colors", ["name"], name: "index_colors_on_name", using: :btree
+
+  create_table "customers", force: :cascade do |t|
+    t.string   "phone"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+  end
+
+  add_index "customers", ["user_id"], name: "index_customers_on_user_id", using: :btree
 
   create_table "media", force: :cascade do |t|
     t.string   "name",       null: false
@@ -140,4 +149,5 @@ ActiveRecord::Schema.define(version: 20150902102752) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   add_foreign_key "authors", "users"
+  add_foreign_key "customers", "users"
 end

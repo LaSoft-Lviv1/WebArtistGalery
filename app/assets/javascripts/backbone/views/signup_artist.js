@@ -49,6 +49,7 @@ return this.model.save({}, {
         console.log(response.toJSON());
         localStorage.setItem('user_token', response.get('authentication_token'));
         localStorage.setItem('email', response.get('email'));
+        localStorage.setItem('role', response.get('role'));
     },
     error: function (response) {
         console.log(response.toJSON());
