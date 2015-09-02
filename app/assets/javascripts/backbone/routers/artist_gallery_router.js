@@ -80,9 +80,6 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     return
   };
 
-        return
-    };
-
     ArtistGalleryRouter.prototype.signup = function() {
         this.view = new SignupView();
         return
