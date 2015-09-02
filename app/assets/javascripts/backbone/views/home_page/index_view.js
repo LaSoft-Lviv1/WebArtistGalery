@@ -21,11 +21,8 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
   IndexView.prototype.template = JST["backbone/templates/home_page/index"];
 
   IndexView.prototype.initialize = function() {
-    //console.log('home page init');
-    //console.log(this.model);
-    //console.log(this.collection);
-    ArtistGallery.LoginHelpers.reRenderLoginView(this.model);
-    //console.log('in home page index view initialize');
+    ArtistGallery.LoginHelpers.reRenderLoginView();
+    console.log('in home page index view initialize');
     return this.listenTo(this.collection, "reset", this.addAllFromReset);
   };
 
@@ -39,9 +36,9 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
   };
 
   IndexView.prototype.addAll = function() {
-    //console.log('in addAll start');
-    //console.log(this.collection.toJSON());
-    //console.log('in addAll start');
+    console.log('in addAll start');
+    console.log(this.collection.toJSON());
+    console.log('in addAll start');
     this.collection.forEach(this.addOneArtItemForHomePage, this);
     this.collection.forEach(this.addOneArtItemForCarousel, this);
     console.log('in addAll finish');
@@ -51,33 +48,33 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
 
   IndexView.prototype.addOneArtItemForCarousel = function(art_item) {
     var viewOneArtItem;
-    //console.log('in addOneArtItem start');
-    //console.log(art_item.toJSON());
+    console.log('in addOneArtItem start');
+    console.log(art_item.toJSON());
     viewOneArtItem = new ArtistGallery.Views.HomePage.PaintingForCarouselView({
       model: art_item
     });
     this.$(".variable-width").append(viewOneArtItem.render().el);
-    //return console.log('in addOneArtItem finish');
+    return console.log('in addOneArtItem finish');
   };
 
   IndexView.prototype.addOneArtItemForHomePage = function(art_item) {
     var viewOneArtItem;
-    //console.log('in addOneArtItem start');
-    //console.log(art_item.toJSON());
+    console.log('in addOneArtItem start');
+    console.log(art_item.toJSON());
     viewOneArtItem = new ArtistGallery.Views.HomePage.ArtItemView({
       model: art_item
     });
     this.$(".container-fluid").append(viewOneArtItem.render().el);
-    //return console.log('in addOneArtItem finish');
+    return console.log('in addOneArtItem finish');
   };
 
   IndexView.prototype.render = function() {
     console.log('in render');
-    console.log(this.collection);
+    console.log(this.collection.toJSON());
     this.collection.forEach(this.addOneArtItemForCarousel, this);
     this.collection.forEach(this.addOneArtItemForHomePage, this);
     this.$el.html(this.template());
-    //console.log('in render index view art_item finish');
+    console.log('in render index view art_item finish');
     return this;
   };
 
