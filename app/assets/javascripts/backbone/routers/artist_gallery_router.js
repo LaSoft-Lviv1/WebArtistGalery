@@ -47,8 +47,8 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
 
   ArtistGalleryRouter.prototype.initialize = function() {
     //ArtistGallery.loginmodel = new ArtistGallery.Models.Login();
-      this.login_model = new ArtistGallery.Models.Login();
-      ArtistGallery.LoginHelpers.reRenderLoginView(this.login_model);
+    this.login_model = new ArtistGallery.Models.Login();
+    ArtistGallery.LoginHelpers.reRenderLoginView(this.login_model);
     this.footerView = new FooterView;
     this.authors = new ArtistGallery.Collections.AuthorsCollection();
     return //this.authors.fetch({
@@ -56,9 +56,9 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     //});
   };
 
-    ArtistGalleryRouter.prototype.showArtItemToJSON = function() {
-        return console.log(this.art_items.toJSON());
-    };
+  ArtistGalleryRouter.prototype.showArtItemToJSON = function() {
+      return console.log(this.art_items.toJSON());
+  };
 
   ArtistGalleryRouter.prototype.index = function() {
     this.login_model = new ArtistGallery.Models.Login();
@@ -80,24 +80,17 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     return
   };
 
-    ArtistGalleryRouter.prototype.signup = function() {
-        this.view = new SignupView();
-        return
-    };
+  ArtistGalleryRouter.prototype.signup = function() {
+      this.view = new SignupView();
+      return
+  };
 
-    // ArtistGalleryRouter.prototype.signup = function() {
-    //   this.view = new ArtistGallery.Views.Signup({
-    //     model: new ArtistGallery.Models.Registration()
-    //   });
-    //   return $(".modal-content").html(this.view.render().el);
-    // };
-
-    ArtistGalleryRouter.prototype.login = function() {
-        this.view = new ArtistGallery.Views.Login({
-            model: new ArtistGallery.Models.Login()
-        });
-        return $(".modal-content").html(this.view.render().el);
-    };
+  ArtistGalleryRouter.prototype.login = function() {
+      this.view = new ArtistGallery.Views.Login({
+          model: new ArtistGallery.Models.Login()
+      });
+      return $(".modal-content").html(this.view.render().el);
+  };
 
   ArtistGalleryRouter.prototype.logout = function() {
       console.log('from logout');
@@ -116,8 +109,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.showAuthors = function() {
-      this.renderLogin();
-      this.headerauthorsView = new HeaderAuthorsView();
+    this.headerauthorsView = new HeaderAuthorsView();
     this.view = new ArtistGallery.Views.Login({
       model: new ArtistGallery.Models.Login()
     });
@@ -135,8 +127,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.howToBuy = function() {
-      //this.renderLogin();
-      this.headerHowToBuyView = new HeaderHowToBuyView();
+    this.headerHowToBuyView = new HeaderHowToBuyView();
     this.view = new ArtistGallery.Views.Login({
         model: this.login_model
     });
@@ -150,18 +141,17 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   ArtistGalleryRouter.prototype.newArtItem = function() {
         this.headerView = new HeaderView();
         this.addArtItemView = new AddArtItemView();
-        $("#content").html(this.view.render().el);
         return
     };
 
-    ArtistGalleryRouter.prototype.show = function(id) {
+  ArtistGalleryRouter.prototype.show = function(id) {
         var author;
         author = this.authors.get(id);
         this.viewShow = new ArtistGallery.Views.Authors.ShowView({
             model: author
         });
         return $("#content").html(this.viewShow.render().el);
-    };
+  };
 
     ArtistGalleryRouter.prototype.newAuthor = function() {
         this.viewNewAuthor = new ArtistGallery.Views.Authors.NewView({
@@ -178,16 +168,6 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
             model: author
         });
         return $("#content").html(this.view.render().el);
-    };
-
-    ArtistGalleryRouter.prototype.renderLogin = function() {
-        //$('#modal').on('hidden.bs.modal', function (e) {
-        //    this.view = new ArtistGallery.Views.Login({
-        //        model: new ArtistGallery.Models.Login()
-        //    });
-        //    $(".modal-content").html(this.view.render().el);
-        //});
-        //alert('from script');
     };
 
     return ArtistGalleryRouter;

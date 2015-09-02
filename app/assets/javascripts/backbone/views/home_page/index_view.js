@@ -40,6 +40,7 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
     console.log(this.collection.toJSON());
     console.log('in addAll start');
     this.collection.forEach(this.addOneArtItemForHomePage, this);
+    this.collection.first(this.addOneArtItemForHomePage, this);
     this.collection.forEach(this.addOneArtItemForCarousel, this);
     console.log('in addAll finish');
     var carouselscriptView = new CarouselscriptView();
