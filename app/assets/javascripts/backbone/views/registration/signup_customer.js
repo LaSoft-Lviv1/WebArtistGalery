@@ -10,7 +10,7 @@
       return SignupCustomer.__super__.constructor.apply(this, arguments);
     }
 
-    SignupCustomer.prototype.template = JST["backbone/templates/signup_customer"];
+    SignupCustomer.prototype.template = JST["backbone/templates/registration/signup_customer"];
 
     SignupCustomer.prototype.events = {
       "click button.reg": "signup"
@@ -26,20 +26,14 @@
     e.preventDefault();
 
     this.model.set({
-      email: this.$('#email').val()
+        email: this.$('#email').val(),
+        password: this.$('#password').val(),
+        password_confirmation: this.$('#password_confirmation').val(),
+        role: 'customer'
     });
-    this.model.set({
-      password: this.$('#password').val()
-    });
-    this.model.set({
-      password_confirmation: this.$('#password_confirmation').val()
-    });
-    this.model.set({
-       role: 'customer'
-    });
-    console.log(this.model.toJSON());
-    return this.model.save(
-        {}, {
+
+    //console.log(this.model.toJSON());
+    return this.model.save({}, {
             success: function (response) {
                 console.log(response.get('authentication_token'));
                 console.log(response);

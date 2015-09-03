@@ -38,15 +38,13 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
         'howToBuy': "howToBuy",
         'aboutUs': "howToBuy",
         'FAQ': "howToBuy",
-        'login': "login",
-        'logout': "logout",
-        'signup': "signup",
+        //'signin': "signin",
+        'signout': "signout",
         'artItems/new': "newArtItem",
         '.*': "index"
     };
 
   ArtistGalleryRouter.prototype.initialize = function() {
-    //ArtistGallery.loginmodel = new ArtistGallery.Models.Login();
     this.login_model = new ArtistGallery.Models.Login();
     ArtistGallery.LoginHelpers.reRenderLoginView(this.login_model);
     this.footerView = new FooterView;
@@ -80,19 +78,14 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     return
   };
 
-  ArtistGalleryRouter.prototype.signup = function() {
-      this.view = new SignupView();
-      return
-  };
+  //ArtistGalleryRouter.prototype.signin = function() {
+  //    this.view = new ArtistGallery.Views.Login({
+  //        model: new ArtistGallery.Models.Login()
+  //    });
+  //    return $(".modal-content").html(this.view.render().el);
+  //};
 
-  ArtistGalleryRouter.prototype.login = function() {
-      this.view = new ArtistGallery.Views.Login({
-          model: new ArtistGallery.Models.Login()
-      });
-      return $(".modal-content").html(this.view.render().el);
-  };
-
-  ArtistGalleryRouter.prototype.logout = function() {
+  ArtistGalleryRouter.prototype.signout = function() {
       console.log('from logout');
       console.log(this.login_model);
       this.login_model.set({
