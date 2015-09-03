@@ -27,9 +27,9 @@
 				<ul class="nav navbar-nav navbar-right" id="displaynone">
 					<% if (localStorage.getItem('email') != '') { %>
                     <li><a href="/#authors"><%= localStorage.getItem('email') %></a></li>
-                    <li><a href="/#logout">Sign out</a></li>
+                    <li><a href="/#signout">Sign out</a></li>
                     <%} else {%>
-                    <li><a href="/#/login" title="sign in" data-toggle="modal" data-target="#modal">Register | Sign in</a></li>
+                    <li><a href="/#signin" title="sign in" data-toggle="modal" data-target="#modal">Register | Sign in</a></li>
                     <% } %>
 						<button class="btn srch" title="Search" type="button" id="btnlanglogsrch">
 							<a href="#" class="navbar-button srchbtn" style="color:#FFF;"><span class="glyphicon glyphicon-search"></span></a>

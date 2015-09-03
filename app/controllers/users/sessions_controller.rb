@@ -33,7 +33,7 @@ class Users::SessionsController < Devise::SessionsController
         sign_in(:user, user)
         # Note that the data which should be returned depends heavily of the API client needs.
         # render status: 200, json: { email: user.email, authentication_token: user.authentication_token }
-        render :json=> {:success=>true, :authentication_token=>user.authentication_token, :email=>user.email}
+        render :json=> {:success=>true, :authentication_token=>current_user.authentication_token, :email=>current_user.email, :role =>current_user.role}
         # redirect_to '/#'
       else
         # render status: 401, json: { message: 'Invalid email or password.' }

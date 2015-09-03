@@ -10,7 +10,7 @@ ArtistGallery.Views.Login = (function(superClass) {
         return Login.__super__.constructor.apply(this, arguments);
     }
 
-    Login.prototype.template = JST["backbone/templates/mylogin1"];
+    Login.prototype.template = JST["backbone/templates/registration/login"];
 
     Login.prototype.events = {
         "click button.login": "login",
@@ -23,14 +23,12 @@ ArtistGallery.Views.Login = (function(superClass) {
     };
 
     Login.prototype.triggerLoggenIn = function() {
-        alert('SuccessOk');
-        //alert(data.toJSON);
+        //alert('SuccessOk');
         return
     };
 
     Login.prototype.renderError = function() {
-        //alert(data.toJSON);
-        alert('Error');
+        //alert('Error');
         return
     };
 
@@ -41,22 +39,14 @@ ArtistGallery.Views.Login = (function(superClass) {
             password: this.$('#password').val(),
             remember_me: "0"
         });
-        //ArtistGallery.loginmodel.set({
-        //    email: this.$('#email').val()
-        //});
-        //ArtistGallery.loginmodel.set({
-        //    password: this.$('#password').val()
-        //});
-        //ArtistGallery.loginmodel.set({
-        //    remember_me: "0"
-        //});
-        //console.log(this.model.toJSON());
+
         this.model.save({}, {
             success: function (response) {
                 console.log(response.get('authentication_token'));
                 console.log(response.toJSON());
                 localStorage.setItem('user_token', response.get('authentication_token'));
                 localStorage.setItem('email', response.get('email'));
+                localStorage.setItem('role', response.get('role'));
             },
             error: function (response) {
                 console.log(response.toJSON());
@@ -65,22 +55,10 @@ ArtistGallery.Views.Login = (function(superClass) {
         this.model.set({
             id: "1"
         });
-        //this.model = ArtistGallery.loginmodel;
-        //console.log(this.model);
-        alert('login');
+
+        //alert('login');
         $('#modal').modal('hide');
         window.location.href = '/#';
-        //this.model.save({
-        //    success: function (response) {
-        //        alert('succ');
-        //        //localStorage.setItem('auth_token', 'red');
-        //        //localStorage.setItem('email', 'Helvetica');
-        //    },
-        //    error: function (response) {
-        //        alert('err');
-        //        //$(that.el).html(that.template(response.toJSON()));
-        //    }
-        //});
         return
     };
 
@@ -88,14 +66,6 @@ ArtistGallery.Views.Login = (function(superClass) {
         e.preventDefault();
         this.signupView = new SignupView();
         return $(".modal-content").html(this.signupView.render().el);
-    };
-
-    Login.prototype.logout = function(e) {
-        e.preventDefault();
-        debugger;
-        ArtistGallery.loginmodel.destroy();
-        alert('destroy not method');
-        return
     };
 
     Login.prototype.render = function() {

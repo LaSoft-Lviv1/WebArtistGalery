@@ -36,9 +36,9 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
   };
 
   IndexView.prototype.addAll = function() {
-    console.log('in addAll start');
-    console.log(this.collection.toJSON());
-    console.log('in addAll start');
+    //console.log('in addAll start');
+    //console.log(this.collection.toJSON());
+    //console.log('in addAll start');
     this.collection.forEach(this.addOneArtItemForHomePage, this);
     this.collection.first(this.addOneArtItemForHomePage, this);
     this.collection.forEach(this.addOneArtItemForCarousel, this);
@@ -49,8 +49,8 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
 
   IndexView.prototype.addOneArtItemForCarousel = function(art_item) {
     var viewOneArtItem;
-    console.log('in addOneArtItem start');
-    console.log(art_item.toJSON());
+    //console.log('in addOneArtItem start');
+    //console.log(art_item.toJSON());
     viewOneArtItem = new ArtistGallery.Views.HomePage.PaintingForCarouselView({
       model: art_item
     });
@@ -60,8 +60,8 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
 
   IndexView.prototype.addOneArtItemForHomePage = function(art_item) {
     var viewOneArtItem;
-    console.log('in addOneArtItem start');
-    console.log(art_item.toJSON());
+    //console.log('in addOneArtItem start');
+    //console.log(art_item.toJSON());
     viewOneArtItem = new ArtistGallery.Views.HomePage.ArtItemView({
       model: art_item
     });
@@ -71,11 +71,11 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
 
   IndexView.prototype.render = function() {
     console.log('in render');
-    console.log(this.collection.toJSON());
+    //console.log(this.collection.toJSON());
     this.collection.forEach(this.addOneArtItemForCarousel, this);
     this.collection.forEach(this.addOneArtItemForHomePage, this);
     this.$el.html(this.template());
-    console.log('in render index view art_item finish');
+    //console.log('in render index view art_item finish');
     return this;
   };
 

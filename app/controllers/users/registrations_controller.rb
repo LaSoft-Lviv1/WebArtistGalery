@@ -1,5 +1,5 @@
 class Users::RegistrationsController < Devise::RegistrationsController
-# before_filter :configure_sign_up_params, only: [:create]
+before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
   respond_to :json
 
@@ -10,8 +10,43 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # POST /resource
   def create
-    super
-    puts "Hello! Registration!"
+
+    build_resource(sign_up_params)
+
+    resource.save
+    yield resource if block_given?
+    if resource.persisted?
+      if resource.active_for_authentication?
+        set_flash_message :notice, :signed_up if is_flashing_format?
+        sign_up(resource_name, resource)
+        # respond_with resource, location: after_sign_up_path_for(resource)
+      else
+        set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
+        expire_data_after_sign_in!
+        # respond_with resource, location: after_inactive_sign_up_path_for(resource)
+      end
+    else
+      clean_up_passwords resource
+      set_minimum_password_length
+      # respond_with resource
+    end
+
+    # super
+    puts 'Hello! Registration!'
+    if current_user
+      if current_user.role == 'artist'
+        author = Author.create( {first_name: params[:user][:first_name], second_name: params[:user][:second_name], user_id: current_user.id} )
+        render :json=> {:success=>true, :authentication_token=>current_user.authentication_token, :email=>current_user.email, :role =>current_user.role}
+        # binding.pry
+      elsif current_user.role == 'customer'
+        customer = Customer.create( {user_id: current_user.id} )
+        render :json=> {:success=>true, :authentication_token=>current_user.authentication_token, :email=>current_user.email, :role =>current_user.role}
+        # binding.pry
+      end
+    else
+      render :json=> {:success=>false, :message=>"Some mistake!"}, :status=>401
+    end
+    # binding.pry
   end
 
   # GET /resource/edit
@@ -41,9 +76,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
-  # def configure_sign_up_params
-  #   devise_parameter_sanitizer.for(:sign_up) << :attribute
-  # end
+  def configure_sign_up_params
+    devise_parameter_sanitizer.for(:sign_up) << :role
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_account_update_params

@@ -8,11 +8,12 @@ class Author < ActiveRecord::Base
             format: { with: /\A\w+\z/i, message: 'Only allows letters and numbers' },
             length: { in: 2..40, message: 'Length must be between 2 and 40' }
 
-  validates :email_address, email: true
+  # validates :email_address, email: true
 
   mount_uploader :photo, PhotoUploader
 
   belongs_to :city
+  belongs_to :user
 
   has_many :art_items
 end

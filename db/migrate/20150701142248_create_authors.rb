@@ -5,8 +5,7 @@ class CreateAuthors < ActiveRecord::Migration
       t.string :second_name, index: true, null: false
       t.string :info_about, null: true
       t.string :photo, null: true
-      t.string :phone_number, null: false
-      t.string :email_address, null: false
+      t.string :phone_number, null: true
       t.references :city
 
       t.timestamps null: false
