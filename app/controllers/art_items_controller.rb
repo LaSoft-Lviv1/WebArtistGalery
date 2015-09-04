@@ -2,6 +2,7 @@ class ArtItemsController < ApplicationController
 
   def index
     @art_items = ArtItem.all
+    @sorted_art_items = @art_items.sort_by { |obj| obj.created_at }
     puts 'from fetch'
     puts
     puts
@@ -12,7 +13,7 @@ class ArtItemsController < ApplicationController
     puts params[:great]
     #binding.pry
     respond_to do |format|
-       format.json { render json: @art_items }
+       format.json { render json: @sorted_art_items.reverse }
        format.html { render action: "index" }
       end
     #render json: @art_items
