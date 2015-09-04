@@ -13,7 +13,7 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
     this.addOneArtItemForHomePage = bind(this.addOneArtItemForHomePage, this);
     this.addOneArtItemForCarousel = bind(this.addOneArtItemForCarousel, this);
     this.addAll = bind(this.addAll, this);
-    this.addAllFromReset = bind(this.addAllFromReset, this);
+    this.addAllItems = bind(this.addAllItems, this);
     this.initialize = bind(this.initialize, this);
     return IndexView.__super__.constructor.apply(this, arguments);
   };
@@ -23,16 +23,11 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
   IndexView.prototype.initialize = function() {
     ArtistGallery.LoginHelpers.reRenderLoginView();
     console.log('in home page index view initialize');
-    return this.listenTo(this.collection, "reset", this.addAllFromReset);
+    return this.listenTo(this.collection, "reset", this.addAll);
   };
 
   IndexView.prototype.addToCollection = function(model) {
     return this.collection.add(model);
-  };
-
-  IndexView.prototype.addAllFromReset = function() {
-    console.log('from reset');
-    return this.addAll();
   };
 
   IndexView.prototype.addAll = function() {
@@ -40,7 +35,6 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
     console.log(this.collection.toJSON());
     console.log('in addAll start');
     this.collection.forEach(this.addOneArtItemForHomePage, this);
-    this.collection.first(this.addOneArtItemForHomePage, this);
     this.collection.forEach(this.addOneArtItemForCarousel, this);
     console.log('in addAll finish');
     var carouselscriptView = new CarouselscriptView();
