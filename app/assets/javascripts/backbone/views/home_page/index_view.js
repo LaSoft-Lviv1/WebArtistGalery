@@ -13,28 +13,75 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
     this.addOneArtItemForHomePage = bind(this.addOneArtItemForHomePage, this);
     this.addOneArtItemForCarousel = bind(this.addOneArtItemForCarousel, this);
     this.addAll = bind(this.addAll, this);
-    this.addAllItems = bind(this.addAllItems, this);
+    this.addAllFromReset = bind(this.addAllFromReset, this);
     this.initialize = bind(this.initialize, this);
     return IndexView.__super__.constructor.apply(this, arguments);
   };
 
   IndexView.prototype.template = JST["backbone/templates/home_page/index"];
 
+  //  IndexView.prototype.events = {
+  //    "scroll": "scroll"
+  //};
+
+    function screenHeight(){
+        return $.browser.opera? window.innerHeight : $(window).height();
+    }
+
+    IndexView.prototype.scroll = function() {
+
+        if (Backbone.History.started && Backbone.history.getFragment() == "" && this.index < this.collection.length) {
+            if ((document.body.scrollHeight - (document.body.scrollTop + screenHeight())) < 100) {
+                temp = this.index;
+                for (i = this.index; i < (temp + 3); i++) {
+                    if (this.index < this.collection.length) {
+                        //console.log(this.index);
+                        this.addOneArtItemForHomePage(this.collection.at(i));
+                        this.index += 1;
+                    }
+                }
+                //console.log('<150');
+            }else{
+                //console.log('>150');
+            }
+        }
+
+        return
+    };
+
   IndexView.prototype.initialize = function() {
+    //catch scroll event
+    _.bindAll(this, 'scroll');
+    // bind to window
+    $(window).scroll(this.scroll);
+    this.index = 0;
     ArtistGallery.LoginHelpers.reRenderLoginView();
-    console.log('in home page index view initialize');
-    return this.listenTo(this.collection, "reset", this.addAll);
+    //console.log('in home page index view initialize');
+    return this.listenTo(this.collection, "reset", this.addAllFromReset);
   };
 
   IndexView.prototype.addToCollection = function(model) {
     return this.collection.add(model);
   };
 
+  IndexView.prototype.addAllFromReset = function() {
+    console.log('from reset');
+    return this.addAll();
+  };
+
   IndexView.prototype.addAll = function() {
     //console.log('in addAll start');
-    //console.log(this.collection.toJSON());
-    //console.log('in addAll start');
-    this.collection.forEach(this.addOneArtItemForHomePage, this);
+    //console.log(this.collection.first().toJSON());
+    //  console.log(this.collection.at(1).toJSON());
+    console.log('in addAll start');
+      for (i = this.index; i < 3; i++) {
+          if (this.index < this.collection.length) {
+              //console.log(this.index);
+              this.addOneArtItemForHomePage(this.collection.at(i));
+              this.index += 1;
+          }
+      };
+    //this.collection.forEach(this.addOneArtItemForHomePage, this);
     this.collection.forEach(this.addOneArtItemForCarousel, this);
     console.log('in addAll finish');
     var carouselscriptView = new CarouselscriptView();
@@ -65,9 +112,11 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
 
   IndexView.prototype.render = function() {
     console.log('in render');
+    this.index = 0;
+      //console.log(this.index);
     //console.log(this.collection.toJSON());
-    this.collection.forEach(this.addOneArtItemForCarousel, this);
-    this.collection.forEach(this.addOneArtItemForHomePage, this);
+    //this.collection.forEach(this.addOneArtItemForCarousel, this);
+    //this.collection.forEach(this.addOneArtItemForHomePage, this);
     this.$el.html(this.template());
     //console.log('in render index view art_item finish');
     return this;
