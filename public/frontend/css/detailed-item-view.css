@@ -1,97 +1,96 @@
-.btn-wide{
-	width: 100%;
+.btn-wide {
+  width: 100%;
 }
 
-.col-without-padding{
-padding: 0px;
+.col-without-padding {
+  padding: 0px;
 }
 
 .details button {
-    margin: 0px;
+  margin: 0px;
 }
 
 .modal-dialog,
 .modal-content {
-    display: block;
-    width: auto;
-    margin: 0px;
-    height: 100vh;
-    max-height: 100%;
+  display: block;
+  width: auto;
+  margin: 0px;
+  height: auto;
+  max-height: 100%;
 }
 
 .img-responsive-height {
   display: block;
   width: auto;
-  max-height: 100%;
+  max-height: 100vmin;
   margin: 0px auto;
 }
 
 #modal-fullsize-img.modal-wide .modal-body {
-    height: 90%;
+  height: 90%;
 }
 
 #modal-fullsize-img,
 #modal-fullsize-img .modal-body {
-    padding: 0px;
+  padding: 0px;
 }
 
 .detailed-view img {
-    width: 100%;
+  width: 100%;
 }
 
 .detailed-view {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .details div:first-child {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 .image-container .button-bar {
-    width: 114px;
-    margin-top: -55px;
-    display: none;
+  width: 114px;
+  margin-top: -55px;
+  display: none;
 }
 
 .image-container:hover .button-bar {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-
 .btn-round {
-    border: none;
-    width: 55px;
-    height: 55px;
-    line-height: 55px;
-    margin: none;
-    background-color: #444;
-    color: #fff;
-    font-size: 2em;
-    border-radius: 50%;
-    opacity: 0.7;
+  border: none;
+  width: 55px;
+  height: 55px;
+  line-height: 55px;
+  margin: none;
+  background-color: #444;
+  color: #fff;
+  font-size: 2em;
+  border-radius: 50%;
+  opacity: 0.7;
 }
 
 .btn-round:hover {
-    color: #ddd;
+  color: #ddd;
 }
 
 .btn-round span {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 @media (max-width: 768px) {
-    .details div {
-        margin-left: 10px;
-    }
-    .details nav {
-        margin-top: 10px;
-        margin-bottom: 10px;
-        border: none;
-        background-color: inherit;
-    }
-    .details button {
-    	margin-left: -10px;
-    }
+  .details div {
+    margin-left: 10px;
+  }
+  .details nav {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    background-color: inherit;
+  }
+  .details button {
+    margin-left: -10px;
+  }
 }
