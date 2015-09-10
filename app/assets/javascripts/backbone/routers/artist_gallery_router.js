@@ -38,9 +38,9 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
         'howToBuy': "howToBuy",
         'aboutUs': "howToBuy",
         'FAQ': "howToBuy",
-        //'signin': "signin",
         'signout': "signout",
         'artItems/new': "newArtItem",
+        'artItems/:id': "detailedArtItem",
         '.*': "index"
     };
 
@@ -78,13 +78,6 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     return
   };
 
-  //ArtistGalleryRouter.prototype.signin = function() {
-  //    this.view = new ArtistGallery.Views.Login({
-  //        model: new ArtistGallery.Models.Login()
-  //    });
-  //    return $(".modal-content").html(this.view.render().el);
-  //};
-
   ArtistGalleryRouter.prototype.signout = function() {
       console.log('from logout');
       console.log(this.login_model);
@@ -120,6 +113,29 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     return
   };
 
+  ArtistGalleryRouter.prototype.detailedArtItem = function(id) {
+      this.headerView = new HeaderView();
+      this.view = new ArtistGallery.Views.Login({
+          model: new ArtistGallery.Models.Login()
+      });
+      $(".modal-content").html(this.view.render().el);
+      this.art_items = new ArtistGallery.Collections.ArtItemsCollection();
+      this.art_items.fetch({
+          reset: true,
+          success: function (collection, response) {
+              //console.log(collection);
+              this.art_item = collection.get(id);
+              //console.log(this.art_item);
+              var view = new DetailedArtItemView({
+                  model: this.art_item,
+                  collection: collection
+              });
+              $("#content").html(view.render().el);
+          }
+      });
+      return
+    };
+
   ArtistGalleryRouter.prototype.howToBuy = function() {
     this.headerHowToBuyView = new HeaderHowToBuyView();
     this.view = new ArtistGallery.Views.Login({
@@ -133,10 +149,14 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.newArtItem = function() {
-        this.headerView = new HeaderView();
-        this.addArtItemView = new AddArtItemView();
-        $("#content").html(this.addArtItemView.render().el);
-        return
+      this.headerView = new HeaderView();
+      this.view = new ArtistGallery.Views.Login({
+          model: new ArtistGallery.Models.Login()
+      });
+      $(".modal-content").html(this.view.render().el);
+      this.addArtItemView = new AddArtItemView();
+      $("#content").html(this.addArtItemView.render().el);
+      return
     };
 
   ArtistGalleryRouter.prototype.show = function(id) {
@@ -148,23 +168,23 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
         return $("#content").html(this.viewShow.render().el);
   };
 
-    ArtistGalleryRouter.prototype.newAuthor = function() {
-        this.viewNewAuthor = new ArtistGallery.Views.Authors.NewView({
-            collection: this.authors
-        });
-        $("#content").html(this.viewNewAuthor.render().el);
-        return console.log("after rendering");
-    };
+  ArtistGalleryRouter.prototype.newAuthor = function() {
+      this.viewNewAuthor = new ArtistGallery.Views.Authors.NewView({
+          collection: this.authors
+      });
+      $("#content").html(this.viewNewAuthor.render().el);
+      return console.log("after rendering");
+  };
 
-    ArtistGalleryRouter.prototype.edit = function(id) {
-        var author;
-        author = this.authors.get(id);
-        this.view = new ArtistGallery.Views.Authors.EditView({
-            model: author
-        });
-        return $("#content").html(this.view.render().el);
-    };
+  ArtistGalleryRouter.prototype.edit = function(id) {
+      var author;
+      author = this.authors.get(id);
+      this.view = new ArtistGallery.Views.Authors.EditView({
+          model: author
+      });
+      return $("#content").html(this.view.render().el);
+  };
 
-    return ArtistGalleryRouter;
+  return ArtistGalleryRouter;
 
 })(Backbone.Router);
