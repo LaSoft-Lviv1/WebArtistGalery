@@ -11,31 +11,12 @@ AddArtItemView = Backbone.View.extend({
         this.categories = new ArtistGallery.Collections.CategoriesCollection();
         this.styles = new ArtistGallery.Collections.StylesCollection();
         this.medias = new ArtistGallery.Collections.MediasCollection();
-        this.oriebtations = new ArtistGallery.Collections.OrientationsCollection();
+        this.orientations= new ArtistGallery.Collections.OrientationsCollection();
         this.subjects = new ArtistGallery.Collections.SubjectsCollection();
         this.model = new ArtistGallery.Models.ArtItem();
     },
 
     createNewArtItem: function () {
-        //alert('work');
-
-        //this.model.set({
-        //    name:           this.$('#add-art-item-name').val(),
-        //    description:    this.$('#add-art-item-description').val(),
-        //    price:          this.$('#add-art-item-price').val(),
-        //    keywords:       this.$('#add-art-item-keywords').val(),
-        //    style_id:       this.$("#add-art-item-style :selected").val(),
-        //    media_id:       this.$("#add-art-item-medium :selected").val(),
-        //    orientation_id: this.$("#add-art-item-orientation :selected").val(),
-        //    subject_id:     this.$("#add-art-item-subject :selected").val(),
-        //    category_id:    this.$("#select-category :selected").val(),
-        //    author_id:      '1'
-        //    //source_file:    formData
-        //});
-        //console.log(this.model.toJSON());
-        //this.model.save();
-        //
-
         var formData = new FormData(),
             $input = $('#add-art-photo-btn');
 
@@ -64,11 +45,6 @@ AddArtItemView = Backbone.View.extend({
     },
 
     show_image: function(e) {
-        //alert('show image');
-        //this.model.set({source_file: e.target.files[0]});
-        //this.model.set({source_file: this.$("#add-art-photo-btn").val()});
-        //console.log(this.model.toJSON());
-
         var reader;
         reader = new FileReader();
         reader.onload = (function(_this) {
@@ -90,7 +66,21 @@ AddArtItemView = Backbone.View.extend({
     },
 
     render: function () {
-        //alert('new tem render')
+        //alert('new tem render');
+        this.$el.html(this.template());
+        this.fillAllSelects();
+        return this;
+    },
+
+    fillAllSelects: function () {
+        this.fillCategories();
+        this.fillStyles();
+        this.fillMedias();
+        this.fillOrientations();
+        this.fillSubjects();
+    },
+
+    fillCategories: function () {
         this.categories.fetch({
             success: function (collection, response) {
                 collection.each(function(category){
@@ -102,7 +92,9 @@ AddArtItemView = Backbone.View.extend({
                 });
             }
         });
+    },
 
+    fillStyles: function () {
         this.styles.fetch({
             success: function (collection, response) {
                 collection.each(function(style){
@@ -114,7 +106,9 @@ AddArtItemView = Backbone.View.extend({
                 });
             }
         });
+    },
 
+    fillMedias: function () {
         this.medias.fetch({
             success: function (collection, response) {
                 collection.each(function(media){
@@ -126,8 +120,10 @@ AddArtItemView = Backbone.View.extend({
                 });
             }
         });
+    },
 
-        this.oriebtations.fetch({
+    fillOrientations: function () {
+        this.orientations.fetch({
             success: function (collection, response) {
                 collection.each(function(orientation){
                     //console.log(orientation);
@@ -138,7 +134,9 @@ AddArtItemView = Backbone.View.extend({
                 });
             }
         });
+    },
 
+    fillSubjects: function () {
         this.subjects.fetch({
             success: function (collection, response) {
                 collection.each(function(subject){
@@ -150,9 +148,6 @@ AddArtItemView = Backbone.View.extend({
                 });
             }
         });
-
-        this.$el.html(this.template());
-        return this;
-    }
+    },
 
 });
