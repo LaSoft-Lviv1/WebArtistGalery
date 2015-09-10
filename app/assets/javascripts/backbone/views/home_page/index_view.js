@@ -40,9 +40,9 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
                         this.index += 1;
                     }
                 }
-                //console.log('<150');
+                console.log('<150');
             }else{
-                //console.log('>150');
+                console.log('>150');
             }
         }
 

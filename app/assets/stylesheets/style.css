@@ -1,44 +1,66 @@
-html{
-height: 100%;
-width: 100%;
+
+html {
+  height: 100%;
+  width: 100%;
 }
 
 body {
   background-color: #bbb;
 }
 
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto;
+}
+
 #push,
 #footer {
-height: 60px;
+  min-height: 60px;
 }
 
 #footer {
-background-color: #f5f5f5;
+  background-color: #f5f500;
+  width: 100%;
+  margin-top: -60px;
+  padding: 0px;
 }
 
 footer p {
   margin: 0;
 }
 
-#footer {
-  width: 100%;
+.footer {
+  background-color: #ee0;
+  border-top: 1px solid transparent;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
+
+.footer address {
+  margin: 0px;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.horizontal-line {
+  border-bottom: 2px solid #aaa;
+  margin: 10px auto 20px;
+}
+
 
 div.container.header {
   width: 100%;
   margin-right: 20px;
   margin-left: 20px;
-}
-
-@media (min-width: 768px) {
-  .navbar {
-    border-radius: 0px;
-  }
-}
-
-.container {
-    padding-right: 15px;
-    padding-left: 15px;
 }
 
 .navbar-toggle {
@@ -70,7 +92,9 @@ div.container.header {
   border-radius: 4px;
 }
 
-.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+.nav .open>a,
+.nav .open>a:focus,
+.nav .open>a:hover {
   background-color: inherit !important;
   border-color: #337ab7;
 }
@@ -85,7 +109,9 @@ div.container.header {
   padding: 5px 10px;
 }
 
+
 /* карусель головна */
+
 
 /*.home_carousel {
   margin-right: 60px;
@@ -119,7 +145,7 @@ div.container.header {
   text-overflow: ellipsis;
   white-space: nowrap;
   padding: 2px 2px 2px 2px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.08);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
   /*border: 1px solid #222;*/
 }
 
@@ -127,24 +153,20 @@ div.container.header {
   .home_carousel_paint {
     height: 450px;
   }
-
   .paint_inner .home_carousel_text {
     display: inline-block;
     position: absolute;
     bottom: 30px;
     left: 70px;
-
     /* Фон */
-    background-color: rgba(0,0,0,.4);
+    background-color: rgba(0, 0, 0, .4);
     padding: 10px 30px;
   }
-
   .exposition_name {
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
   }
-
   .exposition_artist {
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
@@ -152,7 +174,6 @@ div.container.header {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
   .home_carousel_text {
     display: inline-block;
     width: 70%;
@@ -163,24 +184,20 @@ div.container.header {
   .home_carousel_paint {
     height: 300px;
   }
-
   .paint_inner .home_carousel_text {
     display: inline-block;
     position: absolute;
     bottom: 20px;
     left: 50px;
-
     /* Фон */
-    background-color: rgba(0,0,0,.4);
+    background-color: rgba(0, 0, 0, .4);
     padding: 8px 20px;
   }
-
   .exposition_name {
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
   }
-
   .exposition_artist {
     color: #fff;
     font-family: Arial, Helvetica, sans-serif;
@@ -188,7 +205,6 @@ div.container.header {
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
   .home_carousel_text {
     display: inline-block;
     width: 70%;
@@ -201,6 +217,7 @@ div.container.header {
   }
 }
 
+
 /* кінець каруселі головної*/
 
 .home_content {
@@ -209,7 +226,9 @@ div.container.header {
   width: 87%;
 }
 
+
 /* обгортка для картини */
+
 .work_outer {
   margin-bottom: 24px;
   float: right;
@@ -226,13 +245,9 @@ div.container.header {
   width: 270px;
   height: auto;
 }
-/* кінець обгортки для картини */
 
-.lang-bar .navbar-nav > li > a {
-  padding: 3.5px 15px;
-.work_inner >a {
-  color: black;
-}
+
+/* кінець обгортки для картини */
 
 .home_item {
   margin-right: 0;
@@ -241,52 +256,6 @@ div.container.header {
   overflow: hidden;
 }
 
-.footer{
-  background-color: #eee;
-}
-
-.footer address {
-margin-bottom: 0;
-}
-
-.footer address+button {
-  width: 100%;
-}
-
-@media screen and (min-width: 768px) {
-  .footer nav {
-    padding-right: 0;
-    padding-left: 0;
-  }
-}
-
-.sign-in-header {
-  border-radius: 0px;
-  background-color: #eee;
-}
-
-.sign-in-body {
-  border-radius: 0px;
-  border-color: #fff;
-}
-
-.sign-in-body input {
-  margin-left: -15px;
-/*  border-radius: 0px;
-  background-color: #eee;
-  border: none;
-*/}
-
-.sign-in-header h3 {  
-  display: inline;
-}
-
-.btn-facebook {
-  padding-left: 20px;
-  background-image: url("../img/Facebook_logo_16.png");
-  background-repeat: no-repeat;
-  background-position: 0 50%;
-}
 
 /*about artist*/
 
@@ -309,7 +278,7 @@ margin-bottom: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
   padding: 10px 10px 10px 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.08);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
   border: 1px solid #EBEBEB;
   width: 242px;
   height: 336px;
@@ -321,6 +290,7 @@ margin-bottom: 0;
   margin-bottom: 30px;
 }
 
+
 /*.variable-width.about_artist {
   padding: 10px 10px 10px 10px;
   border: 1px solid #000;
@@ -328,7 +298,7 @@ margin-bottom: 0;
   background: #333;
 }*/
 
-.paint_outer_artist{
+.paint_outer_artist {
   float: left;
   position: relative;
 }
@@ -338,7 +308,7 @@ margin-bottom: 0;
   text-overflow: ellipsis;
   white-space: nowrap;
   padding: 10px 10px 10px 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.08);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
   border: 1px solid #222;
   background: #555
 }
@@ -367,16 +337,16 @@ margin-bottom: 0;
   padding-top: 15px;
 }
 
-.complete{
-    display:none;
+.complete {
+  display: none;
 }
 
-.more{
-    background:lightgrey;
-    color:navy;
-    font-size:11px;
-    padding:3px;
-    cursor:pointer;
+.more {
+  background: ##d3d3d3;
+  color: navy;
+  font-size: 11px;
+  padding: 3px;
+  cursor: pointer;
 }
 
 .artist_info {
@@ -387,22 +357,27 @@ margin-bottom: 0;
 }
 
 .paintslide_artist_paint {
-/*  margin-bottom: 30px;*/
+  /*  margin-bottom: 30px;*/
   margin-top: 20px;
   padding-top: 20px;
   /*padding-bottom: 10px;*/
 }
+
+
 /*the end of the about artist*/
+
 
 /*how to buy*/
 
 #menu {
-    position: fixed;
+  position: fixed;
 }
+
 
 /*.affix {
   width: 213px;
 }*/
+
 
 /*@media (min-width: 1200px) {
     .affix {
@@ -411,8 +386,9 @@ margin-bottom: 0;
 }*/
 
 .affix-bottom {
-    position: absolute;
+  position: absolute;
 }
+
 
 /*@media (min-width: 1200px) {
     .affix-bottom {
@@ -421,30 +397,30 @@ margin-bottom: 0;
 }*/
 
 #menu.nav .nav {
-    display: none;
-    font-size: 0.85em;
+  display: none;
+  font-size: 0.85em;
 }
 
 #menu.nav .active .nav,
 #menu.nav .has-submenu:hover .nav {
-    display: block;
+  display: block;
 }
 
 #menu.nav a {
-    color: #FFF;
+  color: #FFF;
 }
 
 #menu.nav .active {
-    text-decoration: none;
-    background-color: #EEE;
-    font-weight: bold;
-    margin-left: 5px;
+  text-decoration: none;
+  background-color: #EEE;
+  font-weight: bold;
+  margin-left: 5px;
 }
 
 #menu.nav .active a,
 #menu.nav a:hover,
 #menu.nav a:focus {
-    color: #000;
+  color: #000;
 }
 
 #menu.nav .nav .active a,
@@ -452,8 +428,9 @@ margin-bottom: 0;
 #menu.nav .nav .active:focus a,
 #menu.nav .nav a:hover,
 #menu.nav .nav a:focus {
-    border-left: 5px solid #5F5F5F;
+  border-left: 5px solid #5F5F5F;
 }
+
 
 /*.anchor:before {
     content: "";
@@ -464,40 +441,8 @@ margin-bottom: 0;
     /* negative fixed header height 
 }*/
 
+
 /*the end of how to buy*/
-
-body {
-  height: 100%;
-}
-
-footer p {
-  margin: 0;
-}
-
-#wrap {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto;
-}
-
-#push,
-#footer {
-  min-height: 60px;
-}
-
-#footer {
-  margin-top: -60px;
-}
-
-.text-justify {
-  text-align: justify;
-}
-
-.horizontal-line {
-  border-bottom: 2px solid #aaa;
-  margin: 10px auto 20px;
-}
 
 .page-header {
   margin: 0;
@@ -553,17 +498,7 @@ footer p {
   padding-top: 120px;
 }
 
-.footer {
-  background-color: #eee;
-}
 
-.footer address {
-  margin-bottom: 0;
-}
-
-.footer address+button {
-  width: 100%;
-}
 
 .sign-in-header {
   border-radius: 0px;
@@ -577,17 +512,14 @@ footer p {
 
 .sign-in-body input {
   margin-left: -15px;
+  /*  border-radius: 0px;
+  background-color: #eee;
+  border: none;
+*/
 }
 
 .sign-in-header h3 {
   display: inline;
-}
-
-.btn-facebook {
-  padding-left: 20px;
-  background-image: url("../img/Facebook_logo_16.png");
-  background-repeat: no-repeat;
-  background-position: 0 50%;
 }
 
 .btn-wide {
@@ -596,20 +528,6 @@ footer p {
 
 .acc-type-body {
   position: relative;
-}
-
-.select-one {
-  display: block;
-  font-family: "Crimson Text", serif;
-  font-style: italic;
-  font-weight: normal;
-  line-height: 0.7;
-  padding: 100px 0px 0px;
-  position: absolute;
-  font-size: 3em;
-  left: 292px;
-  text-align: center;
-  width: 120px
 }
 
 .modal-body {
@@ -640,33 +558,78 @@ footer p {
   color: #888;
 }
 
+.work_inner >a {
+  color: black;
+}
+
+.select-one {
+  display: block;
+  font-family: "Crimson Text", serif;
+  font-style: italic;
+  font-weight: normal;
+  line-height: 0.7;
+  padding: 100px 0px 0px;
+  position: absolute;
+  font-size: 3em;
+  left: 292px;
+  text-align: center;
+  width: 120px
+}
+
+#signin-btn {
+  color: #FFF;
+  background-color: #5CB85C;
+  border-color: #4CAE4C;
+  float: none;
+  margin: 0px;
+}
+
 @media only screen and (min-width: 768px) {
-  a.customer-account {
-    background: transparent url("../img/customer.svg") no-repeat;
+  .modal-dialog,
+  .modal-content {
+    display: block;
+    width: 90%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    max-height: 100%;
+  }
+  .modal-body {
+    height: 90%;
+    overflow: auto;
+  }
+  button.customer-account {
     width: 300px;
     height: 300px;
+    background-color: transparent;
+    background-image: url("../images/customer.svg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
     display: block;
     text-indent: -9999px;
-    background-size: 100% auto;
+    border: none;
   }
-  a.artist-account {
-    background: transparent url("../img/artist.svg") no-repeat;
-    width: 300px;
+  button.artist-account {
     height: 300px;
+    width: 300px;
+    background-color: transparent;
+    background-image: url("../images/artist.svg");
+    background-repeat: no-repeat;
+    background-size: 100% auto;
     display: block;
     text-indent: -9999px;
-    background-size: 100% auto;
+    border: none;
   }
-  a.customer-account:hover + p{
+  button.customer-account:hover + p {
     color: #555;
   }
-  a.artist-account:hover + p{
+  button.artist-account:hover + p {
     color: #555;
   }
-  a.customer-account:hover {
+  button.customer-account:hover {
     border: 1px solid #888;
   }
-  a.artist-account:hover {
+  button.artist-account:hover {
     border: 1px solid #888;
   }
   .col-without-padding {
@@ -685,17 +648,20 @@ footer p {
   .register-option > p {
     margin-left: -100px;
   }
+  .navbar {
+    border-radius: 0px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  #modal2 .modal-dialog {
+  /*#modal2 .modal-dialog {
     width: auto;
-  }
-  a.customer-account {
+  }*/
+  button.customer-account {
     width: 200px;
     height: 200px;
   }
-  a.artist-account {
+  button.artist-account {
     width: 200px;
     height: 200px;
   }
@@ -708,18 +674,25 @@ footer p {
     text-align: center;
     width: 120px
   }
+  #signin-btn {
+  margin: 0px 5px;
+}
 }
 
-@media (min-height: 500px) {
-  .modal-body {
-    height: 400px;
+@media (min-width: 1063px){
+  .modal-dialog,
+  .modal-content {
+    width: 80%;
   }
+ /* .create-acc {
+  margin-top: 83px;
+}*/
 }
 
-@media (min-height: 800px) {
-  .modal-body {
-    height: 600px;
-  }
+@media (min-width: 882px) and (max-width: 1062px){
+.create-acc {
+  margin-top: 55px;
+}
 }
 
 @media (max-width: 767px) {
@@ -732,7 +705,16 @@ footer p {
   .register-option {
     text-align: center;
   }
-  a.customer-account {
+  .modal-dialog,
+  .modal-content {
+    height: auto;
+    max-height: 100%;
+  }
+  .modal-body {
+    height: 90%;
+    overflow: auto;
+  }
+  button.customer-account {
     font-size: 2em;
     font-weight: bold;
     color: #888;
@@ -740,17 +722,17 @@ footer p {
     text-align: center;
     margin-top: 2em;
   }
-  a.artist-account {
+  button.artist-account {
     font-size: 2em;
     font-weight: bold;
     color: #888;
     text-decoration: none;
     margin-top: 2em;
   }
-  a.customer-account:hover {
+  button.customer-account:hover {
     border: 1px solid #888;
   }
-  a.artist-account:hover {
+  button.artist-account:hover {
     border: 1px solid #888;
   }
 }
