@@ -10,14 +10,19 @@ class ArtistGallery.Views.Authors.NewView extends Backbone.View
 
   constructor: (options) ->
     super(options)
+#    @cities = new ArtistGallery.Collections.CitiesCollection()
     @model = new @collection.model()
+    console.log('constructor')
     console.log @model
     @model.bind("change:errors", () =>
       this.render()
     )
 
   initialize: ->
-    @listenTo @cities, "reset", @render
+    @cities = new ArtistGallery.Collections.CitiesCollection()
+    @categories = new ArtistGallery.Collections.CategoriesCollection()
+    @listenTo @categories, "reset", @addCategoryList
+    @listenTo @cities, "reset", @addCityList
 
   show_image:(e) =>
     reader = new FileReader()
@@ -69,7 +74,8 @@ class ArtistGallery.Views.Authors.NewView extends Backbone.View
 #  done: (e, data) ->
 #    window.location = '/'
 
-  save: (e) ->
+  save: (e) ->#    @cities.fetch({reset: true})
+    alert("SAVE")
     console.log 'in save method'
     e.preventDefault()
     e.stopPropagation()
@@ -98,11 +104,19 @@ class ArtistGallery.Views.Authors.NewView extends Backbone.View
 
   addCityList: ->
     console.log 'in addCityList'
-    @cities = new ArtistGallery.Collections.CitiesCollection()
-    @cities.fetch({reset: true})
+#    @cities.fetch({reset: true})
     alert("OK")
     console.log @cities.toJSON()
     @cities.each(@addCity)
+
+  addCategoryList: ->
+    console.log 'in addCategoryList'
+#    alert("some")
+    #    @cities.fetch({reset: true})
+#    alert("OK")
+    console.log @categories.toJSON()
+    console.log @categories
+#    @cities.each(@addCity)
 
   addCity: (city) =>
 #console.log city.toJSON().name
@@ -117,6 +131,9 @@ class ArtistGallery.Views.Authors.NewView extends Backbone.View
 
   render: ->
     console.log 'in render new view'
+    @cities.fetch({reset: true})
+    @categories.fetch({reset: true})
+    console.log @cities
     @$el.html(@template())
     console.log 'after render new template before adding cities'
     @addCityList()

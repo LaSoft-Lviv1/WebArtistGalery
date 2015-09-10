@@ -5,30 +5,27 @@
                         </h2>
     </div>
     <!-- /.row .add-art-heading -->
-    <form id="add-art-item-form">
+    <!--<form id="add-art-item-form">-->
         <div class="row">
             <div class="col-sm-3">
-                <input type="file" value="add photo" id="add-art-photo-btn">
+                <!--<input type="file" value="add photo" id="add-art-photo-btn">-->
+                <input type="file" value="add photo" id="add-art-photo-btn" multiple="multiple" />
+                <div id="image_preview"></div>
             </div>
             <div class="col-sm-8 col-sm-offset-1">
                 <div class="form-group">
                     <div class="input-group">
                         <span class="input-group-addon" id="addon-add-art-item-name"><div>Name</div></span>
-                        <input type="text" class="form-control" placeholder="Name" aria-describedby="addon-add-art-item-name">
+                        <input type="text" class="form-control" id="add-art-item-name" placeholder="Name" aria-describedby="addon-add-art-item-name">
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon" id="addon-add-art-item-description"><div>Description</div></span>
-                        <input type="text" class="form-control" placeholder="Description" aria-describedby="addon-add-art-item-description">
+                        <input type="text" class="form-control" id="add-art-item-description"  placeholder="Description" aria-describedby="addon-add-art-item-description">
                     </div>
                     <div class="input-group">
                         <span class="input-group-addon" id="addon-add-art-item-category"><div>Category</div></span>
-                        <select name="select-category" class="form-control" placeholder="" aria-describedby="addon-add-art-item-category">
+                        <select name="select-category" id="select-category" class="form-control" placeholder="" aria-describedby="addon-add-art-item-category">
                             <option disabled selected>Choose one</option>
-                            <option value="paintings">Paintings</option>
-                            <option value="photography">Photography</option>
-                            <option value="sculpture">Sculpture</option>
-                            <option value="collage">Collage</option>
-                            <option value="drawing">Drawing</option>
                         </select>
                     </div>
                     <!-- /.input-group -->
@@ -47,9 +44,6 @@
                         <span class="input-group-addon" id="addon-add-art-item-medium"><div>Medium</div></span>
                         <select name="select-medium" class="form-control" id="add-art-item-medium" placeholder="" aria-descripbedby="addon-add-art-item-medium">
                             <option disabled selected>Choose one</option>
-                            <option value="oil">Oil</option>
-                            <option value="acrilic">Acrilic</option>
-                            <option value="pastel">Pastel</option>
                         </select>
                     </div>
                 </div>
@@ -64,9 +58,6 @@
                         <span class="input-group-addon" id="addon-add-art-item-style"><div>Style</div></span>
                         <select name="select-style" class="form-control" id="add-art-item-style" placeholder="E.g. abstract, pop art, modern etc." aria-descripbedby="addon-add-art-item-style">
                             <option disabled selected>Choose one</option>
-                            <option value="abstract">Abstract</option>
-                            <option value="pop-art">Pop art</option>
-                            <option value="modern">Modern</option>
                         </select>
                     </div>
                 </div>
@@ -79,7 +70,10 @@
                 <div class="col-sm-8 col-sm-offset-1">
                     <div class="input-group col-xs-12">
                         <span class="input-group-addon" id="addon-add-art-item-subject"><div>Subject</div></span>
-                        <input type="text" class="form-control" id="add-art-item-subject" placeholder="E.g. body, still life, portrait etc." aria-descripbedby="addon-add-art-item-subject">
+                        <select name="select-subject" class="form-control" id="add-art-item-subject" placeholder="E.g. body, still life, portrait etc." aria-descripbedby="addon-add-art-item-subject">
+                            <option disabled selected>Choose one</option>
+                        </select>
+                        <!--<input type="text" class="form-control" id="add-art-item-subject" placeholder="E.g. body, still life, portrait etc." aria-descripbedby="addon-add-art-item-subject">-->
                     </div>
                 </div>
             </div>
@@ -94,7 +88,10 @@
                 <div class="col-sm-8 col-sm-offset-1">
                     <div class="input-group col-xs-12">
                         <span class="input-group-addon" id="addon-add-art-item-orientation"><div>Orientation</div></span>
-                        <input type="text" class="form-control" id="add-art-item-orientation" placeholder="E.g. portrait, square, landscape etc." aria-descripbedby="addon-add-art-item-orientation">
+                        <select name="select-orientation" class="form-control" id="add-art-item-orientation" placeholder="E.g. portrait, square, landscape etc." aria-descripbedby="addon-add-art-item-orientation">
+                            <option disabled selected>Choose one</option>
+                        </select>
+                        <!--<input type="text" class="form-control" id="add-art-item-orientation" placeholder="E.g. portrait, square, landscape etc." aria-descripbedby="addon-add-art-item-orientation">-->
                     </div>
                 </div>
             </div>
@@ -171,7 +168,7 @@
             <!-- /.row keywords -->
         </div>
         <!-- /.form-group -->
-        <button type="submit" class="btn btn-success pull-right">Upload</button>
+        <button class="btn btn-success pull-right" id="submit">Upload</button>
     </form>
     <!-- /form -->
 </div>

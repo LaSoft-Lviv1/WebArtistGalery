@@ -135,6 +135,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   ArtistGalleryRouter.prototype.newArtItem = function() {
         this.headerView = new HeaderView();
         this.addArtItemView = new AddArtItemView();
+        $("#content").html(this.addArtItemView.render().el);
         return
     };
 

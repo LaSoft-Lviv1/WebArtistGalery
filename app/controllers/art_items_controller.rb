@@ -31,9 +31,9 @@ class ArtItemsController < ApplicationController
   def create
 
     @art_item = ArtItem.new(art_item_params)
-    #binding.pry
+    # binding.pry
     @art_item.save
-    #binding.pry
+    binding.pry
 
 
     if @art_item.errors.empty?
@@ -41,6 +41,7 @@ class ArtItemsController < ApplicationController
     else
       render "new"
     end
+
   end
 
 
@@ -87,7 +88,7 @@ class ArtItemsController < ApplicationController
                                    :category_id,
                                    :author_id,
                                    :source_file,
-                                   :preview_source_file )
+                                   :preview_source_file)
   end
 
 

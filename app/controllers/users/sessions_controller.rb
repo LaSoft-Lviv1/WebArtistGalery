@@ -33,7 +33,7 @@ class Users::SessionsController < Devise::SessionsController
         sign_in(:user, user)
         # Note that the data which should be returned depends heavily of the API client needs.
         # render status: 200, json: { email: user.email, authentication_token: user.authentication_token }
-        render :json=> {:success=>true, :authentication_token=>current_user.authentication_token, :email=>current_user.email, :role =>current_user.role}
+        render :json=> {:success=>true, :authentication_token=>LoginHelper::AuthenticationService.auth_token(current_user), :email=>current_user.email, :role =>current_user.role}
         # redirect_to '/#'
       else
         # render status: 401, json: { message: 'Invalid email or password.' }
@@ -57,21 +57,18 @@ class Users::SessionsController < Devise::SessionsController
     # Fetch params
     puts 'from destroy'
     # binding.pry
-    user = User.find_by(authentication_token: params[:user_token])
+    user = LoginHelper::AuthenticationService.authenticate_user(params[:user_token])
     # binding.pry
     if user.nil?
-      sign_out :user
-      # render status: 404, json: { message: 'Invalid token.' }
+      # sign_out :user
+      render status: 404, json: { message: 'Invalid token.' }
     else
       user.authentication_token = nil
       user.save!
       sign_out user
-      # render status: 204, json: nil
+      render status: 204, json: nil
     end
-    # binding.pry
-    # redirect_to '#'
-  #   reset_session
-  #   super
+    binding.pry
   end
 
   # protected

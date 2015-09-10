@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  before_save :ensure_authentication_token
+  # before_save :ensure_authentication_token
   enum role: [:customer, :artist, :admin]
 
   has_one :author

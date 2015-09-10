@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   resources :city
   resources :art_items
   resources :categories
+  resources :styles
+  resources :media
+  resources :orientations
+  resources :subjects
 
   # resources :users/sessions, only: [ :create, :destroy ]
 
