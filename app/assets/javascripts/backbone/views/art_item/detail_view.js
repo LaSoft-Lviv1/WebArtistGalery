@@ -6,6 +6,7 @@ DetailedArtItemView = Backbone.View.extend({
     },
 
     initialize: function () {
+        //add info collection
     },
 
     render: function () {
