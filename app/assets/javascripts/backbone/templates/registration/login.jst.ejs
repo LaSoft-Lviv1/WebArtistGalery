@@ -1,66 +1,67 @@
 <div class="modal-header sign-in-header">
-        <div class="container-fluid">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <span><img class="image-responsive" id="myModalLabel" src="images/brand_logo_resized.png" alt="LOGO"></span>
-            <h3 class="hidden-xs text-uppercase">Project Art</h3>
-        </div>
+    <div class="container-fluid">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <span><img class="image-responsive" id="myModalLabel" src="images/brand_logo_resized.png" alt="LOGO"></span>
+      <h3 class="hidden-xs text-uppercase">Project Art</h3>
     </div>
-    <div class="modal-body sign-in-body">
-        <div class="container-fluid">
-            <p class="lead text-center">Create Account / Login</p>
-            <div class="row">
-                <div class="col-md-4">
-                    <p class="text-muted text-center lead">Want to create an account?</p>
-                    <p class="text-muted text-center">In order to buy or sell art you must first create an account.</p>
-                    <div class="text-center">
-                        <button class="btn btn-default signup">Create account</button>
-                    </div>
-                    <p class="text-muted text-center">or</p>
-                    <div class="text-center">
-                        <button type="button" class="btn btn-primary btn-facebook">Connect with Facebook</button>
-                    </div>
+  </div>
+  <div class="modal-body sign-in-body">
+    <div class="container-fluid">
+      <div class="well">
+        <p class="lead text-center">Register | Sign in</p>
+        <div class="row">
+          <div class="col-md-4 col-sm-4 col-without-padding">
+            <p class="text-center lead">Want to create an account?</p>
+            <p class="text-muted text-center">In order to buy or sell art you have to</p>
+            <button class="btn btn-primary btn-wide create-acc signup">Create account</button>
+          </div>
+          <div class="visible-xs-block">
+            <div class="horizontal-line"></div>
+          </div>
+          <div class="col-md-8 col-sm-8 border-left col-without-padding">
+            <p class="text-center lead">Already have an account?</p>
+            <form>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-6 text-right hidden-xs">
+                    <label for="email">Email :</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="text" class="form-group" id="email" placeholder="ex: example@xmp.com">
+                  </div>
                 </div>
-                <div class="col-md-8">
-                    <p class="text-muted text-center lead">Already have an account?</p>
-                    <form>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-6 text-right hidden-xs">
-                                    <label for="login-sign-in">Email or Username :</label>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="text" class="form-group" id="email" placeholder="ex: example@xmp.com">
-                                </div>
-                            </div>
-                            <!-- /.row -->
-                        </div>
-                        <!-- /.form-group -->
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-sm-6 text-right hidden-xs">
-                                    <label for="login-pass">Password :</label>
-                                </div>
-                                <div class="col-sm-6">
-                                    <input type="password" class="form-group" id="password" placeholder="MySecretPass">
-                                </div>
-                            </div>
-                            <!-- /.row -->
-                        </div>
-                        <!-- /.form-group -->
-                        <div class="checkbox text-center">
-                            <label>
-                                <input type="checkbox" checked id="remember_me"> Remember me.
-                            </label>
-                        </div>
-                        <!-- /.checkbox -->
-                        <div class="text-center">
-                            <button type="submit" class="btn btn-default login" data-dismiss="modal">Sign in</button>
-                        </div>
-                    </form>
-                    <div class="text-center">
-                        <a>Forgot your password?</a>
-                    </div>
+                <!-- /email .row -->
+              </div>
+              <!-- /.form-group -->
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-sm-6 text-right hidden-xs">
+                    <label for="password">Password :</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <input type="password" class="form-group" id="password" placeholder="MySecretPass">
+                  </div>
+                </div> <!-- /password .row -->
+                <!-- /.left-column -->
+              </div>
+              <!-- /.form-group -->
+              <div class="form-group clearfix">
+                <div class="col-md-6 col-md-offset-6 col-without-padding">
+                  <button type="submit" class="btn btn-success btn-wide login" id="signin-btn" data-dismiss="modal">Sign in</button>
                 </div>
+                <div class="checkbox pull-right">
+                  <label>
+                    <input type="checkbox" checked id="remember_me"> Remember me
+                  </label>
+                </div>
+              </div>
+              <!-- /.checkbox -->
+            </form>
+            <div class="text-right forgot-pass">
+              <a href="#"><small>Forgot your password?</small></a>
             </div>
-        </div>
-    </div>
+          </div> <!-- /.col-md-8.border-left.col-without-padding -->
+        </div> <!-- /.row -->
+      </div> <!-- /.well -->
+    </div> <!-- /.container-fluid -->
+  </div> <!-- /.modal-body.sign-in-body -->

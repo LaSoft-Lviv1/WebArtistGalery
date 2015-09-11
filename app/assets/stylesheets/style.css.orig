@@ -1,25 +1,20 @@
-html{
-height: 100%;
-width: 100%;
-}
-
-#push,
-#footer {
-height: 60px;
-}
-
-#footer {
-background-color: #f5f5f5;
+html,
+body {
+  height: 100%;
 }
 
 footer p {
   margin: 0;
 }
 
-#footer {
-  width: 100%;
+#wrap {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto;
 }
 
+<<<<<<< HEAD
 div.container.header {
   width: 100%;
   margin-right: 20px;
@@ -27,9 +22,9 @@ div.container.header {
 }
 
 @media (min-width: 768px) {
-.navbar {
-  border-radius: 0px;
-}
+  .navbar {
+    border-radius: 0px;
+  }
 }
 
 .container {
@@ -64,84 +59,178 @@ div.container.header {
   background-color: transparent;
   background-image: none;
   border-radius: 4px;
+=======
+#push,
+#footer {
+  min-height: 60px;
+>>>>>>> style.css
 }
 
-.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
-  background-color: inherit !important;
-  border-color: #337ab7;
+#footer {
+  margin-top: -60px;
 }
 
-#btnlanglogsrch:hover {
-  background-color: #444;
+.text-justify {
+  text-align: justify;
 }
 
-.mybutton {
-  float: right !important;
-  padding: 5px 10px;
+.horizontal-line {
+  border-bottom: 2px solid #aaa;
+  margin: 10px auto 20px;
 }
 
-/* карусель головна */
-
-.home_carousel {
-  margin-right: 60px;
-  margin-left: 30px;
+.page-header {
+  margin: 0;
+  padding-top: 10px;
+  position: fixed;
+  width: 100%;
+  height: 70px;
+  z-index: 3;
+  background-color: #fff;
 }
 
+<<<<<<< HEAD
 .variable-width.slick-initialized {
   padding: 10px 10px 10px 10px;
   margin-left: 50px;
   border: 1px solid #000;
   white-space: nowrap;
   background: #333;
+}*/
+
+.slick-prev {
+  margin-left: 30px;
+  z-index: 10;
 }
 
-.slick-slider {
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 20px;
+.slick-next {
+  margin-right: 30px;
+=======
+.page-header a {
+  text-decoration: none;
+>>>>>>> style.css
 }
 
-.paint_outer {
-  float: left;
-  position: relative;
+.page-header .brand-name {
+  color: #777;
+  font-size: 18px;
+  line-height: 20px;
 }
 
-.paint_inner {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  padding: 10px 10px 10px 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.08);
-  border: 1px solid #222;
-  background: #555
+.page-header .brand-name:hover {
+  color: #5E5E5E;
 }
 
+<<<<<<< HEAD
 @media (min-width: 768px) {
-.home_carousel_paint {
-  height: 250px;
-}
+  .home_carousel_paint {
+    height: 450px;
+  }
+
+  .paint_inner .home_carousel_text {
+    display: inline-block;
+    position: absolute;
+    bottom: 30px;
+    left: 70px;
+
+    /* Фон */
+    background-color: rgba(0,0,0,.4);
+    padding: 10px 30px;
+  }
+
+  .exposition_name {
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+  }
+
+  .exposition_artist {
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .home_carousel_text {
+    display: inline-block;
+    width: 70%;
+  }
 }
 
 @media (max-width: 767px) {
-.home_carousel_paint {
-  height: 200px;
-}
+  .home_carousel_paint {
+    height: 300px;
+  }
+
+  .paint_inner .home_carousel_text {
+    display: inline-block;
+    position: absolute;
+    bottom: 20px;
+    left: 50px;
+
+    /* Фон */
+    background-color: rgba(0,0,0,.4);
+    padding: 8px 20px;
+  }
+
+  .exposition_name {
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+  }
+
+  .exposition_artist {
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .home_carousel_text {
+    display: inline-block;
+    width: 70%;
+  }
 }
 
 @media (max-width: 560px) {
-.home_carousel_paint {
-  display: none;
-}
-}
-
-/* кінець каруселі головної*/
-
-.home_content {
+  .home_carousel {
+    display: none;
+  }
+=======
+.navbar-fixed-top {
   margin-top: 70px;
-  position: relative;
-  width: 87%;
 }
 
+.page-header input.form-control {
+  border-radius: 0;
+  border: none;
+  background-color: #eee;
+}
+
+.lang-bar .navbar-nav {
+  margin: 0 -15px;
+}
+
+.lang-bar .navbar-nav > li {
+  display: inline-block;
+}
+
+.lang-bar .navbar-nav > li:last-child {
+  margin-right: 15px;
+}
+
+.lang-bar .navbar-nav > li > a {
+  padding: 3.5px 15px;
+>>>>>>> style.css
+}
+
+.content > .container {
+  padding-top: 120px;
+}
+
+<<<<<<< HEAD
 /* обгортка для картини */
 .work_outer {
   margin-bottom: 24px;
@@ -154,8 +243,10 @@ div.container.header {
   white-space: nowrap;
   padding: 10px 10px 10px 10px;
   /*box-shadow: 0 0 15px rgba(0,0,0,0.08);*/
-  border: 1px solid black;
+  /*border: 1px solid black;*/
+  background-color: #eee;
   width: 270px;
+  height: auto;
 }
 /* кінець обгортки для картини */
 
@@ -163,104 +254,82 @@ div.container.header {
   color: black;
 }
 
-img.lazy {
+.home_item {
+  margin-right: 0;
   width: 250px;
-  height: auto;
+  max-height: 350px;
+  overflow: hidden;
 }
 
 .footer{
+=======
+.footer {
+>>>>>>> style.css
   background-color: #eee;
 }
 
 .footer address {
-margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 .footer address+button {
   width: 100%;
 }
 
-@media screen and (min-width: 768px) {
-  .footer nav {
-    padding-right: 0;
-    padding-left: 0;
-<<<<<<< HEAD
-  }
-=======
+.sign-in-header {
+  border-radius: 0px;
+  background-color: #eee;
 }
+
+.sign-in-body {
+  border-radius: 0px;
+  border-color: #fff;
 }
->>>>>>> Login, logout, working slider, text less-more-script
 
-  .sign-in-header {
-    border-radius: 0px;
-    background-color: #eee;
-  }
+.sign-in-body input {
+  margin-left: -15px;
+}
 
-  .sign-in-body {
-    border-radius: 0px;
-    border-color: #fff;
-  }
+.sign-in-header h3 {
+  display: inline;
+}
 
-  .sign-in-body input {
-    margin-left: -15px;
-  }
-
-  .sign-in-header h3 {
-    display: inline;
-  }
-
-  .btn-facebook {
+.btn-facebook {
   padding-left: 20px;
   background-image: url("../img/Facebook_logo_16.png");
   background-repeat: no-repeat;
   background-position: 0 50%;
 }
 
-/*about artist*/
-
-.description {
-  position: relative;
-  width: 75%;
-  margin-right: auto;
-  margin-left: auto;
+.btn-wide {
+  width: 100%;
 }
 
-.avatar_outer {
-  float: left;
-  margin-right: 30px;
-  margin-bottom: 0px;
+.acc-type-body {
   position: relative;
 }
 
-.avatar_inner {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  padding: 10px 10px 10px 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.08);
-  border: 1px solid #EBEBEB;
-  width: 242px;
-  height: 336px;
+.select-one {
+  display: block;
+  font-family: "Crimson Text", serif;
+  font-style: italic;
+  font-weight: normal;
+  line-height: 0.7;
+  padding: 100px 0px 0px;
+  position: absolute;
+  font-size: 3em;
+  left: 292px;
+  text-align: center;
+  width: 120px
 }
 
-.artist_avatar {
-  float: left;
-  margin-right: 30px;
-  margin-bottom: 30px;
-}
-
-.variable-width.about_artist {
+<<<<<<< HEAD
+/*.variable-width.about_artist {
   padding: 10px 10px 10px 10px;
   border: 1px solid #000;
   white-space: nowrap;
   background: #333;
-}
-
-.slick-slider {
-  margin-left: 20px;
-  margin-right: 20px;
-  margin-top: 20px;
-}
+}*/
 
 .paint_outer_artist{
   float: left;
@@ -278,7 +347,7 @@ margin-bottom: 0;
 }
 
 .artist_paint {
-  height: 170px;
+  height: 200px;
 }
 
 .artist_name {
@@ -291,40 +360,162 @@ margin-bottom: 0;
   color: #333333;
   text-align: left;
   padding-top: 10px;
+=======
+.modal-body {
+  height: 250px;
+  overflow-y: auto;
 }
 
-.artist_resume {
-  font-family: "Open Sans", Calibri, Tahoma, Arial, sans-serif;
-  font-size: 18px;
-  color: #333333;
-  text-align: justify;
-  padding-top: 15px;
+.policies + a {
+  margin-right: 20px;
+>>>>>>> style.css
 }
 
-.complete{
-    display:none;
+.policies + a:last-child {
+  margin-right: 0px;
 }
 
-.more{
-    background:lightgrey;
-    color:navy;
-    font-size:11px;
-    padding:3px;
-    cursor:pointer;
+.forgot-pass {
+  margin-top: -15px;
 }
 
-.artist_info {
-  font-family: "Open Sans", Calibri, Tahoma, Arial, sans-serif;
-  font-size: 13px;
-  color: #333333;
-  text-align: justify;
+.register-option {
+  text-align: center;
 }
 
+.register-option > p {
+  margin-left: -50px;
+  font-size: 2em;
+  font-weight: bold;
+  color: #888;
+}
+
+<<<<<<< HEAD
 .paintslide_artist_paint {
-  margin-bottom: 30px;
+/*  margin-bottom: 30px;*/
   margin-top: 20px;
   padding-top: 20px;
-  padding-bottom: 10px;
-}
+  /*padding-bottom: 10px;*/
 }
 /*the end of the about artist*/
+
+/*how to buy*/
+
+#menu {
+    position: fixed;
+=======
+@media only screen and (min-width: 768px) {
+  a.customer-account {
+    background: transparent url("../img/customer.svg") no-repeat;
+    width: 300px;
+    height: 300px;
+    display: block;
+    text-indent: -9999px;
+    background-size: 100% auto;
+  }
+  a.artist-account {
+    background: transparent url("../img/artist.svg") no-repeat;
+    width: 300px;
+    height: 300px;
+    display: block;
+    text-indent: -9999px;
+    background-size: 100% auto;
+  }
+  a.customer-account:hover + p{
+    color: #555;
+  }
+  a.artist-account:hover + p{
+    color: #555;
+  }
+  a.customer-account:hover {
+    border: 1px solid #888;
+  }
+  a.artist-account:hover {
+    border: 1px solid #888;
+  }
+  .col-without-padding {
+    padding: 0px;
+  }
+  .border-left {
+    border-left: 1px solid #888;
+  }
+  .create-acc {
+    margin-top: 37px;
+  }
+  .footer nav {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .register-option > p {
+    margin-left: -100px;
+  }
+>>>>>>> style.css
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  #modal2 .modal-dialog {
+    width: auto;
+  }
+  a.customer-account {
+    width: 200px;
+    height: 200px;
+  }
+  a.artist-account {
+    width: 200px;
+    height: 200px;
+  }
+  .select-one {
+    line-height: 0.7;
+    padding: 100px 0px 0px;
+    position: absolute;
+    font-size: 2em;
+    left: 192px;
+    text-align: center;
+    width: 120px
+  }
+}
+
+@media (min-height: 500px) {
+  .modal-body {
+    height: 400px;
+  }
+}
+
+@media (min-height: 800px) {
+  .modal-body {
+    height: 600px;
+  }
+}
+
+@media (max-width: 767px) {
+  #footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .register-option {
+    text-align: center;
+  }
+  a.customer-account {
+    font-size: 2em;
+    font-weight: bold;
+    color: #888;
+    text-decoration: none;
+    text-align: center;
+    margin-top: 2em;
+  }
+  a.artist-account {
+    font-size: 2em;
+    font-weight: bold;
+    color: #888;
+    text-decoration: none;
+    margin-top: 2em;
+  }
+  a.customer-account:hover {
+    border: 1px solid #888;
+  }
+  a.artist-account:hover {
+    border: 1px solid #888;
+  }
+}
