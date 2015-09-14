@@ -7,10 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body data-spy="scroll" data-target=".scrollspy">
-   <div id="header"></div>
-   <div id="content"></div>
-
-   <%= yield %>
+   <div id="wrap">
+	   	<div id="header"></div>
+	   	<div id="content"></div>
+	   	
+	   	<%= yield %>
+	   	
+   </div>
    
    <div id="footer"></div>
    <div id="scripts"></div>

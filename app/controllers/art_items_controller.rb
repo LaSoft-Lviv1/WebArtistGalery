@@ -33,7 +33,7 @@ class ArtItemsController < ApplicationController
     @art_item = ArtItem.new(art_item_params)
     # binding.pry
     @art_item.save
-    binding.pry
+    # binding.pry
 
 
     if @art_item.errors.empty?

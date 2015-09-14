@@ -4,7 +4,7 @@ AddArtItemView = Backbone.View.extend({
 
     events: {
         'click #submit': 'createNewArtItem',
-        "change #add-art-photo-btn": "show_image"
+        'change #add-art-photo-btn': 'show_image'
     },
 
     initialize: function () {
@@ -41,6 +41,7 @@ AddArtItemView = Backbone.View.extend({
             type: 'POST'
         });
 
+        alert('You added a new Picture.');
         return
     },
 
@@ -52,7 +53,7 @@ AddArtItemView = Backbone.View.extend({
                 var img;
                 img = new Image();
                 img.src = event.target.result;
-                img.style.width = "130px";
+                img.style.width = "100%";
                 _this.$("div#image_preview img").remove();
                 return _this.$("#image_preview").append(img);
             };
