@@ -33,7 +33,7 @@
     });
 
     //console.log(this.model.toJSON());
-    return this.model.save({}, {
+    this.model.save({}, {
             success: function (response) {
                 console.log(response.get('authentication_token'));
                 console.log(response);
@@ -46,6 +46,8 @@
             }
         }
     );
+    window.location.reload();
+    return
     };
 
     SignupCustomer.prototype.render = function() {

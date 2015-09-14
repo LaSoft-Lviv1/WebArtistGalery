@@ -34,6 +34,5 @@ module ArtistGallery
 
     # add custom validators path
     config.autoload_paths += %W["#{config.root}/app/validators/"]
-
   end
 end

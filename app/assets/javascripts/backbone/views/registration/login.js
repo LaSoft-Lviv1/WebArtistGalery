@@ -58,7 +58,9 @@ ArtistGallery.Views.Login = (function(superClass) {
 
         //alert('login');
         $('#modal').modal('hide');
-        window.location.href = '/#';
+        //Backbone.history.loadUrl(Backbone.history.fragment);
+        //window.location.href = '/#';
+        window.location.reload();
         return
     };
 
