@@ -20,17 +20,19 @@ AddArtItemView = Backbone.View.extend({
         var formData = new FormData(),
             $input = $('#add-art-photo-btn');
 
-        formData.append('art_item[name]',           this.$('#add-art-item-name').val());
-        formData.append('art_item[description]',    this.$('#add-art-item-description').val());
-        formData.append('art_item[price]',          this.$('#add-art-item-price').val());
-        formData.append('art_item[keywords]',       this.$('#add-art-item-keywords').val());
-        formData.append('art_item[style_id]',       this.$("#add-art-item-style :selected").val());
-        formData.append('art_item[media_id]',       this.$("#add-art-item-medium :selected").val());
-        formData.append('art_item[orientation_id]', this.$("#add-art-item-orientation :selected").val());
-        formData.append('art_item[subject_id]',     this.$("#add-art-item-subject :selected").val());
-        formData.append('art_item[category_id]',    this.$("#select-category :selected").val());
-        formData.append('art_item[subject_id]',     '1');
-        formData.append('art_item[source_file]',    $input[0].files[0]);
+        formData.append('art_item[name]',               this.$('#add-art-item-name').val());
+        formData.append('art_item[description]',        this.$('#add-art-item-description').val());
+        formData.append('art_item[price]',              this.$('#add-art-item-price').val());
+        formData.append('art_item[keywords]',           this.$('#add-art-item-keywords').val());
+        formData.append('art_item[style_id]',           this.$("#add-art-item-style :selected").val());
+        formData.append('art_item[media_id]',           this.$("#add-art-item-medium :selected").val());
+        formData.append('art_item[orientation_id]',     this.$("#add-art-item-orientation :selected").val());
+        formData.append('art_item[subject_id]',         this.$("#add-art-item-subject :selected").val());
+        formData.append('art_item[category_id]',        this.$("#select-category :selected").val());
+        formData.append('art_item[vertical_size]',      this.$('#add-art-item-vsize').val());
+        formData.append('art_item[horizontal_size]',    this.$('#add-art-item-hsize').val());
+        formData.append('art_item[subject_id]',         '1');
+        formData.append('art_item[source_file]',        $input[0].files[0]);
 
         $.ajax({
             url: this.model.url(),

@@ -87,6 +87,8 @@ class ArtItemsController < ApplicationController
                                    :subject_id,
                                    :category_id,
                                    :author_id,
+                                   :vertical_size,
+                                   :horizontal_size,
                                    :source_file,
                                    :preview_source_file)
   end

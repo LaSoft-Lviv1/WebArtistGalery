@@ -5,8 +5,11 @@ class AuthorsController < ApplicationController
 
   def index
     @authors = Author.all
-    #render json: @authors
-
+    # render json: @authors
+    respond_to do |format|
+      format.json { render json: @authors }
+      format.html { render action: "index" }
+    end
     #respond_with(@authors)
 
   end
@@ -23,7 +26,7 @@ class AuthorsController < ApplicationController
     puts author_params
     # @a = Author.create(author_params)
     #render json: @a
-    binding.pry
+    # binding.pry
     redirect_to '#/authors'
     #redirect_to :author
 
