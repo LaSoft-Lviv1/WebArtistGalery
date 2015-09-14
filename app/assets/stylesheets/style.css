@@ -33,7 +33,7 @@ body {
   width: 55px;
   height: 55px;
   line-height: 55px;
-  margin: none;
+  margin: 0px;
   background-color: #444;
   color: #fff;
   font-size: 2em;
@@ -388,7 +388,7 @@ div.container.header {
 }
 
 .more {
-  background: ##d3d3d3;
+  background-color: #d3d3d3;
   color: navy;
   font-size: 11px;
   padding: 3px;
