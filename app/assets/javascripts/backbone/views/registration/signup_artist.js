@@ -34,7 +34,7 @@
     });
 
     //console.log(this.model.toJSON());
-    return this.model.save({}, {
+    this.model.save({}, {
         success: function (response) {
             console.log(response.get('authentication_token'));
             console.log(response.toJSON());
@@ -46,6 +46,8 @@
             console.log(response.toJSON());
         }
     });
+    window.location.reload();
+    return
     };
 
     SignupArtist.prototype.render = function() {

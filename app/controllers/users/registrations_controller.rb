@@ -40,7 +40,7 @@ before_filter :configure_sign_up_params, only: [:create]
         # binding.pry
       elsif current_user.role == 'customer'
         customer = Customer.create( {user_id: current_user.id} )
-        render :json=> {:success=>true, :authentication_token=>current_user.authentication_token, :email=>current_user.email, :role =>current_user.role}
+        render :json=> {:success=>true, :authentication_token=>LoginHelper::AuthenticationService.auth_token(current_user), :email=>current_user.email, :role =>current_user.role}
         # binding.pry
       end
     else

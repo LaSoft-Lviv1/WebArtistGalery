@@ -68,7 +68,7 @@ class Users::SessionsController < Devise::SessionsController
       sign_out user
       render status: 204, json: nil
     end
-    binding.pry
+    # binding.pry
   end
 
   # protected
