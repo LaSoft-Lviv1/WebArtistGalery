@@ -7,7 +7,7 @@ var SignupView = Backbone.View.extend ({
     },
 
     initialize: function () {
-        this.render();
+        //this.render();
     },
 
     artistSignup: function (e) {
