@@ -14,8 +14,9 @@ module LoginHelper
     def self.authenticate_user auth_token
       decoded, _ = JWT.decode(auth_token, SECRET_KEY)
       user = User.find_by(authentication_token: decoded['id'])
-      if (user.current_sign_in_at.to_i < decoded['exp'])
-        puts user.current_sign_in_at.to_i
+      if (DateTime.now.to_i < decoded['exp'])
+        # binding.pry
+        puts DateTime.now.to_i
         puts decoded['exp']
         user
       else
