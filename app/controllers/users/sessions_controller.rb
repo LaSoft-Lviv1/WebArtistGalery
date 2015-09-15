@@ -1,5 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
+  skip_before_filter :verify_signed_out_user
   respond_to :json
   # GET /resource/sign_in
   # def new
@@ -11,7 +12,7 @@ class Users::SessionsController < Devise::SessionsController
     # Fetch params
     email = params[:user][:email] if params[:user]
     password = params[:user][:password] if params[:user]
-    id = User.find_by(email: email).try(:id) if email.presence
+    # id = User.find_by(email: email).try(:id) if email.presence
 
     # Validations
     if request.format != :json
@@ -30,11 +31,13 @@ class Users::SessionsController < Devise::SessionsController
     if user
       if user.valid_password? password
         user.reset_authentication_token!
+        user.save!
         sign_in(:user, user)
         # Note that the data which should be returned depends heavily of the API client needs.
         # render status: 200, json: { email: user.email, authentication_token: user.authentication_token }
         render :json=> {:success=>true, :authentication_token=>LoginHelper::AuthenticationService.auth_token(current_user), :email=>current_user.email, :role =>current_user.role}
         # redirect_to '/#'
+        # binding.pry
       else
         # render status: 401, json: { message: 'Invalid email or password.' }
         render :json=> {:success=>false, :message=>"Error with your login or password"}, :status=>401
@@ -67,6 +70,7 @@ class Users::SessionsController < Devise::SessionsController
       user.save!
       sign_out user
       render status: 204, json: nil
+      # binding.pry
     end
     # binding.pry
   end
