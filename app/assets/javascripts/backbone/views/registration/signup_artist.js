@@ -13,7 +13,8 @@
     SignupArtist.prototype.template = JST["backbone/templates/registration/signup_artist"];
 
     SignupArtist.prototype.events = {
-      "click button.reg": "signup"
+      "click button.reg": "signup",
+      "click a.back": "goBack"
     };
 
     SignupArtist.prototype.initialize = function() {
@@ -53,6 +54,12 @@
     SignupArtist.prototype.render = function() {
       this.$el.html(this.template());
     return this;
+    };
+
+    SignupArtist.prototype.goBack = function(e) {
+        e.preventDefault();
+        this.signupView = new SignupView();
+        return $(".modal-content").html(this.signupView.render().el);
     };
 
     return SignupArtist;

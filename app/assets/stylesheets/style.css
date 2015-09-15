@@ -693,6 +693,10 @@ div.container.header {
 
 /*DETAILED VIEW PAGE END*/
 
+#navbar-description li {
+  width: 100%;
+}
+
 @media only screen and (min-width: 768px) {
   .modal-dialog,
   .modal-content {
