@@ -13,7 +13,8 @@
     SignupCustomer.prototype.template = JST["backbone/templates/registration/signup_customer"];
 
     SignupCustomer.prototype.events = {
-      "click button.reg": "signup"
+      "click button.reg": "signup",
+      'click a.back': 'goBack'
     };
 
     SignupCustomer.prototype.initialize = function() {
@@ -53,6 +54,12 @@
     SignupCustomer.prototype.render = function() {
       this.$el.html(this.template());
     return this;
+    };
+    
+    SignupCustomer.prototype.goBack = function(e) {
+        e.preventDefault();
+        this.signupView = new SignupView();
+        return $(".modal-content").html(this.signupView.render().el);
     };
 
     return SignupCustomer;
