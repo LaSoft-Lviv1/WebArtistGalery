@@ -25,13 +25,18 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
   //};
 
     function screenHeight(){
-        return $.browser.opera? window.innerHeight : $(window).height();
+        var pos = $.browser.opera? window.innerHeight : $(window).height();
+        return pos;
+    }
+
+    function scrollTop(){
+        var pos = $.browser.mozilla? $(window).scrollTop() : document.body.scrollTop;
+        return pos;
     }
 
     IndexView.prototype.scroll = function() {
-
         if (Backbone.History.started && Backbone.history.getFragment() == "" && this.index < this.collection.length) {
-            if ((document.body.scrollHeight - (document.body.scrollTop + screenHeight())) < 100) {
+            if ((document.body.scrollHeight - (scrollTop() + screenHeight())) < 100) {
                 temp = this.index;
                 for (i = this.index; i < (temp + 3); i++) {
                     if (this.index < this.collection.length) {
