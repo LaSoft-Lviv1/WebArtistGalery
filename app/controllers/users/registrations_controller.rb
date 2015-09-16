@@ -39,18 +39,18 @@ before_filter :configure_sign_up_params, only: [:create]
     if current_user
       if current_user.role == 'artist'
         author = Author.create( {first_name: params[:user][:first_name], second_name: params[:user][:second_name], user_id: current_user.id} )
-        render :json=> {:success=>true, :authentication_token=>LoginHelper::AuthenticationService.auth_token(current_user), :email=>current_user.email, :role =>current_user.role}
+        render :json=> {:success=>true, :authentication_token=>LoginHelper::AuthenticationService.auth_token(current_user), :name=>current_user.author.first_name, :role =>current_user.role}
         binding.pry
       elsif current_user.role == 'customer'
-        customer = Customer.create( {user_id: current_user.id} )
-        render :json=> {:success=>true, :authentication_token=>LoginHelper::AuthenticationService.auth_token(current_user), :email=>current_user.email, :role =>current_user.role}
+        customer = Customer.create( {user_id: current_user.id, name: params[:user][:name]} )
+        render :json=> {:success=>true, :authentication_token=>LoginHelper::AuthenticationService.auth_token(current_user), :name=>current_user.customer.name, :role =>current_user.role}
         binding.pry
       end
     else
       render :json=> {:success=>false, :message=>"Some mistake!"}, :status=>401
       binding.pry
     end
-    binding.pry
+    # binding.pry
   end
 
   # GET /resource/edit
