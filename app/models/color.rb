@@ -14,8 +14,6 @@ class Color < ActiveRecord::Base
             presence: true,
             numericality: { :greater_than_or_equal_to => 0, less_than_or_equal_to: 100 }
 
-
-
   has_and_belongs_to_many :art_items
 
 end

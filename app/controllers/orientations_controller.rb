@@ -1,9 +1,7 @@
 class OrientationsController < ApplicationController
-
   def index
     @orientations = Orientation.all
-    render :json => @orientations
-    # binding.pry
-  end
 
+    render :json => @orientations
+  end
 end

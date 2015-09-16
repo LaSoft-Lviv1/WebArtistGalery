@@ -12,6 +12,7 @@ class AuthenticationService
   def self.authenticate_user auth_token
     decoded, _ = JWT.decode(auth_token, SECRET_KEY)
     user = User.find_by(authentication_token: decoded['authentication_token'])
+
     if (user.last_sign_in_at.to_i < decoded['exp'])
       user
     else

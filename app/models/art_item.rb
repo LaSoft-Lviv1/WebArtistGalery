@@ -1,11 +1,7 @@
 class ArtItem < ActiveRecord::Base
-
-
-  before_save :setParameters
+  before_save :setParameters #TODO Need change the name
 
   validates :name, presence: true
-  mount_uploader :source_file, PhotoUploader
-  #mount_uploader :preview_source_file, PhotoUploader
 
   belongs_to :category
   belongs_to :medium
@@ -15,10 +11,12 @@ class ArtItem < ActiveRecord::Base
   belongs_to :author
   has_and_belongs_to_many :colors
 
-  def setParameters
-    self.in_date = Date.today
-    self.preview_source_file = self.source_file
+  mount_uploader :source_file, PhotoUploader
 
+  private
+
+  def setParameters #TODO Need change the name to set_parameters
+    self.in_date = Date.today #TODO Need change the name to publication_date
+    self.preview_source_file = self.source_file #TODO Remove this row
   end
-
 end
