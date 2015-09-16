@@ -33,9 +33,18 @@ class Users::SessionsController < Devise::SessionsController
         user.reset_authentication_token!
         user.save!
         sign_in(:user, user)
+
+        if current_user.role == 'artist'
+          render :json=> {:success=>true, :authentication_token=>LoginHelper::AuthenticationService.auth_token(current_user), :name=>current_user.author.first_name, :role =>current_user.role}
+          binding.pry
+        elsif current_user.role == 'customer'
+          render :json=> {:success=>true, :authentication_token=>LoginHelper::AuthenticationService.auth_token(current_user), :name=>current_user.customer.name, :role =>current_user.role}
+          binding.pry
+        end
+
         # Note that the data which should be returned depends heavily of the API client needs.
         # render status: 200, json: { email: user.email, authentication_token: user.authentication_token }
-        render :json=> {:success=>true, :authentication_token=>LoginHelper::AuthenticationService.auth_token(current_user), :email=>current_user.email, :role =>current_user.role}
+        # render :json=> {:success=>true, :authentication_token=>LoginHelper::AuthenticationService.auth_token(current_user), :email=>current_user.email, :role =>current_user.role}
         # redirect_to '/#'
         # binding.pry
       else

@@ -25,8 +25,8 @@
 					<li><a href="#howToBuy">How to buy</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right" id="displaynone">
-					<% if (localStorage.getItem('email') != '') { %>
-                    <li><a href="/#authors"><%= localStorage.getItem('email') %></a></li>
+					<% if (localStorage.getItem('name') != '') { %>
+                    <li><a href="/#authors"><%= localStorage.getItem('name') %></a></li>
                     <li><a href="/#signout">Sign out</a></li>
                     <%} else {%>
                     <li><a href="" title="sign in" data-toggle="modal" data-target="#modal">Register | Sign in</a></li>

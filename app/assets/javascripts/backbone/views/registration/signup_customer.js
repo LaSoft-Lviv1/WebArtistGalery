@@ -27,19 +27,20 @@
     e.preventDefault();
 
     this.model.set({
+        name: this.$('#name').val(),
         email: this.$('#email').val(),
         password: this.$('#password').val(),
         password_confirmation: this.$('#password_confirmation').val(),
         role: 'customer'
     });
 
-    //console.log(this.model.toJSON());
+    console.log(this.model.toJSON());
     this.model.save({}, {
             success: function (response) {
                 console.log(response.get('authentication_token'));
                 console.log(response);
                 localStorage.setItem('user_token', response.get('authentication_token'));
-                localStorage.setItem('email', response.get('email'));
+                localStorage.setItem('name', response.get('name'));
                 localStorage.setItem('role', response.get('role'));
             },
             error: function (response) {

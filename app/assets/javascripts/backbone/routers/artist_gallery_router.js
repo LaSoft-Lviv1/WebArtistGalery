@@ -89,7 +89,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
           data: $.param({user_token: localStorage.getItem('user_token')})
       });
       localStorage.setItem('user_token', '');
-      localStorage.setItem('email', '');
+      localStorage.setItem('name', '');
       localStorage.setItem('role', '');
       window.location.href = '/#';
       return
