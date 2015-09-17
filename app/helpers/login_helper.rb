@@ -1,53 +1,22 @@
-module LoginHelper
-
-  class AuthenticationService
+module LoginHelper #TODO Need change the name
+  class AuthenticationService #TODO Need change the name
     SECRET_KEY = Rails.application.secrets.secret_key_base
 
-    # def initialize user
-    #   @user = user
-    # end
-
     def self.auth_token user
-      JWT.encode({'exp' => 7.days.from_now.to_i, 'id' => user.authentication_token}, SECRET_KEY)
+      JWT.encode({'exp' => 7.days.from_now.to_i, 'id' => user.authentication_token}, SECRET_KEY) #TODO Change id to authentication_token
     end
 
     def self.authenticate_user auth_token
       decoded, _ = JWT.decode(auth_token, SECRET_KEY)
       user = User.find_by(authentication_token: decoded['id'])
+
+      binding.pry
       if (DateTime.now.to_i < decoded['exp'])
-        # binding.pry
-        puts DateTime.now.to_i
-        puts decoded['exp']
         user
       else
-        return
+        return #TODO What is it?
       end
     end
 
-    # private
-    #
-    # attr_reader :user
   end
-
 end
-
-# class AuthenticationService
-#   SECRET_KEY = Rails.application.secrets.secret_key_base
-#
-#   def initialize user
-#     @user = user
-#   end
-#
-#   def auth_token
-#     JWT.encode({'exp' => 7.days.from_now.to_i, 'id' => user.id}, SECRET_KEY)
-#   end
-#
-#   def self.authenticate_user auth_token
-#     decoded, _ = JWT.decode(auth_token, SECRET_KEY)
-#     User.find_by(id: decoded['id'])
-#   end
-#
-#   private
-#
-#   attr_reader :user
-# end

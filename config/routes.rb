@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+	root to: 'application#index'
 
   devise_scope :user do
     delete '/users/sessions/' => 'users/sessions#destroy'
@@ -7,10 +8,6 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
 
-  root to: 'application#index'
-  # resources :posts
-  # resources :upload_image
-  #s
   resources :authors
   resources :city
   resources :art_items

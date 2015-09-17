@@ -1,53 +1,44 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
-orient1 = Orientation.new
-orient1.name='square'
-orient1.save
+# ORIENTATION
+['square', 'portrait', 'landscape'].each do |orientation|
+  Orientation.create(name: orientation)
+end
 
-orient2 = Orientation.new
-orient2.name='portrait'
-orient2.save
 
-orient3 = Orientation.new
-orient3.name='landscape'
-orient3.save
-
-orient4 = Orientation.new
-orient4.name='test'
-orient4.save
-
+# CATEGORIES
 categories = %w[Paintings Photography Drawing Sculpture Collage Prints]
 
-categories.each do |c|
-  Category.create(name: c)
+categories.each do |category|
+  Category.create(name: category)
 end
 
 
+# SUBJECTS
 subjects = ['Animal','Architecture','Bike','Body','Cats','Dogs','Cities','Food','Garden','Home','People','Sports']
 
-subjects.each do |c|
-  Subject.create(name: c)
+subjects.each do |subject|
+  Subject.create(name: subject)
 end
 
+
+# STYLES
 styles = ['Pop Art','Realism','Street Art','Modern','Surrealism','Folk','Documentary','Abstract']
 
-styles.each do |s|
-  Style.create(name: s)
+styles.each do |style|
+  Style.create(name: style)
 end
 
+
+# MEDIA
 mediums = %w[Acrylic Oil Tempera Watercolor Ink Airbrush]
 
-mediums.each do |m|
-  Medium.create(name: m)
+mediums.each do |medium|
+  Medium.create(name: medium)
 end
 
+
+# CITIES
 cities = %w[Lviv Kyiv London]
 
-cities.each do |c|
-  City.create(name: c)
+cities.each do |city|
+  City.create(name: city)
 end

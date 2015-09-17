@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery-1.11.3.min
 //= require bootstrap/js/bootstrap
 //= require underscore
@@ -26,3 +27,4 @@
 //= require_tree .
 //= require jquery-migrate-1.2.1.min
 //= require jquery_ujs
+//= require backbone.marionette
