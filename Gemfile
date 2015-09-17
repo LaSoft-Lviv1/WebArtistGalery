@@ -35,7 +35,6 @@ gem "underscore"
 gem 'handlebars_assets'
 gem 'rails-backbone'
 gem 'twitter-bootstrap-rails'
-gem 'marionette-rails', github: 'Vasyl-Varkholyak/marionette-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -47,7 +46,9 @@ group :development, :test do
   gem 'spring'
   # Remove assets from console
   gem 'quiet_assets'
+
   gem 'rspec-rails', '~> 3.0'
+  gem 'guard-rspec'
 end
 
 group :production do
