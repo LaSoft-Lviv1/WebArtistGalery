@@ -10,7 +10,7 @@ module LoginHelper #TODO Need change the name
       decoded, _ = JWT.decode(auth_token, SECRET_KEY)
       user = User.find_by(authentication_token: decoded['id'])
 
-      binding.pry
+      # binding.pry
       if (DateTime.now.to_i < decoded['exp'])
         user
       else

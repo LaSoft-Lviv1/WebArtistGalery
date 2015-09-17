@@ -1,6 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
-  skip_before_filter :verify_signed_out_user
+#   skip_before_filter :verify_signed_out_user
   respond_to :json
   # GET /resource/sign_in
   # def new
@@ -24,10 +24,11 @@ class Users::SessionsController < Devise::SessionsController
 
     # Authentication
     user = User.find_by(email: email)
-
+    # puts user.to_yaml
     if user
       if user.valid_password? password
         user.reset_authentication_token!
+        # user.reset_authentication_token!
         user.save!
         sign_in(:user, user)
 
