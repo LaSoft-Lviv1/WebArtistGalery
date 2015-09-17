@@ -1,6 +1,6 @@
 # ORIENTATION
 ['square', 'portrait', 'landscape'].each do |orientation|
-	Orientation.create(name: orientation)
+  Orientation.create(name: orientation)
 end
 
 

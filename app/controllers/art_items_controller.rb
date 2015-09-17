@@ -10,11 +10,9 @@ class ArtItemsController < ApplicationController
     end
   end
 
-
   def new
     @art_item = ArtItem.new
   end
-
 
   def create
     @art_item = ArtItem.new(art_item_params)
