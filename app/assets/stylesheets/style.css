@@ -691,6 +691,129 @@ div.container.header {
   margin-bottom: 10px;
 }
 
+  /*ARTIST ADMIN PAGE*/
+
+.admin-artist .upload-art,
+.admin-artist .my-gallery,
+.admin-artist .profile-edit {
+  position: relative;
+  border-radius: 3px;
+  box-shadow: 2px 2px 5px 0px;
+  height: 200px;
+  margin: 10px 10px 20px;
+  background-repeat: no-repeat;
+  background-position: 50% 0%;
+  background-size: contain;
+  -webkit-transition: all 0.2s ease-out, 0.2s;
+  -moz-transition: all 0.2s ease-out 0.2s;
+  -o-transition: all 0.2s ease-out 0.2s;
+  transition: all 0.2s ease-out 0.2s;
+}
+@media (max-width: 1199px) {
+  .admin-artist .upload-art,
+  .admin-artist .my-gallery,
+  .admin-artist .profile-edit {
+    height: 150px;
+  }
+}
+
+.admin-artist .upload-art .sticker,
+.admin-artist .my-gallery .sticker,
+.admin-artist .profile-edit .sticker{
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  -o-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.admin-artist .upload-art:hover,
+.admin-artist .my-gallery:hover,
+.admin-artist .profile-edit:hover {
+  transform: scale(1.1);
+  -webkit-transition: transform 0.2s ease-out;
+  -moz-transition: transform 0.2s ease-out;
+  -o-transition: transform 0.2s ease-out;
+  transition: transform 0.2s ease-out;
+}
+
+.admin-artist .upload-art:hover .sticker,
+.admin-artist .my-gallery:hover .sticker,
+.admin-artist .profile-edit:hover .sticker {
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 3em;
+  height: 100%;
+  background-color: rgba(200, 200, 200, 0.95);
+  transform: rotate(0deg) translateY(-10px);
+  -webkit-transition: all 0.2s ease-out 0.2s;
+  -moz-transition: all 0.2s ease-out 0.2s;
+  -o-transition: all 0.2s ease-out 0.2s;
+  transition: all 0.2s ease-out 0.2s;
+  line-height: 100%;
+  vertical-align: middle;
+  color: #000;
+  font-weight: bold;
+  background-color: rgba(255, 250, 143, 0.95);
+  border-top: 20px solid rgba(239, 209, 104, 0.95);
+}
+
+.admin-artist .profile-edit {
+  background-image:
+      url('../images/painter.svg'),
+      -webkit-linear-gradient(#D9D9D9 0%, #BCBCBC 35%, #838383 60%, #737373 61%, #D4D4D4 100%);
+  background-image:
+      url('../images/painter.svg'),
+      -o-linear-gradient(#D9D9D9 0%, #BCBCBC 35%, #838383 60%, #737373 61%, #D4D4D4 100%);
+  background-image:
+      url('../images/painter.svg'),
+      linear-gradient(#D9D9D9 0%, #BCBCBC 35%, #838383 60%, #737373 61%, #D4D4D4 100%);
+  background-size: contain;
+}
+
+.admin-artist .upload-art {
+  background-image:
+      url('../images/paint82.svg'),
+      -webkit-linear-gradient(#D9D9D9 0%, #BCBCBC 35%, #838383 60%, #737373 61%, #D4D4D4 100%);
+  background-image:
+      url('../images/paint82.svg'),
+      -o-linear-gradient(#D9D9D9 0%, #BCBCBC 35%, #838383 60%, #737373 61%, #D4D4D4 100%);
+  background-image:
+      url('../images/paint82.svg'),
+      linear-gradient(#D9D9D9 0%, #BCBCBC 35%, #838383 60%, #737373 61%, #D4D4D4 100%);
+  background-size: contain;
+}
+
+.admin-artist .my-gallery {
+  background-image:
+      url('../images/paint.svg'),
+      -webkit-linear-gradient(#D9D9D9 0%, #BCBCBC 35%, #838383 60%, #737373 61%, #D4D4D4 100%);
+  background-image:
+      url('../images/paint.svg'),
+      -o-linear-gradient(#D9D9D9 0%, #BCBCBC 35%, #838383 60%, #737373 61%, #D4D4D4 100%);
+  background-image:
+      url('../images/paint.svg'),
+      linear-gradient(#D9D9D9 0%, #BCBCBC 35%, #838383 60%, #737373 61%, #D4D4D4 100%);
+  background-size: contain;
+}
+
+.admin-artist .sticker {
+  margin: 5px;
+  width: 70px;
+  background-color: #FFFA8F;
+  display: block;
+  padding: 0;
+  text-align: center;
+  border-top: 10px solid #EFD168;
+  border-radius: 5px;
+  height: 40px;
+  transform: rotate(5deg);
+  position: absolute;
+  top: 5px;
+}
+
+
 /*DETAILED VIEW PAGE END*/
 
 #navbar-description li {
@@ -868,4 +991,7 @@ div.container.header {
   .details button {
     margin-left: -10px;
   }
+}
+.validationError {
+  visibility: hidden;
 }

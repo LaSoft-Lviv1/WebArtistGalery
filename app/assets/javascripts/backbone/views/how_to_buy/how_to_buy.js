@@ -2,7 +2,7 @@ var HowToBuyView = Backbone.View.extend ({
 	template: JST["backbone/templates/how_to_buy/how_to_buy"],
 
 	initialize: function () {
-        ArtistGallery.LoginHelpers.reRenderLoginView(this.model);
+      ArtistGallery.LoginHelpers.reRenderLoginView(this.model);
 	    this.render();
 },
 

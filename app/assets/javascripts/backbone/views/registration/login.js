@@ -32,8 +32,29 @@ ArtistGallery.Views.Login = (function(superClass) {
         return
     };
 
+    validateLogin = function() {
+        var regExEmail = /^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$/gi,
+            regExPassword = /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{8,})\S$/, //1 digit, 1 small char, 1 big char, 8 char min
+            email = $('#email').val(),
+            password = $('#password').val();
+            if(!regExEmail.test(email)) {
+                alert('email do not match the criteria.')
+                $('#email').focus();
+                // document.getElementById("emailValidationErr").style.visibility = "visible";
+                this.$("#emailValidationErr").css("visibility", "visible");
+                return false;
+            } else if(!regExPassword.test(password)) {
+                alert('password do not match the criteria.');
+                $('#password').focus();
+                return false;   
+            } else {
+                return true;
+            }
+    };
+
     Login.prototype.login = function(e) {
         e.preventDefault();
+        if(validateLogin()) {
         this.model.set({
             email: this.$('#email').val(),
             password: this.$('#password').val(),
@@ -61,6 +82,7 @@ ArtistGallery.Views.Login = (function(superClass) {
         //Backbone.history.loadUrl(Backbone.history.fragment);
         //window.location.href = '/#';
         window.location.reload();
+        }
         return
     };
 
