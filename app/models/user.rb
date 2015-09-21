@@ -11,16 +11,16 @@ class User < ActiveRecord::Base
 	  reset_authentication_token! if authentication_token.blank?
   end
 
-  private
-
   def reset_authentication_token!
     self.authentication_token = generate_authentication_token
   end
 
-  def generate_authentication_token
-    loop do
-      token = Devise.friendly_token
-      break token unless User.where(authentication_token: token).first #TODO Why need use where?
+  private
+
+    def generate_authentication_token
+      loop do
+        token = Devise.friendly_token
+        break token unless User.where(authentication_token: token).first #TODO Why need use where?
+      end
     end
-  end
 end

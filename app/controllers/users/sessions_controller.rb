@@ -1,11 +1,17 @@
 class Users::SessionsController < Devise::SessionsController
-  skip_before_filter :verify_signed_out_user #TODO Why we use that?
+# before_filter :configure_sign_in_params, only: [:create]
+#   skip_before_filter :verify_signed_out_user
   respond_to :json
+  # GET /resource/sign_in
+  # def new
+  #   super
+  # end
 
   def create #TODO Need understand what is it?
     email = params[:user][:email] if params[:user]
     password = params[:user][:password] if params[:user]
 
+    # Validations
     if request.format != :json
       render status: 406, json: { message: 'The request must be JSON.' }
       return
@@ -18,10 +24,11 @@ class Users::SessionsController < Devise::SessionsController
 
     # Authentication
     user = User.find_by(email: email)
-
+    # puts user.to_yaml
     if user
       if user.valid_password? password
         user.reset_authentication_token!
+        # user.reset_authentication_token!
         user.save!
         sign_in(:user, user)
 
@@ -42,16 +49,24 @@ class Users::SessionsController < Devise::SessionsController
 
   end
 
+  # DELETE /resource/sign_out
   def destroy
+    # Fetch params
     user = LoginHelper::AuthenticationService.authenticate_user(params[:user_token])
     if user.nil?
-      render status: 404, json: { message: 'Invalid token.' } #TODO Status code is not correct
+      # sign_out :user
+      render status: 404, json: { message: 'Invalid token.' }
     else
       user.authentication_token = nil
       user.save!
       sign_out user
-      render status: 204, json: nil #TODO Why need use 204
+      render status: 404, json: nil
     end
   end
 
+  # protected
+
+  # def configure_sign_in_params
+  #   devise_parameter_sanitizer.for(:sign_in) << :attribute
+  # end
 end
