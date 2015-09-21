@@ -28,6 +28,7 @@
                   </div>
                   <div class="col-sm-6">
                     <input type="text" class="form-group" id="email" placeholder="ex: example@xmp.com">
+                    <div class="validationError" id="emailValidationErr">Email wrong!!!</div>
                   </div>
                 </div>
                 <!-- /email .row -->
@@ -39,7 +40,8 @@
                     <label for="password">Password :</label>
                   </div>
                   <div class="col-sm-6">
-                    <input type="password" class="form-group" id="password" placeholder="MySecretPass">
+                    <input type="password" class="form-group" id="password" placeholder="MySecretPass"> <!-- pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required -->
+                    <div id="passValidationErr"  class="validationError">Password wrong!!!</div>
                   </div>
                 </div> <!-- /password .row -->
                 <!-- /.left-column -->
@@ -47,7 +49,7 @@
               <!-- /.form-group -->
               <div class="form-group clearfix">
                 <div class="col-md-6 col-md-offset-6 col-without-padding">
-                  <button type="submit" class="btn btn-success btn-wide login" id="signin-btn" data-dismiss="modal">Sign in</button>
+                  <button type="submit" class="btn btn-success btn-wide login" id="signin-btn">Sign in</button>
                 </div>
                 <div class="checkbox pull-right">
                   <label>

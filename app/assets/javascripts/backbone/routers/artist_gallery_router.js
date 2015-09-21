@@ -41,6 +41,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
         'signout': "signout",
         'artItems/new': "newArtItem",
         'artItems/:id': "detailedArtItem",
+        'artistAdmin': "artistAdmin",
         '.*': "index"
     };
 
@@ -145,6 +146,12 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     this.howToBuy = new HowToBuyView({
         model: this.login_model
     });
+    return
+  };
+
+   ArtistGalleryRouter.prototype.artistAdmin = function() {
+    this.headerView = new HeaderView();
+    this.artistAdminView = new ArtistAdminView();
     return
   };
 
