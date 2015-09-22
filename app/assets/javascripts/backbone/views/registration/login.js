@@ -38,15 +38,15 @@ ArtistGallery.Views.Login = (function(superClass) {
             email = $('#email').val(),
             password = $('#password').val();
             if(!regExEmail.test(email)) {
-                alert('email do not match the criteria.')
+                alert('email do not match the criteria.');
                 $('#email').focus();
                 // document.getElementById("emailValidationErr").style.visibility = "visible";
                 this.$("#emailValidationErr").css("visibility", "visible");
                 return false;
-            } else if(!regExPassword.test(password)) {
-                alert('password do not match the criteria.');
-                $('#password').focus();
-                return false;   
+            //} else if(!regExPassword.test(password)) {
+            //    alert('password do not match the criteria.');
+            //    $('#password').focus();
+            //    return false;
             } else {
                 return true;
             }
@@ -55,42 +55,43 @@ ArtistGallery.Views.Login = (function(superClass) {
     Login.prototype.login = function(e) {
         e.preventDefault();
         if(validateLogin()) {
-        this.model.set({
-            email: this.$('#email').val(),
-            password: this.$('#password').val(),
-            remember_me: "0"
-        });
+            this.model.set({
+                email: this.$('#email').val(),
+                password: this.$('#password').val(),
+                remember_me: "0"
+            });
 
-        this.model.save({}, {
-            success: function (response) {
-                //debugger;
-                //console.log(response.get('authentication_token'));
-                //console.log(response);
-                localStorage.setItem('user_token', response.get('user_token'));
-                localStorage.setItem('name', response.get('name'));
-                localStorage.setItem('role', response.get('role'));
-                $('#modal').modal('hide');
-                window.location.reload();
-            },
-            error: function (response) {
-                //debugger;
-                console.log('error resp: ' + response.toJSON());
-            }
-        });
+            this.model.save({}, {
+                success: function (response) {
+                    //debugger;
+                    //console.log(response.get('authentication_token'));
+                    //console.log(response);
+                    localStorage.setItem('user_token', response.get('user_token'));
+                    localStorage.setItem('name', response.get('name'));
+                    localStorage.setItem('role', response.get('role'));
+                    $('#modal').modal('hide');
+                    window.location.reload();
+                },
+                error: function (response) {
+                    //debugger;
+                    console.log('error resp: ' + response.toJSON());
+                }
+            });
 
-        //this.model.save().done(function(response){
-        //  //debugger;
-        //   console.log(response.authentication_token);
-        //  //console.log(response);
-        //  localStorage.setItem('user_token', response.user_token);
-        //  localStorage.setItem('name', response.name);
-        //  localStorage.setItem('role', response.role);
-        //  $('#modal').modal('hide');
-        //  window.location.reload();
-        //}).fail(function(response){
-        //  debugger;
-        //  console.log('error resp: ' + response.message);
-        //});
+            //this.model.save().done(function(response){
+            //  //debugger;
+            //   console.log(response.authentication_token);
+            //  //console.log(response);
+            //  localStorage.setItem('user_token', response.user_token);
+            //  localStorage.setItem('name', response.name);
+            //  localStorage.setItem('role', response.role);
+            //  $('#modal').modal('hide');
+            //  window.location.reload();
+            //}).fail(function(response){
+            //  debugger;
+            //  console.log('error resp: ' + response.message);
+            //});
+        }
         return
     };
 
