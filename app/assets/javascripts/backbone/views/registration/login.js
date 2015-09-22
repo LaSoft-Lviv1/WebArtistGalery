@@ -63,26 +63,34 @@ ArtistGallery.Views.Login = (function(superClass) {
 
         this.model.save({}, {
             success: function (response) {
-                console.log(response.get('authentication_token'));
-                console.log(response.toJSON());
-                localStorage.setItem('user_token', response.get('authentication_token'));
+                //debugger;
+                //console.log(response.get('authentication_token'));
+                //console.log(response);
+                localStorage.setItem('user_token', response.get('user_token'));
                 localStorage.setItem('name', response.get('name'));
                 localStorage.setItem('role', response.get('role'));
+                $('#modal').modal('hide');
+                window.location.reload();
             },
             error: function (response) {
-                console.log(response.toJSON());
+                //debugger;
+                console.log('error resp: ' + response.toJSON());
             }
         });
-        this.model.set({
-            id: "1"
-        });
 
-        //alert('login');
-        $('#modal').modal('hide');
-        //Backbone.history.loadUrl(Backbone.history.fragment);
-        //window.location.href = '/#';
-        window.location.reload();
-        }
+        //this.model.save().done(function(response){
+        //  //debugger;
+        //   console.log(response.authentication_token);
+        //  //console.log(response);
+        //  localStorage.setItem('user_token', response.user_token);
+        //  localStorage.setItem('name', response.name);
+        //  localStorage.setItem('role', response.role);
+        //  $('#modal').modal('hide');
+        //  window.location.reload();
+        //}).fail(function(response){
+        //  debugger;
+        //  console.log('error resp: ' + response.message);
+        //});
         return
     };
 

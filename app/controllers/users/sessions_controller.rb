@@ -33,18 +33,21 @@ class Users::SessionsController < Devise::SessionsController
         sign_in(:user, user)
 
         if current_user.role == 'artist'
-          render :json=> {:success=>true, :authentication_token=>LoginHelper::AuthenticationService.auth_token(current_user), :name=>current_user.author.first_name, :role =>current_user.role}
+          render json: {status:      'success',
+                        user_token:  LoginHelper::AuthenticationService.auth_token(current_user),
+                        name:        current_user.author.first_name,
+                        role:        current_user.role}
         elsif current_user.role == 'customer'
-          render :json=> {:success=>true, :authentication_token=>LoginHelper::AuthenticationService.auth_token(current_user), :name=>current_user.customer.name, :role =>current_user.role}
+          render json: {status:      'success',
+                        user_token:  LoginHelper::AuthenticationService.auth_token(current_user),
+                        name:        current_user.customer.name,
+                        role:        current_user.role}
         end
-
       else
-        # render status: 401, json: { message: 'Invalid email or password.' }
-        render :json=> {:success=>false, :message=>"Error with your login or password"}, :status=>401
+        render status: 401, json: { message: 'Invalid email or password.' }
       end
     else
-      # render status: 401, json: { message: 'Invalid email or password.' }
-      render :json=> {:success=>false, :message=>"Error with your login or password"}, :status=>401
+      render status: 401, json: { message: 'Invalid email or password.' }
     end
 
   end
@@ -53,6 +56,7 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     # Fetch params
     user = LoginHelper::AuthenticationService.authenticate_user(params[:user_token])
+    # binding.pry
     if user.nil?
       # sign_out :user
       render status: 404, json: { message: 'Invalid token.' }
@@ -60,7 +64,7 @@ class Users::SessionsController < Devise::SessionsController
       user.authentication_token = nil
       user.save!
       sign_out user
-      render status: 404, json: nil
+      render status: 200, json: nil
     end
   end
 
