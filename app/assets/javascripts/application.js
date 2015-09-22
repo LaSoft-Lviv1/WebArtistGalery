@@ -15,8 +15,8 @@
 //= require bootstrap/js/bootstrap
 //= require underscore
 //= require backbone
-//= require backbone_rails_sync
-// require backbone.sync.rails
+// require backbone_rails_sync
+//= require backbone.sync.rails
 //= require backbone_datalink
 //= require backbone/artist_gallery
 //= require backbone/routers/artist_gallery_router
