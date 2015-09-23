@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 
   has_one :author
   has_one :customer
+  has_many :shopping_carts
 
   def ensure_authentication_token #TODO When you need use this method?
 	  reset_authentication_token! if authentication_token.blank?
