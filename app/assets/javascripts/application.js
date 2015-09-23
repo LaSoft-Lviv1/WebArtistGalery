@@ -18,12 +18,12 @@
 // require backbone_rails_sync
 //= require backbone.sync.rails
 //= require backbone_datalink
-//= require backbone/artist_gallery
-//= require backbone/routers/artist_gallery_router
+//= require backbone/artistGallery.js.coffee
+//= require backbone/routers/artistGalleryRouter
 //= require lazyload
 //= require jquery.lazyload.min
 //= require slick/slick
-//= require csrf_hack
+//= require csrfHack.js.coffee
 //= require_tree .
 //= require jquery-migrate-1.2.1.min
 //= require jquery_ujs
