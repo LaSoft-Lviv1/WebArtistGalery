@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150916090950) do
+ActiveRecord::Schema.define(version: 20150923144755) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20150916090950) do
     t.string   "preview_source_file", null: false
     t.text     "description"
     t.decimal  "price"
-    t.date     "in_date",             null: false
+    t.date     "publication_date",    null: false
     t.date     "sold_date"
     t.float    "vertical_size"
     t.float    "horizontal_size"
@@ -114,6 +114,18 @@ ActiveRecord::Schema.define(version: 20150916090950) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "shopping_carts", force: :cascade do |t|
+    t.datetime "order_date",   null: false
+    t.datetime "payment_date"
+    t.integer  "art_item_id"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "shopping_carts", ["art_item_id"], name: "index_shopping_carts_on_art_item_id", using: :btree
+  add_index "shopping_carts", ["user_id"], name: "index_shopping_carts_on_user_id", using: :btree
+
   create_table "styles", force: :cascade do |t|
     t.string   "name",       null: false
     t.datetime "created_at", null: false
@@ -151,4 +163,6 @@ ActiveRecord::Schema.define(version: 20150916090950) do
 
   add_foreign_key "authors", "users"
   add_foreign_key "customers", "users"
+  add_foreign_key "shopping_carts", "art_items"
+  add_foreign_key "shopping_carts", "users"
 end
