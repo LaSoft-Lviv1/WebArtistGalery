@@ -28,17 +28,23 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if current_user
       if current_user.role == 'artist'
         author = Author.create( {first_name: params[:user][:first_name], second_name: params[:user][:second_name], user_id: current_user.id} )
-        render :json=> {:success=>true, :authentication_token=>LoginHelper::AuthenticationService.auth_token(current_user), :name=>current_user.author.first_name, :role =>current_user.role}
+        render json: {status:      'success',
+                      user_token:  LoginHelper::AuthenticationService.auth_token(current_user),
+                      name:        current_user.author.first_name,
+                      role:        current_user.role}
       elsif current_user.role == 'customer'
         customer = Customer.create( {user_id: current_user.id, name: params[:user][:name]} )
-        render :json=> {:success=>true, :authentication_token=>LoginHelper::AuthenticationService.auth_token(current_user), :name=>current_user.customer.name, :role =>current_user.role}
+        render json: {status:      'success',
+                      user_token:  LoginHelper::AuthenticationService.auth_token(current_user),
+                      name:        current_user.customer.name,
+                      role:        current_user.role}
       end
     else
-      render :json=> {:success=>false, :message=>"Some mistake!"}, :status=>401
+      render json: {success: false,   message: "Some mistake!"}, :status=>401
     end
   end
 
-	private
+  private
 
   def configure_sign_up_params
     devise_parameter_sanitizer.for(:sign_up) << :role
