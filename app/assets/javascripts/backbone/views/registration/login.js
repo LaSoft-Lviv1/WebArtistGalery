@@ -38,15 +38,15 @@ ArtistGallery.Views.Login = (function(superClass) {
             email = $('#email').val(),
             password = $('#password').val();
             if(!regExEmail.test(email)) {
-                alert('email do not match the criteria.');
                 $('#email').focus();
-                // document.getElementById("emailValidationErr").style.visibility = "visible";
-                this.$("#emailValidationErr").css("visibility", "visible");
+                this.$("#emailValidationErr").css("display", "inline-block");
+                this.$("#passValidationErr").css("display", "none");
                 return false;
             //} else if(!regExPassword.test(password)) {
-            //    alert('password do not match the criteria.');
-            //    $('#password').focus();
-            //    return false;
+                $('#password').focus();
+                this.$("#passValidationErr").css("display", "inline-block");
+                this.$("#emailValidationErr").css("display", "none");
+                return false;   
             } else {
                 return true;
             }
