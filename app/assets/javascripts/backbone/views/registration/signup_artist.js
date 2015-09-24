@@ -70,7 +70,6 @@ ArtistGallery.Views.SignupArtist = (function(superClass) {
                     console.log(response.toJSON());
                 }
             });
-            window.location.reload();
         }
         return
     };

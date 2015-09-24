@@ -6,8 +6,7 @@ var MorelessView = Backbone.View.extend ({
 },
 
 	render: function () {
-	$('#scripts').append( this.template() );
-
+	    $('#scripts').append( this.template() );
 	return this;
 }
 });

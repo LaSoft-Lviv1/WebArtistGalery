@@ -7,7 +7,6 @@ var DescriptionView = Backbone.View.extend ({
 
 	render: function () {
 	$('.description').html( this.template() );
-
 	return this;
 }
 });

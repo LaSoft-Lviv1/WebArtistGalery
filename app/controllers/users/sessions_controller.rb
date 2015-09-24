@@ -11,17 +11,6 @@ class Users::SessionsController < Devise::SessionsController
   def create #TODO Need understand what is it?
     email = params[:user][:email] if params[:user]
     password = params[:user][:password] if params[:user]
-
-    # Validations
-    if request.format != :json
-      render status: 406, json: { message: 'The request must be JSON.' }
-      return
-    end
-
-    if email.nil? or password.nil?
-      render status: 400, json: { message: 'The request MUST contain the user email and password.' }
-      return
-    end
     # Authentication
     user = User.find_by(email: email)
     if user
@@ -62,41 +51,41 @@ class Users::SessionsController < Devise::SessionsController
     end
   end
 
-  private
+    private
 
-  def validate_params
-    email = params[:user][:email] if params[:user]
-    password = params[:user][:password] if params[:user]
+    def validate_params
+      email = params[:user][:email] if params[:user]
+      password = params[:user][:password] if params[:user]
 
-    if request.format != :json
-      render status: 406, json: { message: 'The request must be JSON.' }
-      return
+      if request.format != :json
+        render status: 406, json: { message: 'The request must be JSON.' }
+        return
+      end
+
+      if !is_a_valid_email?(email) or !is_a_valid_password?(password)
+        render status: 401, json: { message: 'The request MUST contain correct user email and password.' }
+        return
+      end
     end
 
-    if !is_a_valid_email?(email) or !is_a_valid_password?(password)
-      render status: 401, json: { message: 'The request MUST contain correct user email and password.' }
-      return
-    end
-  end
+    def is_a_valid_email?(email)
+      if email.count("@") != 1 then
+        return false
 
-  def is_a_valid_email?(email)
-    if email.count("@") != 1 then
-      return false
-
-    elsif email =~ /^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$/i then
-      return true
-    else
-      return false
+      elsif email =~ /^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$/i then
+        return true
+      else
+        return false
+      end
     end
-  end
 
-  def is_a_valid_password?(password)
-    if password =~ /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{8,})\S$/ then
-      return true
-    else
-      return false
+    def is_a_valid_password?(password)
+      if password =~ /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{8,})\S$/ then
+        return true
+      else
+        return false
+      end
     end
-  end
 
 # protected
 
