@@ -8,43 +8,54 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.save
     yield resource if block_given?
     if resource.persisted?
-      if resource.active_for_authentication?
-        # set_flash_message :notice, :signed_up if is_flashing_format?
-        sign_up(resource_name, resource)
-        # respond_with resource, location: after_sign_up_path_for(resource)
+      if resource
+        if resource.role == 'artist'
+          author = Author.create( {first_name:  params[:user][:first_name],
+                                   second_name: params[:user][:second_name],
+                                   user_id:     resource.id} )
+          if author.valid?
+            sign_up(resource_name, resource)
+            render json: {status:      'success',
+                          user_token:  LoginHelper::AuthenticationService.auth_token(current_user),
+                          name:        current_user.author.first_name,
+                          role:        current_user.role}
+            # binding.pry
+          else
+            resource.delete
+            render json: {success: false,   message: "Some mistake with own data!"}, :status=>401
+            # binding.pry
+          end
+        elsif resource.role == 'customer'
+          customer = Customer.create( {user_id: resource.id,
+                                       name:    params[:user][:name]} )
+          if customer.valid?
+            sign_up(resource_name, resource)
+            render json: {status:      'success',
+                          user_token:  LoginHelper::AuthenticationService.auth_token(current_user),
+                          name:        current_user.customer.name,
+                          role:        current_user.role}
+            # binding.pry
+          else
+            resource.delete
+            render json: {success: false,   message: "Some mistake with own data!"}, :status=>401
+            # binding.pry
+          end
+        end
       else
-        # set_flash_message :notice, :"signed_up_but_#{resource.inactive_message}" if is_flashing_format?
+        render json: {success: false,   message: "Some mistake with email or password!"}, :status=>401
         expire_data_after_sign_in!
-        # respond_with resource, location: after_inactive_sign_up_path_for(resource)
+        # binding.pry
       end
     else
+      render json: {success: false,   message: "Some mistake with email or password!"}, :status=>401
       clean_up_passwords resource
       set_minimum_password_length
-      # respond_with resource
+      # binding.pry
     end
-
-    # super
     puts 'Hello! Registration!'
-    if current_user
-      if current_user.role == 'artist'
-        author = Author.create( {first_name: params[:user][:first_name], second_name: params[:user][:second_name], user_id: current_user.id} )
-        render json: {status:      'success',
-                      user_token:  LoginHelper::AuthenticationService.auth_token(current_user),
-                      name:        current_user.author.first_name,
-                      role:        current_user.role}
-      elsif current_user.role == 'customer'
-        customer = Customer.create( {user_id: current_user.id, name: params[:user][:name]} )
-        render json: {status:      'success',
-                      user_token:  LoginHelper::AuthenticationService.auth_token(current_user),
-                      name:        current_user.customer.name,
-                      role:        current_user.role}
-      end
-    else
-      render json: {success: false,   message: "Some mistake!"}, :status=>401
-    end
   end
 
-  private
+	private
 
   def configure_sign_up_params
     devise_parameter_sanitizer.for(:sign_up) << :role
