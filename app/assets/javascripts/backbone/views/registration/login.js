@@ -54,7 +54,7 @@ ArtistGallery.Views.Login = (function(superClass) {
 
     Login.prototype.login = function(e) {
         e.preventDefault();
-        if(validateLogin()) {
+        if(/*validateLogin()*/true) {
             this.model.set({
                 email: this.$('#email').val(),
                 password: this.$('#password').val(),
@@ -72,9 +72,8 @@ ArtistGallery.Views.Login = (function(superClass) {
                     $('#modal').modal('hide');
                     window.location.reload();
                 },
-                error: function (response) {
-                    //debugger;
-                    console.log('error resp: ' + response.toJSON());
+                error: function (model, xhr, options) {
+                    console.log(xhr.responseJSON.message);
                 }
             });
 

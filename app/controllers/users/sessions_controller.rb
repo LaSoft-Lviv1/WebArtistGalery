@@ -1,6 +1,7 @@
 class Users::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
 #   skip_before_filter :verify_signed_out_user
+  before_action :validate_params, only: [:create]
   respond_to :json
   # GET /resource/sign_in
   # def new
@@ -10,28 +11,12 @@ class Users::SessionsController < Devise::SessionsController
   def create #TODO Need understand what is it?
     email = params[:user][:email] if params[:user]
     password = params[:user][:password] if params[:user]
-
-    # Validations
-    if request.format != :json
-      render status: 406, json: { message: 'The request must be JSON.' }
-      return
-    end
-
-    if email.nil? or password.nil?
-      render status: 400, json: { message: 'The request MUST contain the user email and password.' }
-      return
-    end
-
     # Authentication
     user = User.find_by(email: email)
-    # puts user.to_yaml
     if user
       if user.valid_password? password
         user.reset_authentication_token!
-        # user.reset_authentication_token!
-        user.save!
         sign_in(:user, user)
-
         if current_user.role == 'artist'
           render json: {status:      'success',
                         user_token:  LoginHelper::AuthenticationService.auth_token(current_user),
@@ -60,14 +45,49 @@ class Users::SessionsController < Devise::SessionsController
       # sign_out :user
       render status: 404, json: { message: 'Invalid token.' }
     else
-      user.authentication_token = nil
-      user.save!
+      user.update_columns(authentication_token: nil)
       sign_out user
       render status: 200, json: nil
     end
   end
 
-  # protected
+    private
+
+    def validate_params
+      email = params[:user][:email] if params[:user]
+      password = params[:user][:password] if params[:user]
+
+      if request.format != :json
+        render status: 406, json: { message: 'The request must be JSON.' }
+        return
+      end
+
+      if !is_a_valid_email?(email) or !is_a_valid_password?(password)
+        render status: 401, json: { message: 'The request MUST contain correct user email and password.' }
+        return
+      end
+    end
+
+    def is_a_valid_email?(email)
+      if email.count("@") != 1 then
+        return false
+
+      elsif email =~ /^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$/i then
+        return true
+      else
+        return false
+      end
+    end
+
+    def is_a_valid_password?(password)
+      if password =~ /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{8,})\S$/ then
+        return true
+      else
+        return false
+      end
+    end
+
+# protected
 
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.for(:sign_in) << :attribute

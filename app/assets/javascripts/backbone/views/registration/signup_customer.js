@@ -44,8 +44,8 @@
                 localStorage.setItem('role', response.get('role'));
                 window.location.reload();
             },
-            error: function (response) {
-                console.log(response.toJSON());
+            error: function (model, xhr, options) {
+                console.log(xhr.responseJSON.message);
             }
         }
     );

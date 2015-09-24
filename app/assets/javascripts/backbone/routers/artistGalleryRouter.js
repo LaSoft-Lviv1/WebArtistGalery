@@ -150,9 +150,14 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
    ArtistGalleryRouter.prototype.artistAdmin = function() {
-    var morelessView = new MorelessView();
     this.headerView = new HeaderView();
+    this.view = new ArtistGallery.Views.Login({
+        model: new ArtistGallery.Models.Login()
+    });
+    $(".modal-content").html(this.view.render().el);
     this.artistAdminView = new ArtistAdminView();
+    var descriptionView = new DescriptionView();
+    var morelessView = new MorelessView();
     return
   };
 

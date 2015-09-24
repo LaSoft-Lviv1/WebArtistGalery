@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  validates :password, presence: true,
+            :format => {:with => /\A((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{8,})\S\z/, message: "Password must include at least one lowercase letter, one uppercase letter, and one digit."}
+
   enum role: [:customer, :artist, :admin]
 
   devise :database_authenticatable, :registerable,
@@ -13,7 +16,8 @@ class User < ActiveRecord::Base
   end
 
   def reset_authentication_token!
-    self.authentication_token = generate_authentication_token
+    # self.authentication_token = generate_authentication_token
+    self.update_columns(authentication_token: generate_authentication_token)
   end
 
   private
