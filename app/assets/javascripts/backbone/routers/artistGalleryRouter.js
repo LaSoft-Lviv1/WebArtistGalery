@@ -150,6 +150,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
    ArtistGalleryRouter.prototype.artistAdmin = function() {
+    var morelessView = new MorelessView();
     this.headerView = new HeaderView();
     this.artistAdminView = new ArtistAdminView();
     return

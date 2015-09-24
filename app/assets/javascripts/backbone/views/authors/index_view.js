@@ -1,12 +1,12 @@
 var base,
-  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
-  hasProp = {}.hasOwnProperty;
+	  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+	  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+	  hasProp = {}.hasOwnProperty;
 
 (base = ArtistGallery.Views).Authors || (base.Authors = {});
 
-	ArtistGallery.Views.Authors.IndextView = (function(superClass) {
-		extend(IndexView, superClass);
+ArtistGallery.Views.Authors.IndextView = (function(superClass) {
+	extend(IndexView, superClass);
 
 
 	function IndexView() {
@@ -16,12 +16,12 @@ var base,
 		this.addAllFromReset = bind(this.addAllFromReset, this);
 		this.initialize = bind(this.initialize, this);
 		return IndexView.__super__.constructor.apply(this, arguments);
-  };
+	};
 
-  IndexView.prototype.template = JST["backbone/templates/authors/index1"];
+	IndexView.prototype.template = JST["backbone/templates/authors/index1"];
 
 	IndexView.prototype.initialize = function () {
-        ArtistGallery.LoginHelpers.reRenderLoginView(this.model);
+	  ArtistGallery.LoginHelpers.reRenderLoginView(this.model);
 		this.listenTo(this.collection, "reset", this.addAllFromReset);
 	}
 
@@ -35,9 +35,9 @@ var base,
 
 	IndexView.prototype.addAll = function() {
 		this.collection.forEach(this.addOneArtItemForCarousel, this);
-    var descriptionView = new DescriptionView();
-    var morelessView = new MorelessView();
-    var carouselscriptView = new CarouselscriptView();
+	  var descriptionView = new DescriptionView();
+	  var morelessView = new MorelessView();
+	  var carouselscriptView = new CarouselscriptView();
 		return
 	};
 
@@ -46,13 +46,13 @@ var base,
 			model: art_item
 		});
 		this.$(".variable-width").append(oneArtItemView.render().el);
-    console.log('addoneartitem');
+	  console.log('addoneartitem');
 		return console.log('in addOneArtItem finish');
 	};
 
 	IndexView.prototype.render = function () {
-    console.log('artist_index_render');
-    this.$el.html(this.template());
+	  console.log('artist_index_render');
+	  this.$el.html(this.template());
 		return this;
 	};
 
