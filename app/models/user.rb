@@ -1,6 +1,4 @@
 class User < ActiveRecord::Base
-  # validates :email, presence: true,
-  #           format: { with: /^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$/i, :multiline => true,  message: 'Only allows letters and numbers' }
   validates :password, presence: true,
             :format => {:with => /\A((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{8,})\S\z/, message: "Password must include at least one lowercase letter, one uppercase letter, and one digit."}
 
@@ -18,7 +16,8 @@ class User < ActiveRecord::Base
   end
 
   def reset_authentication_token!
-    self.authentication_token = generate_authentication_token
+    # self.authentication_token = generate_authentication_token
+    self.update_columns(authentication_token: generate_authentication_token)
   end
 
   private
