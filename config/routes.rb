@@ -4,9 +4,13 @@ Rails.application.routes.draw do
   devise_scope :user do
     delete '/users/sessions/' => 'users/sessions#destroy'
     post '/users/sessions' => 'users/sessions#create'
+    # get '#confirm/:confirmation_token', to: 'user/confirmations#show'
   end
 
-  devise_for :users, controllers: { sessions: "users/sessions", registrations: "users/registrations" }
+
+  devise_for :users, controllers: { sessions:       "users/sessions",
+                                    registrations:  "users/registrations",
+                                    confirmations:  "users/confirmations"}
 
   resources :authors
   resources :city

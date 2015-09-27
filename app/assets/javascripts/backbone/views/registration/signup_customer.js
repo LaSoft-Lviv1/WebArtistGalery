@@ -42,6 +42,7 @@
                 localStorage.setItem('user_token', response.get('user_token'));
                 localStorage.setItem('name', response.get('name'));
                 localStorage.setItem('role', response.get('role'));
+                alert('Confirmation letter has been sent to your email.');
                 window.location.reload();
             },
             error: function (model, xhr, options) {

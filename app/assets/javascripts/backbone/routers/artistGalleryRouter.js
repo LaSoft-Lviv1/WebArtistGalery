@@ -42,6 +42,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
         'artItems/new': "newArtItem",
         'artItems/:id': "detailedArtItem",
         'artistAdmin': "artistAdmin",
+        'users/confirmation': 'confirmation',
         '.*': "index"
     };
 
@@ -54,7 +55,39 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     //  reset: true
     //});
   };
+  ArtistGalleryRouter.prototype.confirmation = function() {
+      var token = ArtistGallery.ArtistGalleryHelpers.getQueryString('confirmation_token');
+      var confirmationModel = new ArtistGallery.Models.Confitmation();
+      confirmationModel.fetch({
+          data: $.param({confirmation_token: token}),
+          success: function (response) {
+              alert('Confirmed successfuly!');
+              window.location.href = '/#';
+              //debugger;
+              //console.log(response.get('authentication_token'));
+              //console.log(response);
+              //localStorage.setItem('user_token', response.get('user_token'));
+              //localStorage.setItem('name', response.get('name'));
+              //localStorage.setItem('role', response.get('role'));
+              //$('#modal').modal('hide');
+              //window.location.reload();
+          },
+          error: function (model, xhr, options) {
+              if (xhr.responseJSON.message.email){
+                  alert('Email ' + xhr.responseJSON.message.email);
+                  console.log(xhr.responseJSON.message.email);
+              };
+              if(xhr.responseJSON.message.confirmation_token){
+                  alert('Confirmation token ' + xhr.responseJSON.message.confirmation_token);
+                  console.log(xhr.responseJSON.message.confirmation_token);
+              };
 
+              window.location.href = '/#';
+          }
+      });
+      console.log(token);
+      return
+  };
   ArtistGalleryRouter.prototype.showArtItemToJSON = function() {
       return console.log(this.art_items.toJSON());
   };

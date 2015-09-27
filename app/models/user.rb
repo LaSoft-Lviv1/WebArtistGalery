@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   enum role: [:customer, :artist, :admin]
 
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :confirmable,
          :recoverable, :rememberable, :trackable, :validatable
 
   has_one :author

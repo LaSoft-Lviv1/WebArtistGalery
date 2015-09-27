@@ -46,7 +46,7 @@ ArtistGallery.Views.SignupArtist = (function(superClass) {
 
     SignupArtist.prototype.signup = function(e) {
         e.preventDefault();
-        if(validateForm()) {
+        if(/*validateForm()*/true) {
             this.model.set({
                 first_name: this.$('#first_name').val(),
                 second_name: this.$('#second_name').val(),
@@ -59,12 +59,13 @@ ArtistGallery.Views.SignupArtist = (function(superClass) {
             //console.log(this.model.toJSON());
             this.model.save({}, {
                 success: function (response) {
-            //console.log(response.get('authentication_token'));
-            //console.log(response.toJSON());
-            localStorage.setItem('user_token', response.get('user_token'));
-            localStorage.setItem('name', response.get('name'));
-            localStorage.setItem('role', response.get('role'));
-            window.location.reload();
+                    //console.log(response.get('authentication_token'));
+                    //console.log(response.toJSON());
+                    localStorage.setItem('user_token', response.get('user_token'));
+                    localStorage.setItem('name', response.get('name'));
+                    localStorage.setItem('role', response.get('role'));
+                    alert('Confirmation letter has been sent to your email.');
+                    window.location.reload();
                 },
                 error: function (response) {
                     console.log(response.toJSON());
