@@ -33,10 +33,11 @@ ArtistGallery.Views.Login = (function(superClass) {
     };
 
     validateLogin = function() {
-        var regExEmail = /^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$/gi,
+        var regExEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
             regExPassword = /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{8,})\S$/, //1 digit, 1 small char, 1 big char, 8 char min
             email = $('#email').val(),
             password = $('#password').val();
+            console.log(!regExEmail.exec(email)); 
             if(!regExEmail.test(email)) {
                 $('#email').focus();
                 this.$("#emailValidationErr").css("display", "inline-block");
@@ -54,7 +55,8 @@ ArtistGallery.Views.Login = (function(superClass) {
 
     Login.prototype.login = function(e) {
         e.preventDefault();
-        if(/*validateLogin()*/true) {
+        console.log(this.$('#email').val());
+        if(validateLogin()) {
             this.model.set({
                 email: this.$('#email').val(),
                 password: this.$('#password').val(),

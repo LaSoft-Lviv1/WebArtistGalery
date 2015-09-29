@@ -26,7 +26,6 @@ DetailedArtItemView = Backbone.View.extend({
         this.authors.fetch({
             reset: true
         });
-
         this.listenTo(this.styles, "reset", this.fillStyles);
         this.listenTo(this.medias, "reset", this.fillMedias);
         this.listenTo(this.subjects, "reset", this.fillSubjects);
@@ -53,7 +52,9 @@ DetailedArtItemView = Backbone.View.extend({
     },
 
     fillAuthors: function () {
-        var author = this.authors.get(this.model.toJSON().author_id);
+     //   var author = this.authors.get(this.model.toJSON().author_id);
+        console.log(author);
+        //author_id: null
         var first_name = author.toJSON().first_name;
         var second_name = author.toJSON().second_name;
         this.$("#art-item-author").html(first_name + ' ' + second_name + '.');
