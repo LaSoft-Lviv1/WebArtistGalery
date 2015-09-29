@@ -82,8 +82,12 @@ ArtistGallery.Views.SignupArtist = (function(superClass) {
             password = $("#password").val(),
             confirm = $("#password_confirmation").val(),
             regexText = /^([A-Z\u0410-\u042F\u0406\u0407][A-Za-z\u0410-\u044F\u0456\u0457 ,.'`-]{3,30})$/gm,
-            regexEmailValid = /^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$/gi,
+            regexEmailValid = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
             regexPasswordValid = /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{8,})\S$/;
+            
+            $('.form-group').focus(function () {
+                console.log("focus");
+            })
 
             // switch() {
             //     case (!regexText.test(name)):
@@ -117,6 +121,10 @@ ArtistGallery.Views.SignupArtist = (function(superClass) {
         // return false;
     };
     
+    SignupArtist.prototype.checkName = function () {
+        console.log('focusout Name');
+
+    };
     SignupArtist.prototype.render = function() {
         this.$el.html(this.template());
         return this;

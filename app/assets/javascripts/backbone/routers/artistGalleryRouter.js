@@ -43,8 +43,17 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
         'artItems/:id': "detailedArtItem",
         'artistAdmin': "artistAdmin",
         'users/confirmation': 'confirmation',
-        '.*': "index"
+        '.*': "index",
+		'cart/:user' : "UserCart"
     };
+
+
+  ArtistGalleryRouter.prototype.UserCart = function(user) {
+       this.headerView = new HeaderView();
+    console.log(user);
+      this.userCartView = new UserCartView(/* fetch data collerction*/);
+        return
+  };
 
   ArtistGalleryRouter.prototype.initialize = function() {
     this.login_model = new ArtistGallery.Models.Login();
