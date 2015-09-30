@@ -62,14 +62,14 @@ class Users::SessionsController < Devise::SessionsController
         return
       end
 
-      if !is_a_valid_email?(email) or !is_a_valid_password?(password)
+      if !is_a_valid_email1?(email) or !is_a_valid_password?(password)
         render status: 401, json: { message: 'The request MUST contain correct user email and password.' }
         return
       end
     end
 
     def is_a_valid_email?(email)
-      if email.count("@") != 1 then
+      if email.count("@") != 1
         return false
 
       elsif email =~ /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i then
@@ -79,11 +79,21 @@ class Users::SessionsController < Devise::SessionsController
       end
     end
 
+    def is_a_valid_email1?(email)
+      (email =~ /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i) ? true : false
+    end
+
     def is_a_valid_password?(password)
-      if password =~ /^.{8,}$/ then
+      if password =~ /^.{8,}$/
         return true
       else
         return false
       end
     end
+
+# protected
+
+  # def configure_sign_in_params
+  #   devise_parameter_sanitizer.for(:sign_in) << :attribute
+  # end
 end
