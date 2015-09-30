@@ -15,7 +15,8 @@ ArtistGallery.Views.Login = (function(superClass) {
     Login.prototype.events = {
         "click button.login": "login",
         "click button.signup": "signup",
-        'click #forgot-pass': 'forgotPass'
+        'click #forgot-pass': 'forgotPass',
+        'focusin input' : 'inputInFocus'
     };
 
     Login.prototype.initialize = function() {
@@ -34,19 +35,15 @@ ArtistGallery.Views.Login = (function(superClass) {
     };
 
     var validateLogin = function() {
-        var regExEmail = /^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$/gi,
-            regExPassword = /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{8,})\S$/, //1 digit, 1 small char, 1 big char, 8 char min
+        var regExEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
+            regExPassword = /^.{8,}$/, //1 digit, 1 small char, 1 big char, 8 char min
             email = $('#email').val(),
             password = $('#password').val();
             if(!regExEmail.test(email)) {
-                $('#email').focus();
                 this.$("#emailValidationErr").css("display", "inline-block");
-                this.$("#passValidationErr").css("display", "none");
                 return false;
-            //} else if(!regExPassword.test(password)) {
-                $('#password').focus();
-                this.$("#passValidationErr").css("display", "inline-block");
-                this.$("#emailValidationErr").css("display", "none");
+            } else if(!regExPassword.test(password)) {
+                this.$("#passwordValidationErr").css("display", "inline-block");
                 return false;   
             } else {
                 return true;
@@ -55,7 +52,7 @@ ArtistGallery.Views.Login = (function(superClass) {
 
     Login.prototype.login = function(e) {
         e.preventDefault();
-        if(/*validateLogin()*/true) {
+        if(validateLogin()) {
             this.model.set({
                 email: this.$('#email').val(),
                 password: this.$('#password').val(),
@@ -71,7 +68,16 @@ ArtistGallery.Views.Login = (function(superClass) {
                     window.location.reload();
                 },
                 error: function (model, xhr, options) {
-                    console.log(xhr.responseJSON.message);
+                    var xhrMessage;
+                    xhrMessage = xhr.responseJSON.message;
+                    // check response
+                    if (xhrMessage === 'wrongMail') {
+                        this.$("#emailValidationErr").css("display", "inline-block");
+                    } else if (xhrMessage === 'wrongPassword') {
+                        this.$("#passwordValidationErr").css("display", "inline-block");
+                    } else {
+                          console.log(xhrMessage);
+                    }
                 }
             });
 
@@ -91,6 +97,10 @@ ArtistGallery.Views.Login = (function(superClass) {
         }
         return
     };
+    Login.prototype.inputInFocus = function (e) {
+    var selector = '#' + e.target.id + 'ValidationErr';
+    $(selector).css("display", "none");
+};
 
     Login.prototype.signup = function(e) {
         e.preventDefault();

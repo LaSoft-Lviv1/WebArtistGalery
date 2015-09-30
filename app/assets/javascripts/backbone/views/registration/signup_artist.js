@@ -1,5 +1,7 @@
 var bind = function (fn, me){
-    return function(){ return fn.apply(me, arguments); };
+    return function(){ 
+        return fn.apply(me, arguments); 
+    };
 },
 extend = function(child, parent) {
     for (var key in parent) {
@@ -12,7 +14,7 @@ extend = function(child, parent) {
     child.prototype = new ctor();
     child.__super__ = parent.prototype;
     return child;
-},
+}, 
 hasProp = {}.hasOwnProperty;
 
 ArtistGallery.Views.SignupArtist = (function(superClass) {
@@ -27,14 +29,14 @@ ArtistGallery.Views.SignupArtist = (function(superClass) {
     SignupArtist.prototype.template = JST["backbone/templates/registration/signup_artist"];
 
     SignupArtist.prototype.events = {
-      "click button.reg"    : "signup",
-      "click a.back"        : "goBack",
-      "focusin input" : "inputInFocus",
-      "focusout input" : "checkForm"     
+        "click button.reg"    : "signup",
+        "click a.back"        : "goBack",
+        "focusin input" : "inputInFocus",
+        "focusout input" : "checkForm"     
 
-  };
+    };
 
-  SignupArtist.prototype.initialize = function() {
+SignupArtist.prototype.initialize = function() {
     return this.modal = new ArtistGallery.Models.Registration();
 };
 
@@ -53,11 +55,8 @@ SignupArtist.prototype.signup = function(e) {
             role: 'artist'
         });
 
-            //console.log(this.model.toJSON());
             this.model.save({}, {
                 success: function (response) {
-                    //console.log(response.get('authentication_token'));
-                    //console.log(response.toJSON());
                     localStorage.setItem('user_token', response.get('user_token'));
                     localStorage.setItem('name', response.get('name'));
                     localStorage.setItem('role', response.get('role'));
@@ -72,13 +71,12 @@ SignupArtist.prototype.signup = function(e) {
         return
     };
 
-    validateForm = function(dataValidate, data) {
-        var confirm = $("#password_confirmation").val(),
-        regexText = /^([A-Z][a-z ,.'`-]{2,30})$/,
-        regexEmailValid = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
-        regexPasswordValid = /^.{8,}$/,
-        inputs,
-        a;
+    var validateForm = function(dataValidate, data) {
+        var regexText = /^([A-Z][a-z ,.'`-]{2,30})$/,
+            regexEmailValid = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
+            regexPasswordValid = /^.{8,}$/,
+            inputs,
+            a = true;
 
         if(dataValidate === 'signup') {
             inputs = [{
@@ -110,30 +108,32 @@ SignupArtist.prototype.signup = function(e) {
                 }
             };
         };
+            
 
-        function chooseValid (dataValidate, data) {
-            switch(dataValidate) {
+        function chooseValid (choose, data) {
+            switch(choose) {
                 case 'first_name':
-                regexText.test(data) ? a = 1 : a = 0;
+                    regexText.test(data) ? a = 1 : a = 0;
                 break;
                 case 'second_name':
-                regexText.test(data) ? a = 1 : a = 0;
+                    regexText.test(data) ? a = 1 : a = 0;
                 break;
                 case 'email':
-                regexEmailValid.test(data) ? a = 1 : a = 0;
+                    regexEmailValid.test(data) ? a = 1 : a = 0;
                 break;
                 case 'password':
-                regexPasswordValid.test(data) ? a = 1 : a = 0;
+                    regexPasswordValid.test(data) ? a = 1 : a = 0;
                 break;
                 case 'password_confirmation':
-                data[0] === data[1] ? a = 1 : a = 0;
+                    data[0] === data[1] ? a = 1 : a = 0;
                 break;
                 default: 
-                console.log('some dataValidate');
+                     console.log('some dataValidate');
                 break;
             }
             return a;
         }
+
         chooseValid(dataValidate, data);
         return a;
     };
@@ -143,6 +143,7 @@ SignupArtist.prototype.signup = function(e) {
         selector = e.target.id;
         data = this.$('#' + selector).val();
         if(data){
+            console.log(e.target.id + ' ' + data);
             if(e.target.id === 'password_confirmation') data = [data, this.$('#password').val()];
             if (!validateForm(e.target.id, data)) {
                 this.$('#' + selector +'ValidationErr').css("display", "inline-block");

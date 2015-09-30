@@ -1,70 +1,74 @@
 <div class="modal-header sign-in-header">
-    <div class="container-fluid">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <span><img class="image-responsive" id="myModalLabel" src="images/brand_logo_resized.png" alt="LOGO"></span> <h3 class="hidden-xs text-uppercase">Project Art</h3>
-    </div>
+  <div class="container-fluid">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <span><img class="image-responsive" id="myModalLabel" src="images/brand_logo_resized.png" alt="LOGO"></span> <h3 class="hidden-xs text-uppercase">Project Art</h3>
+  </div>
 </div> <!-- /.modal-header -->
 
 
 <form action="#" method="POST" id="collector-register">
 
 
-    <div class="modal-body">
-      <div class="container-fluid">
-        <h4 class="text-center">Create An Account<br><small>as a Customer</small></h4>
-        <hr>
-        <div class="well">
-            <div class="form-group">
-              <div class="row">
-                <div class="hidden-xs col-sm-4">
-                  <label class="pull-right" for="collector-name">Name: </label>
-                </div>
-                <div class="col-xs-12 col-sm-5">
-                  <input type="text" class="form-group" id="name" placeholder="e.g. Eva First">
-                </div>
-              </div>
+  <div class="modal-body">
+    <div class="container-fluid">
+      <h4 class="text-center">Create An Account<br><small>as a Customer</small></h4>
+      <hr>
+      <div class="well">
+        <div class="form-group">
+          <div class="row">
+            <div class="hidden-xs col-sm-4">
+              <label class="pull-right" for="collector-name">Name: </label>
             </div>
-            <div class="form-group">
-              <div class="row">
-                <div class="col-xs-12 col-sm-4">
-                  <label class="pull-right" for="email">Email: </label>
-                </div>
-                <div class="col-xs-12 col-sm-5">
-                  <input type="email" id="email" class="form-group" placeholder="example@xmpl.com">
-                </div>
-              </div>
+            <div class="col-xs-12 col-sm-5">
+              <input type="text" class="form-group" id="name" placeholder="e.g. Eva First">
+              <div class="validationError" id="nameValidationErr">Enter a valid Name</div>
             </div>
-            <div class="form-group">
-              <div class="row">
-                <div class="col-xs-12 col-sm-4">
-                  <label class="pull-right" for="password">Password: </label>
-                </div>
-                <div class="col-xs-12 col-sm-5">
-                  <input type="password" id="password" class="form-group" placeholder="mySecretPass">
-                </div>
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="row">
-                <div class="col-xs-12 col-sm-4">
-                  <label class="pull-right" for="password_confirmation">Confirm: </label>
-                </div>
-                <div class="col-xs-12 col-sm-5">
-                  <input type="password" id="password_confirmation" class="form-group" placeholder="mySecretPass">
-                </div>
-              </div>
-            </div>
-        </div> <!-- /.well -->
+          </div>
+        </div>
+        <div class="form-group">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <label class="pull-right" for="email">Email: </label>
+          </div>
+          <div class="col-xs-12 col-sm-5">
+            <input type="email" id="email" class="form-group" placeholder="example@xmpl.com">
+            <div class="validationError" id="emailValidationErr">Enter a valid email.</div>
+          </div>
+        </div>
       </div>
-      <!-- /.container-fluid -->
-    </div>
-    <!-- /.modal-body -->
+      <div class="form-group">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <label class="pull-right" for="password">Password: </label>
+          </div>
+          <div class="col-xs-12 col-sm-5">
+            <input type="password" id="password" class="form-group" placeholder="mySecretPass">
+            <div class="validationError" id="passwordValidationErr">Pls more then 8 symbols.</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-xs-12 col-sm-4">
+            <label class="pull-right" for="password_confirmation">Confirm: </label>
+          </div>
+          <div class="col-xs-12 col-sm-5">
+            <input type="password" id="password_confirmation" class="form-group" placeholder="mySecretPass">
+            <div class="validationError" id="password_confirmationValidationErr">pass should be the same</div>
+          </div>
+        </div>
+      </div>
+    </div> <!-- /.well -->
+  </div>
+  <!-- /.container-fluid -->
+</div>
+<!-- /.modal-body -->
 
 
-    <div class="modal-footer">
-        <a type="button" class="btn btn-default back" data-toggle="modal" data-target="#modal-inner" href="modal-register.html">Back</a>
-        <button type="submit" class="btn btn-primary reg">Register</button>
-    </div> <!-- /.modal-footer -->
+<div class="modal-footer">
+  <a type="button" class="btn btn-default back" data-toggle="modal" data-target="#modal-inner" href="modal-register.html">Back</a>
+  <button type="submit" class="btn btn-primary reg">Register</button>
+</div> <!-- /.modal-footer -->
 
 
 </form>
