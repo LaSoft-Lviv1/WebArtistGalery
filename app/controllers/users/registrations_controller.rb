@@ -16,7 +16,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
           if author.valid?
             sign_up(resource_name, resource)
             render json: {status:      'success',
-                          user_token:  LoginHelper::AuthenticationService.auth_token(current_user),
+                          user_token:  AuthenticationHelper::AuthenticationTokenService.auth_token(current_user),
                           name:        current_user.author.first_name,
                           role:        current_user.role}
             # binding.pry
@@ -31,7 +31,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
           if customer.valid?
             sign_up(resource_name, resource)
             render json: {status:      'success',
-                          user_token:  LoginHelper::AuthenticationService.auth_token(current_user),
+                          user_token:  AuthenticationHelper::AuthenticationTokenService.auth_token(current_user),
                           name:        current_user.customer.name,
                           role:        current_user.role}
             # binding.pry

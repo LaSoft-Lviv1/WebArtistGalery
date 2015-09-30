@@ -1,14 +1,14 @@
-module LoginHelper #TODO Need change the name
-  class AuthenticationService #TODO Need change the name
+module AuthenticationHelper
+  class AuthenticationTokenService
     SECRET_KEY = Rails.application.secrets.secret_key_base
 
     def self.auth_token user
-      JWT.encode({'exp' => 7.days.from_now.to_i, 'id' => user.authentication_token}, SECRET_KEY) #TODO Change id to authentication_token
+      JWT.encode({'exp' => 7.days.from_now.to_i, 'authentication_token' => user.authentication_token}, SECRET_KEY)
     end
 
     def self.authenticate_user auth_token
       decoded, _ = JWT.decode(auth_token, SECRET_KEY)
-      user = User.find_by(authentication_token: decoded['id'])
+      user = User.find_by(authentication_token: decoded['authentication_token'])
 
       # binding.pry
       if (DateTime.now.to_i < decoded['exp'])
@@ -17,6 +17,5 @@ module LoginHelper #TODO Need change the name
         return #TODO What is it?
       end
     end
-
   end
 end

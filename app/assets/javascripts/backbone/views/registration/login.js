@@ -14,7 +14,8 @@ ArtistGallery.Views.Login = (function(superClass) {
 
     Login.prototype.events = {
         "click button.login": "login",
-        "click button.signup": "signup"
+        "click button.signup": "signup",
+        'click #forgot-pass': 'forgotPass'
     };
 
     Login.prototype.initialize = function() {
@@ -32,12 +33,11 @@ ArtistGallery.Views.Login = (function(superClass) {
         return
     };
 
-    validateLogin = function() {
-        var regExEmail = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i,
+    var validateLogin = function() {
+        var regExEmail = /^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$/gi,
             regExPassword = /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{8,})\S$/, //1 digit, 1 small char, 1 big char, 8 char min
             email = $('#email').val(),
             password = $('#password').val();
-            console.log(!regExEmail.exec(email)); 
             if(!regExEmail.test(email)) {
                 $('#email').focus();
                 this.$("#emailValidationErr").css("display", "inline-block");
@@ -55,8 +55,7 @@ ArtistGallery.Views.Login = (function(superClass) {
 
     Login.prototype.login = function(e) {
         e.preventDefault();
-        console.log(this.$('#email').val());
-        if(validateLogin()) {
+        if(/*validateLogin()*/true) {
             this.model.set({
                 email: this.$('#email').val(),
                 password: this.$('#password').val(),
@@ -65,9 +64,6 @@ ArtistGallery.Views.Login = (function(superClass) {
 
             this.model.save({}, {
                 success: function (response) {
-                    //debugger;
-                    //console.log(response.get('authentication_token'));
-                    //console.log(response);
                     localStorage.setItem('user_token', response.get('user_token'));
                     localStorage.setItem('name', response.get('name'));
                     localStorage.setItem('role', response.get('role'));
@@ -102,6 +98,12 @@ ArtistGallery.Views.Login = (function(superClass) {
         return $(".modal-content").html(this.signupView.render().el);
     };
 
+    Login.prototype.forgotPass = function(e) {
+        e.preventDefault();
+        $('#modal').modal('hide');
+        window.location.href = '/#users/password';
+        return
+    };
     Login.prototype.render = function() {
         this.$el.html(this.template());
         return this;

@@ -8,7 +8,7 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  def create #TODO Need understand what is it?
+  def create
     email = params[:user][:email] if params[:user]
     password = params[:user][:password] if params[:user]
     # Authentication
@@ -19,12 +19,12 @@ class Users::SessionsController < Devise::SessionsController
         sign_in(:user, user)
         if current_user.role == 'artist'
           render json: {status:      'success',
-                        user_token:  LoginHelper::AuthenticationService.auth_token(current_user),
+                        user_token:  AuthenticationHelper::AuthenticationTokenService.auth_token(current_user),
                         name:        current_user.author.first_name,
                         role:        current_user.role}
         elsif current_user.role == 'customer'
           render json: {status:      'success',
-                        user_token:  LoginHelper::AuthenticationService.auth_token(current_user),
+                        user_token:  AuthenticationHelper::AuthenticationTokenService.auth_token(current_user),
                         name:        current_user.customer.name,
                         role:        current_user.role}
         end
@@ -40,7 +40,7 @@ class Users::SessionsController < Devise::SessionsController
   # DELETE /resource/sign_out
   def destroy
     # Fetch params
-    user = LoginHelper::AuthenticationService.authenticate_user(params[:user_token])
+    user = AuthenticationHelper::AuthenticationTokenService.authenticate_user(params[:user_token])
     if user.nil?
       # sign_out :user
       render status: 404, json: { message: 'Invalid token.' }

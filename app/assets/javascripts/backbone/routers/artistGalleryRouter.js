@@ -43,7 +43,9 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
         'artItems/:id': "detailedArtItem",
         'artistAdmin': "artistAdmin",
         'users/confirmation': 'confirmation',
-        '.*': "index",
+        'users/password': 'passwordRecovery',
+        'users/password/edit': 'passwordRecoveryEdit',
+        '.*': "index"
 		'cart/:user' : "UserCart"
     };
 
@@ -64,6 +66,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     //  reset: true
     //});
   };
+
   ArtistGalleryRouter.prototype.confirmation = function() {
       var token = ArtistGallery.ArtistGalleryHelpers.getQueryString('confirmation_token');
       var confirmationModel = new ArtistGallery.Models.Confitmation();
@@ -72,31 +75,62 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
           success: function (response) {
               alert('Confirmed successfuly!');
               window.location.href = '/#';
-              //debugger;
-              //console.log(response.get('authentication_token'));
-              //console.log(response);
-              //localStorage.setItem('user_token', response.get('user_token'));
-              //localStorage.setItem('name', response.get('name'));
-              //localStorage.setItem('role', response.get('role'));
-              //$('#modal').modal('hide');
-              //window.location.reload();
           },
           error: function (model, xhr, options) {
               if (xhr.responseJSON.message.email){
                   alert('Email ' + xhr.responseJSON.message.email);
-                  console.log(xhr.responseJSON.message.email);
+                  //console.log(xhr.responseJSON.message.email);
               };
               if(xhr.responseJSON.message.confirmation_token){
                   alert('Confirmation token ' + xhr.responseJSON.message.confirmation_token);
-                  console.log(xhr.responseJSON.message.confirmation_token);
+                  //console.log(xhr.responseJSON.message.confirmation_token);
               };
-
               window.location.href = '/#';
           }
       });
-      console.log(token);
+      //console.log(token);
       return
   };
+
+    ArtistGalleryRouter.prototype.passwordRecovery = function() {
+        this.login_model = new ArtistGallery.Models.Login();
+        this.headerView = new HeaderView();
+        this.view = new ArtistGallery.Views.Login({
+            model: this.login_model
+        });
+        $(".modal-content").html(this.view.render().el);
+
+        this.passwordRecoveryMail = new ArtistGallery.Views.PasswordRecoveryMail({
+            model: this.login_model
+        });
+        $("#content").html(this.passwordRecoveryMail.render().el);
+        return
+    };
+
+
+    ArtistGalleryRouter.prototype.passwordRecoveryEdit = function() {
+        var token = ArtistGallery.ArtistGalleryHelpers.getQueryString('reset_password_token');
+        this.passwordRecoveryModel = new ArtistGallery.Models.RecoveryPassword();
+        this.passwordRecoveryModel.set({
+            id: 1,
+            reset_password_token: token
+        });
+        this.login_model = new ArtistGallery.Models.Login();
+        this.headerView = new HeaderView();
+        this.view = new ArtistGallery.Views.Login({
+            model: this.login_model
+        });
+        $(".modal-content").html(this.view.render().el);
+
+        this.passwordRecoveryEdit = new ArtistGallery.Views.PasswordRecoveryEdit({
+            model:                  this.login_model,
+            passwordRecoveryModel:  this.passwordRecoveryModel
+        });
+        $("#content").html(this.passwordRecoveryEdit.render().el);
+        //console.log(token);
+        return
+    }
+
   ArtistGalleryRouter.prototype.showArtItemToJSON = function() {
       return console.log(this.art_items.toJSON());
   };
@@ -122,12 +156,12 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.signout = function() {
-      console.log('from logout');
-      console.log(this.login_model);
+      //console.log('from logout');
+      //console.log(this.login_model);
       this.login_model.set({
           id: 1
       });
-      console.log(this.login_model);
+      //console.log(this.login_model);
       this.login_model.destroy({
           data: $.param({user_token: localStorage.getItem('user_token')})
       });
