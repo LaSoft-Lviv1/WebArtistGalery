@@ -5,10 +5,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     resource.save
-    resource.reset_authentication_token!
-    yield resource if block_given?
     if resource.persisted?
       if resource
+        resource.reset_authentication_token!
         if resource.role == 'artist'
           author = Author.create( {first_name:  params[:user][:first_name],
                                    second_name: params[:user][:second_name],
