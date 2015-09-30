@@ -20,6 +20,7 @@ var SignupView = Backbone.View.extend ({
     },
 
     customerSignup: function (e) {
+        console.log('customer');
         e.preventDefault();
         this.view = new ArtistGallery.Views.SignupCustomer({
             model: new ArtistGallery.Models.Registration()
