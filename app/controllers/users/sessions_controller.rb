@@ -72,7 +72,7 @@ class Users::SessionsController < Devise::SessionsController
       if email.count("@") != 1 then
         return false
 
-      elsif email =~ /^(([a-zA-Z]|[0-9])|([-]|[_]|[.]))+[@](([a-zA-Z0-9])|([-])){2,63}[.](([a-zA-Z0-9]){2,63})+$/i then
+      elsif email =~ /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i then
         return true
       else
         return false
@@ -80,7 +80,7 @@ class Users::SessionsController < Devise::SessionsController
     end
 
     def is_a_valid_password?(password)
-      if password =~ /^((?=\S*?[A-Z])(?=\S*?[a-z])(?=\S*?[0-9]).{8,})\S$/ then
+      if password =~ /^.{8,}$/ then
         return true
       else
         return false
