@@ -89,6 +89,6 @@ Rails.application.configure do
 			user_name: "van.test.mailer@gmail.com",
 			password: "Xs12051987"
 	}
-	config.action_mailer.default_url_options = { :host => 'localhost:3000' }
-	# config.action_mailer.default_url_options = { :host => 'radiant-ridge-8447.herokuapp.com' }
+	# config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+	config.action_mailer.default_url_options = { :host => 'radiant-ridge-8447.herokuapp.com' }
 end
