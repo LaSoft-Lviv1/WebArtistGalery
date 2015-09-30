@@ -45,8 +45,8 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
         'users/confirmation': 'confirmation',
         'users/password': 'passwordRecovery',
         'users/password/edit': 'passwordRecoveryEdit',
+        'cart/:user' : "UserCart",
         '.*': "index"
-		'cart/:user' : "UserCart"
     };
 
 
