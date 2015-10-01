@@ -67,6 +67,7 @@ SignupArtist.prototype.signup = function(e) {
                     console.log(response.toJSON());
                 }
             });
+            window.location.reload();
         }
         return
     };

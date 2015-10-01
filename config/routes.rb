@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'shopping_carts/index'
+
 	root to: 'application#index'
 
   devise_scope :user do
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
   resources :media
   resources :orientations
   resources :subjects
+  resources :shopping_carts
 
   # resources :users/sessions, only: [ :create, :destroy ]
 
