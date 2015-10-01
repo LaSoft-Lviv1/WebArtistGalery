@@ -1,26 +1,86 @@
 class ShoppingCartsController < ApplicationController
+  # before_action :authenticate_user_from_token! #TODO this method must be rewritten (28.09.2015)
+
+  DAYS_FOR_RESERVATION = 7
 
   def index
-    # redirect_to :back unless current_user
-    # @ordered_art_items =  ShoppingCart.where("user_id = ? AND payment_date IS NULL", current_user.id).all
+    # if LoginHelper::AuthenticationService.authenticate_user(params[:auth_token]).id == current_user.id
     if current_user
-      # puts "\n current user = #{current_user.id} \n\n"
-      @ordered_art_items =  ShoppingCart.where("user_id = ? AND payment_date IS NULL", current_user.id).all
+      @ordered_art_items = ShoppingCart.where("user_id = ? AND payment_date IS NULL", current_user.id)
     else
-      # puts "=============================request.referer #{request.referer}====================="
-      # puts "=============================request.fullpath #{request.fullpath}====================="
-      # puts "=============================request.original_url #{request.original_url}====================="
-      # puts "=============================request.uri #{request.headers['HTTP_REFERER']}====================="
       redirect_to(:back)
     end
   end
 
+
   def create
-    puts "+++++++++++++++++++++++++++++++++"
-    puts "======================id====== #{params.require(:shopping_cart).permit(:art_item_id)[:art_item_id]}============================"
-    puts "+++++++++++++++++++++++++++++++++"
-    # redirect_to :shopping_carts
-    redirect_to :back
+
+    art_item_id = shopping_cart_params[:art_item_id]
+    art_item = ShoppingCart.where(art_item_id: art_item_id).last
+    user_id = 3 #TODO delete when current_user is present
+    # user_id = current_user.id #TODO uncomment when current_user is present
+
+    if art_item_sold? art_item
+      render json: {success: false, message: "Art item is already sold"}
+    elsif art_item_not_reserved? art_item
+      ShoppingCart.create(art_item_id: art_item_id, user_id: user_id, order_date: Date.current, payment_date: nil)
+      NotificationService.notify_author_about_reservation(art_item_id, user_id)
+      render json: {success: true,
+                    message: "Art item has been successfully reserved"}
+    else
+      ReservedShoppingCart.create(art_item_id: art_item_id, user_id: user_id, order_date: Date.current)
+      render json: {success: false,
+                    message: "Art item is already reserved. We will notify you, if it is removed from reservation"}
+    end
+
+  end
+
+
+  def destroy
+    art_item=ShoppingCart.find(params[:id])
+    # notify_about_canceling_reservation art_item.art_item_id
+    NotificationService.notify_about_canceling_reservation art_item.art_item_id
+    art_item.destroy
+  end
+
+
+  private
+
+
+  def art_item_sold?(art_item)
+    if art_item
+      art_item.payment_date
+    else
+      false
+    end
+  end
+
+
+  def art_item_not_reserved?(art_item)
+    if art_item
+      Date.current - art_item.order_date.to_datetime > DAYS_FOR_RESERVATION
+    else
+      true
+    end
+  end
+
+  # EXAMPLE
+  # def art_item_not_reserved?(art_item)
+  #   return Date.current - art_item.order_date.to_datetime > DAYS_FOR_RESERVATION if art_item
+  #   true
+  # end
+
+
+
+
+
+
+
+
+  def shopping_cart_params
+    params.require(:shopping_cart).permit(
+                                          :art_item_id
+                                         )
   end
 
 end
