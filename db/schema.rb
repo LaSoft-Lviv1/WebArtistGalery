@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 20150929151148) do
     t.string   "second_name",  null: false
     t.string   "info_about"
     t.string   "photo"
-    t.string   "phone_number", null: false
+    t.string   "phone_number"
     t.integer  "city_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
