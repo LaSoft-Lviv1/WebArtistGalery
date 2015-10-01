@@ -1,6 +1,6 @@
 var ArtistAdminView = Backbone.View.extend ({
 	
-	template: JST['backbone/templates/authors/artist_admin'],
+	template: JST['backbone/templates/authors/new_artist_page'],
 
 	initialize: function () {
 
