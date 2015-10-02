@@ -16,7 +16,7 @@ class ShoppingCartsController < ApplicationController
   def create
     art_item_id = shopping_cart_params[:art_item_id]
     art_item = ShoppingCart.where(art_item_id: art_item_id).last
-    user_id = 3 #TODO delete when current_user is present
+    user_id = 2 #TODO delete when current_user is present
     # user_id = current_user.id #TODO uncomment when current_user is present
 
     if art_item_sold? art_item
@@ -31,7 +31,7 @@ class ShoppingCartsController < ApplicationController
       render json: {success: false,
                     message: "Art item is already reserved. We will notify you, if it is removed from reservation"}
     end
-    NotificationService.notify_about_canceling_reservation art_item_id
+    # NotificationService.canceling_reservation art_item_id
 
   end
 
@@ -39,7 +39,7 @@ class ShoppingCartsController < ApplicationController
   def destroy
     puts 'Some field has been updated'
     art_item=ShoppingCart.find(params[:id])
-    NotificationService.notify_about_canceling_reservation art_item.art_item_id
+    NotificationService.canceling_reservation art_item.art_item_id
     art_item.destroy
   end
 
