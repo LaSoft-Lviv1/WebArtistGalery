@@ -1,0 +1,3 @@
+Dear customer,
+  picture <%= @art_item.name %>, author - <%= @author.first_name %>  <%= @author.second_name %>, which you wanted to buy, has been canceled from reservation.
+You may reserved it with this source <%= link_to "#{@art_item.name}", art_items_url(@art_item.id) %>
