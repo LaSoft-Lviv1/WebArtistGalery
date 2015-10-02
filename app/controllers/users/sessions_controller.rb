@@ -29,10 +29,10 @@ class Users::SessionsController < Devise::SessionsController
                         role:        current_user.role}
         end
       else
-        render status: 401, json: { message: 'Invalid email or password.' }
+        render status: 401, json: { message: 'wrongPassword' }
       end
     else
-      render status: 401, json: { message: 'Invalid email or password.' }
+      render status: 401, json: { message: 'wrongMail' }
     end
 
   end
@@ -61,8 +61,10 @@ class Users::SessionsController < Devise::SessionsController
         render status: 406, json: { message: 'The request must be JSON.' }
       end
 
-      if !is_a_valid_email1?(email) or !is_a_valid_password?(password)
-        render status: 401, json: { message: 'The request MUST contain correct user email and password.' }
+      if !is_a_valid_email1?(email)
+        render status: 401, json: { message: 'wrongMail' }
+      elsif !is_a_valid_password?(password)
+        render status: 401, json: { message: 'wrongPassword' }
       end
     end
 
