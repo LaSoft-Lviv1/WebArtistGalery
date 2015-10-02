@@ -17,18 +17,19 @@ class NotificationMailer < ApplicationMailer
     end
   end
 
-  def reservation_art_item_email1(art_item_id, customer_id)
-    @art_item = ArtItem.find(art_item_id)
-    @customer = Customer.find_by_user_id(customer_id)
-    @author = User.find(@art_item.author.user_id)
-    attachments.inline['image'] = File.read(@art_item.source_file.file.path)
-    mail(to: @author.email, subject: 'Reservation your picture')
-  end
+
+  # def reservation_art_item_email(art_item, author, customer)
+  #   @art_item = art_item
+  #   @customer = customer
+  #   @author = author
+  #   attachments.inline['image'] = File.read(@art_item.source_file.file.path)
+  #   mail(to: @author.email, subject: 'Reservation your picture')
+  # end
 
   def reservation_art_item_email(art_item, author, customer)
     @art_item = art_item
-    @customer = customer
-    @author = author
+    @customer = 4543
+    @author = 456
     attachments.inline['image'] = File.read(@art_item.source_file.file.path)
     mail(to: @author.email, subject: 'Reservation your picture')
   end
