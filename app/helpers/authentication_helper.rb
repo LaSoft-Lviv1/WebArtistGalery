@@ -14,7 +14,8 @@ module AuthenticationHelper
       if (DateTime.now.to_i < decoded['exp'])
         user
       else
-        return #TODO What is it?
+        user.update_columns(authentication_token: nil)
+        sign_out user
       end
     end
   end
