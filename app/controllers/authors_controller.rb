@@ -1,11 +1,19 @@
 class AuthorsController < ApplicationController
 
   def index
-    @authors = Author.all
-
-    respond_to do |format|
-      format.json { render json: @authors }
-      format.html { render action: "index" }
+    id = params[:id].presence
+    if id
+      @author = Author.find_by(id: id)
+      respond_to do |format|
+        format.json { render json: @author }
+        format.html { render action: "index" }
+      end
+    else
+      @authors = Author.all
+      respond_to do |format|
+        format.json { render json: @authors }
+        format.html { render action: "index" }
+      end
     end
   end
 
