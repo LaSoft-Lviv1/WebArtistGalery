@@ -41,6 +41,7 @@ class Users::SessionsController < Devise::SessionsController
   def destroy
     # Fetch params
     user = AuthenticationHelper::AuthenticationTokenService.authenticate_user(params[:user_token])
+    # binding.pry
     if user.nil? && current_user
       sign_out current_user
       render status: 404, json: { message: 'Invalid token.' }
