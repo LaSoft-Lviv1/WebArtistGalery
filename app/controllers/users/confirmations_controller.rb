@@ -1,4 +1,5 @@
 class Users::ConfirmationsController < Devise::ConfirmationsController
+  skip_before_filter :authenticate_user_from_token!
   # GET /resource/confirmation/new
   # def new
   #   super

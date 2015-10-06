@@ -4,10 +4,14 @@ class AuthorsController < ApplicationController
     id = params[:id].presence
     if id
       @author = Author.find_by(id: id)
-      respond_to do |format|
-        format.json { render json: @author }
-        format.html { render action: "index" }
-      end
+        if @author
+          respond_to do |format|
+            format.json { render json: @author }
+            format.html { render action: "index" }
+          end
+        else
+          render status: 400, json: { message: 'Author hasn\'t been found.' }
+        end
     else
       @authors = Author.all
       respond_to do |format|

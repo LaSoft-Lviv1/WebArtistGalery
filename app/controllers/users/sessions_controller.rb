@@ -1,6 +1,7 @@
 class Users::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
 #   skip_before_filter :verify_signed_out_user
+  skip_before_filter :authenticate_user_from_token!
   before_action :validate_params, only: [:create]
   respond_to :json
   # GET /resource/sign_in
