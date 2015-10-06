@@ -2,6 +2,14 @@
 <% if @ordered_art_items.count == 0  %>
 <p>There are no orders yet</p>
 <% else %>
-    <p><%= art_item_id %></p>
+    <%= @ordered_art_items.count %>
+    <table>
+      <% @ordered_art_items.each do |item| %>
+          <tr>
+            <td><%= item.art_item.name %></td>
+            <td><img src="<%= item.art_item.source_file.url %>" alt="some_image" width="100" padding="5"/></td>
+          </tr>
+      <% end %>
+    </table>
 <% end %>
 

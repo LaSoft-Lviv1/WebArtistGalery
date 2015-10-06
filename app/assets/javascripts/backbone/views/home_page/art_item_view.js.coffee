@@ -14,6 +14,9 @@ class ArtistGallery.Views.HomePage.ArtItemView extends Backbone.View
     artItemId = new FormData()
     artItemId.append("shopping_cart[art_item_id]", @model.id)
     xhr.open('post', 'shopping_carts', false)
+    token = $('meta[name="csrf-token"]').attr('content')
+    if (token)
+      xhr.setRequestHeader('X-CSRF-Token', token)
     xhr.send(artItemId)
     return this
 

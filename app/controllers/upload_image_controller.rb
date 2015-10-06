@@ -1,4 +1,4 @@
-class UploadImageController < ApplicationController
+class UploadImageController < ApplicationController #TODO check whether this controller is necessary
   def index
     @styles = Style.all
     @subjects = Subject.all

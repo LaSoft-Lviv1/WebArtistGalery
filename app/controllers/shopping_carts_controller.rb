@@ -6,7 +6,7 @@ class ShoppingCartsController < ApplicationController
   def index
     # if LoginHelper::AuthenticationService.authenticate_user(params[:auth_token]).id == current_user.id
     if current_user
-      @ordered_art_items = ShoppingCart.where("user_id = ? AND payment_date IS NULL", current_user.id)
+      @ordered_art_items = ShoppingCart.where("user_id = ? AND payment_date IS NULL", current_user.id).all
     else
       redirect_to(:back)
     end
@@ -14,22 +14,27 @@ class ShoppingCartsController < ApplicationController
 
 
   def create
-    art_item_id = shopping_cart_params[:art_item_id]
-    art_item = ShoppingCart.where(art_item_id: art_item_id).last
-    user_id = 2 #TODO delete when current_user is present
-    # user_id = current_user.id #TODO uncomment when current_user is present
+    if current_user
+      art_item_id = shopping_cart_params[:art_item_id]
+      art_item = ShoppingCart.where(art_item_id: art_item_id).last
+      # user_id = 2 #TODO delete when current_user is present
+      user_id = current_user.id #TODO uncomment when current_user is present
 
-    if art_item_sold? art_item
-      render json: {success: false, message: "Art item is already sold"}
-    elsif art_item_not_reserved? art_item
-      ShoppingCart.create(art_item_id: art_item_id, user_id: user_id, order_date: Date.current, payment_date: nil)
-      NotificationService.notify_author_about_reservation(art_item_id, user_id)
-      render json: {success: true,
-                    message: "Art item has been successfully reserved"}
+      if art_item_sold? art_item
+        render json: {success: false, message: "Art item is already sold"}
+      elsif art_item_not_reserved? art_item
+        ShoppingCart.create(art_item_id: art_item_id, user_id: user_id, order_date: Date.current, payment_date: nil)
+        NotificationService.notify_author_about_reservation(art_item_id, user_id)
+        render json: {success: true,
+                      message: "Art item has been successfully reserved"}
+      else
+        ReservedShoppingCart.create(art_item_id: art_item_id, user_id: user_id, order_date: Date.current)
+        render json: {success: false,
+                      message: "Art item is already reserved. We will notify you, if it is removed from reservation"}
+      end
     else
-      ReservedShoppingCart.create(art_item_id: art_item_id, user_id: user_id, order_date: Date.current)
       render json: {success: false,
-                    message: "Art item is already reserved. We will notify you, if it is removed from reservation"}
+             message: "You must be logged in to buy works of art"}
     end
     # NotificationService.canceling_reservation art_item_id
 
