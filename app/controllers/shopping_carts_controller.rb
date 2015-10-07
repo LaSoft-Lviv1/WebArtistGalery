@@ -7,6 +7,7 @@ class ShoppingCartsController < ApplicationController
     # if LoginHelper::AuthenticationService.authenticate_user(params[:auth_token]).id == current_user.id
     if current_user
       @ordered_art_items = ShoppingCartsControllergCart.where("user_id = ? AND payment_date IS NULL", current_user.id)
+	  authorize @ordered_art_items
       # @art_items = ArtItem.first(5)
       render json: @ordered_art_items
     else
