@@ -16,6 +16,7 @@ class ArtItemsController < ApplicationController
 
   def create
     @art_item = ArtItem.new(art_item_params)
+    authorize @art_item
     @art_item.save
 
     if @art_item.errors.empty?
