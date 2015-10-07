@@ -69,7 +69,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
       
         this.userCarts.fetch().then(function() {
           console.log(self.userCarts);
-          debugger;
+          //debugger;
           self.userCartView = new UserCartView({collection: self.userCarts});
         });
 
