@@ -7,6 +7,12 @@ var DescriptionView = Backbone.View.extend ({
 
 	render: function () {
 	$('.description').html( this.template() );
+	$(".more").toggle(function(){
+		$(this).text("less..").siblings(".complete").show();
+		},
+		function(){
+		$(this).text("more..").siblings(".complete").hide();
+});
 	return this;
 }
 });

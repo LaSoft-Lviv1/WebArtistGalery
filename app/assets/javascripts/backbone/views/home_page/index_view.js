@@ -89,7 +89,14 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
     //this.collection.forEach(this.addOneArtItemForHomePage, this);
     this.collection.forEach(this.addOneArtItemForCarousel, this);
     console.log('in addAll finish');
-    var carouselscriptView = new CarouselscriptView();
+    $('.variable-width').slick({
+        dots: false,
+        infinite: true,
+        speed: 300,
+        slidesToShow: 1,
+        centerMode: true,
+        variableWidth: true
+      });
     return
   };
 

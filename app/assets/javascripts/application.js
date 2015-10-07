@@ -20,8 +20,6 @@
 //= require backbone_datalink
 //= require backbone/artistGallery.js.coffee
 //= require backbone/routers/artistGalleryRouter
-//= require lazyload
-//= require jquery.lazyload.min
 //= require slick/slick
 //= require csrfHack.js.coffee
 //= require_tree .
