@@ -1,4 +1,4 @@
-class MediaPolicy < ApplicationPolicy
+class MediumPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope

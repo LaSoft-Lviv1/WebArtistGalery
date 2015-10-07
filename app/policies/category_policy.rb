@@ -1,4 +1,4 @@
-class CategoriesPolicy < ApplicationPolicy
+class CategoryPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope

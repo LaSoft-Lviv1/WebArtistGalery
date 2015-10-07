@@ -1,4 +1,4 @@
-class SubjectsPolicy < ApplicationPolicy
+class SubjectPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope

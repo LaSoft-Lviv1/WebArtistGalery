@@ -1,4 +1,4 @@
-class OrientationsPolicy < ApplicationPolicy
+class OrientationPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope
