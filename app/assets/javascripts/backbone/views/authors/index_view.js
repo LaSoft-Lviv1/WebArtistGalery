@@ -36,8 +36,14 @@ ArtistGallery.Views.Authors.IndextView = (function(superClass) {
 	IndexView.prototype.addAll = function() {
         this.collection.forEach(this.addOneArtItemForCarousel, this);
         var descriptionView = new DescriptionView();
-        var morelessView = new MorelessView();
-        var carouselscriptView = new CarouselscriptView();
+	    $('.variable-width').slick({
+			dots: false,
+			infinite: true,
+			speed: 300,
+			slidesToShow: 1,
+			centerMode: true,
+			variableWidth: true
+		});
 		return
 	};
 
