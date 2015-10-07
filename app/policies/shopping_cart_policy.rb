@@ -1,12 +1,11 @@
 class ShoppingCartPolicy < ApplicationPolicy
 
   def index?
-    # binding.pry
-    @user.admin? || @user.customer?
+    @user.admin? || @user.artist? || @user.customer?
   end
 
   def create?
-    @user.admin? || @user.customer?
+    @user.admin? || @user.artist? || @user.customer?
   end
 
   def new?
@@ -14,7 +13,7 @@ class ShoppingCartPolicy < ApplicationPolicy
   end
 
   def update?
-    @user.admin? || @user.customer?
+    @user.admin? || @user.artist? || @user.customer?
   end
 
   def edit?
@@ -22,7 +21,7 @@ class ShoppingCartPolicy < ApplicationPolicy
   end
 
   def destroy?
-    @user.admin? || @user.customer?
+    @user.admin? || @user.artist? || @user.customer?
   end
 
   class Scope < Scope
