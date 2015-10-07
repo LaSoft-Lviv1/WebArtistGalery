@@ -6,8 +6,10 @@ class ShoppingCartsController < ApplicationController
   def index
     # if LoginHelper::AuthenticationService.authenticate_user(params[:auth_token]).id == current_user.id
     if current_user
-      @ordered_art_items = ShoppingCartsControllergCart.where("user_id = ? AND payment_date IS NULL", current_user.id)
-	  authorize @ordered_art_items
+      @ordered_art_items = ShoppingCart.where("user_id = ? AND payment_date IS NULL", current_user.id)
+      # binding.pry
+      # authorize @ordered_art_items
+      # binding.pry
       # @art_items = ArtItem.first(5)
       render json: @ordered_art_items
     else
@@ -22,7 +24,7 @@ class ShoppingCartsController < ApplicationController
       art_item = ShoppingCart.where(art_item_id: art_item_id).last
       # user_id = 2 #TODO delete when current_user is present
       user_id = current_user.id #TODO uncomment when current_user is present
-
+      binding.pry
       if art_item_sold? art_item
         render json: {success: false, message: "Art item is already sold"}
       elsif art_item_not_reserved? art_item
