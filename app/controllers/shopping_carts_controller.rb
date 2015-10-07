@@ -6,7 +6,9 @@ class ShoppingCartsController < ApplicationController
   def index
     # if LoginHelper::AuthenticationService.authenticate_user(params[:auth_token]).id == current_user.id
     if current_user
-      @ordered_art_items = ShoppingCart.where("user_id = ? AND payment_date IS NULL", current_user.id).all
+      @ordered_art_items = ShoppingCartsControllergCart.where("user_id = ? AND payment_date IS NULL", current_user.id)
+      # @art_items = ArtItem.first(5)
+      render json: @ordered_art_items
     else
       redirect_to(:back)
     end
@@ -34,7 +36,7 @@ class ShoppingCartsController < ApplicationController
       end
     else
       render json: {success: false,
-             message: "You must be logged in to buy works of art"}
+      				message: "You must be logged in to buy works of art"}
     end
     # NotificationService.canceling_reservation art_item_id
 

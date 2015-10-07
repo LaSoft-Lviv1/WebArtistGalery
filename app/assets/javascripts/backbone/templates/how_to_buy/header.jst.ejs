@@ -27,7 +27,7 @@
 				</ul>
 				<ul class="nav navbar-nav navbar-right" id="displaynone">
                     <% if (localStorage.getItem('name') != '') { %>
-                    <li><a href="/#cart/<%= localStorage.getItem('name') %>"> <span class="glyphicon glyphicon-shopping-cart"></span>
+                    <li><a href="/#cart"> <span class="glyphicon glyphicon-shopping-cart"></span>
                     <li><a href="/#artistAdmin"><%= localStorage.getItem('name') %></a></li>
                     <li><a href="/#signout">Sign out</a></li>
                     <%} else {%>

@@ -24,88 +24,67 @@
                             <th class="col-xs-1"></th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr class="cart-item">
-                            <td class="item-image" rowspan="2">
-                                <img src="" alt="demo_img">
-                            </td>
-                            <td class="item-description">
-                                <dl>
-                                    <dt><a href="#">item_name</a></dt>
-                                    <dd class="text-muted">by artist_name</dd>
-                                    <dd class='text-muted'>Original work</dd>
-                                </dl>
-                            </td>
-                            <td class="item-price">
-                                $1,000.00
-                            </td>
-                            <td class="item-subtotal text-right">$1,000.00</td>
-                            <td><a href="#"><button class="btn btn-info btn-sm">Unlock</button></a></td>
-                        </tr>
-                        <tr class="cart-item complimentary">
-                            <td class="item-delivery-info" colspan="3">This item usually ships within
-                                <mark>11 - 14</mark> business days.*</td>
-                            </tr>
-                            <tr class="cart-item-divider">
-                                <td colspan="5"></td>
-                            </tr>
-                        </tbody>
-                        <tfoot>
-                            <tr class="cart-total-container">
-                                <th colspan="2"></th>
-                                <th>Total:</th>
-                                <td id="cart-total-grand-total" class="cart-total text-right" colspan="2">$1,000.00</td>
-                            </tr>
-                        </tfoot>
-                    </table>
-                </div>
-                <!-- /.table-responsive -->
-                <div class="cart-links-bar">
-                    <div class="row">
-                        <div class="col-xs-4 col-sm-4 col-md-4">
-                            <a href="#">&lt; Continue Shopping</a>
-                        </div>
-                        <div class="col-xs-8 col-sm-8 col-md-8">
-                            <a href="#" class="btn btn-success  pull-right">Proceed to Checkout</a>
-                        </div>
-                    </div>
-                    <!-- /.row -->
-                </div>
-                <!-- /.cart-links-bar -->
-                <p class="review-disclaimer">* Delivery time will vary depending on country of origin and destination.</p>
-            </section>
-            <!-- /.cart-container -->
-            <aside class="perks vertical col-md-3">
-                <h1 class="heading">Why buy on Project Art?</h1>
-                <ul class="perks-list  unstyled">
-                    <li class="perk">Discover emerging artists from around the world </li>
-                    <li class="perk">Safe &amp; secure shopping </li>
-                    <li class="perk">Buyer protection through our Project Art Buyer Protection </li>
-                    <li class="perk">7-day money back guarantee</li>
-                </ul>
-                <h2 class="heading">Payment Methods</h2>
-                <ul class="logos-list no-list horizontal-list">
-                    <li class="ir payment-visa" title="visa">Visa</li>
-                    <li class="ir payment-mastercard" title="mastercard">MasterCard</li>
-                    <li class="ir payment-paypal" title="paypal">PayPal</li>
-                </ul>
-                <h2 class="heading">Delivery partners</h2>
-                <ul class="logos-list no-list horizontal-list">
-                    <li class="ir logo-dhl" title="SHIPPING_PROVIDER_DHL">SHIPPING_PROVIDER_DHL</li>
-                    <li class="ir logo-fedex" title="SHIPPING_PROVIDER_FEDEX">SHIPPING_PROVIDER_FEDEX</li>
-                    <li class="ir logo-ups" title="SHIPPING_PROVIDER_UPS">SHIPPING_PROVIDER_UPS</li>
-                </ul>
-                <h2 class="heading">You are protected</h2>
-                <ul class="logos-list no-list horizontal-list">
-                    <li class="perk-with-label"><i class="ir secure-ssl" title="secure payment"></i>secure payment</li>
-                    <li class="perk-with-label"><i class="ir secure-guarantee" title="100% money back"></i>100% money back</li>
-                </ul>
-            </aside>
-            <!-- /.perks -->
+                    <tbody id="cartitems">
+
+                     <!-- items -->
+                   
+                   </tbody>
+               <tfoot>
+                <tr class="cart-total-container">
+                    <th colspan="2"></th>
+                    <th>Total:</th>
+                    <td id="cart-total-grand-total" class="cart-total text-right" colspan="2">$1,000.00</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+    <!-- /.table-responsive -->
+    <div class="cart-links-bar">
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4">
+                <a href="#">&lt; Continue Shopping</a>
+            </div>
+            <div class="col-xs-8 col-sm-8 col-md-8">
+                <a href="#" class="btn btn-success  pull-right">Proceed to Checkout</a>
+            </div>
         </div>
         <!-- /.row -->
     </div>
-    <!-- /.container -->
+    <!-- /.cart-links-bar -->
+    <p class="review-disclaimer">* Delivery time will vary depending on country of origin and destination.</p>
+</section>
+<!-- /.cart-container -->
+<aside class="perks vertical col-md-3">
+    <h1 class="heading">Why buy on Project Art?</h1>
+    <ul class="perks-list  unstyled">
+        <li class="perk">Discover emerging artists from around the world </li>
+        <li class="perk">Safe &amp; secure shopping </li>
+        <li class="perk">Buyer protection through our Project Art Buyer Protection </li>
+        <li class="perk">7-day money back guarantee</li>
+    </ul>
+    <h2 class="heading">Payment Methods</h2>
+    <ul class="logos-list no-list horizontal-list">
+        <li class="ir payment-visa" title="visa">Visa</li>
+        <li class="ir payment-mastercard" title="mastercard">MasterCard</li>
+        <li class="ir payment-paypal" title="paypal">PayPal</li>
+    </ul>
+    <h2 class="heading">Delivery partners</h2>
+    <ul class="logos-list no-list horizontal-list">
+        <li class="ir logo-dhl" title="SHIPPING_PROVIDER_DHL">SHIPPING_PROVIDER_DHL</li>
+        <li class="ir logo-fedex" title="SHIPPING_PROVIDER_FEDEX">SHIPPING_PROVIDER_FEDEX</li>
+        <li class="ir logo-ups" title="SHIPPING_PROVIDER_UPS">SHIPPING_PROVIDER_UPS</li>
+    </ul>
+    <h2 class="heading">You are protected</h2>
+    <ul class="logos-list no-list horizontal-list">
+        <li class="perk-with-label"><i class="ir secure-ssl" title="secure payment"></i>secure payment</li>
+        <li class="perk-with-label"><i class="ir secure-guarantee" title="100% money back"></i>100% money back</li>
+    </ul>
+</aside>
+<!-- /.perks -->
+</div>
+<!-- /.row -->
+</div>
+<!-- /.container -->
 </div>
 <!-- /.content -->
 <!-- BODY END -->

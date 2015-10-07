@@ -45,16 +45,38 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
         'users/confirmation': 'confirmation',
         'users/password': 'passwordRecovery',
         'users/password/edit': 'passwordRecoveryEdit',
-        'cart/:user' : "UserCart",
+        'cart' : "userCart",
         '.*': "index"
     };
 
 
-  ArtistGalleryRouter.prototype.UserCart = function(user) {
+  ArtistGalleryRouter.prototype.userCart = function() {
+     if(localStorage.length === 0 || localStorage.getItem('user_token') === '') {
+         window.location.href = '/#';
+     } else {
        this.headerView = new HeaderView();
-    console.log(user);
-      this.userCartView = new UserCartView(/* fetch data collerction*/);
+        var self = this;    
+        this.userCarts = new ArtistGallery.Collections.CartCollection(/*[
+          {
+            back: 'vova'
+          },
+          {
+            back: 'vova'
+          },
+          {
+            front: 'Ira'
+          }]*/);
+      
+        this.userCarts.fetch().then(function() {
+          console.log(self.userCarts);
+          debugger;
+         self.userCartView = new UserCartView({collection: selt.userCarts});
+
+        });
+
+        
         return
+      }
   };
 
   ArtistGalleryRouter.prototype.initialize = function() {
