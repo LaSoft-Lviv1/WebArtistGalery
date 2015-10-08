@@ -1,13 +1,14 @@
 var FooterView = Backbone.View.extend ({
+	el: '#footer',
 	template: JST["backbone/templates/home_page/footer"],
 
 	initialize: function () {
-	this.render();
-},
+		this.render();
+	},
 
 	render: function () {
-	$('#footer').html( this.template() );
+		this.$el.html(this.template());
 
 	return this;
-}
+	}
 });

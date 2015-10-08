@@ -82,16 +82,12 @@ ArtistGallery.Views.Login = (function(superClass) {
             });
 
             //this.model.save().done(function(response){
-            //  //debugger;
-            //   console.log(response.authentication_token);
-            //  //console.log(response);
             //  localStorage.setItem('user_token', response.user_token);
             //  localStorage.setItem('name', response.name);
             //  localStorage.setItem('role', response.role);
             //  $('#modal').modal('hide');
             //  window.location.reload();
             //}).fail(function(response){
-            //  debugger;
             //  console.log('error resp: ' + response.message);
             //});
         }
