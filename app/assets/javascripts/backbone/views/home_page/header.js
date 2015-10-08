@@ -1,40 +1,37 @@
 var HeaderView = Backbone.View.extend ({
+	el: '#header',
 	template: JST["backbone/templates/home_page/header"],
 
+	events: {
+		'click #mynavbar ul li': 'activeHeaderLinks'
+	},
+
     initialize: function () {
-	this.render();
-},
+		this.render();
+	},
 
 	render: function () {
-		$('#header').html( this.template() );
-		$('#mynavbar ul li').click(function() {
-			if ($(this).is('.home_link_header')) {
-				$('#mynavbar ul li').removeClass('active');
-				$('.home_link_header').addClass('active');
-			} else if ($(this).is('.artist_link_header')) {
-				$('#mynavbar ul li').removeClass('active');
-				$('.artist_link_header').addClass('active');
-			} else if ($(this).is('.howtobuy_link_header')) {
-				$('#mynavbar ul li').removeClass('active');
-				$('.howtobuy_link_header').addClass('active');
-			}
-		});
+		this.$el.html(this.template());
+		this.activeHeaderLinksOnload();
+		return this;
+	},
 
+	activeHeaderLinks: function(e) {
+		$('#mynavbar ul li').removeClass('active');
+		$(e.currentTarget).addClass('active');
+	},
+
+	activeHeaderLinksOnload: function() {
 		var pathArray = window.location.href.split('/'),
 			pathcheck = pathArray[3];
-
-		var pathCheck = function() {
-			if (pathcheck == '#' || pathcheck == '') {
-				$('.home_link_header').addClass('active');
-			} else if (pathcheck == '#authors') {
-				$('.artist_link_header').addClass('active');
-			} else if (pathcheck == '#howToBuy') {
-				$('.howtobuy_link_header').addClass('active');
-			}
-		};
-		pathCheck();
-
-	return this;
-},
+		$('#mynavbar ul li').removeClass('active');
+		if (pathcheck == '#' || pathcheck == '') {
+			$('.header_link_home').addClass('active');
+		} else if (pathcheck == '#authors') {
+			$('.header_link_authors').addClass('active');
+		} else if (pathcheck == '#howToBuy') {
+			$('.header_link_howtobuy').addClass('active');
+		}
+	},
 
 });
