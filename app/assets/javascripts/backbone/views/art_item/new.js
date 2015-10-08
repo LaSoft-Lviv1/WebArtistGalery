@@ -31,8 +31,8 @@ AddArtItemView = Backbone.View.extend({
         formData.append('art_item[category_id]',        this.$("#select-category :selected").val());
         formData.append('art_item[vertical_size]',      this.$('#add-art-item-vsize').val());
         formData.append('art_item[horizontal_size]',    this.$('#add-art-item-hsize').val());
-        formData.append('art_item[author_id]',         '1');
         formData.append('art_item[source_file]',        $input[0].files[0]);
+        formData.append('user_token',                   localStorage.getItem('user_token'));
 
         $.ajax({
             url: this.model.url(),
