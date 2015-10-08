@@ -1,5 +1,6 @@
 class ShoppingCartsController < ApplicationController
   # before_action :authenticate_user_from_token! #TODO this method must be rewritten (28.09.2015)
+  respond_to :json
 
   DAYS_FOR_RESERVATION = 7
 
@@ -8,7 +9,14 @@ class ShoppingCartsController < ApplicationController
     if current_user
       @ordered_art_items = ShoppingCart.where("user_id = ? AND payment_date IS NULL", current_user.id)
       authorize @ordered_art_items
-      render json: @ordered_art_items
+      # respond_to do |format|
+      #   format.json { render json: @ordered_art_items }
+      # end
+
+      # render json: @ordered_art_items
+
+      respond_with(@ordered_art_items)
+
     else
       redirect_to(:back)
     end
