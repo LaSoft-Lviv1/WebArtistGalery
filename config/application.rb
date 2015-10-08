@@ -15,7 +15,7 @@ require "sprockets/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-H "Accept:application/json"
+# H "Accept:application/json"
 
 module ArtistGallery
   class Application < Rails::Application
