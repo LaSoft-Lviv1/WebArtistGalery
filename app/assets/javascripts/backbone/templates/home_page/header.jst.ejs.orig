@@ -1,0 +1,62 @@
+<div class="modal" id="modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content"></div>
+    </div>
+</div>
+
+<header>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">BRAND</a>
+			</div> <!-- /.navbar-header -->
+
+			<div id="mynavbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+<<<<<<< HEAD
+					<li class="home_link_header"><a href="#">Home</a></li>
+					<li><a href="#about">Paintings</a></li>
+					<li class="artist_link_header"><a href="#authors">Artist</a></li>
+					<li class="howtobuy_link_header"><a href="#howToBuy">How to buy</a></li>
+=======
+					<li class="header_link_home"><a href="#">Home</a></li>
+					<li class="header_link_paintings"><a href="#about">Paintings</a></li>
+					<li class="header_link_authors"><a href="#authors">Artist</a></li>
+					<li class="header_link_howtobuy"><a href="#howToBuy">How to buy</a></li>
+				    <li><a href="shopping_carts/index">Shopping cart</a></li>
+>>>>>>> fixed header, artist description, carousel
+				</ul>
+				<ul class="nav navbar-nav navbar-right" id="displaynone">
+					<% if (localStorage.getItem('name') != '') { %>
+                    <li class="header_link_cart"><a href="/#cart"> <span class="glyphicon glyphicon-shopping-cart"></span>
+                    <li class="header_link_profile"><a href="/#artistAdmin"><%= localStorage.getItem('name') %></a></li>
+                    <li><a href="/#signout">Sign out</a></li>
+                    <%} else {%>
+                    <li><a href="" title="sign in" data-toggle="modal" data-target="#modal">Register | Sign in</a></li>
+                    <% } %>
+						<button class="btn srch" title="Search" type="button" id="btnlanglogsrch">
+							<a href="#" class="navbar-button srchbtn" style="color:#FFF;"><span class="glyphicon glyphicon-search"></span></a>
+						</button>
+					</li>
+					<li>
+						<button class="btn lang dropdown-toggle pull-right" data-toggle="dropdown" title="choose language" type="button" aria-expanded="false" id="btnlanglogsrch" style="color:#FFF;">EN&nbsp;&nbsp;<span class="caret"></span>
+						</button>
+							<ul class="dropdown-menu">
+								<li><a href="/">English</a></li>
+								<li class="divider"></li>
+								<li><a href="/">Ukrainian</a></li>
+								<li class="divider"></li>
+								<li><a href="/">Spanish</a></li>
+							</ul>
+					</li>
+				</ul>
+			</div><!--/.nav-collapse -->
+		</div> <!-- /.container -->
+	</nav>
+</header>
