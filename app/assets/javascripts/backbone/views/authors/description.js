@@ -1,18 +1,23 @@
 var DescriptionView = Backbone.View.extend ({
+	el: '.description',
 	template: JST["backbone/templates/authors/description"],
 
 	initialize: function () {
-	this.render();
-},
+		this.render();
+	},
 
 	render: function () {
-	$('.description').html( this.template() );
-	$(".more").toggle(function(){
-		$(this).text("less..").siblings(".complete").show();
+		this.$el.html(this.template());
+		this.homeCarousel();
+		return this;
+	},
+
+	homeCarousel: function() {
+		$('.more').toggle(function(){
+			$(this).text('less..').siblings('.complete').show();
 		},
 		function(){
-		$(this).text("more..").siblings(".complete").hide();
-});
-	return this;
-}
+			$(this).text('more..').siblings('.complete').hide();
+		});
+	}
 });

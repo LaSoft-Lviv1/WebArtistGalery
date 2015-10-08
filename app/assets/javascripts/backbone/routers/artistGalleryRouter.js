@@ -54,7 +54,6 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
      if(localStorage.length === 0 || localStorage.getItem('user_token') === '') {
          window.location.href = '/#';
      } else {
-       this.headerView = new HeaderView();
         var self = this;    
         this.userCarts = new ArtistGallery.Collections.CartCollection(/*[
           {
@@ -188,6 +187,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
       localStorage.setItem('name', '');
       localStorage.setItem('role', '');
       window.location.href = '/#';
+      this.headerView.render();
       return
   };
 

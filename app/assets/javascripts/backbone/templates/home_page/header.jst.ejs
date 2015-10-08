@@ -19,15 +19,16 @@
 
 			<div id="mynavbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
-					<li class="home_link_header"><a href="#">Home</a></li>
-					<li><a href="#about">Paintings</a></li>
-					<li class="artist_link_header"><a href="#authors">Artist</a></li>
-					<li class="howtobuy_link_header"><a href="#howToBuy">How to buy</a></li>
+					<li class="header_link_home"><a href="#">Home</a></li>
+					<li class="header_link_paintings"><a href="#about">Paintings</a></li>
+					<li class="header_link_authors"><a href="#authors">Artist</a></li>
+					<li class="header_link_howtobuy"><a href="#howToBuy">How to buy</a></li>
+				    
 				</ul>
 				<ul class="nav navbar-nav navbar-right" id="displaynone">
 					<% if (localStorage.getItem('name') != '') { %>
-                    <li><a href="/#cart"> <span class="glyphicon glyphicon-shopping-cart"></span>
-                    <li><a href="/#artistAdmin"><%= localStorage.getItem('name') %></a></li>
+                    <li class="header_link_cart"><a href="/#cart"> <span class="glyphicon glyphicon-shopping-cart"></span>
+                    <li class="header_link_profile"><a href="/#artistAdmin"><%= localStorage.getItem('name') %></a></li>
                     <li><a href="/#signout">Sign out</a></li>
                     <%} else {%>
                     <li><a href="" title="sign in" data-toggle="modal" data-target="#modal">Register | Sign in</a></li>
