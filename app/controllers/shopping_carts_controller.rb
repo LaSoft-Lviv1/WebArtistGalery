@@ -21,7 +21,7 @@ class ShoppingCartsController < ApplicationController
       art_item = ShoppingCart.where(art_item_id: art_item_id).last
       # user_id = 2 #TODO delete when current_user is present
       user_id = current_user.id #TODO uncomment when current_user is present
-      # binding.pry
+
       if art_item_sold? art_item
         render json: {success: false, message: "Art item is already sold"}
       elsif art_item_not_reserved? art_item
