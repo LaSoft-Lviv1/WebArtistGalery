@@ -116,7 +116,9 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
     ArtistGalleryRouter.prototype.passwordRecovery = function() {
-        this.passwordRecoveryMail = new ArtistGallery.Views.PasswordRecoveryMail();
+        this.passwordRecoveryMail = new ArtistGallery.Views.PasswordRecoveryMail({
+            model: new ArtistGallery.Models.RecoveryPassword()
+        });
         $("#content").html(this.passwordRecoveryMail.render().el);
         return
     };

@@ -17,31 +17,27 @@
     };
 
     PasswordRecoveryMail.prototype.initialize = function() {
-        this.recoveryPass = new ArtistGallery.Models.RecoveryPassword();
-        return this.listenTo(this.model, "error", this.renderError);
+        return
     };
 
-    PasswordRecoveryMail.prototype.renderError = function() {};
-
     PasswordRecoveryMail.prototype.sendMail = function(e) {
-    e.preventDefault();
-
-        this.recoveryPass.set({
+        e.preventDefault();
+        this.model.set({
         email: this.$('#email').val()
-    });
+        });
 
-    console.log(this.model.toJSON());
-        this.recoveryPass.save({}, {
-            success: function (response) {
-                alert('Recovery instruction has been sent to your email.');
-                window.location.href = '/#';
-            },
-            error: function (model, xhr, options) {
-                alert(xhr.responseJSON.message);
+        console.log(this.model.toJSON());
+            this.model.save({}, {
+                success: function (response) {
+                    alert('Recovery instruction has been sent to your email.');
+                    window.location.href = '/#';
+                },
+                error: function (model, xhr, options) {
+                    alert(xhr.responseJSON.message);
+                }
             }
-        }
-    );
-    return
+        );
+        return
     };
 
     PasswordRecoveryMail.prototype.render = function() {
