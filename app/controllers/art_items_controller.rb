@@ -1,4 +1,5 @@
 class ArtItemsController < ApplicationController
+  before_action :authenticate_user_from_token!, except: :index
 
   def index
     @art_items = ArtItem.all
@@ -29,7 +30,7 @@ class ArtItemsController < ApplicationController
   private
 
   def art_item_params
-    params.require(:art_item).permit(:name,
+    permitted_params = params.require(:art_item).permit(:name,
                                    :description,
                                    :price,
                                    :keywords,
@@ -43,6 +44,8 @@ class ArtItemsController < ApplicationController
                                    :horizontal_size,
                                    :source_file,
                                    :preview_source_file)
+    permitted_params[:author_id] = current_user.author.id
+    permitted_params
   end
 
 end
