@@ -27,6 +27,22 @@ class ArtItemsController < ApplicationController
     end
   end
 
+  def update
+    @art_item = ArtItem.find(params[:id])
+    authorize @art_item
+    if @art_item.update_attributes(art_item_params)
+      render status: 200, json: { message: 'ok'}
+    else
+      render status: 400, json: { message: 'error'}
+    end
+  end
+
+  def destroy
+    @art_item = ArtItem.find(params[:id])
+    authorize @art_item
+    render status: 200, json: { message: 'ok'}
+  end
+
   private
 
   def art_item_params
