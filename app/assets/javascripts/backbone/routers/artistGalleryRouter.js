@@ -56,23 +56,15 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
          window.location.href = '/#';
      } else {
         var self = this;    
-        this.userCarts = new ArtistGallery.Collections.CartCollection(/*[
-          {
-            back: 'vova'
-          },
-          {
-            back: 'vova'
-          },
-          {
-            front: 'Ira'
-          }]*/);
+        this.userCarts = new ArtistGallery.Collections.CartCollection();
       
         this.userCarts.fetch().then(function() {
             //alert("hjkj");
-          console.log(self.userCarts);
-          //debugger;
+                 //debugger;
           self.userCartView = new UserCartView({collection: self.userCarts});
-        });
+          });
+
+        
         return
       }
   };
