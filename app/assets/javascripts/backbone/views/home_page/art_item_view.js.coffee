@@ -6,7 +6,8 @@ class ArtistGallery.Views.HomePage.ArtItemView extends Backbone.View
   className: 'col-xs-12 col-sm-6 col-md-4 col-lg-4 work_outer'
 
   events:
-    "click button" : "addToShoppingCart"
+    "click button#add-to-cart" : "addToShoppingCart",
+    "click button#delete" : "deleteArtItem"
 
   addToShoppingCart: () ->
     alert(@model.id)
@@ -18,14 +19,18 @@ class ArtistGallery.Views.HomePage.ArtItemView extends Backbone.View
     if (token)
       xhr.setRequestHeader('X-CSRF-Token', token)
     xhr.send(artItemId)
-    
+
     counter = Number($('#counter').html()) + 1
-    if counter > 0 
+    if counter > 0
       $('#counter').html(' ' + counter )
-    
-    return this
+    @
+
+  deleteArtItem: () ->
+    alert('Delete' + @model.id)
+    @model.destroy()
+    @
 
   render: =>
     #alert 'in render addOne'
     @$el.html(@template(@model.toJSON()))
-    return this
+    @

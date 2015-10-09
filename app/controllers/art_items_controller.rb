@@ -38,8 +38,10 @@ class ArtItemsController < ApplicationController
   end
 
   def destroy
+    # binding.pry
     @art_item = ArtItem.find(params[:id])
     authorize @art_item
+    @art_item.destroy
     render status: 200, json: { message: 'ok'}
   end
 

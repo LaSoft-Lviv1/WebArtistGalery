@@ -13,7 +13,8 @@
         }
 
         // Serialize data, optionally using paramRoot
-        if (options.data == null && model && (method === 'create' || method === 'update' || method === 'patch')) {
+        //alert(method);
+        if (options.data == null && model && (method === 'create' || method === 'update' || method === 'patch' || method === 'delete' || method === 'read')) {
             options.contentType = 'application/json';
             data = JSON.stringify(options.attrs || model.toJSON(options));
             if (model.paramRoot) {
@@ -23,6 +24,7 @@
                 data = model.toJSON();
             }
             data.user_token = localStorage.getItem('user_token');
+            //console.log(data);
             options.data = JSON.stringify(data);
         }
 
