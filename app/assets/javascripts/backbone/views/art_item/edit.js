@@ -68,7 +68,8 @@ EditArtItemView = Backbone.View.extend({
     },
 
     render: function () {
-        this.$el.html(this.template());
+        //console.log(this.model.toJSON());
+        this.$el.html(this.template(this.model.toJSON()));
         this.fillAllSelects();
         return this;
     },
@@ -82,6 +83,7 @@ EditArtItemView = Backbone.View.extend({
     },
 
     fillCategories: function () {
+        var model = this.model;
         this.categories.fetch({
             success: function (collection, response) {
                 collection.each(function(category){
@@ -89,13 +91,19 @@ EditArtItemView = Backbone.View.extend({
                     var category_id, category_name;
                     category_name = category.toJSON().name;
                     category_id = category.toJSON().id;
-                    return this.$("#select-category").append("<option value=" + category_id + ">" + category_name + "</option>");
+                    if (category_id == model.toJSON().category_id){
+                        this.$("#select-category").append("<option value=" + category_id + " selected=\"selected\">" + category_name + "</option>");
+                    } else {
+                        this.$("#select-category").append("<option value=" + category_id + ">" + category_name + "</option>");
+                    }
+                    return
                 });
             }
         });
     },
 
     fillStyles: function () {
+        var model = this.model;
         this.styles.fetch({
             success: function (collection, response) {
                 collection.each(function(style){
@@ -103,13 +111,19 @@ EditArtItemView = Backbone.View.extend({
                     var style_id, style_name;
                     style_name = style.toJSON().name;
                     style_id = style.toJSON().id;
-                    return this.$("#add-art-item-style").append("<option value=" + style_id + ">" + style_name + "</option>");
+                    if (style_id == model.toJSON().style_id){
+                        this.$("#add-art-item-style").append("<option value=" + style_id + " selected=\"selected\">" + style_name + "</option>");
+                    } else {
+                        this.$("#add-art-item-style").append("<option value=" + style_id + ">" + style_name + "</option>");
+                    }
+                    return
                 });
             }
         });
     },
 
     fillMedias: function () {
+        var model = this.model;
         this.medias.fetch({
             success: function (collection, response) {
                 collection.each(function(media){
@@ -117,13 +131,19 @@ EditArtItemView = Backbone.View.extend({
                     var media_id, media_name;
                     media_name = media.toJSON().name;
                     media_id = media.toJSON().id;
-                    return this.$("#add-art-item-medium").append("<option value=" + media_id + ">" + media_name + "</option>");
+                    if (media_id == model.toJSON().media_id){
+                        this.$("#add-art-item-medium").append("<option value=" + media_id + " selected=\"selected\">" + media_name + "</option>");
+                    } else {
+                        this.$("#add-art-item-medium").append("<option value=" + media_id + ">" + media_name + "</option>");
+                    }
+                    return
                 });
             }
         });
     },
 
     fillOrientations: function () {
+        var model = this.model;
         this.orientations.fetch({
             success: function (collection, response) {
                 collection.each(function(orientation){
@@ -131,13 +151,19 @@ EditArtItemView = Backbone.View.extend({
                     var orientation_id, orientation_name;
                     orientation_name = orientation.toJSON().name;
                     orientation_id = orientation.toJSON().id;
-                    return this.$("#add-art-item-orientation").append("<option value=" + orientation_id + ">" + orientation_name + "</option>");
+                    if (orientation_id == model.toJSON().orientation_id){
+                        this.$("#add-art-item-orientation").append("<option value=" + orientation_id + " selected=\"selected\">" + orientation_name + "</option>");
+                    } else {
+                        this.$("#add-art-item-orientation").append("<option value=" + orientation_id + ">" + orientation_name + "</option>");
+                    }
+                    return
                 });
             }
         });
     },
 
     fillSubjects: function () {
+        var model = this.model;
         this.subjects.fetch({
             success: function (collection, response) {
                 collection.each(function(subject){
@@ -145,7 +171,12 @@ EditArtItemView = Backbone.View.extend({
                     var subject_id, subject_name;
                     subject_name = subject.toJSON().name;
                     subject_id = subject.toJSON().id;
-                    return this.$("#add-art-item-subject").append("<option value=" + subject_id + ">" + subject_name + "</option>");
+                    if (subject_id == model.toJSON().subject_id){
+                        this.$("#add-art-item-subject").append("<option value=" + subject_id + " selected=\"selected\">" + subject_name + "</option>");
+                    } else {
+                        this.$("#add-art-item-subject").append("<option value=" + subject_id + ">" + subject_name + "</option>");
+                    }
+                    return
                 });
             }
         });
