@@ -52,33 +52,36 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
 
 
   ArtistGalleryRouter.prototype.userCart = function() {
-     if(localStorage.length === 0 || localStorage.getItem('user_token') === '') {
-         window.location.href = '/#';
-     } else {
-        var self = this;    
-        this.userCarts = new ArtistGallery.Collections.CartCollection();
-      
-        this.userCarts.fetch().then(function() {
-            //alert("hjkj");
-                 //debugger;
-          self.userCartView = new UserCartView({collection: self.userCarts});
-          });
-
-        
-        return
-      }
+    if(localStorage.length === 0 || localStorage.getItem('user_token') === '') {
+        window.location.href = '/#';
+    } else {
+      var self = this;    
+      this.userCarts = new ArtistGallery.Collections.CartCollection();
+      this.userCarts.fetch().then(function() {
+        self.userCartView = new UserCartView({collection: self.userCarts});
+      }); 
+    }
+    return
   };
 
   ArtistGalleryRouter.prototype.initialize = function() {
     this.login_model = new ArtistGallery.Models.Login();
     ArtistGallery.LoginHelpers.reRenderLoginView(this.login_model);
-    this.headerView = new HeaderView();
+
+    if(localStorage.length === 0 || localStorage.getItem('user_token') === '') {
+       this.headerView = new HeaderView();
+    } else {
+      var self = this;    
+      this.userCarts = new ArtistGallery.Collections.CartCollection();
+      this.userCarts.fetch().then(function() {
+         self.headerView = new HeaderView({collection: self.userCarts});
+      }); 
+    }
+  //  this.headerView = new HeaderView();
     this.renderLoginView();
     this.footerView = new FooterView;
     this.authors = new ArtistGallery.Collections.AuthorsCollection();
-    return //this.authors.fetch({
-    //  reset: true
-    //});
+    return
   };
 
   ArtistGalleryRouter.prototype.confirmation = function() {
