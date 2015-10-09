@@ -8,6 +8,11 @@ var HeaderView = Backbone.View.extend ({
 
     initialize: function () {
 		this.render();
+		var counter = this.collection.toJSON().length;
+		console.log(counter);
+		if (counter !== 0) {
+			this.$('#counter').append(' ' + counter );
+		}
 	},
 
 	render: function () {

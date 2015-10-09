@@ -18,6 +18,11 @@ class ArtistGallery.Views.HomePage.ArtItemView extends Backbone.View
     if (token)
       xhr.setRequestHeader('X-CSRF-Token', token)
     xhr.send(artItemId)
+    
+    counter = Number($('#counter').html()) + 1
+    if counter > 0 
+      $('#counter').html(' ' + counter )
+    
     return this
 
   render: =>
