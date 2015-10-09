@@ -52,7 +52,7 @@ DetailedArtItemView = Backbone.View.extend({
     },
 
     fillAuthors: function () {
-     //   var author = this.authors.get(this.model.toJSON().author_id);
+        var author = this.authors.get(this.model.toJSON().author_id);
         console.log(author);
         //author_id: null
         var first_name = author.toJSON().first_name;

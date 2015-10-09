@@ -13,9 +13,9 @@ class ShoppingCartsController < ApplicationController
       #   format.json { render json: @ordered_art_items }
       # end
 
-      # render json: @ordered_art_items
+      render json: @ordered_art_items
 
-      respond_with(@ordered_art_items)
+      # respond_with(@ordered_art_items)
 
     else
       redirect_to(:back)

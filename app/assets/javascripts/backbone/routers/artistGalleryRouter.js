@@ -30,22 +30,23 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
 
     ArtistGalleryRouter.prototype.routes = {
         '': "index",
-        'authors':      "showAuthors",
-        'authors/new':  "newAuthor",
-        'authors/:id':  "show",
-        ':id/edit':     "edit",
-        'index':        "index",
-        'howToBuy':     "howToBuy",
-        'aboutUs':      "howToBuy",
-        'FAQ':          "howToBuy",
-        'signout':      "signout",
-        'artItems/new': "newArtItem",
-        'artItems/:id': "detailedArtItem",
-        'artistAdmin': "artistAdmin",
-        'users/confirmation': 'confirmation',
-        'users/password': 'passwordRecovery',
-        'users/password/edit': 'passwordRecoveryEdit',
-        'cart' : "userCart",
+        'authors':              "showAuthors",
+        'authors/new':          "newAuthor",
+        'authors/:id':          "show",
+        ':id/edit':             "edit",
+        'index':                "index",
+        'howToBuy':             "howToBuy",
+        'aboutUs':              "howToBuy",
+        'FAQ':                  "howToBuy",
+        'signout':              "signout",
+        'artItems/new':         "newArtItem",
+        'artItems/:id':         "detailedArtItem",
+        'artItems/:id/edit':    "editArtItem",
+        'artistAdmin':          "artistAdmin",
+        'users/confirmation':   'confirmation',
+        'users/password':       'passwordRecovery',
+        'users/password/edit':  'passwordRecoveryEdit',
+        'cart':                 'userCart',
         '.*': "index"
     };
 
@@ -72,8 +73,6 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
           //debugger;
           self.userCartView = new UserCartView({collection: self.userCarts});
         });
-
-        
         return
       }
   };
@@ -139,7 +138,6 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     }
 
   ArtistGalleryRouter.prototype.renderLoginView = function() {
-    this.login_model = new ArtistGallery.Models.Login();
     this.view = new ArtistGallery.Views.Login({
       model: this.login_model
     });
@@ -195,6 +193,22 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
           success: function (collection, response) {
               this.art_item = collection.get(id);
               var view = new DetailedArtItemView({
+                  model: this.art_item,
+                  collection: collection
+              });
+              $("#content").html(view.render().el);
+          }
+      });
+      return
+  };
+
+  ArtistGalleryRouter.prototype.editArtItem = function(id) {
+      this.art_items = new ArtistGallery.Collections.ArtItemsCollection();
+      this.art_items.fetch({
+          reset: true,
+          success: function (collection, response) {
+              this.art_item = collection.get(id);
+              var view = new EditArtItemView({
                   model: this.art_item,
                   collection: collection
               });
