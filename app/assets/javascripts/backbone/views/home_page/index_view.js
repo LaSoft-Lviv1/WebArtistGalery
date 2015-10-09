@@ -45,9 +45,9 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
                         this.index += 1;
                     }
                 }
-                console.log('<150');
+                //console.log('<150');
             }else{
-                console.log('>150');
+                //console.log('>150');
             }
         }
 
@@ -70,7 +70,7 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
   };
 
   IndexView.prototype.addAllFromReset = function() {
-    console.log('from reset');
+    //console.log('from reset');
     return this.addAll();
   };
 
@@ -88,7 +88,7 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
       };
     //this.collection.forEach(this.addOneArtItemForHomePage, this);
     this.collection.forEach(this.addOneArtItemForCarousel, this);
-    console.log('in addAll finish');
+    //console.log('in addAll finish');
     $('.variable-width').slick({
         dots: false,
         infinite: true,
@@ -108,7 +108,7 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
       model: art_item
     });
     this.$(".variable-width").append(viewOneArtItem.render().el);
-    return console.log('in addOneArtItem finish');
+    return
   };
 
   IndexView.prototype.addOneArtItemForHomePage = function(art_item) {
@@ -119,11 +119,11 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
       model: art_item
     });
     this.$(".container-fluid").append(viewOneArtItem.render().el);
-    return console.log('in addOneArtItem finish');
+    return
   };
 
   IndexView.prototype.render = function() {
-    console.log('in render');
+    //console.log('in render');
     this.index = 0;
       //console.log(this.index);
     //console.log(this.collection.toJSON());

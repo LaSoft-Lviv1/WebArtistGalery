@@ -1,6 +1,5 @@
 (function($) {
     Backbone._sync = Backbone.sync;
-
     Backbone.sync = function(method, model, options) {
         if (!options.noCSRF) {
             var beforeSend = options.beforeSend;
@@ -23,6 +22,7 @@
             } else {
                 data = model.toJSON();
             }
+            data.user_token = localStorage.getItem('user_token');
             options.data = JSON.stringify(data);
         }
 

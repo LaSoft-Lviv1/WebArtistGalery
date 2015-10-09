@@ -9,7 +9,7 @@ class ArtItemPolicy < ApplicationPolicy
   end
 
   def update?
-    @user.admin? || (@user.artist? && @user.artist.id == @record.author_id)
+    @user.admin? || (@user.artist? && @user.author.id == @record.author_id)
   end
 
   def edit?
@@ -17,7 +17,7 @@ class ArtItemPolicy < ApplicationPolicy
   end
 
   def destroy?
-    @user.admin? || (@user.artist? && @user.artist.id == @record.author_id)
+    @user.admin? || (@user.artist? && @user.author.id == @record.author_id)
   end
 
   class Scope < Scope
