@@ -72,7 +72,12 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
           console.log(self.userCarts);
           //debugger;
           self.userCartView = new UserCartView({collection: self.userCarts});
-        });
+          },
+          function(error){ 
+            console.log(error)
+          });
+
+        
         return
       }
   };
