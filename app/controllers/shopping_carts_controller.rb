@@ -5,17 +5,19 @@ class ShoppingCartsController < ApplicationController
   DAYS_FOR_RESERVATION = 7
 
   def index
+    puts "in index shopping cart"
     # if LoginHelper::AuthenticationService.authenticate_user(params[:auth_token]).id == current_user.id
     if current_user
+      puts current_user.id
       @ordered_art_items = ShoppingCart.where("user_id = ? AND payment_date IS NULL", current_user.id)
       authorize @ordered_art_items
       # respond_to do |format|
       #   format.json { render json: @ordered_art_items }
       # end
 
-      render json: @ordered_art_items
+      # render json: @ordered_art_items
 
-      # respond_with(@ordered_art_items)
+      respond_with(@ordered_art_items)
 
     else
       redirect_to(:back)
