@@ -33,6 +33,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
         'authors':              "showAuthors",
         'authors/new':          "newAuthor",
         'authors/:id':          "show",
+        'authors/:id/edit':     "editAuthor",
         ':id/edit':             "edit",
         'index':                "index",
         'howToBuy':             "howToBuy",
@@ -212,6 +213,21 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
       });
       return
     };
+
+  ArtistGalleryRouter.prototype.editAuthor = function(id) {
+      this.authors.fetch({
+          reset: true,
+          success: function (collection, response) {
+              this.author = collection.get(id);
+              var view = new EditAuthorDataView({
+                  model: this.author,
+                  collection: collection
+              });
+              $("#content").html(view.render().el);
+          }
+      });
+      return
+  };
 
   ArtistGalleryRouter.prototype.howToBuy = function() {
     this.howToBuy = new HowToBuyView();
