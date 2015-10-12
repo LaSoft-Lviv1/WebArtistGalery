@@ -1,4 +1,5 @@
 class AuthorsController < ApplicationController
+  before_action :authenticate_user_from_token!, except: :index
 
   def index
     id = params[:id].presence
@@ -29,6 +30,16 @@ class AuthorsController < ApplicationController
     redirect_to '#/authors' #TODO What is it?
   end
 
+  def update
+    @author = Author.find(params[:id])
+    authorize @author
+    if @author.update_attributes(author_params)
+      render status: 200, json: { message: 'ok'}
+    else
+      render status: 400, json: { message: 'error'}
+    end
+  end
+
   def destroy
     author = Author.find(params[:id])
     author.destroy
@@ -53,7 +64,6 @@ class AuthorsController < ApplicationController
                                     :info_about,
                                     :photo,
                                     :phone_number,
-                                    :email_address,
                                     :city_id
                                    )
   end
