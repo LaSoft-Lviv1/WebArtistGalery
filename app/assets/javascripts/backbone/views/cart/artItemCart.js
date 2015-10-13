@@ -24,10 +24,13 @@ ArtItemCartView = Backbone.View.extend ({
 		return this;
 	},
 	unlock: function (e) {
-		this.model.destroy();
+		this.model.destroy().then(function(){
 		var counter = Number($('#counter').html()) - 1;
 		if(counter > 0){
 			$('#counter').html(' ' + counter );
 		}
+
+		});
+		
 }
 });

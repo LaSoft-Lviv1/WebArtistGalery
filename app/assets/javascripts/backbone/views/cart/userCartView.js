@@ -3,8 +3,8 @@ UserCartView = Backbone.View.extend ({
 	template:  JST["backbone/templates/cart/cart"],
 
 	initialize: function () {
+		console.log(this.collection.toJSON()[0]);
 		var counter = this.collection.toJSON().length;
-		console.log(counter);
 		if (counter !== 0) {
 			$('#counter').html(' ' + counter );
 		}
