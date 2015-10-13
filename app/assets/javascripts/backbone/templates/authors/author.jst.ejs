@@ -1,4 +1,8 @@
-<td><%= first_name %></td>
-<td><a href="#/authors/<%= id %>">Show</a></td>
-<td><a href="#/authors/<%= id %>/edit">Edit</a></td>
-<td><a href="#/authors/<%= id %>/destroy" class="destroy">Destroy</a></td>
+<div class="work_inner">
+  <a title="About painting">
+    <!--<p>from art item</p>-->
+      <a href="#authors/<%= id %>"><img class="img-responsive home_item" alt="" src='<%= photo.url %>'></a>
+  <br>
+
+  <p><strong><%= first_name %></strong><strong> <%= second_name %></strong></p>
+</div>

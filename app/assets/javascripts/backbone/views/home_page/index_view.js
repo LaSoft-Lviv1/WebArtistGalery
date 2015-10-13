@@ -47,7 +47,7 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
                 }
                 //console.log('<150');
             }else{
-                //console.log('>150');
+                //console.log('home');
             }
         }
 
@@ -78,7 +78,7 @@ ArtistGallery.Views.HomePage.IndexView = (function(superClass) {
     //console.log('in addAll start');
     //console.log(this.collection.first().toJSON());
     //  console.log(this.collection.at(1).toJSON());
-    console.log('in addAll start');
+    //console.log('in addAll start');
       for (i = this.index; i < 3; i++) {
           if (this.index < this.collection.length) {
               //console.log(this.index);
