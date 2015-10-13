@@ -5,10 +5,8 @@ class ShoppingCartsController < ApplicationController
   DAYS_FOR_RESERVATION = 7
 
   def index
-    puts "in index shopping cart"
     # if LoginHelper::AuthenticationService.authenticate_user(params[:auth_token]).id == current_user.id
     if current_user
-      puts current_user.id
       @ordered_art_items = ShoppingCart.where("user_id = ? AND payment_date IS NULL", current_user.id)
       authorize @ordered_art_items
       # respond_to do |format|
@@ -20,7 +18,7 @@ class ShoppingCartsController < ApplicationController
       respond_with(@ordered_art_items)
 
     else
-      redirect_to(:back)
+      redirect_to :root
     end
   end
 
@@ -54,7 +52,10 @@ class ShoppingCartsController < ApplicationController
 
 
   def destroy
-    puts 'Some field has been updated'
+    puts
+    puts "id = #{params[:id]}"
+    puts
+    puts "art_item_id = #{shopping_cart_params[:art_item_id]}"
     art_item=ShoppingCart.find(params[:id])
     NotificationService.canceling_reservation art_item.art_item_id
     art_item.destroy
