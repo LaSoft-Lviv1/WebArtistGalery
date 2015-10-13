@@ -32,7 +32,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
         '': "index",
         'authors':              "showAuthors",
         'authors/new':          "newAuthor",
-        'authors/:id':          "show",
+        'authors/:id':          "showAuthor",
         'authors/:id/edit':     "editAuthor",
         ':id/edit':             "edit",
         'index':                "index",
@@ -172,15 +172,43 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.showAuthors = function() {
-    this.art_items = new ArtistGallery.Collections.ArtItemsCollection();
-    this.art_items.fetch({
-      reset: true
-    });
-    this.view = new ArtistGallery.Views.Authors.IndextView({
-        collection: this.art_items
-    });
-    $("#content").html(this.view.render().el);
-    return
+      this.authors.fetch({
+          reset: true,
+          success: function (collection, response) {
+              var view = new ArtistGallery.Views.Authors.AllAuthorsView({
+                  collection: collection
+              });
+              $("#content").html(view.render().el);
+          }
+      });
+      return
+  };
+
+  ArtistGalleryRouter.prototype.showAuthor = function(id) {
+      var art_items = new ArtistGallery.Collections.ArtItemsCollection();
+      this.authors.fetch({
+          reset: true,
+          success: function (collection, response) {
+              var author;
+              author = collection.get(id);
+              var view = new ArtistGallery.Views.Authors.IndexView({
+                  model: author,
+                  collection: art_items
+              });
+              $("#content").html(view.render().el)
+          }
+      });
+      art_items.fetch({
+          reset: true
+      });
+      //var author;
+      //author = this.authors.get(id);
+      //this.view = new ArtistGallery.Views.Authors.IndexView({
+      //    model: author,
+      //    collection: this.art_items
+      //});
+      //$("#content").html(this.view.render().el);
+      return
   };
 
   ArtistGalleryRouter.prototype.detailedArtItem = function(id) {
