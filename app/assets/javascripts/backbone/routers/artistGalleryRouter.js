@@ -70,15 +70,16 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     ArtistGallery.LoginHelpers.reRenderLoginView(this.login_model);
 
     if(localStorage.length === 0 || localStorage.getItem('user_token') === '') {
+ 
        this.headerView = new HeaderView();
     } else {
       var self = this;    
       this.userCarts = new ArtistGallery.Collections.CartCollection();
-      this.userCarts.fetch().then(function() {
+        this.userCarts.fetch().then(function() {
          self.headerView = new HeaderView({collection: self.userCarts});
       }); 
     }
-  //  this.headerView = new HeaderView();
+  
     this.renderLoginView();
     this.footerView = new FooterView;
     this.authors = new ArtistGallery.Collections.AuthorsCollection();

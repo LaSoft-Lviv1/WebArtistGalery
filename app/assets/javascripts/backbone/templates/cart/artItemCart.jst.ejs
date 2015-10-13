@@ -1,14 +1,17 @@
 <td class="item-image">
-  <img src="" alt="demo_img">
+ <a href="#artItems/<%= id %>" ><img class="img-responsive home_item thumbnail" alt="" src='<%= source_file %>'></a>
 </td>
-<td class="item-description">
-  <p>item id: <%= id %></p>
+<td>
+  <%= author_first_name + ' ' + author_second_name %>
+</td>
+<td>
+  <%= name %>
 </td>
 <td>
   <%= updated_at %>
 </td>
 <td class="item-price">
-  $1,000.00
+  <p> $<%= price %></p>
 </td>
 <td>
   <a href="/#cart"><button class="unlock btn btn-info btn-sm">Unlock</button></a>

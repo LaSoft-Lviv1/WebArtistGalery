@@ -7,17 +7,17 @@ var HeaderView = Backbone.View.extend ({
 	},
 
     initialize: function () {
-		this.render();
-		var counter = this.collection.toJSON().length;
-		console.log(counter);
-		if (counter !== 0) {
-			this.$('#counter').append(' ' + counter );
-		}
+    	
+   		this.render();
 	},
 
 	render: function () {
 		this.$el.html(this.template());
 		this.activeHeaderLinksOnload();
+	   	if(this.collection) {
+    		var counter = this.collection.length;
+			$('#counter').append(' ' + counter);
+    	}
 		return this;
 	},
 
