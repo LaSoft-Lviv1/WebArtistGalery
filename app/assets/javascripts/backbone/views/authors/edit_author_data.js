@@ -71,12 +71,14 @@ EditAuthorDataView = Backbone.View.extend({
     },
 
     showAuthorPhoto: function () {
-        var img;
-        img = new Image();
-        img.src = this.model.toJSON().photo.url;
-        img.style.width = "100%";
-        this.$("div#image_preview img").remove();
-        return this.$("#image_preview").append(img);
+        if (this.model.toJSON().photo.url != null) {
+            var img;
+            img = new Image();
+            img.src = this.model.toJSON().photo.url;
+            img.style.width = "100%";
+            this.$("div#image_preview img").remove();
+            return this.$("#image_preview").append(img);
+        }
     },
 
     fillCities: function () {

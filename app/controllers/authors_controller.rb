@@ -1,5 +1,5 @@
 class AuthorsController < ApplicationController
-  before_action :authenticate_user_from_token!, except: :index
+  before_action :authenticate_user_from_token!, except: [:index, :show]
 
   def index
     id = params[:id].presence
@@ -48,11 +48,31 @@ class AuthorsController < ApplicationController
   end
 
   def show
-    @author = Author.find_by_id(params[:id])
-
-    unless @author
-      render :text => 'this artist is not available'
+    id = params[:id].presence
+    # binding.pry
+    if current_user && id == current_user.author.id.to_s
+      # binding.pry
+      @author = Author.find_by(id: id)
+      if @author
+        respond_to do |format|
+          format.json { render json: @author }
+          format.html { render action: "index" }
+        end
+      else
+        render status: 400, json: { message: 'Author hasn\'t been found.' }
+      end
+    else
+      @author = Author.find_by(id: id)
+      if @author
+        respond_to do |format|
+          format.json { render json: @author }
+          format.html { render action: "index" }
+        end
+      else
+        render status: 400, json: { message: 'Author hasn\'t been found.' }
+      end
     end
+
   end
 
   private

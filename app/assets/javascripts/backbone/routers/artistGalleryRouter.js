@@ -165,6 +165,8 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
       localStorage.setItem('user_token', '');
       localStorage.setItem('name', '');
       localStorage.setItem('role', '');
+      localStorage.setItem('id', '');
+      this.login_model = new ArtistGallery.Models.Login();
       window.location.href = '/#';
       this.headerView.render();
       this.renderLoginView();
@@ -185,29 +187,33 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.showAuthor = function(id) {
-      var art_items = new ArtistGallery.Collections.ArtItemsCollection();
-      this.authors.fetch({
-          reset: true,
-          success: function (collection, response) {
-              var author;
-              author = collection.get(id);
-              var view = new ArtistGallery.Views.Authors.IndexView({
-                  model: author,
-                  collection: art_items
+      if (id == localStorage.getItem('id') && localStorage.getItem('role') == 'artist') {
+          var author = new ArtistGallery.Models.Author();
+          author.set({id: id});
+          author.fetch().then(function (model) {
+              var artistAdminView = new ArtistAdminView({
+                  model: new ArtistGallery.Models.Author( model)
               });
-              $("#content").html(view.render().el)
-          }
-      });
-      art_items.fetch({
-          reset: true
-      });
-      //var author;
-      //author = this.authors.get(id);
-      //this.view = new ArtistGallery.Views.Authors.IndexView({
-      //    model: author,
-      //    collection: this.art_items
-      //});
-      //$("#content").html(this.view.render().el);
+              $("#content").html(artistAdminView.render().el)
+          });
+      }else {
+          var art_items = new ArtistGallery.Collections.ArtItemsCollection();
+          this.authors.fetch({
+              reset: true,
+              success: function (collection, response) {
+                  var author;
+                  author = collection.get(id);
+                  var view = new ArtistGallery.Views.Authors.IndexView({
+                      model: author,
+                      collection: art_items
+                  });
+                  $("#content").html(view.render().el)
+              }
+          });
+          art_items.fetch({
+              reset: true
+          });
+      }
       return
   };
 

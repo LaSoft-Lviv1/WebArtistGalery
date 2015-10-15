@@ -59,6 +59,7 @@ ArtistGallery.Views.SignupCustomer = (function(superClass) {
                 localStorage.setItem('user_token', response.get('user_token'));
                 localStorage.setItem('name', response.get('name'));
                 localStorage.setItem('role', response.get('role'));
+                localStorage.setItem('id', response.get('id'));
                 alert('Confirmation letter has been sent to your email.');
                 window.location.reload();
             },

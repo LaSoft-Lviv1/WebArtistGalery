@@ -44,7 +44,7 @@ class ShoppingCartsController < ApplicationController
       end
     else
       render json: {success: false,
-      				message: "You must be logged in to buy works of art"}
+                    message: "You must be logged in to buy works of art"}
     end
     # NotificationService.canceling_reservation art_item_id
 
@@ -52,13 +52,11 @@ class ShoppingCartsController < ApplicationController
 
 
   def destroy
-    puts
-    puts "id = #{params[:id]}"
-    puts
-    puts "art_item_id = #{shopping_cart_params[:art_item_id]}"
-    art_item=ShoppingCart.find(params[:id])
-    NotificationService.canceling_reservation art_item.art_item_id
-    art_item.destroy
+    cart_item=ShoppingCart.find(params.permit(:id)[:id])
+    NotificationService.canceling_reservation cart_item.art_item_id
+    cart_item.destroy
+    render json: {success: true,
+                  message: "Art item has been successfully destroyed"}
   end
 
 
@@ -97,8 +95,8 @@ class ShoppingCartsController < ApplicationController
 
   def shopping_cart_params
     params.require(:shopping_cart).permit(
-                                          :art_item_id
-                                         )
+        :art_item_id
+    )
   end
 
 end

@@ -9,11 +9,12 @@ var DescriptionView = Backbone.View.extend ({
 
 	render: function () {
 		this.$el.html(this.template(this.model.toJSON()));
-		this.homeCarousel();
+		this.aboutAuthorInfo();
 		return this;
 	},
 
-	homeCarousel: function() {
+    aboutAuthorInfo: function() {
+
 		$('.more').toggle(function(){
 			$(this).text('less..').siblings('.complete').show();
 		},
