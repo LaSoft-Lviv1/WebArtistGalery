@@ -62,11 +62,11 @@ AddArtItemView = Backbone.View.extend({
 
             for (var i = 0; i < data.length; i++ ) {
                 var field = this.$('#' + data[i]).val();
-                console.log(this.$('#' + data[i]));
+                //console.log(this.$('#' + data[i]));
 
                 if (field === '' || field === null){
                     this.$('#error').addClass('alert alert-danger').empty().append('Error: please fill all attr and sellect categories');
-                    console.log(field);
+                    //console.log(field);
                     this.$('#' + data[i]).parent().addClass('has-error');
                     valid = false;
                 } 
@@ -81,7 +81,7 @@ AddArtItemView = Backbone.View.extend({
 
             
         }
-    if (validate()) {
+    //if (validate()) {
 
         formData.append('art_item[name]',               this.$('#add-art-item-name').val());
         formData.append('art_item[description]',        this.$('#add-art-item-description').val());
@@ -97,16 +97,16 @@ AddArtItemView = Backbone.View.extend({
         formData.append('art_item[source_file]',        $input[0].files[0]);
         formData.append('user_token',                   localStorage.getItem('user_token'));
 
-        // $.ajax({
-        //     url: this.model.url(),
-        //     data: formData,
-        //     cache: false,
-        //     contentType: false,
-        //     processData: false,
-        //     type: 'POST'
-        // });
-        //  alert('You added a new Picture.');
-    }
+        $.ajax({
+            url: this.model.url(),
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            type: 'POST'
+        });
+        alert('You added a new Picture.');
+    //}
         return
     },
 
