@@ -9,6 +9,8 @@
 /db/*.sqlite3-journal
 /public/assets/*.js
 /public/assets/*.css
+/public/assets/*.json
+/public/uploads
 # /coverage/
 # /spec/tmp
 # **.orig
