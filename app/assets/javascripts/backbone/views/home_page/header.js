@@ -13,11 +13,11 @@ var HeaderView = Backbone.View.extend ({
 
 	render: function () {
 		this.$el.html(this.template());
-		this.activeHeaderLinksOnload();
 	   	if(this.collection) {
     		var counter = this.collection.length;
 			$('#counter').append(' ' + counter);
     	}
+		this.activeHeaderLinksOnload();
 		return this;
 	},
 

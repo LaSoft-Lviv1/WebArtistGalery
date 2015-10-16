@@ -1,10 +1,11 @@
  <div class="add-art-container">
     <div class="container">
-      <div class="row">
+      <div class="row" >
         <h2 class="text-center add-art-heading">Add the greatest Art ever!</h2>
+        <div class="col-lg-6 col-md-6 col-sm-8" id="error"></div>
       </div>
-      <div class="col-sm-8">
-        <div class="form-group">
+      <div class="row">
+        <div class="form-group col-lg-6 col-md-6 col-sm-8">
           <div class="input-group">
             <span class="input-group-addon" id="addon-add-art-item-name"><div>Name</div></span>
             <input required type="text" class="form-control" id="add-art-item-name" placeholder="Name" aria-describedby="addon-add-art-item-name">
@@ -19,10 +20,6 @@
               <option disabled selected>Choose one</option>
             </select>
           </div>
-          <!-- /.input-group -->
-        </div>
-        <!-- /.form-group -->
-        <div class="form-group">
           <div class="input-group col-xs-12">
             <span class="input-group-addon" id="addon-add-art-item-medium"><div>Medium</div></span>
             <select required name="select-medium" class="form-control" id="add-art-item-medium" placeholder="" aria-descripbedby="addon-add-art-item-medium">
@@ -41,9 +38,6 @@
               <option disabled selected>Choose one</option>
             </select>
           </div>
-        </div>
-        <!-- /.form-group -->
-        <div class="form-group">
           <div class="input-group col-xs-12">
             <span class="input-group-addon" id="addon-add-art-item-orientation"><div>Orientation</div></span>
             <select required name="select-orientation" class="form-control" id="add-art-item-orientation" placeholder="E.g. portrait, square, landscape etc." aria-descripbedby="addon-add-art-item-orientation">
@@ -52,7 +46,7 @@
           </div>
           <div class="input-group col-xs-12">
             <span class="input-group-addon" id="addon-add-art-item-vsize"><div>V-size</div></span>
-            <input required type="text" class="form-control" id="add-art-item-vsize" placeholder="E.g. 56" aria-descripbedby="addon-add-art-item-vsize">
+            <input required type="number"  class="form-control" id="add-art-item-vsize" placeholder="E.g. 56" aria-descripbedby="addon-add-art-item-vsize">
             <span class="input-group-addon addon-select">
                 <select required name="select-vsize" id="select-vsize">
                   <option value="cm">cm</option>
@@ -62,7 +56,7 @@
           </div>
           <div class="input-group col-xs-12">
             <span class="input-group-addon" id="addon-add-art-item-hsize"><div>H-size</div></span>
-            <input required type="text" class="form-control" id="add-art-item-hsize" placeholder="E.g. 56" aria-descripbedby="addon-add-art-item-hsize">
+            <input required type="number" class="form-control" id="add-art-item-hsize" placeholder="E.g. 56" aria-descripbedby="addon-add-art-item-hsize">
             <span class="input-group-addon addon-select">
                 <select required name="select-hsize" id="select-hsize">
                     <option value="cm">cm</option>
@@ -70,12 +64,9 @@
                 </select>
              </span>
           </div>
-        </div>
-        <!-- /.form-group -->
-        <div class="form-group">
           <div class="input-group col-xs-12">
             <span class="input-group-addon" id="addon-add-art-item-price"><div>Price</div></span>
-            <input required type="text" class="form-control" id="add-art-item-price" placeholder="E.g. 200" aria-descripbedby="addon-add-art-item-price">
+            <input required type="number"class="form-control" id="add-art-item-price" placeholder="E.g. 200" aria-descripbedby="addon-add-art-item-price">
             <span class="input-group-addon addon-select">
                 <select required name="select-price" id="select-price">
                     <option value="usd">USD</option>
@@ -89,12 +80,13 @@
             <input required type="text" class="form-control" id="add-art-item-keywords" placeholder="E.g. portrait, lady, redhood" aria-descripbedby="addon-add-art-item-keywords">
           </div>
         </div>
-        <!-- /.form-group -->
-      </div>
-      <div class="col-sm-4">
+      <div class="col-lg-6 col-md-6 col-sm-4">
         <input required type="file" value="add photo" id="add-art-photo-btn">
         <div id="image_preview"></div>
       </div>
+
+      </div>
+   
       <div class="col-xs-4 col-xs-offset-8">
         <button class="btn btn-success btn-wide" id="submit">Upload</button>
       </div>
