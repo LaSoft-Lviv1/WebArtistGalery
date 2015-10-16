@@ -69,7 +69,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     this.login_model = new ArtistGallery.Models.Login();
     ArtistGallery.LoginHelpers.reRenderLoginView(this.login_model);
 
-    if(localStorage.length === 0 || localStorage.getItem('user_token') === '') {
+    if(localStorage.length == 0 || localStorage.getItem('user_token') == '') {
  
        this.headerView = new HeaderView();
     } else {
