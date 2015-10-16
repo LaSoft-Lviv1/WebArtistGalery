@@ -4,8 +4,11 @@ AddArtItemView = Backbone.View.extend({
 
     events: {
         'click #submit': 'createNewArtItem',
-        'change #add-art-photo-btn': 'show_image'
-    },
+        'change #add-art-photo-btn': 'show_image',
+        'focusout .form-control' : 'focusOut',
+        'focusin .form-control' : 'focusIn'
+
+        },
 
     initialize: function () {
         this.categories = new ArtistGallery.Collections.CategoriesCollection();
@@ -15,10 +18,70 @@ AddArtItemView = Backbone.View.extend({
         this.subjects = new ArtistGallery.Collections.SubjectsCollection();
         this.model = new ArtistGallery.Models.ArtItem();
     },
+    validate: function(selector, data) {
 
+
+
+    },
+    focusIn: function(e) {
+        this.$(e.target).parent().removeClass('has-error');
+    },
+
+    focusOut: function (e) {
+        var data, selector, messageError;
+        
+        selector = e.target.id;
+        data = this.$('#' + selector).val();
+        if(data === '' || data === null){
+            this.$('#error').addClass('alert alert-danger').empty().append('Error: please fill all attr and sellect categories');
+                this.$(e.target).parent().addClass('has-error');
+        }
+        console.log(data);
+    },
     createNewArtItem: function () {
-        var formData = new FormData(),
+        
+        var formData = new FormData();
             $input = $('#add-art-photo-btn');
+
+        //validate
+
+        function validate() {
+            var data = ['add-art-item-name',
+                'add-art-item-description',
+                'add-art-item-price',
+                'add-art-item-keywords',
+                'add-art-item-style',
+                'add-art-item-medium',
+                'add-art-item-orientation',
+                'add-art-item-subject',
+                'select-category',    
+             
+                'add-art-item-vsize',
+                'add-art-item-hsize'],
+                valid;
+
+            for (var i = 0; i < data.length; i++ ) {
+                var field = this.$('#' + data[i]).val();
+                console.log(this.$('#' + data[i]));
+
+                if (field === '' || field === null){
+                    this.$('#error').addClass('alert alert-danger').empty().append('Error: please fill all attr and sellect categories');
+                    console.log(field);
+                    this.$('#' + data[i]).parent().addClass('has-error');
+                    valid = false;
+                } 
+
+            }
+            if (!valid){
+                return false;
+            } else {
+            this.$('#error').addClass('alert alert-danger').empty(); 
+                return true;
+            }
+
+            
+        }
+    if (validate()) {
 
         formData.append('art_item[name]',               this.$('#add-art-item-name').val());
         formData.append('art_item[description]',        this.$('#add-art-item-description').val());
@@ -34,16 +97,16 @@ AddArtItemView = Backbone.View.extend({
         formData.append('art_item[source_file]',        $input[0].files[0]);
         formData.append('user_token',                   localStorage.getItem('user_token'));
 
-        $.ajax({
-            url: this.model.url(),
-            data: formData,
-            cache: false,
-            contentType: false,
-            processData: false,
-            type: 'POST'
-        });
-
-        alert('You added a new Picture.');
+        // $.ajax({
+        //     url: this.model.url(),
+        //     data: formData,
+        //     cache: false,
+        //     contentType: false,
+        //     processData: false,
+        //     type: 'POST'
+        // });
+        //  alert('You added a new Picture.');
+    }
         return
     },
 

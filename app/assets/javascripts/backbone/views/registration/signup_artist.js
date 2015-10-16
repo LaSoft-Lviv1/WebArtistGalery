@@ -138,7 +138,7 @@ SignupArtist.prototype.signup = function(e) {
         }
 
         chooseValid(dataValidate, data);
-        return a;
+        return a; 
     };
     
     SignupArtist.prototype.checkForm = function (e) {

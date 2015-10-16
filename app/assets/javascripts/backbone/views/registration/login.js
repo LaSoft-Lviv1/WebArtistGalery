@@ -72,12 +72,10 @@ ArtistGallery.Views.Login = (function(superClass) {
                     var xhrMessage;
                     xhrMessage = xhr.responseJSON.message;
                     // check response
-                    if (xhrMessage === 'wrongMail') {
-                        this.$("#emailValidationErr").css("display", "inline-block");
-                    } else if (xhrMessage === 'wrongPassword') {
+                    if (xhrMessage === 'wrongMail' || xhrMessage === 'wrongPassword') {
                         this.$("#passwordValidationErr").css("display", "inline-block");
-                    } else {
-                          console.log(xhrMessage);
+                        password = $('#password').val('');
+                        console.log(xhrMessage);
                     }
                 }
             });
