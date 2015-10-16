@@ -6,6 +6,7 @@ gem 'rails', '4.2.3'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'devise'
+gem 'pundit'
 gem 'jwt'
 # after install coffeelint:  sudo apt-get install nodejs-legacy
 
@@ -49,6 +50,9 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 3.0'
   gem 'guard-rspec'
+  gem 'better_errors'
+  gem 'factory_girl_rails'
+  gem 'faker'
 end
 
 group :production do

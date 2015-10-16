@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Dear artist, </h1>
+<p>
+  your picture <b><%= @art_item.name %></b> has been reserved by customer <%= @customer.name %>, phone number <%= @customer.phone %>.<br>
+</p>
+<!--<img src="/home/helen/Pictures/images.jpeg" alt="pict" width="200" height="200" />-->
+<%= image_tag attachments['image.jpg'].url %>
+</body>
+</html>

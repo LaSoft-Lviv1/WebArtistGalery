@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Dear customer <%= @customer_name %>, </h1>
+<p>
+  picture <b><%= @art_item.name %></b>, author - <b><%= @author.first_name %>  <%= @author.second_name %></b>, which you wanted to buy, has been canceled from reservation.
+</p>
+<p>You may reserved it with this source <%= link_to "#{@art_item.name}", art_items_url(@art_item.id) %> </p>
+<%= image_tag attachments['image.jpg'].url %>
+</body>
+</html>

@@ -30,41 +30,60 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
 
     ArtistGalleryRouter.prototype.routes = {
         '': "index",
-        'authors': "showAuthors",
-        'authors/new': "newAuthor",
-        'authors/:id': "show",
-        ':id/edit': "edit",
-        'index': "index",
-        'howToBuy': "howToBuy",
-        'aboutUs': "howToBuy",
-        'FAQ': "howToBuy",
-        'signout': "signout",
-        'artItems/new': "newArtItem",
-        'artItems/:id': "detailedArtItem",
-        'artistAdmin': "artistAdmin",
-        'users/confirmation': 'confirmation',
-        'users/password': 'passwordRecovery',
-        'users/password/edit': 'passwordRecoveryEdit',
-        'cart/:user' : "UserCart",
+        'authors':              "showAuthors",
+        'authors/new':          "newAuthor",
+        'authors/:id':          "showAuthor",
+        'authors/:id/edit':     "editAuthor",
+        ':id/edit':             "edit",
+        'index':                "index",
+        'howToBuy':             "howToBuy",
+        'aboutUs':              "howToBuy",
+        'FAQ':                  "howToBuy",
+        'signout':              "signout",
+        'artItems/new':         "newArtItem",
+        'artItems/:id':         "detailedArtItem",
+        'artItems/:id/edit':    "editArtItem",
+        'artistAdmin':          "artistAdmin",
+        'users/confirmation':   'confirmation',
+        'users/password':       'passwordRecovery',
+        'users/password/edit':  'passwordRecoveryEdit',
+        'cart':                 'userCart',
         '.*': "index"
     };
 
 
-  ArtistGalleryRouter.prototype.UserCart = function(user) {
-       this.headerView = new HeaderView();
-    console.log(user);
-      this.userCartView = new UserCartView(/* fetch data collerction*/);
-        return
+  ArtistGalleryRouter.prototype.userCart = function() {
+    if(localStorage.length === 0 || localStorage.getItem('user_token') === '') {
+        window.location.href = '/#';
+    } else {
+      var self = this;    
+      this.userCarts = new ArtistGallery.Collections.CartCollection();
+      this.userCarts.fetch().then(function() {
+        self.userCartView = new UserCartView({collection: self.userCarts});
+      }); 
+    }
+    return
   };
 
   ArtistGalleryRouter.prototype.initialize = function() {
     this.login_model = new ArtistGallery.Models.Login();
     ArtistGallery.LoginHelpers.reRenderLoginView(this.login_model);
+
+    if(localStorage.length === 0 || localStorage.getItem('user_token') === '') {
+ 
+       this.headerView = new HeaderView();
+    } else {
+      var self = this;    
+      this.userCarts = new ArtistGallery.Collections.CartCollection();
+        this.userCarts.fetch().then(function() {
+         self.headerView = new HeaderView({collection: self.userCarts});
+      }); 
+    }
+  
+    this.renderLoginView();
     this.footerView = new FooterView;
     this.authors = new ArtistGallery.Collections.AuthorsCollection();
-    return //this.authors.fetch({
-    //  reset: true
-    //});
+    return
   };
 
   ArtistGalleryRouter.prototype.confirmation = function() {
@@ -93,15 +112,8 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
     ArtistGalleryRouter.prototype.passwordRecovery = function() {
-        this.login_model = new ArtistGallery.Models.Login();
-        this.headerView = new HeaderView();
-        this.view = new ArtistGallery.Views.Login({
-            model: this.login_model
-        });
-        $(".modal-content").html(this.view.render().el);
-
         this.passwordRecoveryMail = new ArtistGallery.Views.PasswordRecoveryMail({
-            model: this.login_model
+            model: new ArtistGallery.Models.RecoveryPassword()
         });
         $("#content").html(this.passwordRecoveryMail.render().el);
         return
@@ -115,40 +127,28 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
             id: 1,
             reset_password_token: token
         });
-        this.login_model = new ArtistGallery.Models.Login();
-        this.headerView = new HeaderView();
-        this.view = new ArtistGallery.Views.Login({
-            model: this.login_model
-        });
-        $(".modal-content").html(this.view.render().el);
-
         this.passwordRecoveryEdit = new ArtistGallery.Views.PasswordRecoveryEdit({
-            model:                  this.login_model,
             passwordRecoveryModel:  this.passwordRecoveryModel
         });
         $("#content").html(this.passwordRecoveryEdit.render().el);
-        //console.log(token);
         return
     }
 
-  ArtistGalleryRouter.prototype.showArtItemToJSON = function() {
-      return console.log(this.art_items.toJSON());
-  };
-
-  ArtistGalleryRouter.prototype.index = function() {
-    this.login_model = new ArtistGallery.Models.Login();
-    this.headerView = new HeaderView();
+  ArtistGalleryRouter.prototype.renderLoginView = function() {
     this.view = new ArtistGallery.Views.Login({
       model: this.login_model
     });
     $(".modal-content").html(this.view.render().el);
+    return
+  };
+
+  ArtistGalleryRouter.prototype.index = function() {
     this.art_items = new ArtistGallery.Collections.ArtItemsCollection();
     this.art_items.fetch({
         data: $.param({great: 'Hello'}),
         reset: true
     });
     this.homeView = new ArtistGallery.Views.HomePage.IndexView({
-      model: this.login_model,
       collection: this.art_items
     });
     $("#content").html(this.homeView.render().el);
@@ -156,54 +156,90 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.signout = function() {
-      //console.log('from logout');
-      //console.log(this.login_model);
       this.login_model.set({
           id: 1
       });
-      //console.log(this.login_model);
       this.login_model.destroy({
           data: $.param({user_token: localStorage.getItem('user_token')})
       });
       localStorage.setItem('user_token', '');
       localStorage.setItem('name', '');
       localStorage.setItem('role', '');
+      localStorage.setItem('id', '');
+      this.login_model = new ArtistGallery.Models.Login();
       window.location.href = '/#';
+      this.headerView.render();
+      this.renderLoginView();
       return
   };
 
   ArtistGalleryRouter.prototype.showAuthors = function() {
-    this.headerauthorsView = new HeaderAuthorsView();
-    this.view = new ArtistGallery.Views.Login({
-      model: new ArtistGallery.Models.Login()
-    });
-    $(".modal-content").html(this.view.render().el);
-    this.art_items = new ArtistGallery.Collections.ArtItemsCollection();
-    this.art_items.fetch({
-      reset: true
-    });
-    this.view = new ArtistGallery.Views.Authors.IndextView({
-        model: this.login_model,
-        collection: this.art_items
-    });
-    $("#content").html(this.view.render().el);
-    return
+      this.authors.fetch({
+          reset: true,
+          success: function (collection, response) {
+              var view = new ArtistGallery.Views.Authors.AllAuthorsView({
+                  collection: collection
+              });
+              $("#content").html(view.render().el);
+          }
+      });
+      return
+  };
+
+  ArtistGalleryRouter.prototype.showAuthor = function(id) {
+      if (id == localStorage.getItem('id') && localStorage.getItem('role') == 'artist') {
+          var author = new ArtistGallery.Models.Author();
+          author.set({id: id});
+          author.fetch().then(function (model) {
+              var artistAdminView = new ArtistAdminView({
+                  model: new ArtistGallery.Models.Author( model)
+              });
+              $("#content").html(artistAdminView.render().el)
+          });
+      }else {
+          var art_items = new ArtistGallery.Collections.ArtItemsCollection();
+          this.authors.fetch({
+              reset: true,
+              success: function (collection, response) {
+                  var author;
+                  author = collection.get(id);
+                  var view = new ArtistGallery.Views.Authors.IndexView({
+                      model: author,
+                      collection: art_items
+                  });
+                  $("#content").html(view.render().el)
+              }
+          });
+          art_items.fetch({
+              reset: true
+          });
+      }
+      return
   };
 
   ArtistGalleryRouter.prototype.detailedArtItem = function(id) {
-      this.headerView = new HeaderView();
-      this.view = new ArtistGallery.Views.Login({
-          model: new ArtistGallery.Models.Login()
-      });
-      $(".modal-content").html(this.view.render().el);
       this.art_items = new ArtistGallery.Collections.ArtItemsCollection();
       this.art_items.fetch({
           reset: true,
           success: function (collection, response) {
-              //console.log(collection);
               this.art_item = collection.get(id);
-              //console.log(this.art_item);
               var view = new DetailedArtItemView({
+                  model: this.art_item,
+                  collection: collection
+              });
+              $("#content").html(view.render().el);
+          }
+      });
+      return
+  };
+
+  ArtistGalleryRouter.prototype.editArtItem = function(id) {
+      this.art_items = new ArtistGallery.Collections.ArtItemsCollection();
+      this.art_items.fetch({
+          reset: true,
+          success: function (collection, response) {
+              this.art_item = collection.get(id);
+              var view = new EditArtItemView({
                   model: this.art_item,
                   collection: collection
               });
@@ -213,24 +249,27 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
       return
     };
 
+  ArtistGalleryRouter.prototype.editAuthor = function(id) {
+      this.authors.fetch({
+          reset: true,
+          success: function (collection, response) {
+              this.author = collection.get(id);
+              var view = new EditAuthorDataView({
+                  model: this.author,
+                  collection: collection
+              });
+              $("#content").html(view.render().el);
+          }
+      });
+      return
+  };
+
   ArtistGalleryRouter.prototype.howToBuy = function() {
-    this.headerHowToBuyView = new HeaderHowToBuyView();
-    this.view = new ArtistGallery.Views.Login({
-        model: this.login_model
-    });
-    $(".modal-content").html(this.view.render().el);
-    this.howToBuy = new HowToBuyView({
-        model: this.login_model
-    });
+    this.howToBuy = new HowToBuyView();
     return
   };
 
    ArtistGalleryRouter.prototype.artistAdmin = function() {
-    this.headerView = new HeaderView();
-    this.view = new ArtistGallery.Views.Login({
-        model: new ArtistGallery.Models.Login()
-    });
-    $(".modal-content").html(this.view.render().el);
     this.artistAdminView = new ArtistAdminView();
     var descriptionView = new DescriptionView();
     var morelessView = new MorelessView();
@@ -238,11 +277,6 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
   };
 
   ArtistGalleryRouter.prototype.newArtItem = function() {
-      this.headerView = new HeaderView();
-      this.view = new ArtistGallery.Views.Login({
-          model: new ArtistGallery.Models.Login()
-      });
-      $(".modal-content").html(this.view.render().el);
       this.addArtItemView = new AddArtItemView();
       $("#content").html(this.addArtItemView.render().el);
       return

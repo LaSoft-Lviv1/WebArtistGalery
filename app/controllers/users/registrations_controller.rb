@@ -1,5 +1,6 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 	before_action :configure_sign_up_params, only: :create
+  skip_before_filter :authenticate_user_from_token!
   respond_to :json
 
   def create
@@ -17,7 +18,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
             render json: {status:      'success',
                           user_token:  AuthenticationHelper::AuthenticationTokenService.auth_token(current_user),
                           name:        current_user.author.first_name,
-                          role:        current_user.role}
+                          role:        current_user.role,
+                          id:          current_user.author.id}
             # binding.pry
           else
             resource.delete
@@ -32,7 +34,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
             render json: {status:      'success',
                           user_token:  AuthenticationHelper::AuthenticationTokenService.auth_token(current_user),
                           name:        current_user.customer.name,
-                          role:        current_user.role}
+                          role:        current_user.role,
+                          id:          current_user.customer.id}
             # binding.pry
           else
             resource.delete

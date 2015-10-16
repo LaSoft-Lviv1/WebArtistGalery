@@ -1,4 +1,5 @@
 class ArtItemsController < ApplicationController
+  before_action :authenticate_user_from_token!, except: :index
 
   def index
     @art_items = ArtItem.all
@@ -16,6 +17,7 @@ class ArtItemsController < ApplicationController
 
   def create
     @art_item = ArtItem.new(art_item_params)
+    authorize @art_item
     @art_item.save
 
     if @art_item.errors.empty?
@@ -25,10 +27,28 @@ class ArtItemsController < ApplicationController
     end
   end
 
+  def update
+    @art_item = ArtItem.find(params[:id])
+    authorize @art_item
+    if @art_item.update_attributes(art_item_params)
+      render status: 200, json: { message: 'ok'}
+    else
+      render status: 400, json: { message: 'error'}
+    end
+  end
+
+  def destroy
+    # binding.pry
+    @art_item = ArtItem.find(params[:id])
+    authorize @art_item
+    @art_item.destroy
+    render status: 200, json: { message: 'ok'}
+  end
+
   private
 
   def art_item_params
-    params.require(:art_item).permit(:name,
+    permitted_params = params.require(:art_item).permit(:name,
                                    :description,
                                    :price,
                                    :keywords,
@@ -42,6 +62,8 @@ class ArtItemsController < ApplicationController
                                    :horizontal_size,
                                    :source_file,
                                    :preview_source_file)
+    permitted_params[:author_id] = current_user.author.id
+    permitted_params
   end
 
 end

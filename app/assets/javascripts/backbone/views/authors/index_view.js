@@ -5,7 +5,7 @@ var base,
 
 (base = ArtistGallery.Views).Authors || (base.Authors = {});
 
-ArtistGallery.Views.Authors.IndextView = (function(superClass) {
+ArtistGallery.Views.Authors.IndexView = (function(superClass) {
 	extend(IndexView, superClass);
 
 
@@ -29,15 +29,30 @@ ArtistGallery.Views.Authors.IndextView = (function(superClass) {
 		return this.collection.add(model);
 	};
 
+    IndexView.prototype.renderDescription = function () {
+        //console.log('renderDesc');
+        var descriptionView = new DescriptionView({
+            model: this.model
+        });
+        return
+    };
 	IndexView.prototype.addAllFromReset = function() {
+        //console.log('reset');
 		return this.addAll();
 	};
 
 	IndexView.prototype.addAll = function() {
+        //console.log('addall');
         this.collection.forEach(this.addOneArtItemForCarousel, this);
-        var descriptionView = new DescriptionView();
-        var morelessView = new MorelessView();
-        var carouselscriptView = new CarouselscriptView();
+	    $('.variable-width').slick({
+			dots: false,
+			infinite: true,
+			speed: 300,
+			slidesToShow: 1,
+			centerMode: true,
+			variableWidth: true
+		});
+        this.renderDescription();
 		return
 	};
 
@@ -46,14 +61,14 @@ ArtistGallery.Views.Authors.IndextView = (function(superClass) {
 			model: art_item
 		});
 		this.$(".variable-width").append(oneArtItemView.render().el);
-	  console.log('addoneartitem');
-		return console.log('in addOneArtItem finish');
+		return
 	};
 
 	IndexView.prototype.render = function () {
-	  console.log('artist_index_render');
+	  //console.log('artist_index_render');
 	  this.$el.html(this.template());
-		return this;
+      //this.renderDescription();
+      return this;
 	};
 
 	return IndexView;

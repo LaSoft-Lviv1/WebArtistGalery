@@ -1,6 +1,7 @@
 class Users::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
 #   skip_before_filter :verify_signed_out_user
+  skip_before_filter :authenticate_user_from_token!
   before_action :validate_params, only: [:create]
   respond_to :json
   # GET /resource/sign_in
@@ -21,18 +22,20 @@ class Users::SessionsController < Devise::SessionsController
           render json: {status:      'success',
                         user_token:  AuthenticationHelper::AuthenticationTokenService.auth_token(current_user),
                         name:        current_user.author.first_name,
-                        role:        current_user.role}
+                        role:        current_user.role,
+                        id:          current_user.author.id}
         elsif current_user.role == 'customer'
           render json: {status:      'success',
                         user_token:  AuthenticationHelper::AuthenticationTokenService.auth_token(current_user),
                         name:        current_user.customer.name,
-                        role:        current_user.role}
+                        role:        current_user.role,
+                        id:          current_user.customer.id}
         end
       else
-        render status: 401, json: { message: 'Invalid email or password.' }
+        render status: 401, json: { message: 'wrongPassword' }
       end
     else
-      render status: 401, json: { message: 'Invalid email or password.' }
+      render status: 401, json: { message: 'wrongMail' }
     end
 
   end
@@ -40,9 +43,10 @@ class Users::SessionsController < Devise::SessionsController
   # DELETE /resource/sign_out
   def destroy
     # Fetch params
+    # binding.pry
     user = AuthenticationHelper::AuthenticationTokenService.authenticate_user(params[:user_token])
-    if user.nil?
-      # sign_out :user
+    if user.nil? && current_user
+      sign_out current_user
       render status: 404, json: { message: 'Invalid token.' }
     else
       user.update_columns(authentication_token: nil)
@@ -59,12 +63,12 @@ class Users::SessionsController < Devise::SessionsController
 
       if request.format != :json
         render status: 406, json: { message: 'The request must be JSON.' }
-        return
       end
 
-      if !is_a_valid_email1?(email) or !is_a_valid_password?(password)
-        render status: 401, json: { message: 'The request MUST contain correct user email and password.' }
-        return
+      if !is_a_valid_email1?(email)
+        render status: 401, json: { message: 'wrongMail' }
+      elsif !is_a_valid_password?(password)
+        render status: 401, json: { message: 'wrongPassword' }
       end
     end
 

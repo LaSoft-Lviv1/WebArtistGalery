@@ -1,0 +1,99 @@
+ <div class="add-art-container">
+    <div class="container">
+      <div class="row">
+        <h2 class="text-center add-art-heading">Edit the greatest Art ever!</h2>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon" id="addon-add-art-item-name"><div>Name</div></span>
+            <input required type="text" class="form-control" id="add-art-item-name" placeholder="Name" value="<%= name %>" aria-describedby="addon-add-art-item-name">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon" id="addon-add-art-item-description"><div>Description</div></span>
+            <textarea required class="form-control" id="add-art-item-description" placeholder="Description (maximum lenght: 1000 characters)" aria-describedby="addon-add-art-item-description" rows="3" maxlenght="1000"><%= description %></textarea>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon" id="addon-add-art-item-category"><div>Category</div></span>
+            <select required name="select-category" id="select-category" class="form-control" placeholder="" aria-describedby="addon-add-art-item-category">
+            </select>
+          </div>
+          <!-- /.input-group -->
+        </div>
+        <!-- /.form-group -->
+        <div class="form-group">
+          <div class="input-group col-xs-12">
+            <span class="input-group-addon" id="addon-add-art-item-medium"><div>Medium</div></span>
+            <select required name="select-medium" class="form-control" id="add-art-item-medium" placeholder="" aria-descripbedby="addon-add-art-item-medium">
+            </select>
+          </div>
+          <div class="input-group col-xs-12">
+            <span class="input-group-addon" id="addon-add-art-item-style"><div>Style</div></span>
+            <select required name="select-style" class="form-control" id="add-art-item-style" placeholder="E.g. abstract, pop art, modern etc." aria-descripbedby="addon-add-art-item-style">
+            </select>
+          </div>
+          <div class="input-group col-xs-12">
+            <span class="input-group-addon" id="addon-add-art-item-subject"><div>Subject</div></span>
+            <select required name="select-subject" class="form-control" id="add-art-item-subject" placeholder="E.g. body, still life, portrait etc." aria-descripbedby="addon-add-art-item-subject">
+            </select>
+          </div>
+        </div>
+        <!-- /.form-group -->
+        <div class="form-group">
+          <div class="input-group col-xs-12">
+            <span class="input-group-addon" id="addon-add-art-item-orientation"><div>Orientation</div></span>
+            <select required name="select-orientation" class="form-control" id="add-art-item-orientation" placeholder="E.g. portrait, square, landscape etc." aria-descripbedby="addon-add-art-item-orientation">
+            </select>
+          </div>
+          <div class="input-group col-xs-12">
+            <span class="input-group-addon" id="addon-add-art-item-vsize"><div>V-size</div></span>
+            <input required type="text" class="form-control" id="add-art-item-vsize" value="<%= vertical_size %>" placeholder="E.g. 56" aria-descripbedby="addon-add-art-item-vsize">
+            <span class="input-group-addon addon-select">
+                <select required name="select-vsize" id="select-vsize">
+                  <option value="cm">cm</option>
+                  <option value="inch">inch</option>
+                </select>
+              </span>
+          </div>
+          <div class="input-group col-xs-12">
+            <span class="input-group-addon" id="addon-add-art-item-hsize"><div>H-size</div></span>
+            <input required type="text" class="form-control" id="add-art-item-hsize" value="<%= horizontal_size %>" placeholder="E.g. 56" aria-descripbedby="addon-add-art-item-hsize">
+            <span class="input-group-addon addon-select">
+                <select required name="select-hsize" id="select-hsize">
+                    <option value="cm">cm</option>
+                    <option value="inch">inch</option>
+                </select>
+             </span>
+          </div>
+        </div>
+        <!-- /.form-group -->
+        <div class="form-group">
+          <div class="input-group col-xs-12">
+            <span class="input-group-addon" id="addon-add-art-item-price"><div>Price</div></span>
+            <input required type="text" class="form-control" id="add-art-item-price" value="<%= price %>" placeholder="E.g. 200" aria-descripbedby="addon-add-art-item-price">
+            <span class="input-group-addon addon-select">
+                <select required name="select-price" id="select-price">
+                    <option value="usd">USD</option>
+                    <option value="euro">Euro</option>
+                    <option value="uah">UAH</option>
+                </select>
+              </span>
+          </div>
+          <div class="input-group col-xs-12">
+            <span class="input-group-addon" id="addon-add-art-item-keywords"><div>Keywords</div></span>
+            <input required type="text" class="form-control" id="add-art-item-keywords" value="<%= keywords %>" placeholder="E.g. portrait, lady, redhood" aria-descripbedby="addon-add-art-item-keywords">
+          </div>
+        </div>
+        <!-- /.form-group -->
+      </div>
+      <div class="col-sm-4">
+        <!--<input required type="file" value="add photo" id="add-art-photo-btn">-->
+        <div id="image_preview">
+            <img src="<%= source_file.url %>" id="image" style="width: 100%">
+        </div>
+      </div>
+      <div class="col-xs-4 col-xs-offset-8">
+        <button class="btn btn-success btn-wide" id="submit">Edit</button>
+      </div>
+    </div>
+  </div>

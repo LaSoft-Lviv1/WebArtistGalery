@@ -1,8 +1,8 @@
 class AuthorsController < ApplicationController
+  before_action :authenticate_user_from_token!, except: [:index, :show]
 
   def index
     @authors = Author.all
-
     respond_to do |format|
       format.json { render json: @authors }
       format.html { render action: "index" }
@@ -17,6 +17,16 @@ class AuthorsController < ApplicationController
     redirect_to '#/authors' #TODO What is it?
   end
 
+  def update
+    @author = Author.find(params[:id])
+    authorize @author
+    if @author.update_attributes(author_params)
+      render status: 200, json: { message: 'ok'}
+    else
+      render status: 400, json: { message: 'error'}
+    end
+  end
+
   def destroy
     author = Author.find(params[:id])
     author.destroy
@@ -25,10 +35,15 @@ class AuthorsController < ApplicationController
   end
 
   def show
-    @author = Author.find_by_id(params[:id])
-
-    unless @author
-      render :text => 'this artist is not available'
+    id = params[:id].presence
+    @author = Author.find_by(id: id)
+    if @author
+      respond_to do |format|
+        format.json { render json: @author }
+        format.html { render action: "index" }
+      end
+    else
+      render status: 400, json: { message: 'Author hasn\'t been found.' }
     end
   end
 
@@ -41,7 +56,6 @@ class AuthorsController < ApplicationController
                                     :info_about,
                                     :photo,
                                     :phone_number,
-                                    :email_address,
                                     :city_id
                                    )
   end

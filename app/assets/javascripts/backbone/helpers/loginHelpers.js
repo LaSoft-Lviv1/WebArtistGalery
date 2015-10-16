@@ -1,9 +1,10 @@
 ArtistGallery.LoginHelpers = {};
 
-ArtistGallery.LoginHelpers.reRenderLoginView = function(model) {
+ArtistGallery.LoginHelpers.reRenderLoginView = function() {
+    var login_model = new ArtistGallery.Models.Login();
     $('#modal').on('hidden.bs.modal', function (e) {
         this.view = new ArtistGallery.Views.Login({
-            model: model
+            model: login_model
         });
         $(".modal-content").html(this.view.render().el);
     });

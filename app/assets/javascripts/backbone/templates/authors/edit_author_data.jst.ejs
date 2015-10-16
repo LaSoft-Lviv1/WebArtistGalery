@@ -1,0 +1,41 @@
+ <div class="add-art-container">
+    <div class="container">
+      <div class="row">
+        <h2 class="text-center add-art-heading">Edit information!</h2>
+      </div>
+      <div class="col-sm-8">
+        <div class="form-group">
+          <div class="input-group">
+            <span class="input-group-addon" id="addon-add-author-first-name"><div>First name</div></span>
+            <input required type="text" class="form-control" id="add-author-first-name" value="<%= first_name %>" placeholder="First name" aria-describedby="addon-add-author-first-name">
+          </div>
+          <div class="input-group">
+              <span class="input-group-addon" id="addon-add-author-second-name"><div>Second name</div></span>
+              <input required type="text" class="form-control" id="add-author-second-name" value="<%= second_name %>" placeholder="Second name" aria-describedby="addon-add-author-second-name">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon" id="addon-add-author-phone-number"><div>Phone</div></span>
+            <input required type="text" class="form-control" id="add-author-phone-number" value="<%= phone_number %>" placeholder="Phone number" aria-describedby="addon-add-author-phone-number">
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon" id="addon-author-item-city"><div>City</div></span>
+            <select required name="select-city" id="select-city" class="form-control" placeholder="" aria-describedby="addon-add-author-city">
+            </select>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon" id="addon-add-author-info-about"><div>Info about</div></span>
+            <textarea required class="form-control" id="add-author-info-about"  placeholder="Info about (maximum lenght: 1000 characters)" aria-describedby="addon-add-author-info-about" rows="4" maxlenght="1000"><%= info_about %></textarea>
+          </div>
+          <!-- /.input-group -->
+        </div>
+        <!-- /.form-group -->
+      </div>
+      <div class="col-sm-4">
+        <input required type="file" value="add photo" id="add-photo-btn">
+        <div id="image_preview"></div>
+      </div>
+      <div class="col-xs-4 col-xs-offset-8">
+        <button class="btn btn-success btn-wide" id="submit">Save info</button>
+      </div>
+    </div>
+  </div>
