@@ -18,7 +18,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
             render json: {status:      'success',
                           user_token:  AuthenticationHelper::AuthenticationTokenService.auth_token(current_user),
                           name:        current_user.author.first_name,
-                          role:        current_user.role}
+                          role:        current_user.role,
+                          id:          current_user.author.id}
             # binding.pry
           else
             resource.delete
@@ -33,7 +34,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
             render json: {status:      'success',
                           user_token:  AuthenticationHelper::AuthenticationTokenService.auth_token(current_user),
                           name:        current_user.customer.name,
-                          role:        current_user.role}
+                          role:        current_user.role,
+                          id:          current_user.customer.id}
             # binding.pry
           else
             resource.delete

@@ -60,8 +60,10 @@ SignupArtist.prototype.signup = function(e) {
                     localStorage.setItem('user_token', response.get('user_token'));
                     localStorage.setItem('name', response.get('name'));
                     localStorage.setItem('role', response.get('role'));
+                    localStorage.setItem('id', response.get('id'));
                     alert('Confirmation letter has been sent to your email.');
-                    window.location.reload();
+                    $('#modal').modal('hide');
+                    window.location.href = "/#authors/" +response.get('id') +"/edit";
                 },
                 error: function (response) {
                     console.log(response.toJSON());

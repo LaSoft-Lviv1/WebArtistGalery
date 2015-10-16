@@ -39,15 +39,15 @@ ArtistGallery.Views.Login = (function(superClass) {
             regExPassword = /^.{8,}$/, //1 digit, 1 small char, 1 big char, 8 char min
             email = $('#email').val(),
             password = $('#password').val();
-            if(!regExEmail.test(email)) {
-                this.$("#emailValidationErr").css("display", "inline-block");
-                return false;
-            } else if(!regExPassword.test(password)) {
-                this.$("#passwordValidationErr").css("display", "inline-block");
-                return false;   
-            } else {
-                return true;
-            }
+        if(!regExEmail.test(email)) {
+            this.$("#emailValidationErr").css("display", "inline-block");
+            return false;
+        } else if(!regExPassword.test(password)) {
+            this.$("#passwordValidationErr").css("display", "inline-block");
+            return false;
+        } else {
+            return true;
+        }
     };
 
     Login.prototype.login = function(e) {
@@ -64,6 +64,7 @@ ArtistGallery.Views.Login = (function(superClass) {
                     localStorage.setItem('user_token', response.get('user_token'));
                     localStorage.setItem('name', response.get('name'));
                     localStorage.setItem('role', response.get('role'));
+                    localStorage.setItem('id', response.get('id'));
                     $('#modal').modal('hide');
                     window.location.reload();
                 },
@@ -110,6 +111,7 @@ ArtistGallery.Views.Login = (function(superClass) {
         window.location.href = '/#users/password';
         return
     };
+
     Login.prototype.render = function() {
         this.$el.html(this.template());
         return this;

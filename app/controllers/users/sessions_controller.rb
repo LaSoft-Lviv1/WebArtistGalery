@@ -22,12 +22,14 @@ class Users::SessionsController < Devise::SessionsController
           render json: {status:      'success',
                         user_token:  AuthenticationHelper::AuthenticationTokenService.auth_token(current_user),
                         name:        current_user.author.first_name,
-                        role:        current_user.role}
+                        role:        current_user.role,
+                        id:          current_user.author.id}
         elsif current_user.role == 'customer'
           render json: {status:      'success',
                         user_token:  AuthenticationHelper::AuthenticationTokenService.auth_token(current_user),
                         name:        current_user.customer.name,
-                        role:        current_user.role}
+                        role:        current_user.role,
+                        id:          current_user.customer.id}
         end
       else
         render status: 401, json: { message: 'wrongPassword' }
