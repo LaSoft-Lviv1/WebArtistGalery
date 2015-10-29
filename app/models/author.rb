@@ -1,7 +1,10 @@
 class Author < ActiveRecord::Base
   validates :first_name, :second_name,
             format: { with: /\A([A-Z][a-z ,.'`-]{2,30})\z/i, message: 'Only allows letters and numbers' },
-            length: { in: 1..30, message: 'Length must be between 1 and 30' }
+            length: { in: 1..30, message: 'Length must be between 1 and 30' },
+            presence: true
+
+  validates :phone_number, presence: true
 
   mount_uploader :photo, PhotoUploader
 
