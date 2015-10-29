@@ -15,7 +15,7 @@ class NotificationService
 
   def self.notify_author_about_reservation(art_item_id, customer_id)
     self.initialize_data(art_item_id, customer_id)
-    @email = User.find(@art_item.author.id).email
+    @email = User.find(@art_item.author.user_id).email
     NotificationMailer.reservation_art_item_email(@email, @art_item, @author, @customer).deliver_now if @author && @customer
   end
 
