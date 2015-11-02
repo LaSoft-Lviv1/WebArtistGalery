@@ -52,6 +52,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'better_errors'
   gem 'factory_girl_rails'
+  gem 'shoulda-matchers'
   gem 'faker'
 end
 
