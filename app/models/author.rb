@@ -5,6 +5,7 @@ class Author < ActiveRecord::Base
             presence: true
 
   validates :phone_number, presence: true
+  validates :user_id, presence: true
 
   mount_uploader :photo, PhotoUploader
 
