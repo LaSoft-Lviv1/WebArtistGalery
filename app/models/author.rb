@@ -4,7 +4,7 @@ class Author < ActiveRecord::Base
             length: { in: 1..30, message: 'Length must be between 1 and 30' },
             presence: true
 
-  validates :phone_number, presence: true
+  validates :phone_number, presence: false
   validates :user_id, presence: true
 
   mount_uploader :photo, PhotoUploader

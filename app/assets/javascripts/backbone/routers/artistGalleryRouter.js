@@ -29,7 +29,7 @@ ArtistGallery.Routers.ArtistGalleryRouter = (function(superClass) {
     }
 
     ArtistGalleryRouter.prototype.routes = {
-        '': "index",
+        '':                     "index",
         'authors':              "showAuthors",
         'authors/new':          "newAuthor",
         'authors/:id':          "showAuthor",
