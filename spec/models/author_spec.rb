@@ -4,6 +4,7 @@ RSpec.describe Author, type: :model do
 
   before(:each) do
     @author = FactoryGirl.build(:author)
+    puts  @author.user_id
   end
 
   subject { @author }
